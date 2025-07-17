@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Volkhov, Poppins } from 'next/font/google';
-
 import './globals.css';
 
 const volkhov = Volkhov({

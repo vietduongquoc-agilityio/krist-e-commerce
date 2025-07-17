@@ -18,7 +18,6 @@ const config: Config = {
     extend: {
       colors: colors,
       fontFamily: fontFamily,
-
       fontSize: fontSize,
       borderRadius: borderRadius,
       lineHeight: lineHeight,
@@ -36,7 +35,12 @@ const config: Config = {
       },
     },
   },
-  plugins: [heroui()],
+  plugins: [
+    heroui({
+      themes: themes,
+      defaultTheme: 'light',
+    }),
+  ],
 };
 
 export default config;
