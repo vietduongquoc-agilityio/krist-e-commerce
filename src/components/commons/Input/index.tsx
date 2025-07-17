@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useId } from 'react';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -19,11 +19,16 @@ const Input = ({
 }: InputProps) => {
   const hasError = isInvalid || !!errorMessage;
 
+  const reactId = useId();
+  const inputId = label
+    ? `${reactId}-${label.replace(/\s+/g, '_')}`
+    : `${reactId}-input`;
+
   return (
     <div className="w-full">
       {label && (
         <label
-          htmlFor={label}
+          htmlFor={inputId}
           className={`block mb-2 text-customColor-placeholder text-customColor font-medium ${labelClassName}`}
         >
           {label}
@@ -38,11 +43,11 @@ const Input = ({
           ${inputClassName}
           w-full
           border-b-[1.5px]
-          border-grey
+          border-gray
           bg-transparent
           focus:outline-none
           focus:border-black
-          placeholder:text-grey
+          placeholder:text-gray
           text-black
           py-2
           ${hasError ? 'border-red text-red placeholder:text-red' : ''}

@@ -1,9 +1,11 @@
 export const colors = {
+  charcoal: '#484848',
   black: '#000000',
-  primary: '#8A8A8A',
-  secondary: '#484848',
 
-  grey: '#9D9D9D',
+  primary: '#484848',
+  secondary: '#8A8A8A',
+
+  gray: '#9D9D9D',
   lightGray: '#DEDFE1',
   whiteSmoke: '#F3F3F3',
 
