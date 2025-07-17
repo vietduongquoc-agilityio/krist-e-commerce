@@ -1,16 +1,14 @@
 export const colors = {
-  charcoal: '#484848',
   black: '#000000',
-
+  gray: '#9D9D9D',
+  charcoal: '#484848',
+  red: '#FF0000',
+  white: '#FFFFFF',
   primary: '#484848',
   secondary: '#8A8A8A',
-
-  gray: '#9D9D9D',
   lightGray: '#DEDFE1',
   whiteSmoke: '#F3F3F3',
-
   orchid: '#B66CFF',
-  red: '#FF0000',
   coralRed: '#FF6C6C',
   rosyPink: '#F8CCCC',
   pinkLavender: '#FC6CFF',

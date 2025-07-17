@@ -31,11 +31,8 @@ export default function AuthLayout({
           <h1 className="text-4xl font-extrabold mb-2">FASCO</h1>
 
           {/* Terms & Conditions */}
-          <p className="text-sm text-gray-500 mb-6">
-            By continuing, you agree to FASCO’s
-          </p>
-
           {children}
+          <p className="text-sm text-gray-500 mb-6">FASCO Terms & Codnitions</p>
         </div>
       </div>
     </div>
