@@ -1,8 +1,7 @@
 export default function LandingPage() {
   return (
     <div>
-      <h1 className=" text-green-600 text-4xl">Font Volkhov</h1>
-      <p className="font-secondary text-base text-coralRed">Font Poppins</p>
+      <h1 className="text-2xl font-bold mb-4">Welcome to the Landing Page</h1>
     </div>
   );
 }

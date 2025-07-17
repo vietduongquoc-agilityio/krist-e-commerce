@@ -3,10 +3,12 @@ export const colors = {
   primary: '#8A8A8A',
   secondary: '#484848',
 
+  grey: '#9D9D9D',
   lightGray: '#DEDFE1',
   whiteSmoke: '#F3F3F3',
 
   orchid: '#B66CFF',
+  red: '#FF0000',
   coralRed: '#FF6C6C',
   rosyPink: '#F8CCCC',
   pinkLavender: '#FC6CFF',

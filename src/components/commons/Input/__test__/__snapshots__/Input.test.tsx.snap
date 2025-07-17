@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Input Component Should render correctly and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full"
+  >
+    <label
+      class="block mb-2 text-customColor-placeholder text-customColor font-medium "
+      for="Password"
+    >
+      Password
+    </label>
+    <input
+      class="
+          
+          w-full
+          border-b-[1.5px]
+          border-grey
+          bg-transparent
+          focus:outline-none
+          focus:border-black
+          placeholder:text-grey
+          text-black
+          py-2
+          border-red text-red placeholder:text-red
+        "
+      id="Password"
+      placeholder="Enter password"
+      type="text"
+    />
+    <p
+      class="mt-1 text-sm text-red"
+    >
+      Required
+    </p>
+  </div>
+</DocumentFragment>
+`;
