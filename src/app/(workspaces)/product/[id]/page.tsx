@@ -5,18 +5,19 @@ export const metadata: Metadata = {
   description: 'View and manage products',
 };
 
-export default async function ProductPage({
+export default async function Page({
   params,
 }: {
-  params: { productId: string };
+  params: Promise<{ id: string }>;
 }) {
-  console.log(`Fetching product with ID: ${params.productId}`);
+  const { id } = await params;
+  console.log(`Fetching product with ID: ${id}`);
 
   return (
     <div className="p-8">
-      <h1 className="text-green-600 text-4xl">Product {params.productId}</h1>
+      <h1 className="text-green-600 text-4xl">Product {id}</h1>
       <p className="font-secondary text-base text-coralRed">
-        Description for product {params.productId}
+        Description for product {id}
       </p>
     </div>
   );
