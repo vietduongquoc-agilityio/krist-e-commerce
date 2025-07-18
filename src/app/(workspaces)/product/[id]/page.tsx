@@ -11,7 +11,6 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  console.log(`Fetching product with ID: ${id}`);
 
   return (
     <div className="p-8">
