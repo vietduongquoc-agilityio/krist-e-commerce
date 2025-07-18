@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`QuantityInput component should render correctly and match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex items-center border border-gray-200 rounded-lg px-4 py-2 w-fit"
+  >
+    <button
+      class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-medium bg-transparent px-3 min-w-16 h-8 gap-2 rounded-small [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none border-default data-[hover=true]:!bg-default text-xl font-medium text-gray-700 disabled:opacity-50"
+      data-react-aria-pressable="true"
+      disabled=""
+      tabindex="0"
+      type="button"
+    >
+      −
+    </button>
+    <span
+      class="mx-4 w-4 text-center text-lg"
+    >
+      1
+    </span>
+    <button
+      class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-medium bg-transparent px-3 min-w-16 h-8 gap-2 rounded-small [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none border-default data-[hover=true]:!bg-default text-xl font-medium text-gray-700 disabled:opacity-50"
+      data-react-aria-pressable="true"
+      tabindex="0"
+      type="button"
+    >
+      +
+    </button>
+  </div>
+</DocumentFragment>
+`;
