@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Text component applies additional className correctly 1`] = `
+<div>
+  <p
+    class="leading-180p text-charcoal text-2xl font-bold"
+  >
+    Styled Text
+  </p>
+</div>
+`;
+
+exports[`Text component renders as a custom HTML element 1`] = `
+<div>
+  <span
+    class="leading-180p text-red text-base"
+  >
+    Span Text
+  </span>
+</div>
+`;
+
+exports[`Text component renders default correctly 1`] = `
+<div>
+  <p
+    class="leading-180p text-charcoal text-2xl"
+  >
+    Default Text
+  </p>
+</div>
+`;
+
+exports[`Text component renders with custom size and variant 1`] = `
+<div>
+  <p
+    class="leading-180p text-gray text-2xl"
+  >
+    Custom Text
+  </p>
+</div>
+`;

@@ -14,19 +14,10 @@ export const spacing = {
 };
 
 export const fontSize = {
-  'sm-16': '16px',
-  'xl-18': '18px',
   '4xl-42': '42px',
-
   '3xs': '8px',
   '2xs': '10px',
   'xs-13': '13px',
-  'xl-22': '22px',
-  '2xl-26': '26px',
-  '2xl-28': '28px',
-  '3xl-32': '32px',
-  '4xl-44': '44px',
-  '5xl-54': '54px',
 };
 
 export const borderRadius = {
