@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`SignInForm should render SignInForm correctly and match snapshot 1`] = `
+<div>
+  <div
+    class="w-full mx-auto flex flex-col gap-6"
+  >
+    <h2
+      class="font-secondary text-[30px] mb-8"
+    >
+      Sign In To FASCO
+    </h2>
+    <div
+      class="w-full flex justify-between gap-16 mb-16"
+    >
+      <button
+        class="z-0 group relative items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:!bg-default w-full py-3 rounded-[10px] border transition hover:delay-75 bg-transparent text-black text-base hover:text-white flex gap-5 border-skyBlue hover:bg-skyBlue"
+        data-react-aria-pressable="true"
+        tabindex="0"
+        type="button"
+      >
+        <img
+          alt="google"
+          data-nimg="1"
+          decoding="async"
+          height="42"
+          loading="lazy"
+          sizes="(max-width: 20px) 100vw, 42px"
+          src="/_next/image?url=%2Fimages%2Fsignin-google-image.svg.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fsignin-google-image.svg.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fsignin-google-image.svg.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fsignin-google-image.svg.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fsignin-google-image.svg.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fsignin-google-image.svg.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fsignin-google-image.svg.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fsignin-google-image.svg.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fsignin-google-image.svg.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="42"
+        />
+        Sign up with Google
+      </button>
+      <button
+        class="z-0 group relative items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:!bg-default w-full py-3 rounded-[10px] border transition hover:delay-75 bg-transparent text-black text-base hover:text-white flex gap-5 border-skyBlue hover:bg-skyBlue"
+        data-react-aria-pressable="true"
+        tabindex="0"
+        type="button"
+      >
+        <img
+          alt="github"
+          data-nimg="1"
+          decoding="async"
+          height="42"
+          loading="lazy"
+          sizes="(max-width: 20px) 100vw, 42px"
+          src="/_next/image?url=%2Fimages%2Ficon-github.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Ficon-github.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="42"
+        />
+        Sign up with GitHub
+      </button>
+    </div>
+    <div
+      class="w-full flex items-center justify-center gap-4 mb-10"
+    >
+      <span
+        class="w-[30px] h-[5px] bg-gray"
+      />
+      <span
+        class="text-gray font-bold text-[30px]"
+      >
+        OR
+      </span>
+      <span
+        class="w-[30px] h-[5px] bg-gray"
+      />
+    </div>
+    <div
+      class="w-full"
+    >
+      <input
+        class="
+          
+          w-full
+          border-b-[1.5px]
+          border-gray
+          bg-transparent
+          focus:outline-none
+          focus:border-black
+          placeholder:text-gray
+          text-black
+          py-2
+          
+        "
+        placeholder="Email"
+        type="email"
+      />
+    </div>
+    <div
+      class="w-full"
+    >
+      <input
+        class="
+          
+          w-full
+          border-b-[1.5px]
+          border-gray
+          bg-transparent
+          focus:outline-none
+          focus:border-black
+          placeholder:text-gray
+          text-black
+          py-2
+          
+        "
+        placeholder="Password"
+        type="password"
+      />
+    </div>
+    <div
+      class="w-[575px] font-semibold ml-16 flex flex-col gap-5 mt-6"
+    >
+      <button
+        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover w-full py-3 rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-black hover:bg-secondary text-white text-base"
+        data-react-aria-pressable="true"
+        tabindex="0"
+        type="button"
+      >
+        Sign In
+      </button>
+      <a
+        href="/register"
+      >
+        <button
+          class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:!bg-default w-full py-3 rounded-[10px] border transition hover:delay-75 bg-transparent text-base hover:text-white text-skyBlue border-skyBlue hover:bg-skyBlue"
+          data-react-aria-pressable="true"
+          tabindex="0"
+          type="button"
+        >
+          Register Now
+        </button>
+      </a>
+      <p
+        class="leading-180p text-customColor-description-100 text-base hover:underline font-semibold text-skyBlue cursor-not-allowed flex justify-end"
+      >
+        Forget Password?
+      </p>
+    </div>
+  </div>
+</div>
+`;
