@@ -1,32 +1,49 @@
 export const colors = {
+  // Grayscale
   black: '#000000',
-  primary: '#8A8A8A',
-  secondary: '#484848',
-
+  white: '#FFFFFF',
+  gray: '#9D9D9D',
+  charcoal: '#484848',
   lightGray: '#DEDFE1',
   whiteSmoke: '#F3F3F3',
 
-  orchid: '#B66CFF',
+  // Red tones
+  red: '#FF0000',
   coralRed: '#FF6C6C',
   rosyPink: '#F8CCCC',
+
+  // Purple tones
+  orchid: '#B66CFF',
   pinkLavender: '#FC6CFF',
   mediumSlate: '#8A6CFF',
+
+  // Blue tones
   cornFlower: '#6C7BFF',
   skyBlue: '#6CA7FF',
   aquaMint: '#6CF6FF',
   iceBlue: '#6CB9FF',
+
+  // Green tones
   mintGreen: '#6CFFDC',
   neonGreen: '#6CFF9E',
   lime: '#9BFF6C',
+
+  // Yellow / Orange tones
   sunYellow: '#FFF06C',
   tangerine: '#FF7629',
   orangePeel: '#FCA120',
 };
 
+// Theme-based alias
+export const themeColors = {
+  primary: colors.charcoal, // '#484848'
+  secondary: colors.gray, // '#9D9D9D'
+};
+
 export const backgroundLightMode = {
   customBackgrounds: {
     button: {
-      100: colors.primary,
+      100: themeColors.primary,
       200: colors.rosyPink,
     },
     icon: {
@@ -45,12 +62,12 @@ export const backgroundLightMode = {
 export const textLightMode = {
   customColor: {
     label: colors.black,
-    placeholder: colors.secondary,
+    placeholder: themeColors.secondary,
     description: {
       100: colors.lightGray,
       200: colors.whiteSmoke,
     },
-    heading: colors.secondary,
+    heading: themeColors.secondary,
     content: colors.mediumSlate,
     caption: colors.neonGreen,
     nav: colors.lightGray,
@@ -60,7 +77,7 @@ export const textLightMode = {
 export const borderLightMode = {
   border: {
     input: {
-      100: colors.primary,
+      100: themeColors.primary,
       200: colors.whiteSmoke,
     },
     brand: colors.lightGray,
@@ -69,6 +86,6 @@ export const borderLightMode = {
 
 export const shadowLightMode = {
   shadow: {
-    card: colors.secondary,
+    card: themeColors.secondary,
   },
 };

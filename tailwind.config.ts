@@ -10,7 +10,7 @@ import {
   fontSize,
   lineHeight,
 } from './src/themes/typography';
-import { colors } from './src/themes/colors';
+import { colors, themeColors } from './src/themes/colors';
 
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
@@ -21,6 +21,7 @@ const config: Config = {
       fontSize: fontSize,
       borderRadius: borderRadius,
       lineHeight: lineHeight,
+      themeColors: themeColors,
       animation: {
         'spinner-ease-spin': 'spinner-ease-spin 0.6s ease-in-out infinite',
         'spinner-linear-spin': 'spinner-linear-spin 0.6s linear infinite',

@@ -7,6 +7,7 @@ import {
   colors,
   shadowLightMode,
   textLightMode,
+  themeColors,
 } from './colors';
 
 export const themes: ConfigThemes = {
@@ -17,6 +18,7 @@ export const themes: ConfigThemes = {
       ...textLightMode,
       ...borderLightMode,
       ...shadowLightMode,
+      ...themeColors,
     },
   },
 };
