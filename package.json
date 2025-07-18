@@ -60,5 +60,15 @@
     "ts-node": "^10.9.2",
     "typescript": "^5",
     "typescript-eslint": "^8.37.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@heroui/shared-utils",
+      "@tailwindcss/oxide",
+      "core-js-pure",
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
