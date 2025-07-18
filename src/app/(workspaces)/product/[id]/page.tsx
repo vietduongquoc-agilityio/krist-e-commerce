@@ -1,17 +1,15 @@
 import { Metadata } from 'next';
 
-interface Params {
+export const metadata: Metadata = {
+  title: 'Product Page',
+  description: 'View and manage products',
+};
+
+export default async function ProductPage({
+  params,
+}: {
   params: { productId: string };
-}
-
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  return {
-    title: `Product ${params.productId}`,
-    description: `Description for product ${params.productId}`,
-  };
-}
-
-export default async function ProductPage({ params }: Params) {
+}) {
   console.log(`Fetching product with ID: ${params.productId}`);
 
   return (
