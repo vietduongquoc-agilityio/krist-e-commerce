@@ -1,3 +1,4 @@
+import { Footer } from '@/components';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -11,9 +12,10 @@ export default function WorkspacesLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="p-4">
+    <div>
       <h1 className="text-2xl font-bold mb-4">Workspaces</h1>
       {children}
+      <Footer />
     </div>
   );
 }

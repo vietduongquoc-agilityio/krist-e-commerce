@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Footer Component renders correctly and matches snapshot 1`] = `
+<DocumentFragment>
+  <footer
+    class="w-full items-center flex flex-col pt-36"
+  >
+    <figure>
+      <img
+        alt="Footer banner"
+        data-nimg="1"
+        decoding="async"
+        height="747"
+        src="/_next/image?url=%2Fimages%2Ffooter.webp&w=3840&q=75"
+        srcset="/_next/image?url=%2Fimages%2Ffooter.webp&w=1920&q=75 1x, /_next/image?url=%2Fimages%2Ffooter.webp&w=3840&q=75 2x"
+        style="color: transparent;"
+        width="1400"
+      />
+    </figure>
+    <div
+      class="w-full border-t border-lightGray mt-12 pt-7"
+    >
+      <nav
+        class="z-40 h-auto justify-center data-[menu-open=true]:border-none sticky top-0 inset-x-0 backdrop-blur-lg data-[menu-open=true]:backdrop-blur-xl backdrop-saturate-150 bg-background/70 flex items-center w-[1282px] mx-auto"
+        style="--navbar-height: 4rem;"
+      >
+        <header
+          class="z-40 flex px-6 gap-4 w-full flex-row relative flex-nowrap items-center justify-between h-[var(--navbar-height)] max-w-[1024px]"
+        >
+          <a
+            class="text-4xl font-extrabold font-serif"
+            href="/"
+          >
+            FASCO
+          </a>
+          <ul
+            class="gap-4 h-full flex-row flex-nowrap data-[justify=start]:justify-start data-[justify=start]:flex-grow data-[justify=start]:basis-0 data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=end]:flex-grow data-[justify=end]:basis-0 flex items-center justify-between w-[432px]"
+            data-justify="start"
+          >
+            <a
+              class="transition-colors text-charcoal hover:text-black"
+              href="/"
+            >
+              Home
+            </a>
+            <a
+              class="transition-colors text-charcoal hover:text-black"
+              href="/shop"
+            >
+              Shop
+            </a>
+            <a
+              class="transition-colors text-charcoal hover:text-black"
+              href="/product"
+            >
+              Product
+            </a>
+            <a
+              class="transition-colors text-charcoal hover:text-black"
+              href="/cart"
+            >
+              Cart
+            </a>
+          </ul>
+        </header>
+      </nav>
+    </div>
+    <p
+      class="leading-180p text-charcoal text-xs pt-8 pb-5"
+    >
+      Copyright © 2022 Xpro . All Rights Reseved.
+    </p>
+  </footer>
+</DocumentFragment>
+`;
