@@ -1,3 +1,4 @@
+import { Header } from '@/components';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -12,7 +13,8 @@ export default function WorkspacesLayout({
 }>) {
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Workspaces</h1>
+      <Header isAuthenticated={false} />
+      <Header isAuthenticated={true} />
       {children}
     </div>
   );

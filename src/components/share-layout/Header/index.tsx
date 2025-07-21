@@ -1,11 +1,23 @@
 'use client';
 
 import Link from 'next/link';
-import { Navbar, NavbarContent } from '@heroui/react';
+import {
+  Navbar,
+  NavbarContent,
+  Dropdown,
+  DropdownMenu,
+  DropdownTrigger,
+  DropdownItem,
+} from '@heroui/react';
+import router from 'next/router';
+import { usePathname } from 'next/navigation';
 
 // Components
 import { Button } from '@/components/commons/Button';
-import { IconAvatar, IconCart, IconSearch, IconStar } from '@/components';
+import { IconUser, IconCart, IconSearch, IconStar } from '@/components';
+
+// Constants
+import { ROUTER } from '@/constants';
 
 interface HeaderProps {
   username?: string;
@@ -21,50 +33,80 @@ const navItems = [
 ];
 
 export const Header = ({ isAuthenticated }: HeaderProps) => {
+  const pathname = usePathname();
+
   return (
-    <header className="w-full px-10 py-4 flex justify-between items-center shadow-sm">
-      {/* Logo */}
-      <Link href="/" className="text-4xl font-extrabold font-serif">
-        FASCO
-      </Link>
+    <header className="w-full py-4 flex justify-between items-center shadow-sm">
+      <Navbar className="flex items-center w-[1282px] mx-auto">
+        <Link href="/" className="text-4xl font-extrabold font-serif">
+          FASCO
+        </Link>
 
-      {/* Navigation Menu */}
-      <Navbar className="flex gap-10 items-center">
-        <NavbarContent />
+        <NavbarContent className="flex items-center justify-between w-[432px]">
+          {navItems.map((item) => {
+            const isActive = pathname === item.path;
+            return (
+              <Link
+                key={item.text}
+                href={item.path}
+                className={`transition-colors ${
+                  isActive
+                    ? 'text-black font-semibold text-lg'
+                    : 'text-charcoal hover:text-black'
+                }`}
+              >
+                {item.text}
+              </Link>
+            );
+          })}
+        </NavbarContent>
 
-        {navItems.map((item) => (
-          <Link
-            key={item.text}
-            href={item.path}
-            className="text-gray-600 hover:text-black transition-colors"
-          >
-            {item.text}
-          </Link>
-        ))}
-
-        {/* Right side: Auth buttons or icons */}
-        <div className="flex items-center gap-6">
+        <NavbarContent className="flex items-center w-[300px] gap-7 justify-end relative">
           {isAuthenticated ? (
             <>
-              <IconSearch />
-              <IconAvatar />
-              <IconStar />
-              <IconCart />
+              <IconSearch className="cursor-not-allowed" />
+              {/* IconUser + Dropdown */}
+              <Dropdown placement="bottom-end">
+                <DropdownTrigger>
+                  <IconUser className="cursor-pointer" />
+                </DropdownTrigger>
+                <DropdownMenu className="border-1 rounded-xl bg-black text-white hover:bg-gray transition w-[160px] py-3">
+                  <DropdownItem
+                    key="logout"
+                    className="flex items-center justify-center"
+                    onClick={() => {
+                      router.push('/signin');
+                    }}
+                  >
+                    Logout
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+
+              <IconStar className="cursor-not-allowed" />
+              <IconCart className="cursor-pointer" />
             </>
           ) : (
             <>
-              <Button href="/signin" variant="solid">
+              <Button
+                href="/signin"
+                variant="solid"
+                type="button"
+                onClick={() => router.push(ROUTER.SIGNIN)}
+              >
                 Sign in
               </Button>
               <Button
                 variant="solid"
-                className="bg-black text-white shadow-xl px-6 py-2 rounded-xl"
+                href="/signup"
+                type="button"
+                onClick={() => router.push(ROUTER.SIGNUP)}
               >
                 Sign Up
               </Button>
             </>
           )}
-        </div>
+        </NavbarContent>
       </Navbar>
     </header>
   );

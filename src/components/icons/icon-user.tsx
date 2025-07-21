@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SVGProps } from 'react';
 
-export const IconAvatar = (props: SVGProps<SVGSVGElement>) => (
+export const IconUser = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={22}
     height={22}
