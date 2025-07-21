@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/commons/Button';
+import { Header } from '@/components/share-layout';
 
 export default function LandingPage() {
   return (
@@ -14,6 +15,8 @@ export default function LandingPage() {
         Click Me (Ghost)
       </Button>
       <Button className="mb-4 bg-coralRed">Click Me (Light)</Button>
+
+      <Header isAuthenticated={true} />
     </div>
   );
 }
