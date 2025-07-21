@@ -31,7 +31,7 @@ exports[`SignInForm should render SignInForm correctly and match snapshot 1`] = 
           style="color: transparent;"
           width="42"
         />
-        Sign up with Google
+        Sign in with Google
       </button>
       <button
         class="z-0 group relative items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:!bg-default w-full py-3 rounded-[10px] border transition hover:delay-75 bg-transparent text-black text-base hover:text-white flex gap-5 border-skyBlue hover:bg-skyBlue"
@@ -41,17 +41,18 @@ exports[`SignInForm should render SignInForm correctly and match snapshot 1`] = 
       >
         <img
           alt="github"
+          class="rounded-full"
           data-nimg="1"
           decoding="async"
           height="42"
           loading="lazy"
           sizes="(max-width: 20px) 100vw, 42px"
-          src="/_next/image?url=%2Fimages%2Ficon-github.webp&w=3840&q=75"
-          srcset="/_next/image?url=%2Fimages%2Ficon-github.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Ficon-github.webp&w=3840&q=75 3840w"
+          src="/_next/image?url=%2Fimages%2Fsignin-github.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fsignin-github.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fsignin-github.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fsignin-github.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fsignin-github.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fsignin-github.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fsignin-github.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fsignin-github.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fsignin-github.webp&w=3840&q=75 3840w"
           style="color: transparent;"
           width="42"
         />
-        Sign up with GitHub
+        Sign in with GitHub
       </button>
     </div>
     <div
@@ -123,16 +124,10 @@ exports[`SignInForm should render SignInForm correctly and match snapshot 1`] = 
         Sign In
       </button>
       <a
-        href="/register"
+        class="w-full text-center py-3 rounded-[10px] border border-skyBlue text-skyBlue font-semibold hover:bg-skyBlue hover:text-white transition-colors"
+        href="/signup"
       >
-        <button
-          class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:!bg-default w-full py-3 rounded-[10px] border transition hover:delay-75 bg-transparent text-base hover:text-white text-skyBlue border-skyBlue hover:bg-skyBlue"
-          data-react-aria-pressable="true"
-          tabindex="0"
-          type="button"
-        >
-          Register Now
-        </button>
+        Register Now
       </a>
       <p
         class="leading-180p text-customColor-description-100 text-base hover:underline font-semibold text-skyBlue cursor-not-allowed flex justify-end"

@@ -1,11 +1,15 @@
 'use client';
 
+import Image from 'next/image';
+import Link from 'next/link';
+
+// Components
 import { Button } from '@/components/commons/Button';
 import Input from '@/components/commons/Input';
 import { Text } from '@/components/commons/Text';
+
+// Interfaces
 import { TEXT_SIZE, TEXT_VARIANT } from '@/interfaces';
-import Image from 'next/image';
-import Link from 'next/link';
 
 export const SignInForm = () => {
   return (
@@ -26,20 +30,21 @@ export const SignInForm = () => {
             height={42}
             sizes="(max-width: 20px) 100vw, 42px"
           />
-          Sign up with Google
+          Sign in with Google
         </Button>
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
         >
           <Image
-            src="/images/icon-github.webp"
+            src="/images/signin-github.webp"
             alt="github"
             width={42}
             height={42}
             sizes="(max-width: 20px) 100vw, 42px"
+            className="rounded-full"
           />
-          Sign up with GitHub
+          Sign in with GitHub
         </Button>
       </div>
 
@@ -57,15 +62,11 @@ export const SignInForm = () => {
       <div className="w-[575px] font-semibold ml-16 flex flex-col gap-5 mt-6">
         <Button variant="solid">Sign In</Button>
 
-        {/* Register Now + Forgot Password */}
-
-        <Link href="/register">
-          <Button
-            variant="ghost"
-            className="text-skyBlue  border-skyBlue hover:bg-skyBlue"
-          >
-            Register Now
-          </Button>
+        <Link
+          href="/signup"
+          className="w-full text-center py-3 rounded-[10px] border border-skyBlue text-skyBlue font-semibold hover:bg-skyBlue hover:text-white transition-colors"
+        >
+          Register Now
         </Link>
 
         <Text

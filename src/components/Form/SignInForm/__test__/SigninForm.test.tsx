@@ -22,16 +22,10 @@ describe('SignInForm', () => {
 
     // Buttons
     expect(
-      screen.getByRole('button', { name: /sign up with google/i }),
+      screen.getByRole('button', { name: /sign in with google/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('button', { name: /sign up with github/i }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('button', { name: /sign in/i }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('button', { name: /register now/i }),
+      screen.getByRole('button', { name: /sign in with github/i }),
     ).toBeInTheDocument();
 
     // Text link
