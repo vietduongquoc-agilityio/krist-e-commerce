@@ -42,7 +42,7 @@ export default function AuthLayout({
           {children}
 
           <p className=" text-black mb-8 text-right">
-            FASCO Terms & Codnitions
+            FASCO Terms & Conditions
           </p>
         </div>
       </div>
