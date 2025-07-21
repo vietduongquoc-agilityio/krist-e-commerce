@@ -1,12 +1,12 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 
 // Components
 import { Button } from '@/components/commons/Button';
 import Input from '@/components/commons/Input';
 import { Text } from '@/components/commons/Text';
+import { IconGithub, IconGoogle } from '@/components';
 
 // Interfaces
 import { TEXT_SIZE, TEXT_VARIANT } from '@/interfaces';
@@ -23,27 +23,18 @@ export const SignInForm = () => {
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
         >
-          <Image
-            src="/images/signin-google-image.svg.webp"
-            alt="google"
-            width={42}
-            height={42}
-            sizes="(max-width: 20px) 100vw, 42px"
-          />
+          <span className="flex items-center">
+            <IconGoogle className="w-[36px] h-[36px] rounded-full" />
+          </span>
           Sign in with Google
         </Button>
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
         >
-          <Image
-            src="/images/signin-github.webp"
-            alt="github"
-            width={42}
-            height={42}
-            sizes="(max-width: 20px) 100vw, 42px"
-            className="rounded-full"
-          />
+          <span className="flex items-center">
+            <IconGithub className="w-[42px] h-[42px] rounded-full" />
+          </span>
           Sign in with GitHub
         </Button>
       </div>
