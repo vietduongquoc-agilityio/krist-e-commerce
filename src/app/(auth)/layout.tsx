@@ -32,7 +32,7 @@ export default function AuthLayout({
           sizes="(100vw - 20px) 100vw, 950px"
         />
 
-        <div className="flex flex-col justify-between pt-24 px-28 w-[920px]">
+        <div className="flex flex-col justify-between pt-24 px-28 w-[920px] pb-12">
           {/* FASCO title */}
           <h1 className="text-4xl font-secondary text-charcoal mb-2 text-[66px]">
             FASCO
@@ -41,9 +41,7 @@ export default function AuthLayout({
           {/* Terms & Conditions */}
           {children}
 
-          <p className=" text-black mb-8 text-right">
-            FASCO Terms & Conditions
-          </p>
+          <p className=" text-black text-right">FASCO Terms & Conditions</p>
         </div>
       </div>
     </div>
