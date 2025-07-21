@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/commons/Button';
 
 export default function LandingPage() {
