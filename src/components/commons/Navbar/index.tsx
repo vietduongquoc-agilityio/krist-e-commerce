@@ -1,7 +1,6 @@
 'use client';
 
 // Libs
-// import { NavbarItem as NavbarItemNextUI } from '@heroui/react';
 import { Navbar as HeroNavbar, NavbarItem } from '@heroui/react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -43,18 +42,16 @@ export const Navbar = ({ navbarList, className }: INavbar) => {
   };
 
   return (
-    <>
-      <HeroNavbar className="list-none">
-        {navbarList.map(({ text, path }) => {
-          return (
-            <NavbarItem key={text}>
-              <Link href={path} className={getItemClass(path)}>
-                {text}
-              </Link>
-            </NavbarItem>
-          );
-        })}
-      </HeroNavbar>
-    </>
+    <HeroNavbar className="list-none">
+      {navbarList.map(({ text, path }) => {
+        return (
+          <NavbarItem key={text}>
+            <Link href={path} className={getItemClass(path)}>
+              {text}
+            </Link>
+          </NavbarItem>
+        );
+      })}
+    </HeroNavbar>
   );
 };
