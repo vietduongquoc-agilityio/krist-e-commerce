@@ -23,7 +23,7 @@ export const SignUpForm = () => {
           <span className="flex items-center">
             <IconGoogle className="w-[36px] h-[36px] rounded-full" />
           </span>
-          Sign in with Google
+          Sign up with Google
         </Button>
         <Button
           variant="ghost"
@@ -32,7 +32,7 @@ export const SignUpForm = () => {
           <span className="flex items-center">
             <IconGithub className="w-[42px] h-[42px] rounded-full" />
           </span>
-          Sign in with GitHub
+          Sign up with GitHub
         </Button>
       </div>
 
@@ -54,7 +54,9 @@ export const SignUpForm = () => {
 
       {/* Sign In Button */}
       <div className="w-[575px] font-semibold ml-16 flex flex-col gap-8 mt-6 items-center">
-        <Button variant="solid">Create Account</Button>
+        <Button variant="solid" type="submit">
+          Create Account
+        </Button>
 
         <Text size={TEXT_SIZE.BASE}>
           Already have an account?
