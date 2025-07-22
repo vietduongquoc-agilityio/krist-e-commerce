@@ -13,7 +13,7 @@ export const Banner = () => {
   const router = useRouter();
 
   return (
-    <section className="w-full max-w-[1920px] mx-auto flex">
+    <section className="w-full mx-auto flex">
       <div className="flex w-full max-w-[1281px] mx-auto gap-[35px]">
         <figure className="bg-platinum rounded-[10px] h-[756px]">
           <Image

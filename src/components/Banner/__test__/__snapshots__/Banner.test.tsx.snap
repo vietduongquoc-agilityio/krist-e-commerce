@@ -3,7 +3,7 @@
 exports[`Banner Component should render Banner component and match snapshot 1`] = `
 <div>
   <section
-    class="w-full max-w-[1920px] mx-auto flex"
+    class="w-full mx-auto flex"
   >
     <div
       class="flex w-full max-w-[1281px] mx-auto gap-[35px]"
