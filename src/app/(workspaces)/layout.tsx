@@ -1,5 +1,7 @@
-import { Footer, Header } from '@/components/share-layout';
 import type { Metadata } from 'next';
+
+// Components
+import { Footer, Header } from '@/components';
 
 export const metadata: Metadata = {
   title: 'Workspaces',
