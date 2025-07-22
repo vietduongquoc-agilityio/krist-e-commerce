@@ -9,15 +9,14 @@ import {
   DropdownTrigger,
   DropdownItem,
 } from '@heroui/react';
-import router from 'next/router';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 // Components
 import { Button } from '@/components/commons/Button';
 import { IconUser, IconCart, IconSearch, IconStar } from '@/components';
 
 // Constants
-import { ROUTER } from '@/constants';
+import { NAVITEMS, ROUTER } from '@/constants';
 
 interface HeaderProps {
   username?: string;
@@ -25,15 +24,9 @@ interface HeaderProps {
   avatar?: string;
 }
 
-const navItems = [
-  { text: 'Home', path: '/' },
-  { text: 'Shop', path: '/shop' },
-  { text: 'Product', path: '/product' },
-  { text: 'Cart', path: '/cart' },
-];
-
 export const Header = ({ isAuthenticated }: HeaderProps) => {
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <header className="w-full py-4 flex justify-between items-center shadow-sm">
@@ -43,7 +36,7 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
         </Link>
 
         <NavbarContent className="flex items-center justify-between w-[432px]">
-          {navItems.map((item) => {
+          {NAVITEMS.map((item) => {
             const isActive = pathname === item.path;
             return (
               <Link
@@ -89,7 +82,6 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
           ) : (
             <>
               <Button
-                href="/signin"
                 variant="solid"
                 type="button"
                 onClick={() => router.push(ROUTER.SIGNIN)}
@@ -98,7 +90,6 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
               </Button>
               <Button
                 variant="solid"
-                href="/signup"
                 type="button"
                 onClick={() => router.push(ROUTER.SIGNUP)}
               >
