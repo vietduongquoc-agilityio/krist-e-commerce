@@ -1,4 +1,4 @@
-import { Header } from '@/components';
+import { Footer, Header } from '@/components';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -12,10 +12,10 @@ export default function WorkspacesLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="p-4">
-      <Header isAuthenticated={false} />
-      <Header isAuthenticated={true} />
+    <div>
+      <Header />
       {children}
+      <Footer />
     </div>
   );
 }
