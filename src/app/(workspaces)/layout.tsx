@@ -1,4 +1,4 @@
-import { Footer } from '@/components';
+import { Footer, Header } from '@/components';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export default function WorkspacesLayout({
 }>) {
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Workspaces</h1>
+      <Header />
       {children}
       <Footer />
     </div>
