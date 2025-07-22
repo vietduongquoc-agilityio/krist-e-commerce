@@ -1,4 +1,6 @@
 export { IconGithub } from './icon-github';
 export { IconGoogle } from './icon-google';
-export { IconScroll } from './icon-scroll';
-export { IconShop } from './icon-shop';
+export { IconUser } from './icon-user';
+export { IconStar } from './icon-star';
+export { IconSearch } from './icon-search';
+export { IconCart } from './icon-cart';

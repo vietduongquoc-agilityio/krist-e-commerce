@@ -6,3 +6,10 @@ export const ROUTER = {
   PRODUCT: '/product',
   CART: '/cart',
 };
+
+export const NAVITEMS = [
+  { text: 'Home', path: '/' },
+  { text: 'Shop', path: '/shop' },
+  { text: 'Product', path: '/product' },
+  { text: 'Cart', path: '/cart' },
+];
