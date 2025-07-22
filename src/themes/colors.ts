@@ -6,6 +6,7 @@ export const colors = {
   charcoal: '#484848',
   lightGray: '#DEDFE1',
   whiteSmoke: '#F3F3F3',
+  platinum: '#E0E0E0',
 
   // Red tones
   red: '#FF0000',
