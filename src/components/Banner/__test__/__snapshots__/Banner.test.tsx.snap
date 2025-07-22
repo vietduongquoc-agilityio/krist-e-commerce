@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Banner Component should render Banner component and match snapshot 1`] = `
+<div>
+  <section
+    class="w-full max-w-[1920px] mx-auto flex"
+  >
+    <div
+      class="flex w-full max-w-[1281px] mx-auto gap-[35px]"
+    >
+      <figure
+        class="bg-platinum rounded-[10px] h-[756px]"
+      >
+        <img
+          alt="Banner left"
+          class="pt-[186px]"
+          data-nimg="1"
+          decoding="async"
+          height="570"
+          sizes="(100vw - 20px) 100vw, 392px"
+          src="/_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="392"
+        />
+      </figure>
+      <div
+        class="flex flex-col"
+      >
+        <figure
+          class="bg-platinum rounded-2xl px-4"
+        >
+          <img
+            alt="Banner top"
+            data-nimg="1"
+            decoding="async"
+            height="150"
+            loading="lazy"
+            sizes="(100vw - 20px) 100vw, 399px"
+            src="/_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=3840&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=3840&q=75 3840w"
+            style="color: transparent;"
+            width="399"
+          />
+        </figure>
+        <div
+          class="flex flex-col items-center"
+        >
+          <p
+            class="font-medium text-[91px] text-charcoal"
+          >
+            ULTIMATE
+          </p>
+          <img
+            alt="Banner center"
+            data-nimg="1"
+            decoding="async"
+            height="120"
+            loading="lazy"
+            sizes="(100vw - 30px) 100vw, 394px"
+            src="/_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=3840&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=3840&q=75 3840w"
+            style="color: transparent;"
+            width="394"
+          />
+          <p
+            class="text-xl"
+          >
+            NEW COLLECTION
+          </p>
+          <a
+            href="/shop"
+          >
+            <button
+              class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover py-3 rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-black hover:bg-secondary text-white text-base mt-6 mb-9 w-[210px]"
+              data-react-aria-pressable="true"
+              tabindex="0"
+              type="button"
+            >
+              SHOP NOW
+            </button>
+          </a>
+        </div>
+        <figure
+          class="rounded-2xl"
+        >
+          <img
+            alt="Banner bottom"
+            data-nimg="1"
+            decoding="async"
+            height="150"
+            loading="lazy"
+            sizes="(100vw - 20px) 100vw, 430px"
+            src="/_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=3840&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=3840&q=75 3840w"
+            style="color: transparent;"
+            width="430"
+          />
+        </figure>
+      </div>
+      <figure
+        class="bg-platinum rounded-[10px] px-16 h-[756px]"
+      >
+        <img
+          alt="Banner right"
+          class="pt-[186px]"
+          data-nimg="1"
+          decoding="async"
+          height="560"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 249px"
+          src="/_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="249"
+        />
+      </figure>
+    </div>
+    <aside
+      class="flex items-end justify-end gap-7 mr-10"
+    >
+      <a
+        href="/shop"
+      >
+        <svg
+          class="bg-black p-4 rounded-[10px] cursor-pointer hover:bg-charcoal transition"
+          fill="none"
+          height="57"
+          width="57"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.556 17.333H7.334L3.444 1H1.112m3.111 3.111H22.89l-2.333 10.111h-14L4.222 4.112ZM19 22a1.555 1.555 0 1 0 0-3.11A1.555 1.555 0 0 0 19 22ZM8.889 22a1.556 1.556 0 1 0 0-3.111 1.556 1.556 0 0 0 0 3.111Z"
+            stroke="#fff"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+          />
+        </svg>
+      </a>
+      <a
+        href="/"
+      />
+      <svg
+        class="cursor-pointer hover:bg-gray rounded-full transition"
+        fill="none"
+        height="57"
+        width="57"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          height="56"
+          rx="28"
+          stroke="#000"
+          width="56"
+          x="0.5"
+          y="0.5"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M28.5 42a.952.952 0 0 1-.668-.272.92.92 0 0 1-.276-.657v-21.9l-5.942 5.845a.954.954 0 0 1-1.337 0 .922.922 0 0 1 0-1.315l7.554-7.428A.944.944 0 0 1 28.5 16a.958.958 0 0 1 .669.273l7.554 7.428a.922.922 0 0 1 0 1.315.954.954 0 0 1-1.337 0l-5.942-5.844v21.9a.92.92 0 0 1-.276.656.952.952 0 0 1-.668.272Z"
+          fill="#000"
+          fill-rule="evenodd"
+        />
+      </svg>
+      <a
+        href="/"
+      />
+    </aside>
+  </section>
+</div>
+`;

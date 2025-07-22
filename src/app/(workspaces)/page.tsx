@@ -1,5 +1,9 @@
-'use client';
+import { Banner } from '@/components';
 
 export default function LandingPage() {
-  return <></>;
+  return (
+    <div>
+      <Banner />
+    </div>
+  );
 }
