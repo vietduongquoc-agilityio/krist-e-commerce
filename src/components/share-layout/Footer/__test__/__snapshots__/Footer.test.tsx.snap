@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Footer Component renders correctly and matches snapshot 1`] = `
+<DocumentFragment>
+  <footer
+    class="w-full items-center flex flex-col pt-36"
+  >
+    <div
+      class="flex justify-between gap-5 items-center"
+    >
+      <figure>
+        <img
+          alt="Footer banner"
+          data-nimg="1"
+          decoding="async"
+          height="747"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 360px"
+          src="/_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="360"
+        />
+      </figure>
+      <div
+        class="w-[631px] pt-22 flex flex-col items-center text-center"
+      >
+        <h3
+          class="font-secondary text-[46px] text-charcoal mb-5"
+        >
+          Subscribe To Our Newsletter
+        </h3>
+        <p
+          class="text-gray mb-5"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin
+        </p>
+        <div
+          class="w-full"
+        >
+          <input
+            class="
+          border-none px-8 py-[28px] text-[22px] cursor-not-allowed shadow-lg mb-8
+          w-full
+          border-b-[1.5px]
+          border-gray
+          bg-transparent
+          focus:outline-none
+          focus:border-black
+          placeholder:text-gray
+          text-black
+          py-2
+          
+        "
+            placeholder="michael@ymail.com"
+            type="email"
+          />
+        </div>
+        <button
+          class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover py-3 rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-black hover:bg-secondary text-white text-base w-[200px] cursor-not-allowed"
+          data-react-aria-pressable="true"
+          disabled=""
+          tabindex="0"
+          type="button"
+        >
+          Subscribe
+        </button>
+      </div>
+      <figure>
+        <img
+          alt="Footer banner"
+          data-nimg="1"
+          decoding="async"
+          height="747"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 357px"
+          src="/_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="357"
+        />
+      </figure>
+    </div>
+    <div
+      class="w-full border-t border-lightGray mt-12 pt-7"
+    >
+      <nav
+        class="z-40 h-auto justify-center data-[menu-open=true]:border-none sticky top-0 inset-x-0 backdrop-blur-lg data-[menu-open=true]:backdrop-blur-xl backdrop-saturate-150 bg-background/70 flex items-center w-[1282px] mx-auto"
+        style="--navbar-height: 4rem;"
+      >
+        <header
+          class="z-40 flex px-6 gap-4 w-full flex-row relative flex-nowrap items-center justify-between h-[var(--navbar-height)] max-w-[1024px]"
+        >
+          <a
+            class="text-4xl font-extrabold font-serif"
+            href="/"
+          >
+            FASCO
+          </a>
+          <ul
+            class="gap-4 h-full flex-row flex-nowrap data-[justify=start]:justify-start data-[justify=start]:flex-grow data-[justify=start]:basis-0 data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=end]:flex-grow data-[justify=end]:basis-0 flex items-center justify-between w-[432px]"
+            data-justify="start"
+          >
+            <a
+              class="transition-colors text-charcoal hover:text-black"
+              href="/"
+            >
+              Home
+            </a>
+            <a
+              class="transition-colors text-charcoal hover:text-black"
+              href="/shop"
+            >
+              Shop
+            </a>
+            <a
+              class="transition-colors text-charcoal hover:text-black"
+              href="/product"
+            >
+              Product
+            </a>
+            <a
+              class="transition-colors text-charcoal hover:text-black"
+              href="/cart"
+            >
+              Cart
+            </a>
+          </ul>
+        </header>
+      </nav>
+    </div>
+    <p
+      class="leading-180p text-charcoal text-xs pt-8 pb-5"
+    >
+      Copyright © 2022 Xpro . All Rights Reseved.
+    </p>
+  </footer>
+</DocumentFragment>
+`;
