@@ -26,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.className} ${volkhov.className}`}>
-      <body>{children}</body>
+      <body>
+        <main className="mx-auto">{children}</main>
+      </body>
     </html>
   );
 }
