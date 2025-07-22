@@ -4,3 +4,5 @@ export { IconUser } from './icon-user';
 export { IconStar } from './icon-star';
 export { IconSearch } from './icon-search';
 export { IconCart } from './icon-cart';
+export { IconShop } from './icon-shop';
+export { IconScroll } from './icon-scroll';
