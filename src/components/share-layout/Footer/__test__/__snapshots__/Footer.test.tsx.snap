@@ -5,18 +5,82 @@ exports[`Footer Component renders correctly and matches snapshot 1`] = `
   <footer
     class="w-full items-center flex flex-col pt-36"
   >
-    <figure>
-      <img
-        alt="Footer banner"
-        data-nimg="1"
-        decoding="async"
-        height="747"
-        src="/_next/image?url=%2Fimages%2Ffooter.webp&w=3840&q=75"
-        srcset="/_next/image?url=%2Fimages%2Ffooter.webp&w=1920&q=75 1x, /_next/image?url=%2Fimages%2Ffooter.webp&w=3840&q=75 2x"
-        style="color: transparent;"
-        width="1400"
-      />
-    </figure>
+    <div
+      class="flex justify-between gap-5 items-center"
+    >
+      <figure>
+        <img
+          alt="Footer banner"
+          data-nimg="1"
+          decoding="async"
+          height="747"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 360px"
+          src="/_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Ffooter-img-left.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="360"
+        />
+      </figure>
+      <div
+        class="w-[631px] pt-22 flex flex-col items-center text-center"
+      >
+        <h3
+          class="font-secondary text-[46px] text-charcoal mb-5"
+        >
+          Subscribe To Our Newsletter
+        </h3>
+        <p
+          class="text-gray mb-5"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin
+        </p>
+        <div
+          class="w-full"
+        >
+          <input
+            class="
+          border-none px-8 py-[28px] text-[22px] cursor-not-allowed shadow-lg mb-8
+          w-full
+          border-b-[1.5px]
+          border-gray
+          bg-transparent
+          focus:outline-none
+          focus:border-black
+          placeholder:text-gray
+          text-black
+          py-2
+          
+        "
+            placeholder="michael@ymail.com"
+            type="email"
+          />
+        </div>
+        <button
+          class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover py-3 rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-black hover:bg-secondary text-white text-base w-[200px] cursor-not-allowed"
+          data-react-aria-pressable="true"
+          disabled=""
+          tabindex="0"
+          type="button"
+        >
+          Subscribe
+        </button>
+      </div>
+      <figure>
+        <img
+          alt="Footer banner"
+          data-nimg="1"
+          decoding="async"
+          height="747"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 357px"
+          src="/_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Ffooter-img-right.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="357"
+        />
+      </figure>
+    </div>
     <div
       class="w-full border-t border-lightGray mt-12 pt-7"
     >
