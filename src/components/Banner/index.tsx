@@ -3,10 +3,10 @@ import Link from 'next/link';
 
 // Components
 import { Button } from '@/components/commons';
+import { IconScroll, IconShop } from '@/components';
 
 // Constants
 import { ROUTER } from '@/constants';
-import { IconScroll, IconShop } from '@/components/icons';
 
 export const Banner = () => {
   return (
