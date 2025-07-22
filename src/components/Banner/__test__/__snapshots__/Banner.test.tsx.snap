@@ -3,7 +3,7 @@
 exports[`Banner Component should render Banner component and match snapshot 1`] = `
 <div>
   <section
-    class="w-full mx-auto flex"
+    class="w-full max-w-[1920px] mx-auto flex"
   >
     <div
       class="flex w-full max-w-[1281px] mx-auto gap-[35px]"
@@ -68,14 +68,18 @@ exports[`Banner Component should render Banner component and match snapshot 1`] 
           >
             NEW COLLECTION
           </p>
-          <button
-            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover py-3 rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-black hover:bg-secondary text-white text-base mt-6 mb-9 w-[210px]"
-            data-react-aria-pressable="true"
-            tabindex="0"
-            type="button"
+          <a
+            href="/shop"
           >
-            SHOP NOW
-          </button>
+            <button
+              class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover py-3 rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-black hover:bg-secondary text-white text-base mt-6 mb-9 w-[210px]"
+              data-react-aria-pressable="true"
+              tabindex="0"
+              type="button"
+            >
+              SHOP NOW
+            </button>
+          </a>
         </div>
         <figure
           class="rounded-2xl"
@@ -113,23 +117,30 @@ exports[`Banner Component should render Banner component and match snapshot 1`] 
       </figure>
     </div>
     <aside
-      class="flex items-end justify-end gap-9 mr-10"
+      class="flex items-end justify-end gap-7 mr-10"
     >
-      <svg
-        class="bg-black p-4 rounded-[10px] cursor-pointer hover:bg-charcoal transition"
-        fill="none"
-        height="57"
-        width="57"
-        xmlns="http://www.w3.org/2000/svg"
+      <a
+        href="/shop"
       >
-        <path
-          d="M20.556 17.333H7.334L3.444 1H1.112m3.111 3.111H22.89l-2.333 10.111h-14L4.222 4.112ZM19 22a1.555 1.555 0 1 0 0-3.11A1.555 1.555 0 0 0 19 22ZM8.889 22a1.556 1.556 0 1 0 0-3.111 1.556 1.556 0 0 0 0 3.111Z"
-          stroke="#fff"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.5"
-        />
-      </svg>
+        <svg
+          class="bg-black p-4 rounded-[10px] cursor-pointer hover:bg-charcoal transition"
+          fill="none"
+          height="57"
+          width="57"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.556 17.333H7.334L3.444 1H1.112m3.111 3.111H22.89l-2.333 10.111h-14L4.222 4.112ZM19 22a1.555 1.555 0 1 0 0-3.11A1.555 1.555 0 0 0 19 22ZM8.889 22a1.556 1.556 0 1 0 0-3.111 1.556 1.556 0 0 0 0 3.111Z"
+            stroke="#fff"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+          />
+        </svg>
+      </a>
+      <a
+        href="/"
+      />
       <svg
         class="cursor-pointer hover:bg-gray rounded-full transition"
         fill="none"
@@ -152,6 +163,9 @@ exports[`Banner Component should render Banner component and match snapshot 1`] 
           fill-rule="evenodd"
         />
       </svg>
+      <a
+        href="/"
+      />
     </aside>
   </section>
 </div>

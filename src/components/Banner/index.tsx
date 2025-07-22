@@ -1,6 +1,5 @@
-'use client';
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Components
 import { Button } from '@/components/commons';
@@ -10,10 +9,8 @@ import { ROUTER } from '@/constants';
 import { IconScroll, IconShop } from '@/components/icons';
 
 export const Banner = () => {
-  const router = useRouter();
-
   return (
-    <section className="w-full mx-auto flex">
+    <section className="w-full max-w-[1920px] mx-auto flex">
       <div className="flex w-full max-w-[1281px] mx-auto gap-[35px]">
         <figure className="bg-platinum rounded-[10px] h-[756px]">
           <Image
@@ -47,14 +44,15 @@ export const Banner = () => {
               sizes="(100vw - 30px) 100vw, 394px"
             />
             <p className="text-xl">NEW COLLECTION</p>
-            <Button
-              type="button"
-              variant="solid"
-              className="mt-6 mb-9 w-[210px]"
-              onClick={() => router.push(ROUTER.SHOP)}
-            >
-              SHOP NOW
-            </Button>
+            <Link href={ROUTER.SHOP} passHref>
+              <Button
+                type="button"
+                variant="solid"
+                className="mt-6 mb-9 w-[210px]"
+              >
+                SHOP NOW
+              </Button>
+            </Link>
           </div>
           <figure className="rounded-2xl">
             <Image
@@ -77,15 +75,13 @@ export const Banner = () => {
           />
         </figure>
       </div>
-      <aside className="flex items-end justify-end gap-9 mr-10">
-        <IconShop
-          className="bg-black p-4 rounded-[10px] cursor-pointer hover:bg-charcoal transition"
-          onClick={() => router.push(ROUTER.SHOP)}
-        />
-        <IconScroll
-          className="cursor-pointer hover:bg-gray rounded-full transition"
-          onClick={() => router.push(ROUTER.HOME)}
-        />
+      <aside className="flex items-end justify-end gap-7 mr-10">
+        <Link href={ROUTER.SHOP}>
+          <IconShop className="bg-black p-4 rounded-[10px] cursor-pointer hover:bg-charcoal transition" />
+        </Link>
+        <Link href={ROUTER.HOME}></Link>
+        <IconScroll className="cursor-pointer hover:bg-gray rounded-full transition" />
+        <Link href={ROUTER.HOME}></Link>
       </aside>
     </section>
   );
