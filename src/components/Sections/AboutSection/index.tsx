@@ -7,7 +7,7 @@ import {
   IconSupport,
 } from '@/components';
 
-export const aboutItems = [
+export const ABOUT_ITEMS = [
   {
     icon: <IconQuantity />,
     title: 'High Quality',
@@ -33,7 +33,7 @@ export const aboutItems = [
 export const AboutSection = () => {
   return (
     <section className="flex w-full max-w-[1281px] mx-auto justify-between py-[72px]">
-      {aboutItems.map((item, index) => (
+      {ABOUT_ITEMS.map((item, index) => (
         <div key={index} className="flex gap-4 items-center">
           {item.icon}
           <div>
