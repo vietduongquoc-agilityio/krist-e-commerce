@@ -1,0 +1,850 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ArrivalSection should render correctly and matches snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="flex flex-col gap-[50px] w-full max-w-[1281px] mx-auto items-center"
+  >
+    <div
+      class="flex flex-col gap-5 max-w-[620px] w-full items-center text-center"
+    >
+      <h2
+        class="font-secondary text-charcoal text-[46px]"
+      >
+        New Arrivals
+      </h2>
+      <p
+        class="text-gray"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin
+      </p>
+    </div>
+    <div
+      class="flex flex-wrap gap-2 w-full max-w-[1155px] justify-center md:justify-between"
+    >
+      <div
+        class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap h-7 text-small bg-whiteSmoke rounded-[10px] py-4 px-8 text-charcoal hover:bg-black hover:text-white transition cursor-not-allowed"
+      >
+        <span
+          class="flex-1 text-inherit font-normal px-2"
+        >
+          Men’s Fashion
+        </span>
+      </div>
+      <div
+        class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap h-7 text-small bg-whiteSmoke rounded-[10px] py-4 px-8 text-charcoal hover:bg-black hover:text-white transition cursor-not-allowed"
+      >
+        <span
+          class="flex-1 text-inherit font-normal px-2"
+        >
+          Women’s Fashion
+        </span>
+      </div>
+      <div
+        class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap h-7 text-small bg-whiteSmoke rounded-[10px] py-4 px-8 text-charcoal hover:bg-black hover:text-white transition cursor-not-allowed"
+      >
+        <span
+          class="flex-1 text-inherit font-normal px-2"
+        >
+          Women Accessories
+        </span>
+      </div>
+      <div
+        class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap h-7 text-small bg-whiteSmoke rounded-[10px] py-4 px-8 text-charcoal hover:bg-black hover:text-white transition cursor-not-allowed"
+      >
+        <span
+          class="flex-1 text-inherit font-normal px-2"
+        >
+          Men Accessories
+        </span>
+      </div>
+      <div
+        class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap h-7 text-small bg-whiteSmoke rounded-[10px] py-4 px-8 text-charcoal hover:bg-black hover:text-white transition cursor-not-allowed"
+      >
+        <span
+          class="flex-1 text-inherit font-normal px-2"
+        >
+          Discount Deals
+        </span>
+      </div>
+    </div>
+    <section
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14"
+    >
+      <div
+        class="flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 motion-reduce:transition-none bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition"
+        tabindex="-1"
+      >
+        <figure
+          class="rounded-2xl overflow-hidden"
+        >
+          <img
+            alt="Shiny Dress"
+            data-nimg="1"
+            decoding="async"
+            height="244"
+            loading="lazy"
+            sizes="(100vw - 20px) 100vw, 336px"
+            src="/_next/image?url=%2Fimages%2Fproduct-img.webp&w=3840&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fproduct-img.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=3840&q=75 3840w"
+            style="color: transparent;"
+            width="336"
+          />
+        </figure>
+        <div
+          class="mt-4 space-y-1"
+        >
+          <div
+            class="flex items-center justify-between pb-4"
+          >
+            <div>
+              <h3
+                class="text-xl font-medium text-charcoal"
+              >
+                Shiny Dress
+              </h3>
+              <p
+                class="text-xs text-gray"
+              >
+                Al Karam
+              </p>
+            </div>
+            <div
+              class="flex items-center space-x-0.5"
+            >
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="text-xs text-charcoal"
+          >
+            (4.1k) Customer Reviews
+          </p>
+          <div
+            class="flex items-center justify-between pt-4 pb-6"
+          >
+            <span
+              class="text-2xl font-medium text-charcoal"
+            >
+              $95.50
+            </span>
+            <span
+              class="text-sm text-coralRed font-medium"
+            >
+              Almost Sold Out
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 motion-reduce:transition-none bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition"
+        tabindex="-1"
+      >
+        <figure
+          class="rounded-2xl overflow-hidden"
+        >
+          <img
+            alt="Long Dress"
+            data-nimg="1"
+            decoding="async"
+            height="244"
+            loading="lazy"
+            sizes="(100vw - 20px) 100vw, 336px"
+            src="/_next/image?url=%2Fimages%2Fproduct-img.webp&w=3840&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fproduct-img.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=3840&q=75 3840w"
+            style="color: transparent;"
+            width="336"
+          />
+        </figure>
+        <div
+          class="mt-4 space-y-1"
+        >
+          <div
+            class="flex items-center justify-between pb-4"
+          >
+            <div>
+              <h3
+                class="text-xl font-medium text-charcoal"
+              >
+                Long Dress
+              </h3>
+              <p
+                class="text-xs text-gray"
+              >
+                Al Karam
+              </p>
+            </div>
+            <div
+              class="flex items-center space-x-0.5"
+            >
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="text-xs text-charcoal"
+          >
+            (4.1k) Customer Reviews
+          </p>
+          <div
+            class="flex items-center justify-between pt-4 pb-6"
+          >
+            <span
+              class="text-2xl font-medium text-charcoal"
+            >
+              $95.50
+            </span>
+            <span
+              class="text-sm text-coralRed font-medium"
+            >
+              Almost Sold Out
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 motion-reduce:transition-none bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition"
+        tabindex="-1"
+      >
+        <figure
+          class="rounded-2xl overflow-hidden"
+        >
+          <img
+            alt="Long Dress"
+            data-nimg="1"
+            decoding="async"
+            height="244"
+            loading="lazy"
+            sizes="(100vw - 20px) 100vw, 336px"
+            src="/_next/image?url=%2Fimages%2Fproduct-img.webp&w=3840&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fproduct-img.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=3840&q=75 3840w"
+            style="color: transparent;"
+            width="336"
+          />
+        </figure>
+        <div
+          class="mt-4 space-y-1"
+        >
+          <div
+            class="flex items-center justify-between pb-4"
+          >
+            <div>
+              <h3
+                class="text-xl font-medium text-charcoal"
+              >
+                Long Dress
+              </h3>
+              <p
+                class="text-xs text-gray"
+              >
+                Al Karam
+              </p>
+            </div>
+            <div
+              class="flex items-center space-x-0.5"
+            >
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="text-xs text-charcoal"
+          >
+            (4.1k) Customer Reviews
+          </p>
+          <div
+            class="flex items-center justify-between pt-4 pb-6"
+          >
+            <span
+              class="text-2xl font-medium text-charcoal"
+            >
+              $95.50
+            </span>
+            <span
+              class="text-sm text-coralRed font-medium"
+            >
+              Almost Sold Out
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 motion-reduce:transition-none bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition"
+        tabindex="-1"
+      >
+        <figure
+          class="rounded-2xl overflow-hidden"
+        >
+          <img
+            alt="Long Dress"
+            data-nimg="1"
+            decoding="async"
+            height="244"
+            loading="lazy"
+            sizes="(100vw - 20px) 100vw, 336px"
+            src="/_next/image?url=%2Fimages%2Fproduct-img.webp&w=3840&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fproduct-img.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=3840&q=75 3840w"
+            style="color: transparent;"
+            width="336"
+          />
+        </figure>
+        <div
+          class="mt-4 space-y-1"
+        >
+          <div
+            class="flex items-center justify-between pb-4"
+          >
+            <div>
+              <h3
+                class="text-xl font-medium text-charcoal"
+              >
+                Long Dress
+              </h3>
+              <p
+                class="text-xs text-gray"
+              >
+                Al Karam
+              </p>
+            </div>
+            <div
+              class="flex items-center space-x-0.5"
+            >
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="text-xs text-charcoal"
+          >
+            (4.1k) Customer Reviews
+          </p>
+          <div
+            class="flex items-center justify-between pt-4 pb-6"
+          >
+            <span
+              class="text-2xl font-medium text-charcoal"
+            >
+              $95.50
+            </span>
+            <span
+              class="text-sm text-coralRed font-medium"
+            >
+              Almost Sold Out
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 motion-reduce:transition-none bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition"
+        tabindex="-1"
+      >
+        <figure
+          class="rounded-2xl overflow-hidden"
+        >
+          <img
+            alt="Long Dress"
+            data-nimg="1"
+            decoding="async"
+            height="244"
+            loading="lazy"
+            sizes="(100vw - 20px) 100vw, 336px"
+            src="/_next/image?url=%2Fimages%2Fproduct-img.webp&w=3840&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fproduct-img.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=3840&q=75 3840w"
+            style="color: transparent;"
+            width="336"
+          />
+        </figure>
+        <div
+          class="mt-4 space-y-1"
+        >
+          <div
+            class="flex items-center justify-between pb-4"
+          >
+            <div>
+              <h3
+                class="text-xl font-medium text-charcoal"
+              >
+                Long Dress
+              </h3>
+              <p
+                class="text-xs text-gray"
+              >
+                Al Karam
+              </p>
+            </div>
+            <div
+              class="flex items-center space-x-0.5"
+            >
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="text-xs text-charcoal"
+          >
+            (4.1k) Customer Reviews
+          </p>
+          <div
+            class="flex items-center justify-between pt-4 pb-6"
+          >
+            <span
+              class="text-2xl font-medium text-charcoal"
+            >
+              $95.50
+            </span>
+            <span
+              class="text-sm text-coralRed font-medium"
+            >
+              Almost Sold Out
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 motion-reduce:transition-none bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition"
+        tabindex="-1"
+      >
+        <figure
+          class="rounded-2xl overflow-hidden"
+        >
+          <img
+            alt="Long Dress"
+            data-nimg="1"
+            decoding="async"
+            height="244"
+            loading="lazy"
+            sizes="(100vw - 20px) 100vw, 336px"
+            src="/_next/image?url=%2Fimages%2Fproduct-img.webp&w=3840&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fproduct-img.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fproduct-img.webp&w=3840&q=75 3840w"
+            style="color: transparent;"
+            width="336"
+          />
+        </figure>
+        <div
+          class="mt-4 space-y-1"
+        >
+          <div
+            class="flex items-center justify-between pb-4"
+          >
+            <div>
+              <h3
+                class="text-xl font-medium text-charcoal"
+              >
+                Long Dress
+              </h3>
+              <p
+                class="text-xs text-gray"
+              >
+                Al Karam
+              </p>
+            </div>
+            <div
+              class="flex items-center space-x-0.5"
+            >
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+              <svg
+                aria-label="star icon"
+                fill="none"
+                height="22"
+                viewBox="0 0 24 22"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                  fill="#FBA333"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="text-xs text-charcoal"
+          >
+            (4.1k) Customer Reviews
+          </p>
+          <div
+            class="flex items-center justify-between pt-4 pb-6"
+          >
+            <span
+              class="text-2xl font-medium text-charcoal"
+            >
+              $95.50
+            </span>
+            <span
+              class="text-sm text-coralRed font-medium"
+            >
+              Almost Sold Out
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <a
+      href="/shop"
+    >
+      <button
+        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-black hover:bg-secondary text-white text-base py-4 w-[220px]"
+        data-react-aria-pressable="true"
+        tabindex="0"
+        type="button"
+      >
+        View More
+      </button>
+    </a>
+  </section>
+</DocumentFragment>
+`;
