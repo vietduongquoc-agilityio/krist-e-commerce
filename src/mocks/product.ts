@@ -14,13 +14,13 @@ export const PRODUCTS = [
     title: 'Long Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,
-    rating: 5,
+    rating: 4,
     reviews: '4.1k',
     brand: 'Al Karam',
     status: 'Almost Sold Out',
   },
   {
-    id: '2',
+    id: '3',
     title: 'Long Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,
@@ -30,7 +30,7 @@ export const PRODUCTS = [
     status: 'Almost Sold Out',
   },
   {
-    id: '2',
+    id: '4',
     title: 'Long Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,
@@ -40,7 +40,7 @@ export const PRODUCTS = [
     status: 'Almost Sold Out',
   },
   {
-    id: '2',
+    id: '5',
     title: 'Long Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,
@@ -50,7 +50,7 @@ export const PRODUCTS = [
     status: 'Almost Sold Out',
   },
   {
-    id: '2',
+    id: '6',
     title: 'Long Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,
@@ -60,7 +60,7 @@ export const PRODUCTS = [
     status: 'Almost Sold Out',
   },
   {
-    id: '2',
+    id: '7',
     title: 'Long Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,

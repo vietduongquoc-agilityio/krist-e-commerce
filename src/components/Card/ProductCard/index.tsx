@@ -29,7 +29,7 @@ export const ProductCard = ({
 
   const renderStars = (count: number = 4) => {
     return Array.from({ length: count }, (_, index) => (
-      <StarIcon key={index} />
+      <StarIcon key={`${id}-star-${index}`} />
     ));
   };
 
