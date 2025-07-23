@@ -7,3 +7,7 @@ export { IconCart } from './CartIcon';
 export { StarIcon } from './StarIcon';
 export { IconScroll } from './ScrollIcon';
 export { IconShop } from './ShopIcon';
+export { IconProtection } from './ProtectionIcon';
+export { IconQuantity } from './QuantityIcon';
+export { IconShipping } from './ShippingIcon';
+export { IconSupport } from './SupportIcon';
