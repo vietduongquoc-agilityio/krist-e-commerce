@@ -1,4 +1,9 @@
-import { AboutSection, ArrivalSection, Banner } from '@/components';
+import {
+  AboutSection,
+  ArrivalSection,
+  Banner,
+  ModelSection,
+} from '@/components';
 
 export default function LandingPage() {
   return (
@@ -6,6 +11,7 @@ export default function LandingPage() {
       <Banner />
       <ArrivalSection />
       <AboutSection />
+      <ModelSection />
     </div>
   );
 }
