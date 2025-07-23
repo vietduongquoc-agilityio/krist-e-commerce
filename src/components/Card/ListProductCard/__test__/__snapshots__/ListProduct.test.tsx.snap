@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ListProductCard Component should render ListProductCard correctly and match snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+  >
+    <div
+      class="flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 motion-reduce:transition-none bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition"
+      tabindex="-1"
+    >
+      <figure
+        class="rounded-2xl overflow-hidden"
+      >
+        <img
+          alt="Product 1"
+          data-nimg="1"
+          decoding="async"
+          height="244"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 336px"
+          src="/_next/image?url=%2Fimages%2Fproduct1.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fproduct1.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fproduct1.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fproduct1.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fproduct1.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fproduct1.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fproduct1.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fproduct1.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fproduct1.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="336"
+        />
+      </figure>
+      <div
+        class="mt-4 space-y-1"
+      >
+        <div
+          class="flex items-center justify-between pb-4"
+        >
+          <div>
+            <h3
+              class="text-xl font-medium text-charcoal"
+            >
+              Product 1
+            </h3>
+            <p
+              class="text-xs text-gray"
+            >
+              Brand 1
+            </p>
+          </div>
+          <div
+            class="flex items-center space-x-0.5"
+          >
+            <svg
+              aria-label="star icon"
+              fill="none"
+              height="22"
+              viewBox="0 0 24 22"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                fill="#FBA333"
+              />
+            </svg>
+            <svg
+              aria-label="star icon"
+              fill="none"
+              height="22"
+              viewBox="0 0 24 22"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                fill="#FBA333"
+              />
+            </svg>
+            <svg
+              aria-label="star icon"
+              fill="none"
+              height="22"
+              viewBox="0 0 24 22"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                fill="#FBA333"
+              />
+            </svg>
+            <svg
+              aria-label="star icon"
+              fill="none"
+              height="22"
+              viewBox="0 0 24 22"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                fill="#FBA333"
+              />
+            </svg>
+          </div>
+        </div>
+        <p
+          class="text-xs text-charcoal"
+        >
+          (100) Customer Reviews
+        </p>
+        <div
+          class="flex items-center justify-between pt-4 pb-6"
+        >
+          <span
+            class="text-2xl font-medium text-charcoal"
+          >
+            $49.99
+          </span>
+          <span
+            class="text-sm text-coralRed font-medium"
+          >
+            In stock
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 motion-reduce:transition-none bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition"
+      tabindex="-1"
+    >
+      <figure
+        class="rounded-2xl overflow-hidden"
+      >
+        <img
+          alt="Product 2"
+          data-nimg="1"
+          decoding="async"
+          height="244"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 336px"
+          src="/_next/image?url=%2Fimages%2Fproduct2.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fproduct2.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fproduct2.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fproduct2.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fproduct2.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fproduct2.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fproduct2.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fproduct2.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fproduct2.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="336"
+        />
+      </figure>
+      <div
+        class="mt-4 space-y-1"
+      >
+        <div
+          class="flex items-center justify-between pb-4"
+        >
+          <div>
+            <h3
+              class="text-xl font-medium text-charcoal"
+            >
+              Product 2
+            </h3>
+            <p
+              class="text-xs text-gray"
+            >
+              Brand 2
+            </p>
+          </div>
+          <div
+            class="flex items-center space-x-0.5"
+          >
+            <svg
+              aria-label="star icon"
+              fill="none"
+              height="22"
+              viewBox="0 0 24 22"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                fill="#FBA333"
+              />
+            </svg>
+            <svg
+              aria-label="star icon"
+              fill="none"
+              height="22"
+              viewBox="0 0 24 22"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                fill="#FBA333"
+              />
+            </svg>
+            <svg
+              aria-label="star icon"
+              fill="none"
+              height="22"
+              viewBox="0 0 24 22"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                fill="#FBA333"
+              />
+            </svg>
+            <svg
+              aria-label="star icon"
+              fill="none"
+              height="22"
+              viewBox="0 0 24 22"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                fill="#FBA333"
+              />
+            </svg>
+            <svg
+              aria-label="star icon"
+              fill="none"
+              height="22"
+              viewBox="0 0 24 22"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+                fill="#FBA333"
+              />
+            </svg>
+          </div>
+        </div>
+        <p
+          class="text-xs text-charcoal"
+        >
+          (200) Customer Reviews
+        </p>
+        <div
+          class="flex items-center justify-between pt-4 pb-6"
+        >
+          <span
+            class="text-2xl font-medium text-charcoal"
+          >
+            $79.99
+          </span>
+          <span
+            class="text-sm text-coralRed font-medium"
+          >
+            Only few left
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;
