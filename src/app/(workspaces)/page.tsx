@@ -3,14 +3,8 @@ import { PRODUCTS } from '@/mocks';
 
 export default function LandingPage() {
   return (
-    <>
+    <div>
       <Banner />
-      <ListProductCard
-        products={PRODUCTS.map((product) => ({
-          ...product,
-          documentId: product.id, // or assign a suitable value if different
-        }))}
-      />
-    </>
+    </div>
   );
 }
