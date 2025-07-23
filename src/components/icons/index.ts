@@ -1,8 +1,9 @@
-export { IconGithub } from './icon-github';
-export { IconGoogle } from './icon-google';
-export { IconUser } from './icon-user';
-export { IconStar } from './icon-star';
-export { IconSearch } from './icon-search';
-export { IconCart } from './icon-cart';
-export { IconShop } from './icon-shop';
-export { IconScroll } from './icon-scroll';
+export { IconGithub } from './GithubIcon';
+export { IconGoogle } from './GoogleIcon';
+export { IconUser } from './UserIcon';
+export { IconStar } from './FavoriteIcon';
+export { IconSearch } from './SearchIcon';
+export { IconCart } from './CartIcon';
+export { StarIcon } from './StarIcon';
+export { IconScroll } from './ScrollIcon';
+export { IconShop } from './ShopIcon';
