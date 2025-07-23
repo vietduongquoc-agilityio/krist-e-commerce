@@ -23,14 +23,19 @@ export const ProductCard = ({
 }: ProductCardProps) => {
   const router = useRouter();
 
+  const handleCardClick = () => {
+    router.push(`${ROUTER.PRODUCT}/${id}`);
+  };
+
   const renderStars = (count: number = 4) => {
     return Array.from({ length: count }, (_, index) => (
       <StarIcon key={index} />
     ));
   };
+
   return (
     <Card
-      onClick={() => router.push(`${ROUTER.PRODUCT}/${id}`)}
+      onClick={handleCardClick}
       className="bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition"
     >
       <figure className="rounded-2xl overflow-hidden">
