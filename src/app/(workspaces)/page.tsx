@@ -1,16 +1,9 @@
-import { Banner, ListProductCard } from '@/components';
-import { PRODUCTS } from '@/mocks';
+import { Banner } from '@/components';
 
 export default function LandingPage() {
   return (
-    <>
+    <div>
       <Banner />
-      <ListProductCard
-        products={PRODUCTS.map((product) => ({
-          ...product,
-          documentId: product.id, // or assign a suitable value if different
-        }))}
-      />
-    </>
+    </div>
   );
 }
