@@ -3,7 +3,7 @@
 exports[`ListProductCard Component should render ListProductCard correctly and match snapshot 1`] = `
 <DocumentFragment>
   <section
-    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14"
   >
     <div
       class="flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 motion-reduce:transition-none bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition"
