@@ -1,5 +1,4 @@
-import { Banner, ListProductCard } from '@/components';
-import { PRODUCTS } from '@/mocks';
+import { Banner } from '@/components';
 
 export default function LandingPage() {
   return (
