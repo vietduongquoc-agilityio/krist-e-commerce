@@ -1,6 +1,7 @@
 export const PRODUCTS = [
   {
     id: '1',
+    documentId: 'doc-1',
     title: 'Shiny Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,
@@ -11,6 +12,7 @@ export const PRODUCTS = [
   },
   {
     id: '2',
+    documentId: 'doc-2',
     title: 'Long Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,
@@ -21,6 +23,7 @@ export const PRODUCTS = [
   },
   {
     id: '3',
+    documentId: 'doc-3',
     title: 'Long Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,
@@ -31,6 +34,7 @@ export const PRODUCTS = [
   },
   {
     id: '4',
+    documentId: 'doc-4',
     title: 'Long Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,
@@ -41,6 +45,7 @@ export const PRODUCTS = [
   },
   {
     id: '5',
+    documentId: 'doc-5',
     title: 'Long Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,
@@ -51,6 +56,7 @@ export const PRODUCTS = [
   },
   {
     id: '6',
+    documentId: 'doc-6',
     title: 'Long Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,
@@ -61,6 +67,7 @@ export const PRODUCTS = [
   },
   {
     id: '7',
+    documentId: 'doc-7',
     title: 'Long Dress',
     thumbnailUrl: '/images/product-img.webp',
     price: 95.5,
