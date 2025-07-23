@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { Chip } from '@heroui/react';
 
 // Components
@@ -19,7 +20,7 @@ const categories = [
 export const ArrivalSection = () => (
   <section className="flex flex-col gap-[50px] w-full max-w-[1281px] mx-auto items-center">
     <div className="flex flex-col gap-5 max-w-[620px] w-full items-center text-center">
-      <h1 className="font-secondary text-charcoal text-[46px]">New Arrivals</h1>
+      <h2 className="font-secondary text-charcoal text-[46px]">New Arrivals</h2>
       <p className="text-gray">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque
         duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices
@@ -39,8 +40,10 @@ export const ArrivalSection = () => (
     </div>
 
     <ListProductCard products={PRODUCTS} />
-    <Button variant="solid" className="py-4 w-[220px]">
-      View More
-    </Button>
+    <Link href="/shop">
+      <Button variant="solid" className="py-4 w-[220px]">
+        View More
+      </Button>
+    </Link>
   </section>
 );
