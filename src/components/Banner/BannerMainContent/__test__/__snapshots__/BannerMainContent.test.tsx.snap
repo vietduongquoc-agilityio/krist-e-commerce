@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BannerMainContent should render Banner component and match snapshot 1`] = `
+<div>
+  <div
+    class="w-full max-w-[1281px] mx-auto flex gap-[35px]"
+  >
+    <figure
+      class="bg-platinum rounded-[10px] h-[756px]"
+    >
+      <img
+        alt="Banner left"
+        class="pt-[186px]"
+        data-nimg="1"
+        decoding="async"
+        height="570"
+        src="/_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=828&q=75"
+        srcset="/_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=640&q=75 1x, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=828&q=75 2x"
+        style="color: transparent;"
+        width="392"
+      />
+    </figure>
+    <div
+      class="flex flex-col"
+    >
+      <figure
+        class="bg-platinum rounded-2xl px-4"
+      >
+        <img
+          alt="Banner top"
+          data-nimg="1"
+          decoding="async"
+          height="150"
+          loading="lazy"
+          src="/_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=828&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=640&q=75 1x, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=828&q=75 2x"
+          style="color: transparent;"
+          width="399"
+        />
+      </figure>
+      <div
+        class="flex flex-col items-center"
+      >
+        <p
+          class="font-medium text-[91px] text-charcoal"
+        >
+          ULTIMATE
+        </p>
+        <img
+          alt="Banner center"
+          data-nimg="1"
+          decoding="async"
+          height="120"
+          loading="lazy"
+          src="/_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=828&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=640&q=75 1x, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=828&q=75 2x"
+          style="color: transparent;"
+          width="394"
+        />
+        <p
+          class="text-xl"
+        >
+          NEW COLLECTION
+        </p>
+        <a
+          href="/shop"
+        >
+          <button
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover py-3 rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-black hover:bg-secondary text-white text-base mt-6 mb-9 w-[210px]"
+            data-react-aria-pressable="true"
+            tabindex="0"
+            type="button"
+          >
+            SHOP NOW
+          </button>
+        </a>
+      </div>
+      <figure
+        class="rounded-2xl"
+      >
+        <img
+          alt="Banner bottom"
+          data-nimg="1"
+          decoding="async"
+          height="150"
+          loading="lazy"
+          src="/_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=1080&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=640&q=75 1x, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=1080&q=75 2x"
+          style="color: transparent;"
+          width="430"
+        />
+      </figure>
+    </div>
+    <figure
+      class="bg-platinum rounded-[10px] px-16 h-[756px]"
+    >
+      <img
+        alt="Banner right"
+        class="pt-[186px]"
+        data-nimg="1"
+        decoding="async"
+        height="560"
+        loading="lazy"
+        src="/_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=640&q=75"
+        srcset="/_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=256&q=75 1x, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=640&q=75 2x"
+        style="color: transparent;"
+        width="249"
+      />
+    </figure>
+  </div>
+</div>
+`;

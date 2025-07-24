@@ -3,7 +3,7 @@
 exports[`ModelSection should renders correctly and matches snapshot 1`] = `
 <div>
   <section
-    class="flex flex-col gap-24 w-full max-w-[1920px] mx-auto items-center py-[150px]"
+    class="flex flex-col gap-24 w-full max-w-[1920px] mx-auto items-center py-24"
   >
     <div
       class="flex flex-col gap-5 max-w-[620px] w-full items-center text-center"
