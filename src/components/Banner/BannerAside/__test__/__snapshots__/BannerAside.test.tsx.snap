@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BannerAside Component should render BannerAside component and match snapshot 1`] = `
+<div>
+  <aside
+    class="absolute bottom-1 right-14 flex items-end justify-end gap-7"
+  >
+    <a
+      href="/shop"
+    >
+      <svg
+        class="bg-black p-4 rounded-[10px] cursor-pointer hover:bg-charcoal transition"
+        fill="none"
+        height="57"
+        width="57"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20.556 17.333H7.334L3.444 1H1.112m3.111 3.111H22.89l-2.333 10.111h-14L4.222 4.112ZM19 22a1.555 1.555 0 1 0 0-3.11A1.555 1.555 0 0 0 19 22ZM8.889 22a1.556 1.556 0 1 0 0-3.111 1.556 1.556 0 0 0 0 3.111Z"
+          stroke="#fff"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+        />
+      </svg>
+    </a>
+    <a
+      href="/"
+    >
+      <svg
+        class="cursor-pointer hover:bg-gray rounded-full transition"
+        fill="none"
+        height="57"
+        width="57"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          height="56"
+          rx="28"
+          stroke="#000"
+          width="56"
+          x="0.5"
+          y="0.5"
+        />
+        <path
+          clip-rule="evenodd"
+          d="M28.5 42a.952.952 0 0 1-.668-.272.92.92 0 0 1-.276-.657v-21.9l-5.942 5.845a.954.954 0 0 1-1.337 0 .922.922 0 0 1 0-1.315l7.554-7.428A.944.944 0 0 1 28.5 16a.958.958 0 0 1 .669.273l7.554 7.428a.922.922 0 0 1 0 1.315.954.954 0 0 1-1.337 0l-5.942-5.844v21.9a.92.92 0 0 1-.276.656.952.952 0 0 1-.668.272Z"
+          fill="#000"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </a>
+  </aside>
+</div>
+`;

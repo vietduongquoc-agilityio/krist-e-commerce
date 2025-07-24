@@ -29,7 +29,7 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
   const router = useRouter();
 
   return (
-    <header className="w-full py-4 flex justify-between items-center shadow-sm">
+    <header className="w-full py-4 flex justify-between items-center">
       <Navbar className="flex items-center w-[1282px] mx-auto">
         <Link href="/" className="text-4xl font-extrabold font-serif">
           FASCO
