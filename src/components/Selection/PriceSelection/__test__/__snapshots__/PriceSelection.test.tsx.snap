@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`PriceSelection Component should render PriceSelection component and match snapshot 1`] = `
+<div>
+  <div
+    class="mb-6"
+  >
+    <h2
+      class="text-[18px] font-secondary mb-4"
+    >
+      Prices
+    </h2>
+    <ul
+      class="space-y-2 text-gray text-sm"
+    >
+      <li
+        class="cursor-pointer hover:text-black transition"
+      >
+        $0–$50
+      </li>
+      <li
+        class="cursor-pointer hover:text-black transition"
+      >
+        $50–$100
+      </li>
+      <li
+        class="cursor-pointer hover:text-black transition"
+      >
+        $100–$150
+      </li>
+      <li
+        class="cursor-pointer hover:text-black transition"
+      >
+        $150–$200
+      </li>
+      <li
+        class="cursor-pointer hover:text-black transition"
+      >
+        $300–$400
+      </li>
+    </ul>
+  </div>
+</div>
+`;
