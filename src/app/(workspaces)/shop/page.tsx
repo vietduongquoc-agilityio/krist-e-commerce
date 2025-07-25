@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 // Components
-import { Breadcrumb } from '@/components';
+import { Breadcrumb, ColorSelection } from '@/components';
 import { SizeSelection } from '@/components/Selection/SizeSelection';
 
 export const metadata: Metadata = {
@@ -13,8 +13,11 @@ export default function ShopPage() {
   return (
     <div>
       <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Shop' }]} />
+      <div className="ml-96">
+        <SizeSelection />
 
-      <SizeSelection />
+        <ColorSelection />
+      </div>
     </div>
   );
 }
