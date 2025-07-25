@@ -1,0 +1,364 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ListProductItem should render ListProductItem component and match snapshot 1`] = `
+<div>
+  <section
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14"
+  >
+    <div
+      class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+      tabindex="-1"
+    >
+      <figure
+        class="relative"
+      >
+        <img
+          alt="Product Item"
+          data-nimg="1"
+          decoding="async"
+          height="403"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 302px"
+          src="/_next/image?url=%2Fimages%2FproductItem1.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2FproductItem1.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="302"
+        />
+      </figure>
+      <div>
+        <h3
+          class="font-secondary mb-[5px]"
+        >
+          Vintage Shirt
+        </h3>
+        <p>
+          $
+          39.99
+        </p>
+        <div
+          class="flex gap-2 mt-4"
+        >
+          <button
+            aria-label="Color #FF6C6C"
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+            data-react-aria-pressable="true"
+            style="background-color: rgb(255, 108, 108);"
+            tabindex="0"
+            type="button"
+          />
+          <button
+            aria-label="Color #FC6CFF"
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+            data-react-aria-pressable="true"
+            style="background-color: rgb(252, 108, 255);"
+            tabindex="0"
+            type="button"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+      tabindex="-1"
+    >
+      <figure
+        class="relative"
+      >
+        <img
+          alt="Product Item"
+          data-nimg="1"
+          decoding="async"
+          height="403"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 302px"
+          src="/_next/image?url=%2Fimages%2FproductItem2.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2FproductItem2.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="302"
+        />
+        <div
+          class="absolute inset-0 bg-black/30 flex items-center justify-center"
+        >
+          <button
+            class="z-0 group relative box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-medium px-4 min-w-20 gap-2 [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none border-default data-[hover=true]:!bg-default bg-gray text-white text-[10px] font-black rounded-full w-[62px] h-[62px] flex flex-col items-center justify-center pointer-events-none leading-tight text-center"
+            data-react-aria-pressable="true"
+            tabindex="0"
+            type="button"
+          >
+            SOLD
+            <br />
+            OUT
+          </button>
+        </div>
+      </figure>
+      <div>
+        <h3
+          class="font-secondary mb-[5px]"
+        >
+          Denim Jacket
+        </h3>
+        <p>
+          $
+          79.99
+        </p>
+        <div
+          class="flex gap-2 mt-4"
+        >
+          <button
+            aria-label="Color #6C7BFF"
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 opacity-disabled pointer-events-none [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+            data-disabled="true"
+            data-react-aria-pressable="true"
+            disabled=""
+            style="background-color: rgb(108, 123, 255);"
+            type="button"
+          />
+          <button
+            aria-label="Color #6CFF9E"
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 opacity-disabled pointer-events-none [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+            data-disabled="true"
+            data-react-aria-pressable="true"
+            disabled=""
+            style="background-color: rgb(108, 255, 158);"
+            type="button"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+      tabindex="-1"
+    >
+      <figure
+        class="relative"
+      >
+        <img
+          alt="Product Item"
+          data-nimg="1"
+          decoding="async"
+          height="403"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 302px"
+          src="/_next/image?url=%2Fimages%2FproductItem1.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2FproductItem1.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="302"
+        />
+      </figure>
+      <div>
+        <h3
+          class="font-secondary mb-[5px]"
+        >
+          Leather Boots
+        </h3>
+        <p>
+          $
+          129.5
+        </p>
+        <div
+          class="flex gap-2 mt-4"
+        >
+          <button
+            aria-label="Color #FF0000"
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+            data-react-aria-pressable="true"
+            style="background-color: rgb(255, 0, 0);"
+            tabindex="0"
+            type="button"
+          />
+          <button
+            aria-label="Color #FFF06C"
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+            data-react-aria-pressable="true"
+            style="background-color: rgb(255, 240, 108);"
+            tabindex="0"
+            type="button"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+      tabindex="-1"
+    >
+      <figure
+        class="relative"
+      >
+        <img
+          alt="Product Item"
+          data-nimg="1"
+          decoding="async"
+          height="403"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 302px"
+          src="/_next/image?url=%2Fimages%2FproductItem3.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2FproductItem3.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="302"
+        />
+        <div
+          class="absolute inset-0 bg-black/30 flex items-center justify-center"
+        >
+          <button
+            class="z-0 group relative box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-medium px-4 min-w-20 gap-2 [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none border-default data-[hover=true]:!bg-default bg-gray text-white text-[10px] font-black rounded-full w-[62px] h-[62px] flex flex-col items-center justify-center pointer-events-none leading-tight text-center"
+            data-react-aria-pressable="true"
+            tabindex="0"
+            type="button"
+          >
+            SOLD
+            <br />
+            OUT
+          </button>
+        </div>
+      </figure>
+      <div>
+        <h3
+          class="font-secondary mb-[5px]"
+        >
+          Bucket Hat
+        </h3>
+        <p>
+          $
+          19.95
+        </p>
+        <div
+          class="flex gap-2 mt-4"
+        >
+          <button
+            aria-label="Color #FCA120"
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 opacity-disabled pointer-events-none [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+            data-disabled="true"
+            data-react-aria-pressable="true"
+            disabled=""
+            style="background-color: rgb(252, 161, 32);"
+            type="button"
+          />
+          <button
+            aria-label="Color #6CFFDC"
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 opacity-disabled pointer-events-none [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+            data-disabled="true"
+            data-react-aria-pressable="true"
+            disabled=""
+            style="background-color: rgb(108, 255, 220);"
+            type="button"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+      tabindex="-1"
+    >
+      <figure
+        class="relative"
+      >
+        <img
+          alt="Product Item"
+          data-nimg="1"
+          decoding="async"
+          height="403"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 302px"
+          src="/_next/image?url=%2Fimages%2FproductItem1.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2FproductItem1.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="302"
+        />
+      </figure>
+      <div>
+        <h3
+          class="font-secondary mb-[5px]"
+        >
+          Casual Pants
+        </h3>
+        <p>
+          $
+          49.9
+        </p>
+        <div
+          class="flex gap-2 mt-4"
+        >
+          <button
+            aria-label="Color #9BFF6C"
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+            data-react-aria-pressable="true"
+            style="background-color: rgb(155, 255, 108);"
+            tabindex="0"
+            type="button"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+      tabindex="-1"
+    >
+      <figure
+        class="relative"
+      >
+        <img
+          alt="Product Item"
+          data-nimg="1"
+          decoding="async"
+          height="403"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 302px"
+          src="/_next/image?url=%2Fimages%2FproductItem2.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2FproductItem2.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=3840&q=75 3840w"
+          style="color: transparent;"
+          width="302"
+        />
+      </figure>
+      <div>
+        <h3
+          class="font-secondary mb-[5px]"
+        >
+          Wool Sweater
+        </h3>
+        <p>
+          $
+          89
+        </p>
+        <div
+          class="flex gap-2 mt-4"
+        >
+          <button
+            aria-label="Color #FF0000"
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+            data-react-aria-pressable="true"
+            style="background-color: rgb(255, 0, 0);"
+            tabindex="0"
+            type="button"
+          />
+          <button
+            aria-label="Color #FCA120"
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+            data-react-aria-pressable="true"
+            style="background-color: rgb(252, 161, 32);"
+            tabindex="0"
+            type="button"
+          />
+          <button
+            aria-label="Color #6CFF9E"
+            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+            data-react-aria-pressable="true"
+            style="background-color: rgb(108, 255, 158);"
+            tabindex="0"
+            type="button"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`ListProductItem should render ListProductItem component with no items 1`] = `
+<div>
+  <div
+    class="text-center text-red text-xl py-10"
+  >
+    No items found.
+  </div>
+</div>
+`;

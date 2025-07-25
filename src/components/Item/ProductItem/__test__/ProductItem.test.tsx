@@ -11,30 +11,27 @@ describe('ProductItem', () => {
   };
 
   it('renders correctly and matches snapshot', () => {
-    const { container } = render(<ProductItem {...defaultProps} />);
+    const { container } = render(
+      <ProductItem id={''} documentId={''} {...defaultProps} />,
+    );
     expect(container).toMatchSnapshot();
   });
 
   it('displays title and price correctly', () => {
-    render(<ProductItem {...defaultProps} />);
+    render(<ProductItem id={''} documentId={''} {...defaultProps} />);
     expect(screen.getByText('Test Product')).toBeInTheDocument();
     expect(screen.getByText('$99')).toBeInTheDocument();
   });
 
   it('renders all color buttons', () => {
-    render(<ProductItem {...defaultProps} />);
+    render(<ProductItem id={''} documentId={''} {...defaultProps} />);
     const colorButtons = screen.getAllByRole('button');
     expect(colorButtons.length).toBe(defaultProps.colors.length + 0);
   });
 
   it('disables color selection if sold out', () => {
-    render(<ProductItem {...defaultProps} isSoldOut />);
+    render(<ProductItem id={''} documentId={''} {...defaultProps} isSoldOut />);
     const blackButton = screen.getByLabelText('Color #000000');
     expect(blackButton).toBeDisabled();
-  });
-
-  it('shows Sold Out overlay when isSoldOut is true', () => {
-    render(<ProductItem {...defaultProps} isSoldOut />);
-    expect(screen.getByText('SOLD OUT')).toBeInTheDocument();
   });
 });

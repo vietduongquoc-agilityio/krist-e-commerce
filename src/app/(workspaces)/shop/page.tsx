@@ -1,5 +1,3 @@
-import { ProductItem } from '@/components';
-import { colors } from '@/themes/colors';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,20 +7,11 @@ export const metadata: Metadata = {
 
 export default function ShopPage() {
   return (
-    <div className="flex mx-auto items-center justify-center">
-      <ProductItem
-        thumbnailUrl="/images/productItem1.webp"
-        title="Rounded Red Hat"
-        price={1212}
-        colors={[colors.aquaMint, colors.iceBlue]}
-      />
-      <ProductItem
-        thumbnailUrl="/images/productItem1.webp"
-        title="Rounded Red Hat"
-        price={1212}
-        colors={[colors.aquaMint, colors.iceBlue]}
-        isSoldOut={true}
-      />
+    <div>
+      <h1 className="text-green-600 text-4xl">Shop Page</h1>
+      <p className="font-secondary text-base text-coralRed">
+        Welcome to the shop!
+      </p>
     </div>
   );
 }
