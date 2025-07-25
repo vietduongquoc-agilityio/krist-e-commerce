@@ -20,7 +20,7 @@ export const SizeSelection = ({
   };
 
   return (
-    <div>
+    <div className="mb-6">
       <h2 className="text-[18px] font-secondary mb-4">Size</h2>
       <div className="grid grid-cols-3 gap-4 w-40">
         {sizes.map((size) => (

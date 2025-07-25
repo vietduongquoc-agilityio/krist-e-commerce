@@ -1,7 +1,14 @@
 import { Metadata } from 'next';
 
 // Components
-import { Breadcrumb, ColorSelection } from '@/components';
+import {
+  BrandSelection,
+  Breadcrumb,
+  CollectionSelection,
+  ColorSelection,
+  PriceSelection,
+  TagSelection,
+} from '@/components';
 import { SizeSelection } from '@/components/Selection/SizeSelection';
 
 export const metadata: Metadata = {
@@ -17,6 +24,14 @@ export default function ShopPage() {
         <SizeSelection />
 
         <ColorSelection />
+
+        <PriceSelection />
+
+        <BrandSelection />
+
+        <CollectionSelection />
+
+        <TagSelection />
       </div>
     </div>
   );

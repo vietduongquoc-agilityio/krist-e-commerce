@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`CollectionSelection Component should render CollectionSelection component and match snapshot 1`] = `
+<div>
+  <div
+    class="mb-6"
+  >
+    <div
+      class="flex items-center justify-between cursor-pointer max-w-[310px]"
+    >
+      <h2
+        class="text-[18px] font-secondary"
+      >
+        Collections
+      </h2>
+      <span>
+        ▼
+      </span>
+    </div>
+    <ul
+      class="mt-3 space-y-2 text-gray"
+    >
+      <li
+        class="cursor-pointer hover:text-black transition"
+      >
+        All products
+      </li>
+      <li
+        class="cursor-pointer hover:text-black transition"
+      >
+        Best sellers
+      </li>
+      <li
+        class="cursor-pointer hover:text-black transition"
+      >
+        New arrivals
+      </li>
+      <li
+        class="cursor-pointer hover:text-black transition"
+      >
+        Accessories
+      </li>
+    </ul>
+  </div>
+</div>
+`;

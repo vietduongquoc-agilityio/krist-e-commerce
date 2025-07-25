@@ -2,7 +2,9 @@
 
 exports[`SizeSelection should render corectly  and match snapshot 1`] = `
 <div>
-  <div>
+  <div
+    class="mb-6"
+  >
     <h2
       class="text-[18px] font-secondary mb-4"
     >
