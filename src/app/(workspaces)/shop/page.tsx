@@ -4,10 +4,8 @@ import { Metadata } from 'next';
 import {
   BrandSelection,
   Breadcrumb,
-  CollectionSelection,
   ColorSelection,
   PriceSelection,
-  TagSelection,
 } from '@/components';
 import { SizeSelection } from '@/components/Selection/SizeSelection';
 
@@ -28,10 +26,6 @@ export default function ShopPage() {
         <PriceSelection />
 
         <BrandSelection />
-
-        <CollectionSelection />
-
-        <TagSelection />
       </div>
     </div>
   );
