@@ -18,7 +18,7 @@ const categories = [
 ];
 
 export const ArrivalSection = () => (
-  <section className="flex flex-col gap-[50px] w-full max-w-[1281px] mx-auto items-center">
+  <section className="flex flex-col gap-[50px] w-full max-w-[1281px] mx-auto items-center py-36">
     <div className="flex flex-col gap-5 max-w-[620px] w-full items-center text-center">
       <h2 className="font-secondary text-charcoal text-[46px]">New Arrivals</h2>
       <p className="text-gray">

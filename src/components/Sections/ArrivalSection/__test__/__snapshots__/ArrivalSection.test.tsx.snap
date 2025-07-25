@@ -3,7 +3,7 @@
 exports[`ArrivalSection should render correctly and matches snapshot 1`] = `
 <DocumentFragment>
   <section
-    class="flex flex-col gap-[50px] w-full max-w-[1281px] mx-auto items-center"
+    class="flex flex-col gap-[50px] w-full max-w-[1281px] mx-auto items-center py-36"
   >
     <div
       class="flex flex-col gap-5 max-w-[620px] w-full items-center text-center"

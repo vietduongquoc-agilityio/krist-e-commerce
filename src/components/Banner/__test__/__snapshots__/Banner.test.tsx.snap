@@ -3,10 +3,10 @@
 exports[`Banner Component should render Banner component and match snapshot 1`] = `
 <div>
   <section
-    class="w-full max-w-[1920px] mx-auto flex"
+    class="relative w-full pt-20"
   >
     <div
-      class="flex w-full max-w-[1281px] mx-auto gap-[35px]"
+      class="w-full max-w-[1281px] mx-auto flex gap-[35px]"
     >
       <figure
         class="bg-platinum rounded-[10px] h-[756px]"
@@ -17,9 +17,8 @@ exports[`Banner Component should render Banner component and match snapshot 1`] 
           data-nimg="1"
           decoding="async"
           height="570"
-          sizes="(100vw - 20px) 100vw, 392px"
-          src="/_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=3840&q=75"
-          srcset="/_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=3840&q=75 3840w"
+          src="/_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=828&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=640&q=75 1x, /_next/image?url=%2Fimages%2Fbanner-img-left.webp&w=828&q=75 2x"
           style="color: transparent;"
           width="392"
         />
@@ -36,9 +35,8 @@ exports[`Banner Component should render Banner component and match snapshot 1`] 
             decoding="async"
             height="150"
             loading="lazy"
-            sizes="(100vw - 20px) 100vw, 399px"
-            src="/_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=3840&q=75"
-            srcset="/_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=3840&q=75 3840w"
+            src="/_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=828&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=640&q=75 1x, /_next/image?url=%2Fimages%2Fbanner-img-top.webp&w=828&q=75 2x"
             style="color: transparent;"
             width="399"
           />
@@ -57,9 +55,8 @@ exports[`Banner Component should render Banner component and match snapshot 1`] 
             decoding="async"
             height="120"
             loading="lazy"
-            sizes="(100vw - 30px) 100vw, 394px"
-            src="/_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=3840&q=75"
-            srcset="/_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=3840&q=75 3840w"
+            src="/_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=828&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=640&q=75 1x, /_next/image?url=%2Fimages%2Fbanner-img-center.webp&w=828&q=75 2x"
             style="color: transparent;"
             width="394"
           />
@@ -90,9 +87,8 @@ exports[`Banner Component should render Banner component and match snapshot 1`] 
             decoding="async"
             height="150"
             loading="lazy"
-            sizes="(100vw - 20px) 100vw, 430px"
-            src="/_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=3840&q=75"
-            srcset="/_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=3840&q=75 3840w"
+            src="/_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=1080&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=640&q=75 1x, /_next/image?url=%2Fimages%2Fbanner-img-bottom.webp&w=1080&q=75 2x"
             style="color: transparent;"
             width="430"
           />
@@ -108,16 +104,15 @@ exports[`Banner Component should render Banner component and match snapshot 1`] 
           decoding="async"
           height="560"
           loading="lazy"
-          sizes="(100vw - 20px) 100vw, 249px"
-          src="/_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=3840&q=75"
-          srcset="/_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=3840&q=75 3840w"
+          src="/_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=640&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=256&q=75 1x, /_next/image?url=%2Fimages%2Fbanner-img-right.webp&w=640&q=75 2x"
           style="color: transparent;"
           width="249"
         />
       </figure>
     </div>
     <aside
-      class="flex items-end justify-end gap-7 mr-10"
+      class="absolute bottom-1 right-14 flex items-end justify-end gap-7"
     >
       <a
         href="/shop"
@@ -140,32 +135,30 @@ exports[`Banner Component should render Banner component and match snapshot 1`] 
       </a>
       <a
         href="/"
-      />
-      <svg
-        class="cursor-pointer hover:bg-gray rounded-full transition"
-        fill="none"
-        height="57"
-        width="57"
-        xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          height="56"
-          rx="28"
-          stroke="#000"
-          width="56"
-          x="0.5"
-          y="0.5"
-        />
-        <path
-          clip-rule="evenodd"
-          d="M28.5 42a.952.952 0 0 1-.668-.272.92.92 0 0 1-.276-.657v-21.9l-5.942 5.845a.954.954 0 0 1-1.337 0 .922.922 0 0 1 0-1.315l7.554-7.428A.944.944 0 0 1 28.5 16a.958.958 0 0 1 .669.273l7.554 7.428a.922.922 0 0 1 0 1.315.954.954 0 0 1-1.337 0l-5.942-5.844v21.9a.92.92 0 0 1-.276.656.952.952 0 0 1-.668.272Z"
-          fill="#000"
-          fill-rule="evenodd"
-        />
-      </svg>
-      <a
-        href="/"
-      />
+        <svg
+          class="cursor-pointer hover:bg-gray rounded-full transition"
+          fill="none"
+          height="57"
+          width="57"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            height="56"
+            rx="28"
+            stroke="#000"
+            width="56"
+            x="0.5"
+            y="0.5"
+          />
+          <path
+            clip-rule="evenodd"
+            d="M28.5 42a.952.952 0 0 1-.668-.272.92.92 0 0 1-.276-.657v-21.9l-5.942 5.845a.954.954 0 0 1-1.337 0 .922.922 0 0 1 0-1.315l7.554-7.428A.944.944 0 0 1 28.5 16a.958.958 0 0 1 .669.273l7.554 7.428a.922.922 0 0 1 0 1.315.954.954 0 0 1-1.337 0l-5.942-5.844v21.9a.92.92 0 0 1-.276.656.952.952 0 0 1-.668.272Z"
+            fill="#000"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </a>
     </aside>
   </section>
 </div>

@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export const ModelSection = () => {
   return (
-    <section className="flex flex-col gap-24 w-full max-w-[1920px] mx-auto items-center py-[150px]">
+    <section className="flex flex-col gap-24 w-full max-w-[1920px] mx-auto items-center py-24">
       <div className="flex flex-col gap-5 max-w-[620px] w-full items-center text-center">
         <h3 className="font-secondary text-charcoal text-[46px]">
           Follow Us On Instagram
