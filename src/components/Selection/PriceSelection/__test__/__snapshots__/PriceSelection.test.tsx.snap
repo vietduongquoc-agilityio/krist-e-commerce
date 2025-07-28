@@ -11,7 +11,7 @@ exports[`PriceSelection Component should render PriceSelection component and mat
       Prices
     </h2>
     <ul
-      class="space-y-2 text-gray text-sm"
+      class="space-y-3 text-gray text-sm"
     >
       <li
         class="cursor-pointer hover:text-black transition"

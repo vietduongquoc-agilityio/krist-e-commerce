@@ -27,10 +27,13 @@ export const SizeSelection = ({
           <Button
             key={size}
             onPress={() => handleClick(size)}
-            className={cn('border rounded-md px-5 py-2', {
-              'border-black text-black font-semibold': selectedSize === size,
-              'border-gray  text-gray': selectedSize !== size,
-            })}
+            className={cn(
+              'border rounded-md px-5 py-2 hover:bg-whiteSmoke transition',
+              {
+                'border-black text-black font-semibold': selectedSize === size,
+                'border-gray  text-gray': selectedSize !== size,
+              },
+            )}
           >
             {size}
           </Button>
