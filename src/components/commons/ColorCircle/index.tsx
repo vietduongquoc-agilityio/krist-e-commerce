@@ -23,7 +23,7 @@ export const ColorButton = ({
 
   return (
     <Component
-      onClick={(e: any) => {
+      onClick={(e: React.MouseEvent) => {
         e.stopPropagation?.();
         if (!isDisabled) onClick?.();
       }}
