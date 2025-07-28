@@ -14,117 +14,131 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
       class="grid grid-cols-7 gap-3 max-w-[320px]"
     >
       <button
-        aria-label="Color #FF6C6C"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(255, 108, 108);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(255, 108, 108);"
+        />
+      </button>
       <button
-        aria-label="Color #FCA120"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(252, 161, 32);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(252, 161, 32);"
+        />
+      </button>
       <button
-        aria-label="Color #FFF06C"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(255, 240, 108);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(255, 240, 108);"
+        />
+      </button>
       <button
-        aria-label="Color #9BFF6C"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(155, 255, 108);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(155, 255, 108);"
+        />
+      </button>
       <button
-        aria-label="Color #6CFF9E"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(108, 255, 158);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(108, 255, 158);"
+        />
+      </button>
       <button
-        aria-label="Color #6CFFDC"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(108, 255, 220);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(108, 255, 220);"
+        />
+      </button>
       <button
-        aria-label="Color #6CB9FF"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(108, 185, 255);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(108, 185, 255);"
+        />
+      </button>
       <button
-        aria-label="Color #6CF6FF"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(108, 246, 255);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(108, 246, 255);"
+        />
+      </button>
       <button
-        aria-label="Color #6CA7FF"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(108, 167, 255);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(108, 167, 255);"
+        />
+      </button>
       <button
-        aria-label="Color #6C7BFF"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(108, 123, 255);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(108, 123, 255);"
+        />
+      </button>
       <button
-        aria-label="Color #8A6CFF"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(138, 108, 255);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(138, 108, 255);"
+        />
+      </button>
       <button
-        aria-label="Color #B66CFF"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(182, 108, 255);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(182, 108, 255);"
+        />
+      </button>
       <button
-        aria-label="Color #FC6CFF"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(252, 108, 255);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(252, 108, 255);"
+        />
+      </button>
       <button
-        aria-label="Color #FF0000"
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[30px] h-[33px] rounded-full border-1 transition-all border-transparent"
-        data-react-aria-pressable="true"
-        style="background-color: rgb(255, 0, 0);"
-        tabindex="0"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
-      />
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(255, 0, 0);"
+        />
+      </button>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Card, cn } from '@heroui/react';
+import { Button, Card } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Image from 'next/image';
@@ -10,6 +10,7 @@ import { ItemCardProps } from '@/models';
 
 // Constants
 import { ROUTER } from '@/constants';
+import { ColorButton } from '@/components';
 
 export const ProductItem = ({
   id,
@@ -30,8 +31,7 @@ export const ProductItem = ({
   };
 
   const handleSelect = (color: string) => {
-    const isSame = selectedColor === color;
-    const newColor = isSame ? null : color;
+    const newColor = selectedColor === color ? null : color;
     setSelectedColor(newColor);
     onChange?.(newColor || '');
   };
@@ -39,7 +39,7 @@ export const ProductItem = ({
   return (
     <Card
       onClick={handleCardClick}
-      className="cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-lg transition"
+      className="cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
     >
       <figure className="relative">
         <Image
@@ -62,25 +62,23 @@ export const ProductItem = ({
           </div>
         )}
       </figure>
-      <div className="ml-2">
+      <div>
         <h3 className="font-secondary mb-[5px]">{title}</h3>
         <p>${price}</p>
         <div className="flex gap-2 mt-4">
-          {(colors ?? []).map((color) => (
-            <Button
-              key={color}
-              onPress={() => handleSelect(color)}
-              className={cn(
-                'w-[26px] h-[33px] rounded-full border-1 transition-all mb-2',
-                selectedColor === color
-                  ? 'border-black ring-2 ring-offset-2 ring-black'
-                  : 'border-gray hover:border-black',
-              )}
-              style={{ backgroundColor: color }}
-              aria-label={`Color ${color}`}
-              isDisabled={isSoldOut}
-            />
-          ))}
+          {(colors ?? []).map((color) => {
+            const isSelected = selectedColor === color;
+            return (
+              <ColorButton
+                key={color}
+                color={color}
+                isSelected={isSelected}
+                isDisabled={isSoldOut}
+                onClick={() => handleSelect(color)}
+                as="div"
+              />
+            );
+          })}
         </div>
       </div>
     </Card>

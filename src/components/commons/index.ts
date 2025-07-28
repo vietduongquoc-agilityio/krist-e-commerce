@@ -4,3 +4,4 @@ export * from './Button';
 export * from './Text';
 export * from './Navbar';
 export * from './Pagination';
+export * from './ColorCircle';
