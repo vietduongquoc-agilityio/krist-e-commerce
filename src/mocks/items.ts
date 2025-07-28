@@ -1,0 +1,58 @@
+import { ItemCardProps } from '@/models';
+
+export const ITEMS: ItemCardProps[] = [
+  {
+    id: '1',
+    thumbnailUrl: '/images/productItem1.webp',
+    title: 'Vintage Shirt',
+    price: 39.99,
+    colors: ['#FF6C6C', '#FC6CFF'],
+    isSoldOut: false,
+    documentId: 'doc-1',
+  },
+  {
+    id: '2',
+    thumbnailUrl: '/images/productItem2.webp',
+    title: 'Denim Jacket',
+    price: 79.99,
+    colors: ['#6C7BFF', '#6CFF9E'],
+    isSoldOut: true,
+    documentId: 'doc-2',
+  },
+  {
+    id: '3',
+    thumbnailUrl: '/images/productItem1.webp',
+    title: 'Leather Boots',
+    price: 129.5,
+    colors: ['#FF0000', '#FFF06C'],
+    isSoldOut: false,
+    documentId: 'doc-3',
+  },
+  {
+    id: '4',
+    thumbnailUrl: '/images/productItem3.webp',
+    title: 'Bucket Hat',
+    price: 19.95,
+    colors: ['#FCA120', '#6CFFDC'],
+    isSoldOut: true,
+    documentId: 'doc-4',
+  },
+  {
+    id: '5',
+    thumbnailUrl: '/images/productItem1.webp',
+    title: 'Casual Pants',
+    price: 49.9,
+    colors: ['#9BFF6C'],
+    isSoldOut: false,
+    documentId: 'doc-5',
+  },
+  {
+    id: '6',
+    thumbnailUrl: '/images/productItem2.webp',
+    title: 'Wool Sweater',
+    price: 89.0,
+    colors: ['#FF0000', '#FCA120', '#6CFF9E'],
+    isSoldOut: false,
+    documentId: 'doc-6',
+  },
+];
