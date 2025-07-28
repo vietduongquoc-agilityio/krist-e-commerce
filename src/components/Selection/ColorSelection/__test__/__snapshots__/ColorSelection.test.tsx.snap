@@ -14,7 +14,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
       class="grid grid-cols-7 gap-3 max-w-[320px]"
     >
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -23,7 +23,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -32,7 +32,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -41,7 +41,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -50,7 +50,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -59,7 +59,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -68,7 +68,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -77,7 +77,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -86,7 +86,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -95,7 +95,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -104,7 +104,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -113,7 +113,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -122,7 +122,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div
@@ -131,7 +131,7 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         />
       </button>
       <button
-        class="w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors border-gray"
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
         type="button"
       >
         <div

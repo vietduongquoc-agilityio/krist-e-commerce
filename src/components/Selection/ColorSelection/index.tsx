@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { cn } from '@heroui/react';
 
 // Constants
 import { COLOR_LIST } from '@/constants';
+import { ColorButton } from '@/components';
 
 interface ColorSelectionProps {
   onChange?: (color: string) => void;
@@ -26,23 +26,13 @@ export const ColorSelection = ({ onChange }: ColorSelectionProps) => {
         {COLOR_LIST.map((color) => {
           const isSelected = selectedColor === color;
           return (
-            <button
+            <ColorButton
               key={color}
-              type="button"
-              className={cn(
-                'w-8 h-8 rounded-full flex items-center justify-center border-1 transition-colors',
-                isSelected ? 'border-black' : 'border-gray',
-              )}
+              color={color}
+              isSelected={isSelected}
               onClick={() => handleSelect(color)}
-            >
-              <div
-                className={cn(
-                  'rounded-full transition-all',
-                  isSelected ? 'w-6 h-6 hover:scale-105' : 'w-8 h-8',
-                )}
-                style={{ backgroundColor: color }}
-              />
-            </button>
+              as="button"
+            />
           );
         })}
       </div>
