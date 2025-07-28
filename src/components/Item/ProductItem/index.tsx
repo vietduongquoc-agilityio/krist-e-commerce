@@ -39,7 +39,7 @@ export const ProductItem = ({
   return (
     <Card
       onClick={handleCardClick}
-      className="cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+      className="cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-lg transition"
     >
       <figure className="relative">
         <Image
@@ -50,14 +50,6 @@ export const ProductItem = ({
           height={403}
         />
         {isSoldOut && (
-          // <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          //   <Button
-          //     variant="ghost"
-          //     className="bg-gray text-white text-xs font-black rounded-full w-[62px] h-[62px] flex flex-col items-center justify-center pointer-events-none"
-          //   >
-          //     <span>SOLD OUT</span>
-          //   </Button>
-          // </div>
           <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
             <Button
               variant="ghost"
@@ -70,7 +62,7 @@ export const ProductItem = ({
           </div>
         )}
       </figure>
-      <div>
+      <div className="ml-2">
         <h3 className="font-secondary mb-[5px]">{title}</h3>
         <p>${price}</p>
         <div className="flex gap-2 mt-4">
@@ -79,7 +71,7 @@ export const ProductItem = ({
               key={color}
               onPress={() => handleSelect(color)}
               className={cn(
-                'w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2',
+                'w-[26px] h-[33px] rounded-full border-1 transition-all mb-2',
                 selectedColor === color
                   ? 'border-black ring-2 ring-offset-2 ring-black'
                   : 'border-gray hover:border-black',

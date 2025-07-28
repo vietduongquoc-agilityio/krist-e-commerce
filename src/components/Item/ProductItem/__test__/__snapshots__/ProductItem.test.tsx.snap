@@ -3,7 +3,7 @@
 exports[`ProductItem renders correctly and matches snapshot 1`] = `
 <div>
   <div
-    class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+    class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-lg transition"
     tabindex="-1"
   >
     <figure
@@ -22,7 +22,9 @@ exports[`ProductItem renders correctly and matches snapshot 1`] = `
         width="302"
       />
     </figure>
-    <div>
+    <div
+      class="ml-2"
+    >
       <h3
         class="font-secondary mb-[5px]"
       >
@@ -37,7 +39,7 @@ exports[`ProductItem renders correctly and matches snapshot 1`] = `
       >
         <button
           aria-label="Color #000000"
-          class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+          class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all mb-2 border-gray hover:border-black"
           data-react-aria-pressable="true"
           style="background-color: rgb(0, 0, 0);"
           tabindex="0"
@@ -45,7 +47,7 @@ exports[`ProductItem renders correctly and matches snapshot 1`] = `
         />
         <button
           aria-label="Color #ffffff"
-          class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+          class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all mb-2 border-gray hover:border-black"
           data-react-aria-pressable="true"
           style="background-color: rgb(255, 255, 255);"
           tabindex="0"
