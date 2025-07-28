@@ -9,7 +9,7 @@ exports[`ListProductItem should render ListProductItem component and match snaps
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14"
     >
       <div
-        class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+        class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-xl transition"
         tabindex="-1"
       >
         <figure
@@ -28,7 +28,9 @@ exports[`ListProductItem should render ListProductItem component and match snaps
             width="302"
           />
         </figure>
-        <div>
+        <div
+          class="ml-4 mb-3"
+        >
           <h3
             class="font-secondary mb-[5px]"
           >
@@ -61,7 +63,7 @@ exports[`ListProductItem should render ListProductItem component and match snaps
         </div>
       </div>
       <div
-        class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+        class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-xl transition"
         tabindex="-1"
       >
         <figure
@@ -94,7 +96,9 @@ exports[`ListProductItem should render ListProductItem component and match snaps
             </button>
           </div>
         </figure>
-        <div>
+        <div
+          class="ml-4 mb-3"
+        >
           <h3
             class="font-secondary mb-[5px]"
           >
@@ -127,7 +131,7 @@ exports[`ListProductItem should render ListProductItem component and match snaps
         </div>
       </div>
       <div
-        class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+        class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-xl transition"
         tabindex="-1"
       >
         <figure
@@ -146,7 +150,9 @@ exports[`ListProductItem should render ListProductItem component and match snaps
             width="302"
           />
         </figure>
-        <div>
+        <div
+          class="ml-4 mb-3"
+        >
           <h3
             class="font-secondary mb-[5px]"
           >
@@ -179,7 +185,7 @@ exports[`ListProductItem should render ListProductItem component and match snaps
         </div>
       </div>
       <div
-        class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+        class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-xl transition"
         tabindex="-1"
       >
         <figure
@@ -212,7 +218,9 @@ exports[`ListProductItem should render ListProductItem component and match snaps
             </button>
           </div>
         </figure>
-        <div>
+        <div
+          class="ml-4 mb-3"
+        >
           <h3
             class="font-secondary mb-[5px]"
           >
@@ -245,7 +253,7 @@ exports[`ListProductItem should render ListProductItem component and match snaps
         </div>
       </div>
       <div
-        class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+        class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-xl transition"
         tabindex="-1"
       >
         <figure
@@ -264,7 +272,9 @@ exports[`ListProductItem should render ListProductItem component and match snaps
             width="302"
           />
         </figure>
-        <div>
+        <div
+          class="ml-4 mb-3"
+        >
           <h3
             class="font-secondary mb-[5px]"
           >
@@ -289,7 +299,7 @@ exports[`ListProductItem should render ListProductItem component and match snaps
         </div>
       </div>
       <div
-        class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+        class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-xl transition"
         tabindex="-1"
       >
         <figure
@@ -308,7 +318,9 @@ exports[`ListProductItem should render ListProductItem component and match snaps
             width="302"
           />
         </figure>
-        <div>
+        <div
+          class="ml-4 mb-3"
+        >
           <h3
             class="font-secondary mb-[5px]"
           >
