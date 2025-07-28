@@ -30,8 +30,7 @@ export const ProductItem = ({
   };
 
   const handleSelect = (color: string) => {
-    const isSame = selectedColor === color;
-    const newColor = isSame ? null : color;
+    const newColor = selectedColor === color ? null : color;
     setSelectedColor(newColor);
     onChange?.(newColor || '');
   };
@@ -50,14 +49,6 @@ export const ProductItem = ({
           height={403}
         />
         {isSoldOut && (
-          // <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          //   <Button
-          //     variant="ghost"
-          //     className="bg-gray text-white text-xs font-black rounded-full w-[62px] h-[62px] flex flex-col items-center justify-center pointer-events-none"
-          //   >
-          //     <span>SOLD OUT</span>
-          //   </Button>
-          // </div>
           <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
             <Button
               variant="ghost"
