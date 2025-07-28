@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Card, cn } from '@heroui/react';
+import { Button, Card } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Image from 'next/image';
@@ -10,6 +10,7 @@ import { ItemCardProps } from '@/models';
 
 // Constants
 import { ROUTER } from '@/constants';
+import { ColorButton } from '@/components';
 
 export const ProductItem = ({
   id,
@@ -68,29 +69,14 @@ export const ProductItem = ({
           {(colors ?? []).map((color) => {
             const isSelected = selectedColor === color;
             return (
-              <div
+              <ColorButton
                 key={color}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (!isSoldOut) handleSelect(color);
-                }}
-                className={cn(
-                  'rounded-full flex items-center justify-center transition-all',
-                  'w-8 h-8',
-                  isSelected
-                    ? 'border-2 border-black'
-                    : 'border border-gray hover:border-black',
-                  isSoldOut && 'pointer-events-none opacity-50',
-                )}
-              >
-                <div
-                  className={cn(
-                    'rounded-full transition-all',
-                    isSelected ? 'w-6 h-6' : 'w-8 h-8',
-                  )}
-                  style={{ backgroundColor: color }}
-                />
-              </div>
+                color={color}
+                isSelected={isSelected}
+                isDisabled={isSoldOut}
+                onClick={() => handleSelect(color)}
+                as="div"
+              />
             );
           })}
         </div>
