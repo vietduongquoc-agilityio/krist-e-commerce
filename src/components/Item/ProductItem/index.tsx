@@ -65,21 +65,34 @@ export const ProductItem = ({
         <h3 className="font-secondary mb-[5px]">{title}</h3>
         <p>${price}</p>
         <div className="flex gap-2 mt-4">
-          {(colors ?? []).map((color) => (
-            <Button
-              key={color}
-              onPress={() => handleSelect(color)}
-              className={cn(
-                'w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2',
-                selectedColor === color
-                  ? 'border-black ring-2 ring-offset-2 ring-black'
-                  : 'border-gray hover:border-black',
-              )}
-              style={{ backgroundColor: color }}
-              aria-label={`Color ${color}`}
-              isDisabled={isSoldOut}
-            />
-          ))}
+          {(colors ?? []).map((color) => {
+            const isSelected = selectedColor === color;
+            return (
+              <div
+                key={color}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (!isSoldOut) handleSelect(color);
+                }}
+                className={cn(
+                  'rounded-full flex items-center justify-center transition-all',
+                  'w-8 h-8',
+                  isSelected
+                    ? 'border-2 border-black'
+                    : 'border border-gray hover:border-black',
+                  isSoldOut && 'pointer-events-none opacity-50',
+                )}
+              >
+                <div
+                  className={cn(
+                    'rounded-full transition-all',
+                    isSelected ? 'w-6 h-6' : 'w-8 h-8',
+                  )}
+                  style={{ backgroundColor: color }}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </Card>

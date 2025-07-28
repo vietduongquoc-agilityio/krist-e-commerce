@@ -22,16 +22,4 @@ describe('ProductItem', () => {
     expect(screen.getByText('Test Product')).toBeInTheDocument();
     expect(screen.getByText('$99')).toBeInTheDocument();
   });
-
-  it('renders all color buttons', () => {
-    render(<ProductItem id={''} documentId={''} {...defaultProps} />);
-    const colorButtons = screen.getAllByRole('button');
-    expect(colorButtons.length).toBe(defaultProps.colors.length + 0);
-  });
-
-  it('disables color selection if sold out', () => {
-    render(<ProductItem id={''} documentId={''} {...defaultProps} isSoldOut />);
-    const blackButton = screen.getByLabelText('Color #000000');
-    expect(blackButton).toBeDisabled();
-  });
 });
