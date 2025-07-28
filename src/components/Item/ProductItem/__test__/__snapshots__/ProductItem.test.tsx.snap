@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ProductItem renders correctly and matches snapshot 1`] = `
+<div>
+  <div
+    class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+    tabindex="-1"
+  >
+    <figure
+      class="relative"
+    >
+      <img
+        alt="Product Item"
+        data-nimg="1"
+        decoding="async"
+        height="403"
+        loading="lazy"
+        sizes="(100vw - 20px) 100vw, 302px"
+        src="/_next/image?url=%2Fimages%2FproductItem1.webp&w=3840&q=75"
+        srcset="/_next/image?url=%2Fimages%2FproductItem1.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=3840&q=75 3840w"
+        style="color: transparent;"
+        width="302"
+      />
+    </figure>
+    <div>
+      <h3
+        class="font-secondary mb-[5px]"
+      >
+        Test Product
+      </h3>
+      <p>
+        $
+        99
+      </p>
+      <div
+        class="flex gap-2 mt-4"
+      >
+        <button
+          aria-label="Color #000000"
+          class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+          data-react-aria-pressable="true"
+          style="background-color: rgb(0, 0, 0);"
+          tabindex="0"
+          type="button"
+        />
+        <button
+          aria-label="Color #ffffff"
+          class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 text-small gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default text-default-foreground data-[hover=true]:opacity-hover w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2 border-gray hover:border-black"
+          data-react-aria-pressable="true"
+          style="background-color: rgb(255, 255, 255);"
+          tabindex="0"
+          type="button"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

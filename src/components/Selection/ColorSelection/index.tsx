@@ -26,14 +26,13 @@ export const ColorSelection = ({ onChange }: ColorSelectionProps) => {
       <div className="grid grid-cols-7 gap-3 max-w-[320px]">
         {COLOR_LIST.map((color, index) => (
           <Button
+            key={color}
             onPress={() => handleSelect(color)}
-            key={index}
             className={cn(
-              'w-[30px] h-[33px] rounded-full border-1 transition-all',
-              {
-                'border-charcoal': selectedColor === color,
-                'border-transparent': selectedColor !== color,
-              },
+              'w-[26px] h-[33px] rounded-full border-1 transition-all ml-2 mb-2',
+              selectedColor === color
+                ? 'border-black ring-2 ring-offset-2 ring-black'
+                : 'border-gray hover:border-black',
             )}
             style={{ backgroundColor: color }}
             aria-label={`Color ${color}`}
