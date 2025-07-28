@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BrandSelection Component should render BrandSelection component and match snapshot 1`] = `
+<div>
+  <div
+    class="mb-6 w-full"
+  >
+    <div
+      class="flex items-center justify-between cursor-pointer max-w-[310px]"
+    >
+      <h2
+        class="text-[18px] font-secondary"
+      >
+        Brands
+      </h2>
+      <span>
+        ▼
+      </span>
+    </div>
+    <div
+      class="flex flex-wrap gap-2 mt-3 text-gray max-w-[220px]"
+    >
+      <span
+        class="cursor-pointer hover:text-black transition"
+      >
+        Minimog
+      </span>
+      <span
+        class="cursor-pointer hover:text-black transition"
+      >
+        Retrolie Brook
+      </span>
+      <span
+        class="cursor-pointer hover:text-black transition"
+      >
+        Learts
+      </span>
+      <span
+        class="cursor-pointer hover:text-black transition"
+      >
+        Vagabond
+      </span>
+      <span
+        class="cursor-pointer hover:text-black transition"
+      >
+        Abby
+      </span>
+    </div>
+  </div>
+</div>
+`;
