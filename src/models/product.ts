@@ -24,3 +24,24 @@ export interface ItemCardProps {
   onChange?: (color: string) => void;
   isSoldOut?: boolean;
 }
+
+export interface ProductModel {
+  id: string;
+  documentId: string;
+  title: string;
+  description?: string;
+  price: number;
+  salePrice?: number;
+  thumbnailUrl: string;
+  colors: string[];
+  sizes: string[];
+  rating: number;
+  reviewCount: number;
+  viewerCount?: number;
+  saleEndsIn?: string; // "00:05:59:47"
+  onChange?: (color: string) => void;
+  createdAt?: string;
+  updatedAt?: string;
+  stock: number; // available quantity
+  maxStock: number;
+}

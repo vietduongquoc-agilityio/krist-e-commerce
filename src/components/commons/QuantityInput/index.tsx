@@ -26,7 +26,7 @@ export const QuantityInput = ({
   };
 
   return (
-    <div className="flex items-center border border-gray-200 rounded-lg px-4 py-2 w-fit">
+    <div className="flex items-center border border-gray-200 rounded-lg px-4 py-2 w-fit hover:bg-whiteSmoke transition">
       <Button
         size="sm"
         variant="ghost"

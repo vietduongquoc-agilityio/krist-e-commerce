@@ -13,9 +13,9 @@ export const ProductInfoPanel = () => {
       {/* Quick Actions */}
       <div className="flex space-x-2 w-[585px] border-b-1 pb-4 border-lightGray mb-7">
         <IconCompare />
-        <span>Compare</span>
+        <span className="pr-5">Compare</span>
         <IconQuestion />
-        <span>Ask a question</span>
+        <span className="pr-5">Ask a question</span>
         <IconShare />
         <span>Share</span>
       </div>
@@ -24,14 +24,14 @@ export const ProductInfoPanel = () => {
       <div className="flex flex-col pb-7">
         <div className="flex items-center mb-3">
           <IconCar />
-          <span className="font-bold font-secondary mr-2">
+          <span className="font-bold font-secondary pl-4 mr-2">
             Estimated Delivery:
           </span>
           <span>Jul 30 - Aug 03</span>
         </div>
         <div className="flex items-center">
           <IconShopping />
-          <span className="font-bold font-secondary mr-2">
+          <span className="font-bold font-secondary pl-4 mr-2">
             Free Shipping & Returns:
           </span>
           <span>On all orders over $75</span>
