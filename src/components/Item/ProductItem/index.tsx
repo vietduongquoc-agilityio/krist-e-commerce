@@ -39,7 +39,7 @@ export const ProductItem = ({
   return (
     <Card
       onClick={handleCardClick}
-      className="cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+      className="cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-xl transition"
     >
       <figure className="relative">
         <Image
@@ -62,7 +62,7 @@ export const ProductItem = ({
           </div>
         )}
       </figure>
-      <div>
+      <div className="ml-4 mb-3">
         <h3 className="font-secondary mb-[5px]">{title}</h3>
         <p>${price}</p>
         <div className="flex gap-2 mt-4">

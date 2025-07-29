@@ -3,7 +3,7 @@
 exports[`ProductItem renders correctly and matches snapshot 1`] = `
 <div>
   <div
-    class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden"
+    class="h-auto text-foreground box-border bg-content1 outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large motion-reduce:transition-none cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-xl transition"
     tabindex="-1"
   >
     <figure
@@ -22,7 +22,9 @@ exports[`ProductItem renders correctly and matches snapshot 1`] = `
         width="302"
       />
     </figure>
-    <div>
+    <div
+      class="ml-4 mb-3"
+    >
       <h3
         class="font-secondary mb-[5px]"
       >
