@@ -7,6 +7,7 @@ export interface ProductModel {
   salePrice?: number;
   thumbnailUrl: string;
   colors: string[];
+  images: string[];
   sizes: string[];
   rating: number;
   reviewCount: number;

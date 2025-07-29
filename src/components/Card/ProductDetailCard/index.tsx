@@ -31,10 +31,12 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     rating,
     reviewCount,
     stock = 4,
+    images,
   } = product;
 
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState(thumbnailUrl);
 
   const handleSelect = (color: string) => {
     const newColor = selectedColor === color ? null : color;
@@ -50,10 +52,31 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   };
 
   return (
-    <div className="flex gap-[50px] justify-center">
+    <section className="flex gap-[50px] justify-center">
+      <div className="flex flex-col gap-4">
+        {(images ?? [thumbnailUrl]).map((img, index) => (
+          <Button
+            key={index}
+            onClick={() => setSelectedImage(img)}
+            className={`w-[70px] h-[90px] relative ${
+              selectedImage === img
+                ? 'border-whiteSmoke ring-2 ring-gray ring-offset-2'
+                : 'border-transparent'
+            }  border-whiteSmoke rounded-none overflow-hidden hover:border-gray transition`}
+          >
+            <Image
+              src={img}
+              alt={`Thumbnail ${index + 1}`}
+              fill
+              sizes="(100vw - 20px) 100vw, 70px"
+              className="object-cover"
+            />
+          </Button>
+        ))}
+      </div>
       <figure>
         <Image
-          src={thumbnailUrl}
+          src={selectedImage}
           alt={title}
           width={491}
           height={655}
@@ -166,6 +189,6 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
         {/* Product Info Panel */}
         <ProductInfoPanel />
       </div>
-    </div>
+    </section>
   );
 };

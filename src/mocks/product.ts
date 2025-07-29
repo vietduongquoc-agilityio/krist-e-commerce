@@ -95,4 +95,9 @@ export const productMock = {
   saleEndsIn: '00:05:59:47',
   stock: 50,
   maxStock: 100,
+  images: [
+    '/images/productItem1.webp',
+    '/images/productItem2.webp',
+    '/images/productItem3.webp',
+  ],
 };
