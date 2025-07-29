@@ -11,3 +11,8 @@ export { IconProtection } from './ProtectionIcon';
 export { IconQuantity } from './QuantityIcon';
 export { IconShipping } from './ShippingIcon';
 export { IconSupport } from './SupportIcon';
+export { IconShare } from './ShareIcon';
+export { IconQuestion } from './QuestionIcon';
+export { IconCompare } from './CompareIcon';
+export { IconCar } from './CarIcon';
+export { IconShopping } from './ShoppingIcon';
