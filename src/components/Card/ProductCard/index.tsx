@@ -4,12 +4,12 @@ import Image from 'next/image';
 import { Card } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 
-// Models
-import { ProductCardProps } from '@/models';
-
 // Components
 import { StarIcon } from '@/components';
 import { ROUTER } from '@/constants';
+
+// Types
+import { ProductCardProps } from '@/types';
 
 export const ProductCard = ({
   id,

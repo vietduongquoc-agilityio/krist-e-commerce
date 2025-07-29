@@ -16,3 +16,4 @@ export { IconQuestion } from './QuestionIcon';
 export { IconCompare } from './CompareIcon';
 export { IconCar } from './CarIcon';
 export { IconShopping } from './ShoppingIcon';
+export { IconEye } from './EyeIcon';

@@ -1,0 +1,26 @@
+import * as React from 'react';
+import { SVGProps } from 'react';
+
+export const IconEye = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width={20}
+    height={21}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <g opacity={0.97} clipPath="url(#a)">
+      <path
+        d="M19.77 9.654A11.318 11.318 0 0 0 10 4.11 11.318 11.318 0 0 0 .23 9.654a1.667 1.667 0 0 0 0 1.692A11.318 11.318 0 0 0 10 16.89c4.162 0 7.812-2.222 9.77-5.543a1.667 1.667 0 0 0 0-1.692ZM10 15.222A9.65 9.65 0 0 1 1.667 10.5a9.638 9.638 0 0 1 7.505-4.688 1.944 1.944 0 1 1-3.339 1.354 4.722 4.722 0 1 0 7.92-.641 9.603 9.603 0 0 1 4.58 3.975A9.65 9.65 0 0 1 10 15.222Z"
+        fill="#000"
+        stroke="#000"
+        strokeWidth={0.035}
+      />
+    </g>
+    <defs>
+      <clipPath id="a">
+        <path fill="#fff" transform="translate(0 .5)" d="M0 0h20v20H0z" />
+      </clipPath>
+    </defs>
+  </svg>
+);

@@ -1,7 +1,7 @@
 'use client';
 
-// Models
-import { ItemCardProps } from '@/models';
+// Types
+import { ItemCardProps } from '@/types';
 
 // Components
 import { ProductItem } from '@/components/Item';

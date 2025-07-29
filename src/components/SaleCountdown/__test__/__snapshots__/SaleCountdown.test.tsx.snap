@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`SaleCountdown should render SaleCountdown component and match snapshot 1`] = `
+<div>
+  <div
+    class="text-[18px] font-secondary text-coralRed py-3 px-4 bg-lightPink rounded-[4px] my-8 flex justify-between"
+  >
+    Hurry up! Sale ends in: 
+    <span
+      class="font-bold"
+    >
+      00 : 05 : 59 : 47
+    </span>
+  </div>
+</div>
+`;
