@@ -30,9 +30,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     sizes,
     rating,
     reviewCount,
-    onChange,
     stock = 4,
-    maxStock,
   } = product;
 
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
@@ -40,7 +38,6 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   const handleSelect = (color: string) => {
     const newColor = selectedColor === color ? null : color;
     setSelectedColor(newColor);
-    onChange?.(newColor || '');
   };
 
   return (
@@ -89,6 +86,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
               </span>
             )}
           </div>
+
           {/* Viewer Count */}
           <ViewerCount />
 
@@ -96,7 +94,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
           <SaleCountdown />
 
           {/* Stock Status Bar */}
-          <StockStatusBar inStock={stock} maxStock={maxStock || 100} />
+          <StockStatusBar inStock={stock} maxStock={100} />
 
           {/* Sizes */}
           <div className="flex gap-2 flex-col my-5">

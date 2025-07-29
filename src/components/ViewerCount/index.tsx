@@ -1,4 +1,4 @@
-import { IconEye } from '@/components/icons';
+import { IconEye } from '@/components';
 
 export const ViewerCount = () => (
   <div className="text-gray flex items-center gap-3">
