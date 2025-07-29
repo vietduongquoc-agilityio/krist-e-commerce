@@ -12,7 +12,7 @@ import { TEXT_SIZE } from '@/interfaces';
 
 export const SignUpForm = () => {
   return (
-    <div className="w-full mx-auto flex flex-col gap-6">
+    <form className="w-full mx-auto flex flex-col gap-6">
       <h2 className="font-secondary text-[30px] mb-8">Create Account</h2>
 
       <div className="w-full flex justify-between gap-16 mb-16">
@@ -65,6 +65,6 @@ export const SignUpForm = () => {
           </Link>
         </Text>
       </div>
-    </div>
+    </form>
   );
 };

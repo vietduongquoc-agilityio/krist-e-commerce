@@ -2,7 +2,7 @@
 
 exports[`SignInForm should render SignInForm correctly and match snapshot 1`] = `
 <div>
-  <div
+  <form
     class="w-full mx-auto flex flex-col gap-6"
   >
     <h2
@@ -165,6 +165,6 @@ exports[`SignInForm should render SignInForm correctly and match snapshot 1`] = 
         Forget Password?
       </p>
     </div>
-  </div>
+  </form>
 </div>
 `;

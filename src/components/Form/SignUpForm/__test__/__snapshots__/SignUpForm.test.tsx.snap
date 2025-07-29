@@ -2,7 +2,7 @@
 
 exports[`SignUpForm should render SignUpForm correctly and match snapshot 1`] = `
 <div>
-  <div
+  <form
     class="w-full mx-auto flex flex-col gap-6"
   >
     <h2
@@ -253,6 +253,6 @@ exports[`SignUpForm should render SignUpForm correctly and match snapshot 1`] = 
         </a>
       </p>
     </div>
-  </div>
+  </form>
 </div>
 `;

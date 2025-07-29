@@ -13,7 +13,7 @@ import { TEXT_SIZE, TEXT_VARIANT } from '@/interfaces';
 
 export const SignInForm = () => {
   return (
-    <div className="w-full mx-auto flex flex-col gap-6">
+    <form className="w-full mx-auto flex flex-col gap-6">
       {/* Title */}
       <h2 className="font-secondary text-[30px] mb-8">Sign In To FASCO</h2>
 
@@ -68,6 +68,6 @@ export const SignInForm = () => {
           Forget Password?
         </Text>
       </div>
-    </div>
+    </form>
   );
 };
