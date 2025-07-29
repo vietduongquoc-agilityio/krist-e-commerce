@@ -33,11 +33,20 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     stock = 4,
   } = product;
 
+  const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
 
   const handleSelect = (color: string) => {
     const newColor = selectedColor === color ? null : color;
     setSelectedColor(newColor);
+  };
+
+  const handleAddToCart = () => {
+    // TODO: Replace with cart store logic
+    console.log('Add to cart:', {
+      productId: product.id,
+      quantity,
+    });
   };
 
   return (
@@ -134,8 +143,20 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
           <div className="flex mt-7 flex-col">
             <span className="font-bold font-secondary">Quantity</span>
             <div className="flex gap-9 mt-3">
-              <QuantityInput />
-              <Button variant="ghost" className="font-secondary">
+              {/* <QuantityInput /> */}
+              <QuantityInput
+                value={quantity}
+                max={stock}
+                min={1}
+                onChange={setQuantity}
+                aria-label="Select product quantity"
+              />
+              <Button
+                variant="ghost"
+                className="font-secondary"
+                onClick={handleAddToCart}
+                isDisabled={stock === 0}
+              >
                 Add to cart
               </Button>
             </div>
