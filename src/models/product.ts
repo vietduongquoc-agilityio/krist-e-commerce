@@ -1,26 +1,17 @@
-export interface ProductCardProps {
+export interface ProductModel {
   id: string;
   documentId: string;
-  thumbnailUrl: string;
   title: string;
-  brand?: string;
-  rating: number;
-  slug?: string;
-  reviews?: string;
-  price: number;
-  status?: string;
   description?: string;
+  price: number;
+  salePrice?: number;
+  thumbnailUrl: string;
+  colors: string[];
+  images: string[];
+  sizes: string[];
+  rating: number;
+  reviewCount: number;
   createdAt?: string;
   updatedAt?: string;
-}
-
-export interface ItemCardProps {
-  id: string;
-  documentId: string;
-  thumbnailUrl: string;
-  title: string;
-  price: number;
-  colors?: string[];
-  onChange?: (color: string) => void;
-  isSoldOut?: boolean;
+  stock: number;
 }

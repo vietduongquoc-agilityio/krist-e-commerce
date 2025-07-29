@@ -1,8 +1,8 @@
 // Components
 import { ProductCard } from '@/components';
 
-// Models
-import { ProductCardProps } from '@/models';
+// Types
+import { ProductCardProps } from '@/types';
 
 type ListProductCardProps = {
   products: ProductCardProps[];

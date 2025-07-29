@@ -45,6 +45,7 @@ exports[`ProductCard should render correctly and match snapshot 1`] = `
         >
           <svg
             aria-label="star icon"
+            class=""
             fill="none"
             height="22"
             viewBox="0 0 24 22"
@@ -58,6 +59,7 @@ exports[`ProductCard should render correctly and match snapshot 1`] = `
           </svg>
           <svg
             aria-label="star icon"
+            class=""
             fill="none"
             height="22"
             viewBox="0 0 24 22"
@@ -71,6 +73,7 @@ exports[`ProductCard should render correctly and match snapshot 1`] = `
           </svg>
           <svg
             aria-label="star icon"
+            class=""
             fill="none"
             height="22"
             viewBox="0 0 24 22"
