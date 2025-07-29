@@ -10,8 +10,10 @@ export const colors = {
 
   // Red tones
   red: '#FF0000',
+  strawberry: '#DA3F3F',
   coralRed: '#FF6C6C',
   rosyPink: '#F8CCCC',
+  lightPink: '#FDEFEE',
 
   // Purple tones
   orchid: '#B66CFF',

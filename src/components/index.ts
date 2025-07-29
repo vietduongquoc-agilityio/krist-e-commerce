@@ -9,3 +9,7 @@ export * from './Item';
 export * from './Breadcrumb';
 export * from './Selection';
 export * from './ProductInfoPanel';
+export * from './StarRating';
+export * from './SaleCountdown';
+export * from './StockStatusBar';
+export * from './ViewerCount';

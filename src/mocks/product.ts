@@ -78,3 +78,26 @@ export const PRODUCTS = [
   },
   // Add more...
 ];
+
+// mock/productMock.ts
+
+export const productMock = {
+  id: '1',
+  documentId: 'doc-1',
+  title: 'Nike Air Max 270',
+  price: 3900,
+  salePrice: 5900,
+  thumbnailUrl: '/images/productItem1.webp',
+  colors: ['#000000', '#ff0000', '#00ff00'],
+  sizes: ['M', 'L', 'XL', 'XXL'],
+  reviewCount: 5,
+  rating: 4.5,
+  saleEndsIn: '00:05:59:47',
+  stock: 50,
+  maxStock: 100,
+  images: [
+    '/images/productItem1.webp',
+    '/images/productItem2.webp',
+    '/images/productItem3.webp',
+  ],
+};

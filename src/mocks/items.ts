@@ -1,4 +1,4 @@
-import { ItemCardProps } from '@/models';
+import { ItemCardProps } from '@/types';
 
 export const ITEMS: ItemCardProps[] = [
   {

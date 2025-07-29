@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Image from 'next/image';
 
-// Models
-import { ItemCardProps } from '@/models';
+// Types
+import { ItemCardProps } from '@/types';
 
 // Constants
 import { ROUTER } from '@/constants';
