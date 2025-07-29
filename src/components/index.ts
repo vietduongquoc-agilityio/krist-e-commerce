@@ -8,3 +8,4 @@ export * from './Sections';
 export * from './Item';
 export * from './Breadcrumb';
 export * from './Selection';
+export * from './ProductInfoPanel';
