@@ -1,5 +1,9 @@
 'use client';
 
+import Image from 'next/image';
+import { useState } from 'react';
+
+// Components
 import {
   Button,
   ColorButton,
@@ -11,10 +15,9 @@ import {
   StockStatusBar,
   ViewerCount,
 } from '@/components';
-import { ProductModel } from '@/models';
 
-import Image from 'next/image';
-import { useState } from 'react';
+// Models
+import { ProductModel } from '@/models';
 
 interface ProductDetailCardProps {
   product: ProductModel;
