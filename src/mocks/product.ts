@@ -93,8 +93,7 @@ export const productMock = {
   reviewCount: 5,
   rating: 4.5,
   saleEndsIn: '00:05:59:47',
-  stock: 50,
-  maxStock: 100,
+  stock: 9,
   images: [
     '/images/productItem1.webp',
     '/images/productItem2.webp',

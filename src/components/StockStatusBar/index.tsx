@@ -5,7 +5,10 @@ interface StockStatusBarProps {
   maxStock: number;
 }
 
-export const StockStatusBar = ({ inStock, maxStock }: StockStatusBarProps) => {
+export const StockStatusBar = ({
+  inStock,
+  maxStock = 100,
+}: StockStatusBarProps) => {
   const percent = Math.min((inStock / maxStock) * 100, 100);
 
   return (
