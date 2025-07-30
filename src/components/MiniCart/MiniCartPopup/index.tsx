@@ -41,7 +41,7 @@ export const MiniCartPopup = ({
 
         <div className="space-y-8">
           {cartItems.length === 0 ? (
-            <p className="text-lg text-gray">Your cart is empty.</p>
+            <p className="text-xl text-red">Your cart is empty.</p>
           ) : (
             cartItems.map((item) => (
               <ItemMiniCart

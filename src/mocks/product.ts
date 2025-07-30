@@ -83,23 +83,24 @@ export const PRODUCTS = [
 
 // mock/productMock.ts
 
-export const productMock = {
-  id: '1',
-  documentId: 'doc-1',
-  title: 'Nike Air Max 270',
-  price: 3900,
-  salePrice: 5900,
-  thumbnailUrl: '/images/productItem1.webp',
-  colors: ['#000000', '#ff0000', '#00ff00'],
-  quantity: 1,
-  sizes: ['M', 'L', 'XL', 'XXL'],
-  reviewCount: 5,
-  rating: 4.5,
-  saleEndsIn: '00:05:59:47',
-  stock: 9,
-  images: [
-    '/images/productItem1.webp',
-    '/images/productItem2.webp',
-    '/images/productItem3.webp',
-  ],
-};
+export const productMock: ProductModel[] = [
+  {
+    id: '1',
+    documentId: 'doc-1',
+    title: 'Nike Air Max 270',
+    price: 3900,
+    salePrice: 5900,
+    thumbnailUrl: '/images/productItem1.webp',
+    colors: ['#000000', '#ff0000', '#00ff00'],
+    quantity: 1,
+    sizes: ['M', 'L', 'XL', 'XXL'],
+    reviewCount: 5,
+    rating: 4.5,
+    stock: 9,
+    images: [
+      '/images/productItem1.webp',
+      '/images/productItem2.webp',
+      '/images/productItem3.webp',
+    ],
+  },
+];

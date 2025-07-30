@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`MiniCartPopup should render MiniCartPopup component and match snapshot 1`] = `<div />`;
