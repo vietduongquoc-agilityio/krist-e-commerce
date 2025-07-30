@@ -115,12 +115,6 @@ exports[`Footer Component renders correctly and matches snapshot 1`] = `
             </a>
             <a
               class="transition-colors text-charcoal hover:text-black"
-              href="/product"
-            >
-              Product
-            </a>
-            <a
-              class="transition-colors text-charcoal hover:text-black"
               href="/cart"
             >
               Cart

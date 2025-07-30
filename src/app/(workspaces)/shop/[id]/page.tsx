@@ -1,11 +1,17 @@
-import { ProductDetailCard, ProductInfoPanel } from '@/components';
+// Components
+import { AboutSection, ProductDetailCard } from '@/components';
+
+// Mock
 import { productMock } from '@/mocks';
 
 export default function Shop() {
   return (
     <div>
-      <ProductInfoPanel />
+      {/* Product Detail Card */}
       <ProductDetailCard product={productMock} />
+
+      {/* About Section */}
+      <AboutSection />
     </div>
   );
 }
