@@ -1,0 +1,595 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ProductDetailCard should render ProductDetailCard component and match snapshot 1`] = `
+<div>
+  <section
+    class="flex gap-[50px] justify-center pt-[78px]"
+  >
+    <div
+      class="flex flex-col gap-4"
+    >
+      <button
+        class="z-0 group inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover py-3 border hover:delay-75 bg-black hover:bg-secondary text-white text-base w-[70px] h-[90px] relative ring-2 ring-gray ring-offset-2 border-whiteSmoke rounded-none overflow-hidden hover:border-gray transition"
+        data-react-aria-pressable="true"
+        tabindex="0"
+        type="button"
+      >
+        <img
+          alt="Thumbnail 1"
+          class="object-cover"
+          data-nimg="fill"
+          decoding="async"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 70px"
+          src="/_next/image?url=%2Fimages%2FproductItem1.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2FproductItem1.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=3840&q=75 3840w"
+          style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+        />
+      </button>
+      <button
+        class="z-0 group inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover py-3 border hover:delay-75 bg-black hover:bg-secondary text-white text-base w-[70px] h-[90px] relative border-whiteSmoke rounded-none overflow-hidden hover:border-gray transition"
+        data-react-aria-pressable="true"
+        tabindex="0"
+        type="button"
+      >
+        <img
+          alt="Thumbnail 2"
+          class="object-cover"
+          data-nimg="fill"
+          decoding="async"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 70px"
+          src="/_next/image?url=%2Fimages%2FproductItem2.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2FproductItem2.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2FproductItem2.webp&w=3840&q=75 3840w"
+          style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+        />
+      </button>
+      <button
+        class="z-0 group inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover py-3 border hover:delay-75 bg-black hover:bg-secondary text-white text-base w-[70px] h-[90px] relative border-whiteSmoke rounded-none overflow-hidden hover:border-gray transition"
+        data-react-aria-pressable="true"
+        tabindex="0"
+        type="button"
+      >
+        <img
+          alt="Thumbnail 3"
+          class="object-cover"
+          data-nimg="fill"
+          decoding="async"
+          loading="lazy"
+          sizes="(100vw - 20px) 100vw, 70px"
+          src="/_next/image?url=%2Fimages%2FproductItem3.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2FproductItem3.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2FproductItem3.webp&w=3840&q=75 3840w"
+          style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+        />
+      </button>
+    </div>
+    <figure>
+      <img
+        alt="Nike Air Max 270"
+        data-nimg="1"
+        decoding="async"
+        height="655"
+        loading="lazy"
+        sizes="(100vw - 20px) 100vw, 491px"
+        src="/_next/image?url=%2Fimages%2FproductItem1.webp&w=3840&q=75"
+        srcset="/_next/image?url=%2Fimages%2FproductItem1.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2FproductItem1.webp&w=3840&q=75 3840w"
+        style="color: transparent;"
+        width="491"
+      />
+    </figure>
+    <div
+      class="flex flex-col w-[615px]"
+    >
+      <div
+        class="mb-16 px-4"
+      >
+        <p
+          class="font-secondary text-charcoal/80 text-[14px] mb-2"
+        >
+          Fasco
+        </p>
+        <div
+          class="flex items-center justify-between"
+        >
+          <h2
+            class="text-2xl font-semibold"
+          >
+            Nike Air Max 270
+          </h2>
+          <svg
+            class="w-11 h-11 border border-lightGray rounded-full p-[11px] cursor-not-allowed hover:bg-whiteSmoke transition"
+            fill="none"
+            height="20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m18.337 7.066-5.073-.74-2.267-4.597c-.407-.82-1.584-.83-1.993 0L6.736 6.326l-5.073.74C.753 7.198.39 8.319 1.05 8.962l3.67 3.576-.868 5.052c-.156.913.805 1.597 1.61 1.17l4.54-2.385 4.537 2.385c.806.424 1.768-.257 1.611-1.17l-.868-5.052 3.67-3.576c.66-.643.296-1.764-.614-1.896Zm-4.844 4.889.823 4.805L10 14.493 5.684 16.76l.823-4.805-3.493-3.403 4.826-.701L10 3.476l2.16 4.375 4.826.701-3.493 3.403Z"
+              fill="#484848"
+            />
+          </svg>
+        </div>
+        <div
+          class="flex items-center space-x-1"
+        >
+          <svg
+            aria-label="star icon"
+            class="w-4 h-4 text-yellow-400"
+            fill="currentColor"
+            height="22"
+            viewBox="0 0 24 22"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+              fill="#FBA333"
+            />
+          </svg>
+          <svg
+            aria-label="star icon"
+            class="w-4 h-4 text-yellow-400"
+            fill="currentColor"
+            height="22"
+            viewBox="0 0 24 22"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+              fill="#FBA333"
+            />
+          </svg>
+          <svg
+            aria-label="star icon"
+            class="w-4 h-4 text-yellow-400"
+            fill="currentColor"
+            height="22"
+            viewBox="0 0 24 22"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+              fill="#FBA333"
+            />
+          </svg>
+          <svg
+            aria-label="star icon"
+            class="w-4 h-4 text-yellow-400"
+            fill="currentColor"
+            height="22"
+            viewBox="0 0 24 22"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+              fill="#FBA333"
+            />
+          </svg>
+          <svg
+            aria-label="star icon"
+            class="w-4 h-4 text-yellow-300"
+            fill="currentColor"
+            height="22"
+            viewBox="0 0 24 22"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.9875 0L16.0742 6.36261L23.3883 8.28316L18.6 14.136L19.0336 21.6856L11.9875 18.9403L4.94142 21.6856L5.37504 14.136L0.58671 8.28316L7.90078 6.36261L11.9875 0Z"
+              fill="#FBA333"
+            />
+          </svg>
+          <span
+            class="text-sm text-gray-600 ml-2"
+          >
+            (
+            5
+            )
+          </span>
+        </div>
+        <div
+          class="flex items-center gap-3 my-8"
+        >
+          <span
+            class="text-[24px] font-secondary"
+          >
+            $
+            5,900
+          </span>
+          <span
+            class="text-gray line-through text-base"
+          >
+            $
+            3,900
+          </span>
+          <span
+            class="text-sm font-secondary text-white bg-strawberry py-[1px] px-3 rounded-10"
+          >
+            Save 33%
+          </span>
+        </div>
+        <div
+          class="text-gray flex items-center gap-3"
+        >
+          <span>
+            <svg
+              fill="none"
+              height="21"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                clip-path="url(#a)"
+                opacity="0.97"
+              >
+                <path
+                  d="M19.77 9.654A11.318 11.318 0 0 0 10 4.11 11.318 11.318 0 0 0 .23 9.654a1.667 1.667 0 0 0 0 1.692A11.318 11.318 0 0 0 10 16.89c4.162 0 7.812-2.222 9.77-5.543a1.667 1.667 0 0 0 0-1.692ZM10 15.222A9.65 9.65 0 0 1 1.667 10.5a9.638 9.638 0 0 1 7.505-4.688 1.944 1.944 0 1 1-3.339 1.354 4.722 4.722 0 1 0 7.92-.641 9.603 9.603 0 0 1 4.58 3.975A9.65 9.65 0 0 1 10 15.222Z"
+                  fill="#000"
+                  stroke="#000"
+                  stroke-width="0.035"
+                />
+              </g>
+              <defs>
+                <clippath
+                  id="a"
+                >
+                  <path
+                    d="M0 0h20v20H0z"
+                    fill="#fff"
+                    transform="translate(0 .5)"
+                  />
+                </clippath>
+              </defs>
+            </svg>
+          </span>
+          24 people are viewing this right now
+        </div>
+        <div
+          class="text-[18px] font-secondary text-coralRed py-3 px-4 bg-lightPink rounded-[4px] my-8 flex justify-between"
+        >
+          Hurry up! Sale ends in: 
+          <span
+            class="font-bold"
+          >
+            00 : 05 : 59 : 47
+          </span>
+        </div>
+        <div
+          class="mt-2 mb-5"
+        >
+          <p
+            class="text-sm mb-3 text-gray"
+          >
+            Only 
+            <b>
+              9
+            </b>
+             item(s) left in stock!
+          </p>
+          <div
+            class="w-full h-2 bg-lightGray rounded-full"
+          >
+            <div
+              class="h-2 bg-red/80 rounded-full"
+              style="width: 9%;"
+            />
+          </div>
+        </div>
+        <div
+          class="flex gap-2 flex-col my-5"
+        >
+          <span
+            class="font-bold font-secondary"
+          >
+            Sizes
+          </span>
+          <div
+            class="flex gap-2"
+          >
+            <div
+              class="w-11 h-11 flex items-center justify-center text-[18px] border rounded cursor-pointer transition
+                            border-gray text-black hover:border-black hover:bg-black hover:text-white
+                            "
+            >
+              M
+            </div>
+            <div
+              class="w-11 h-11 flex items-center justify-center text-[18px] border rounded cursor-pointer transition
+                            border-gray text-black hover:border-black hover:bg-black hover:text-white
+                            "
+            >
+              L
+            </div>
+            <div
+              class="w-11 h-11 flex items-center justify-center text-[18px] border rounded cursor-pointer transition
+                            border-gray text-black hover:border-black hover:bg-black hover:text-white
+                            "
+            >
+              XL
+            </div>
+            <div
+              class="w-11 h-11 flex items-center justify-center text-[18px] border rounded cursor-pointer transition
+                            border-gray text-black hover:border-black hover:bg-black hover:text-white
+                            "
+            >
+              XXL
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex gap-3 flex-col"
+        >
+          <span
+            class="font-bold font-secondary"
+          >
+            Colors
+          </span>
+          <div
+            class="flex gap-[10px]"
+          >
+            <div
+              class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
+            >
+              <div
+                class="rounded-full transition-all w-8 h-8"
+                style="background-color: rgb(0, 0, 0);"
+              />
+            </div>
+            <div
+              class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
+            >
+              <div
+                class="rounded-full transition-all w-8 h-8"
+                style="background-color: rgb(255, 0, 0);"
+              />
+            </div>
+            <div
+              class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
+            >
+              <div
+                class="rounded-full transition-all w-8 h-8"
+                style="background-color: rgb(0, 255, 0);"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex mt-7 flex-col"
+        >
+          <span
+            class="font-bold font-secondary"
+          >
+            Quantity
+          </span>
+          <div
+            class="flex gap-9 mt-3"
+          >
+            <div
+              class="flex items-center border border-gray rounded-lg px-4 py-2 w-fit hover:bg-whiteSmoke transition"
+            >
+              <button
+                class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-medium bg-transparent px-3 min-w-16 h-8 text-tiny gap-2 rounded-small [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none border-default text-default-foreground data-[hover=true]:!bg-default transition hover:bg-whiteSmoke cursor-not-allowed opacity-50"
+                data-react-aria-pressable="true"
+                disabled=""
+                tabindex="0"
+                title="Cannot reduce further"
+                type="button"
+              >
+                −
+              </button>
+              <span
+                class="mx-4 w-4 text-center text-lg transition-all duration-200 ease-in-out"
+              >
+                1
+              </span>
+              <button
+                class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-medium bg-transparent px-3 min-w-16 h-8 text-tiny gap-2 rounded-small [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none border-default text-default-foreground data-[hover=true]:!bg-default transition hover:bg-whiteSmoke"
+                data-react-aria-pressable="true"
+                tabindex="0"
+                type="button"
+              >
+                +
+              </button>
+            </div>
+            <button
+              class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:!bg-default w-full py-3 rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-transparent hover:bg-primary text-black text-base hover:text-white font-secondary"
+              data-react-aria-pressable="true"
+              tabindex="0"
+              type="button"
+            >
+              Add to cart
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="pt-6 space-y-6 px-4 flex flex-col"
+      >
+        <div
+          class="flex space-x-2 w-[585px] border-b-1 pb-4 border-lightGray mb-7"
+        >
+          <svg
+            fill="none"
+            height="21"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.906 15.5H7.188V2.375a.625.625 0 0 0-.625-.625h-.625a.625.625 0 0 0-.625.625V15.5H3.594a.468.468 0 0 0-.341.79l2.656 2.813a.468.468 0 0 0 .681 0l2.657-2.812a.469.469 0 0 0-.34-.791Zm7.841-10.79-2.656-2.813a.468.468 0 0 0-.681 0l-2.657 2.812a.468.468 0 0 0 .341.791h1.719v13.125a.625.625 0 0 0 .625.625h.625a.625.625 0 0 0 .625-.625V5.5h1.719a.469.469 0 0 0 .34-.79Z"
+              fill="#000"
+            />
+          </svg>
+          <span
+            class="pr-5"
+          >
+            Compare
+          </span>
+          <svg
+            fill="none"
+            height="21"
+            width="21"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              clip-path="url(#a)"
+            >
+              <path
+                d="M10.48 13.781a1.094 1.094 0 1 0 0 2.188 1.094 1.094 0 0 0 0-2.188Zm.3-.937h-.625a.469.469 0 0 1-.469-.469v-.015c0-2.748 3.025-2.485 3.025-4.196 0-.781-.694-1.57-2.243-1.57-1.139 0-1.73.377-2.313 1.12a.467.467 0 0 1-.635.093l-.513-.357a.468.468 0 0 1-.103-.671c.829-1.064 1.812-1.748 3.564-1.748 2.043 0 3.806 1.162 3.806 3.133 0 2.634-3.025 2.495-3.025 4.196v.015c0 .259-.21.469-.469.469Zm-.3-10.781c4.634 0 8.438 3.752 8.438 8.437a8.435 8.435 0 0 1-8.438 8.438A8.435 8.435 0 0 1 2.043 10.5a8.437 8.437 0 0 1 8.438-8.438Zm0-1.25C5.13.813.793 5.152.793 10.5a9.687 9.687 0 0 0 9.688 9.688 9.687 9.687 0 0 0 9.687-9.688c0-5.348-4.338-9.688-9.688-9.688Z"
+                fill="#000"
+                stroke="#000"
+                stroke-width="0.039"
+              />
+            </g>
+            <defs>
+              <clippath
+                id="a"
+              >
+                <path
+                  d="M0 0h20v20H0z"
+                  fill="#fff"
+                  transform="translate(.48 .5)"
+                />
+              </clippath>
+            </defs>
+          </svg>
+          <span
+            class="pr-5"
+          >
+            Ask a question
+          </span>
+          <svg
+            fill="none"
+            height="21"
+            width="21"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              clip-path="url(#a)"
+            >
+              <path
+                d="M15.18 13c1.041 0 1.927.365 2.656 1.094.73.729 1.094 1.614 1.094 2.656s-.365 1.927-1.094 2.656c-.73.73-1.615 1.094-2.656 1.094-1.042 0-1.927-.365-2.657-1.094-.729-.729-1.093-1.614-1.093-2.656 0-.39.052-.768.156-1.133l-3.828-2.383A3.664 3.664 0 0 1 5.18 14.25c-1.042 0-1.927-.365-2.657-1.094-.729-.729-1.093-1.614-1.093-2.656s.364-1.927 1.093-2.656c.73-.73 1.615-1.094 2.657-1.094.99 0 1.849.339 2.578 1.016l3.828-2.383a4.106 4.106 0 0 1-.156-1.133c0-1.042.364-1.927 1.093-2.656C13.253.864 14.138.5 15.18.5c1.041 0 1.927.365 2.656 1.094.73.729 1.094 1.614 1.094 2.656s-.365 1.927-1.094 2.656C17.106 7.636 16.22 8 15.18 8c-.99 0-1.85-.339-2.578-1.016L8.773 9.367c.235.755.235 1.51 0 2.266l3.829 2.383A3.664 3.664 0 0 1 15.18 13Zm1.328-10.078a1.808 1.808 0 0 0-1.328-.547c-.521 0-.964.182-1.328.547a1.808 1.808 0 0 0-.547 1.328c0 .52.182.964.547 1.328.364.365.807.547 1.328.547.52 0 .963-.182 1.328-.547.364-.364.547-.807.547-1.328 0-.52-.183-.964-.547-1.328ZM3.852 11.828c.364.365.807.547 1.328.547.52 0 .963-.182 1.328-.547.364-.364.547-.807.547-1.328 0-.52-.183-.964-.547-1.328a1.808 1.808 0 0 0-1.328-.547c-.521 0-.964.182-1.328.547a1.808 1.808 0 0 0-.547 1.328c0 .52.182.963.547 1.328Zm10 6.25c.364.365.807.547 1.328.547.52 0 .963-.182 1.328-.547.364-.364.547-.807.547-1.328 0-.52-.183-.963-.547-1.328a1.808 1.808 0 0 0-1.328-.547c-.521 0-.964.182-1.328.547a1.808 1.808 0 0 0-.547 1.328c0 .52.182.963.547 1.328Z"
+                fill="#000"
+              />
+            </g>
+            <defs>
+              <clippath
+                id="a"
+              >
+                <path
+                  d="M0 0h20v20H0z"
+                  fill="#fff"
+                  transform="translate(.18 .5)"
+                />
+              </clippath>
+            </defs>
+          </svg>
+          <span>
+            Share
+          </span>
+        </div>
+        <div
+          class="flex flex-col pb-7"
+        >
+          <div
+            class="flex items-center mb-3"
+          >
+            <svg
+              fill="none"
+              height="21"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                clip-path="url(#a)"
+              >
+                <path
+                  d="M8.75 8.5A.25.25 0 0 0 9 8.25v-.5a.25.25 0 0 0-.25-.25h-7.5a.25.25 0 0 0-.25.25v.5c0 .137.113.25.25.25h7.5Zm11 6H19v-3.378c0-.525-.212-1.04-.587-1.413L15.79 7.088a1.991 1.991 0 0 0-1.413-.588H13V4.956c0-.803-.694-1.456-1.544-1.456H3.544C2.694 3.5 2 4.153 2 4.956V5.5H.25a.25.25 0 0 0-.25.25v.5c0 .138.113.25.25.25h7.5A.25.25 0 0 0 8 6.25v-.5a.25.25 0 0 0-.25-.25H3v-.544c0-.253.244-.456.544-.456h7.912c.3 0 .544.203.544.456V14.5H6.487a2.492 2.492 0 0 0-1.987-1c-.566 0-1.081.194-1.5.512V11.5H2V16a2.5 2.5 0 1 0 4.95-.5h6.1a2.5 2.5 0 1 0 4.9 0h1.8a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25Zm-15.25 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm8.5-10h1.378c.263 0 .522.106.706.294l2.622 2.622c.025.025.035.059.056.087H13V7.5Zm2.5 10a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm2.5-3h-.512a2.492 2.492 0 0 0-1.988-1c-.813 0-1.531.397-1.988 1H13v-3h5v3ZM8 10.25v-.5a.25.25 0 0 0-.25-.25H.25a.25.25 0 0 0-.25.25v.5c0 .137.113.25.25.25h7.5a.25.25 0 0 0 .25-.25Z"
+                  fill="#000"
+                  stroke="#000"
+                  stroke-width="0.031"
+                />
+              </g>
+              <defs>
+                <clippath
+                  id="a"
+                >
+                  <path
+                    d="M0 0h20v20H0z"
+                    fill="#fff"
+                    transform="translate(0 .5)"
+                  />
+                </clippath>
+              </defs>
+            </svg>
+            <span
+              class="font-bold font-secondary pl-4 mr-2"
+            >
+              Estimated Delivery:
+            </span>
+            <span>
+              Jul 30 - Aug 03
+            </span>
+          </div>
+          <div
+            class="flex items-center"
+          >
+            <svg
+              fill="none"
+              height="17"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                clip-path="url(#a)"
+              >
+                <path
+                  d="M17.922 6.269 16.34 1.525A1.496 1.496 0 0 0 14.919.5H5.08C4.434.5 3.862.912 3.66 1.525L2.08 6.269c-.05.153-.079.312-.079.475V15a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 18 15V6.744c0-.163-.025-.322-.078-.475ZM3 6.744c0-.053.01-.106.025-.16l1.581-4.743a.501.501 0 0 1 .475-.341H9.5v5.25H3v-.006ZM17 15c0 .275-.225.5-.5.5h-13A.501.501 0 0 1 3 15V7.75h14V15Zm0-8.25h-6.5V1.5h4.419c.215 0 .406.137.475.34l1.581 4.744c.016.05.025.104.025.16v.006Z"
+                  fill="#000"
+                  stroke="#000"
+                  stroke-width="0.031"
+                />
+              </g>
+              <defs>
+                <clippath
+                  id="a"
+                >
+                  <path
+                    d="M0 0h20v16H0z"
+                    fill="#fff"
+                    transform="translate(0 .5)"
+                  />
+                </clippath>
+              </defs>
+            </svg>
+            <span
+              class="font-bold font-secondary pl-4 mr-2"
+            >
+              Free Shipping & Returns:
+            </span>
+            <span>
+              On all orders over $75
+            </span>
+          </div>
+        </div>
+        <figure>
+          <img
+            alt="Product Image"
+            data-nimg="1"
+            decoding="async"
+            height="110"
+            loading="lazy"
+            sizes="(100vw - 20px) 100vw, 585px"
+            src="/_next/image?url=%2Fimages%2Fpayment-options-img.webp&w=3840&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fpayment-options-img.webp&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fpayment-options-img.webp&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fpayment-options-img.webp&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fpayment-options-img.webp&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fpayment-options-img.webp&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fpayment-options-img.webp&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fpayment-options-img.webp&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fpayment-options-img.webp&w=3840&q=75 3840w"
+            style="color: transparent;"
+            width="585"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+</div>
+`;

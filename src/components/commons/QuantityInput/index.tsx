@@ -8,6 +8,7 @@ interface QuantityInputProps {
   min?: number;
   max?: number;
   onChange?: (value: number) => void;
+  isDisabled?: boolean;
 }
 
 export const QuantityInput = ({
@@ -25,24 +26,34 @@ export const QuantityInput = ({
     }
   };
 
+  const isDecrementDisabled = count <= min;
+  const isIncrementDisabled = count >= max;
+
+  const commonButtonStyle = 'transition hover:bg-whiteSmoke';
+  const disabledStyle = 'cursor-not-allowed opacity-50';
+
   return (
-    <div className="flex items-center border border-gray-200 rounded-lg px-4 py-2 w-fit hover:bg-whiteSmoke transition">
+    <div className="flex items-center border border-gray rounded-lg px-4 py-2 w-fit hover:bg-whiteSmoke transition">
       <Button
         size="sm"
         variant="ghost"
-        disabled={count <= min}
+        disabled={isDecrementDisabled}
         onPress={() => updateCount(count - 1)}
-        className="text-xl font-medium text-gray-700 disabled:opacity-50"
+        className={`${commonButtonStyle} ${isDecrementDisabled ? disabledStyle : ''}`}
+        title={isDecrementDisabled ? 'Cannot reduce further' : undefined}
       >
         −
       </Button>
-      <span className="mx-4 w-4 text-center text-lg">{count}</span>
+      <span className="mx-4 w-4 text-center text-lg transition-all duration-200 ease-in-out">
+        {count}
+      </span>
       <Button
         size="sm"
         variant="ghost"
-        disabled={count >= max}
+        disabled={isIncrementDisabled}
         onPress={() => updateCount(count + 1)}
-        className="text-xl font-medium text-gray-700 disabled:opacity-50"
+        className={`${commonButtonStyle} ${isIncrementDisabled ? disabledStyle : ''}`}
+        title={isIncrementDisabled ? 'Cannot increase' : undefined}
       >
         +
       </Button>

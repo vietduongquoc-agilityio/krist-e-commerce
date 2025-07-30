@@ -39,7 +39,7 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
           FASCO
         </Link>
 
-        <NavbarContent className="flex items-center justify-between w-[432px]">
+        <NavbarContent className="flex items-center justify-between w-[300px]">
           {NAVITEMS.map((item) => {
             const isActive = pathname === item.path;
             return (

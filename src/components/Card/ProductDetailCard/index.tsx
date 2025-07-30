@@ -37,10 +37,16 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState(thumbnailUrl);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
-  const handleSelect = (color: string) => {
+  const handleSelectColor = (color: string) => {
     const newColor = selectedColor === color ? null : color;
     setSelectedColor(newColor);
+  };
+
+  const handleSelectSize = (size: string) => {
+    const newSize = selectedSize === size ? null : size;
+    setSelectedSize(newSize);
   };
 
   const handleAddToCart = () => {
@@ -62,7 +68,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   };
 
   return (
-    <section className="flex gap-[50px] justify-center">
+    <section className="flex gap-[50px] justify-center pt-[78px]">
       <div className="flex flex-col gap-4">
         {(images ?? [thumbnailUrl]).map((img, index) => (
           <Button
@@ -142,14 +148,24 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
           <div className="flex gap-2 flex-col my-5">
             <span className="font-bold font-secondary">Sizes</span>
             <div className="flex gap-2">
-              {sizes.map((size) => (
-                <div
-                  key={size}
-                  className="w-11 h-11 flex items-center justify-center border text-[18px ] border-gray text-black rounded cursor-pointer hover:border-black hover:bg-black hover:text-white transition"
-                >
-                  {size}
-                </div>
-              ))}
+              {(sizes ?? []).map((size) => {
+                const isSelectedSize = selectedSize === size;
+                return (
+                  <div
+                    key={size}
+                    onClick={() => handleSelectSize(size)}
+                    className={`w-11 h-11 flex items-center justify-center text-[18px] border rounded cursor-pointer transition
+                            ${
+                              isSelectedSize
+                                ? 'bg-black text-white border-black'
+                                : 'border-gray text-black hover:border-black hover:bg-black hover:text-white'
+                            }
+                            `}
+                  >
+                    {size}
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -164,7 +180,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
                     key={color}
                     color={color}
                     isSelected={isSelected}
-                    onClick={() => handleSelect(color)}
+                    onClick={() => handleSelectColor(color)}
                     as="div"
                   />
                 );
