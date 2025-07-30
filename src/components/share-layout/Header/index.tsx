@@ -9,6 +9,7 @@ import {
   DropdownTrigger,
   DropdownItem,
 } from '@heroui/react';
+import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
 // Components
@@ -17,6 +18,9 @@ import { IconUser, IconCart, IconSearch, IconStar } from '@/components';
 
 // Constants
 import { NAVITEMS, ROUTER } from '@/constants';
+import { MiniCartPopup } from '@/components/MiniCart/MiniCartPopup';
+import { productMock } from '@/mocks';
+import { ProductModel } from '@/models';
 
 interface HeaderProps {
   username?: string;
@@ -27,6 +31,14 @@ interface HeaderProps {
 export const Header = ({ isAuthenticated }: HeaderProps) => {
   const pathname = usePathname();
   const router = useRouter();
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState<ProductModel[]>([]);
+
+  const handleUpdateQuantity = (id: string, quantity: number) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item)),
+    );
+  };
 
   return (
     <header className="w-full py-4 flex justify-between items-center">
@@ -77,7 +89,26 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
               </Dropdown>
 
               <IconStar className="cursor-not-allowed" />
-              <IconCart className="cursor-pointer" />
+              {/* <IconCart className="cursor-pointer" /> */}
+              <IconCart
+                className="cursor-pointer"
+                onClick={() => {
+                  if (cartItems.length === 0) {
+                    setCartItems(productMock);
+                  }
+                  setIsCartOpen(true);
+                }}
+              />
+
+              <MiniCartPopup
+                isOpen={isCartOpen}
+                onClose={() => setIsCartOpen(false)}
+                cartItems={cartItems.length === 0 ? productMock : cartItems}
+                onUpdateQuantity={handleUpdateQuantity}
+                onCheckout={() => {
+                  console.log('Checkout successful');
+                }}
+              />
             </>
           ) : (
             <>

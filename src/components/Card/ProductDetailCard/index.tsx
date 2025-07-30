@@ -1,5 +1,9 @@
 'use client';
 
+import Image from 'next/image';
+import { useState } from 'react';
+
+// Components
 import {
   Button,
   ColorButton,
@@ -11,10 +15,9 @@ import {
   StockStatusBar,
   ViewerCount,
 } from '@/components';
-import { ProductModel } from '@/models';
 
-import Image from 'next/image';
-import { useState } from 'react';
+// Models
+import { ProductModel } from '@/models';
 
 interface ProductDetailCardProps {
   product: ProductModel;
@@ -50,13 +53,21 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   };
 
   const handleAddToCart = () => {
-    // TODO: Replace with cart store logic
-    console.log('Add to cart:', {
-      productId: product.id,
+    const colorName = colors.find((color) => color === selectedColor);
+
+    const item = {
+      id: product.id,
+      title: product.title,
+      thumbnailUrl: product.thumbnailUrl,
+      price: product.salePrice || product.price,
+      color: colorName,
+      sizes: product.sizes,
       quantity,
-      color: selectedColor,
-      size: selectedSize,
-    });
+      stock: product.stock,
+    };
+
+    // TODO: Replace with cart store logic
+    console.log(item);
   };
 
   return (
