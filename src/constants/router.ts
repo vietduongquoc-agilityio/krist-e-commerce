@@ -10,6 +10,5 @@ export const ROUTER = {
 export const NAVITEMS = [
   { text: 'Home', path: '/' },
   { text: 'Shop', path: '/shop' },
-  { text: 'Product', path: '/product' },
   { text: 'Cart', path: '/cart' },
 ];
