@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`StockStatusBar should render StockStatusBar component and match snapshot 1`] = `
+<div>
+  <div
+    class="mt-2 mb-5"
+  >
+    <p
+      class="text-sm mb-3 text-gray"
+    >
+      Only 
+      <b>
+        0
+      </b>
+       item(s) left in stock!
+    </p>
+    <div
+      class="w-full h-2 bg-lightGray rounded-full"
+    >
+      <div
+        class="h-2 bg-red/80 rounded-full"
+      />
+    </div>
+  </div>
+</div>
+`;

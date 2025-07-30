@@ -19,7 +19,7 @@ exports[`Header renders correctly when user is authenticated (snapshot) 1`] = `
           FASCO
         </a>
         <ul
-          class="gap-4 h-full flex-row flex-nowrap data-[justify=start]:justify-start data-[justify=start]:flex-grow data-[justify=start]:basis-0 data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=end]:flex-grow data-[justify=end]:basis-0 flex items-center justify-between w-[432px]"
+          class="gap-4 h-full flex-row flex-nowrap data-[justify=start]:justify-start data-[justify=start]:flex-grow data-[justify=start]:basis-0 data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=end]:flex-grow data-[justify=end]:basis-0 flex items-center justify-between w-[300px]"
           data-justify="start"
         >
           <a
@@ -33,12 +33,6 @@ exports[`Header renders correctly when user is authenticated (snapshot) 1`] = `
             href="/shop"
           >
             Shop
-          </a>
-          <a
-            class="transition-colors text-charcoal hover:text-black"
-            href="/product"
-          >
-            Product
           </a>
           <a
             class="transition-colors text-charcoal hover:text-black"
@@ -180,7 +174,7 @@ exports[`Header renders correctly when user is not authenticated (snapshot) 1`] 
           FASCO
         </a>
         <ul
-          class="gap-4 h-full flex-row flex-nowrap data-[justify=start]:justify-start data-[justify=start]:flex-grow data-[justify=start]:basis-0 data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=end]:flex-grow data-[justify=end]:basis-0 flex items-center justify-between w-[432px]"
+          class="gap-4 h-full flex-row flex-nowrap data-[justify=start]:justify-start data-[justify=start]:flex-grow data-[justify=start]:basis-0 data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=end]:flex-grow data-[justify=end]:basis-0 flex items-center justify-between w-[300px]"
           data-justify="start"
         >
           <a
@@ -194,12 +188,6 @@ exports[`Header renders correctly when user is not authenticated (snapshot) 1`] 
             href="/shop"
           >
             Shop
-          </a>
-          <a
-            class="transition-colors text-charcoal hover:text-black"
-            href="/product"
-          >
-            Product
           </a>
           <a
             class="transition-colors text-charcoal hover:text-black"
