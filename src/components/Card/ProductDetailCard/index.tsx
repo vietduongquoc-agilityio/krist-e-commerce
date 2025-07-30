@@ -44,11 +44,21 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   };
 
   const handleAddToCart = () => {
-    // TODO: Replace with cart store logic
-    console.log('Add to cart:', {
-      productId: product.id,
+    const colorName = colors.find((color) => color === selectedColor);
+
+    const item = {
+      id: product.id,
+      title: product.title,
+      thumbnailUrl: product.thumbnailUrl,
+      price: product.salePrice || product.price,
+      color: colorName,
+      sizes: product.sizes,
       quantity,
-    });
+      stock: product.stock,
+    };
+
+    // TODO: Replace with cart store logic
+    console.log(item);
   };
 
   return (

@@ -6,6 +6,7 @@ import {
   BrandSelection,
   Breadcrumb,
   ColorSelection,
+  ItemMiniCart,
   ListProductItem,
   ModelSection,
   PriceSelection,
@@ -13,7 +14,7 @@ import {
 } from '@/components';
 
 // Mocks
-import { ITEMS } from '@/mocks';
+import { ITEMS, productMock } from '@/mocks';
 
 export const metadata: Metadata = {
   title: 'Shop Page',
@@ -49,6 +50,8 @@ export default function ShopPage() {
 
       {/* Model Section */}
       <ModelSection />
+
+      <ItemMiniCart productItem={productMock} />
     </section>
   );
 }

@@ -9,6 +9,7 @@ import {
   DropdownTrigger,
   DropdownItem,
 } from '@heroui/react';
+import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
 // Components
@@ -17,6 +18,8 @@ import { IconUser, IconCart, IconSearch, IconStar } from '@/components';
 
 // Constants
 import { NAVITEMS, ROUTER } from '@/constants';
+import { MiniCartPopup } from '@/components/MiniCart/MiniCartPopup';
+import { productMock } from '@/mocks';
 
 interface HeaderProps {
   username?: string;
@@ -27,6 +30,7 @@ interface HeaderProps {
 export const Header = ({ isAuthenticated }: HeaderProps) => {
   const pathname = usePathname();
   const router = useRouter();
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
     <header className="w-full py-4 flex justify-between items-center">
@@ -77,7 +81,23 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
               </Dropdown>
 
               <IconStar className="cursor-not-allowed" />
-              <IconCart className="cursor-pointer" />
+              {/* <IconCart className="cursor-pointer" /> */}
+              <IconCart
+                className="cursor-pointer"
+                onClick={() => setIsCartOpen(true)}
+              />
+
+              <MiniCartPopup
+                isOpen={isCartOpen}
+                onClose={() => setIsCartOpen(false)}
+                cartItems={[productMock]}
+                onUpdateQuantity={(id, quantity) => {
+                  console.log('Update', id, quantity);
+                }}
+                onCheckout={() => {
+                  console.log('Checkout');
+                }}
+              />
             </>
           ) : (
             <>

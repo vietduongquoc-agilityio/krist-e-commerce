@@ -1,3 +1,5 @@
+import { ProductModel } from '@/models';
+
 export const PRODUCTS = [
   {
     id: '1',
@@ -89,6 +91,7 @@ export const productMock = {
   salePrice: 5900,
   thumbnailUrl: '/images/productItem1.webp',
   colors: ['#000000', '#ff0000', '#00ff00'],
+  quantity: 1,
   sizes: ['M', 'L', 'XL', 'XXL'],
   reviewCount: 5,
   rating: 4.5,
