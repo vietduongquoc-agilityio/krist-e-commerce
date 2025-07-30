@@ -27,6 +27,7 @@ export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
         <div className="flex items-center mt-2 mr-3 w-8 h-8">
           <Input
             type="checkbox"
+            id="wrap-gift-checkbox"
             inputClassName="w-8 h-8"
             checked={wrapGift}
             onChange={() => setWrapGift(!wrapGift)}
@@ -44,7 +45,12 @@ export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
         <span className="font-bold">${total.toFixed(2)}</span>
       </div>
 
-      <Button onClick={onCheckout} variant="solid" className="shadow-lg py-6">
+      <Button
+        onClick={onCheckout}
+        variant="solid"
+        isDisabled={subtotal === 0}
+        className="shadow-lg py-6"
+      >
         Checkout
       </Button>
 

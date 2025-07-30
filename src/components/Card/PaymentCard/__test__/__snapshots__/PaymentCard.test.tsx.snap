@@ -30,6 +30,7 @@ exports[`PaymentCard should render PaymentCard component and match snapshot 1`] 
           py-2
           
         "
+            id="wrap-gift-checkbox"
             type="checkbox"
           />
         </div>
