@@ -2,11 +2,10 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Card } from '@heroui/react';
+import { Card, Checkbox } from '@heroui/react';
 
 // Components
 import { Button } from '@/components';
-import Input from '@/components/commons/Input';
 
 interface PaymentCardProps {
   subtotal: number;
@@ -18,22 +17,26 @@ export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
 
   const total = wrapGift ? subtotal + 10 : subtotal;
 
+  const handleToggleWrapGift = () => {
+    setWrapGift((prev) => !prev);
+  };
+
   return (
     <Card className="mt-4 pt-4 w-full max-w-[613px]">
       <label
         htmlFor="wrap-gift-checkbox"
         className="flex items-center gap-2 text-gray border-b border-gray text-[22px] pb-5"
       >
-        <div className="flex items-center mt-2 mr-3 w-8 h-8">
-          <Input
-            type="checkbox"
-            inputClassName="w-8 h-8"
-            checked={wrapGift}
-            onChange={() => setWrapGift(!wrapGift)}
-          />
-        </div>
+        <Checkbox
+          isSelected={wrapGift}
+          id="wrap-gift-checkbox"
+          onChange={handleToggleWrapGift}
+          classNames={{
+            wrapper: 'rounded-[3px] border-[2px] border-black bg-white w-8 h-8',
+          }}
+        />
 
-        <span>
+        <span className="pl-2">
           For <strong className="text-black">$10.00</strong> Please Wrap The
           Product
         </span>
@@ -44,7 +47,12 @@ export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
         <span className="font-bold">${total.toFixed(2)}</span>
       </div>
 
-      <Button onClick={onCheckout} variant="solid" className="shadow-lg py-6">
+      <Button
+        onClick={onCheckout}
+        variant="solid"
+        isDisabled={subtotal === 0}
+        className="shadow-lg py-6"
+      >
         Checkout
       </Button>
 

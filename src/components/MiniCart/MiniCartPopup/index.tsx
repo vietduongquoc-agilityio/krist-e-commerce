@@ -4,6 +4,7 @@ import { ItemMiniCart, PaymentCard } from '@/components';
 // Models
 import { ProductModel } from '@/models';
 import { Button, Modal } from '@heroui/react';
+import { useMemo } from 'react';
 
 interface MiniCartPopupProps {
   isOpen: boolean;
@@ -20,13 +21,17 @@ export const MiniCartPopup = ({
   onUpdateQuantity,
   onCheckout,
 }: MiniCartPopupProps) => {
-  const subtotal = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0,
+  const subtotal = useMemo(
+    () => cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0),
+    [cartItems],
   );
-
   return (
-    <Modal isOpen={isOpen} onClose={onClose} className="relative z-50">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      className="relative z-50"
+      aria-label="Mini cart popup"
+    >
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
       <div className="fixed inset-y-0 right-0 w-full max-w-[720px] bg-white p-10 overflow-y-auto shadow-xl">
         <div className="flex justify-between items-center mb-8">
