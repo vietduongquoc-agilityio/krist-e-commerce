@@ -28,12 +28,19 @@ const TOAST_POSITIONS = {
   'bottom-center': 'bottom-5 left-1/2 transform -translate-x-1/2',
 };
 
+const MAX_TOASTS_PER_POSITION = 3;
+
 export const Toast = () => {
   const [toasts, setToasts] = useState<IToast[]>([]);
 
   useEffect(() => {
     const handleShowToast = (toast: IToast) => {
-      setToasts((prev) => [...prev, toast]);
+      setToasts((prev) => {
+        const filtered = prev.filter((t) => t.position === toast.position);
+        const others = prev.filter((t) => t.position !== toast.position);
+        const trimmed = filtered.slice(-MAX_TOASTS_PER_POSITION + 1);
+        return [...others, ...trimmed, toast];
+      });
     };
 
     const handleRemoveToast = (id: number) => {
@@ -54,25 +61,23 @@ export const Toast = () => {
       {Object.keys(TOAST_POSITIONS).map((position) => (
         <div
           key={position}
-          className={`fixed ${TOAST_POSITIONS[position as keyof typeof TOAST_POSITIONS]} z-50 space-y-2`}
+          className={`fixed z-50 space-y-2 ${TOAST_POSITIONS[position as keyof typeof TOAST_POSITIONS]}`}
+          aria-live="polite"
         >
           {toasts
             .filter((toast) => toast.position === position)
-            .map((toast) => {
-              return (
-                <Card
-                  isPressable={true}
-                  role="alert"
-                  key={toast.id}
-                  className={`w-full cursor-pointer flex-row items-center gap-4 rounded-md px-4 py-3 shadow-md ${TOAST_BACKGROUNDS[toast.type ?? 'success']}`}
-                  onPress={() => toastManager.emit('remove', toast.id)}
-                >
-                  <p className="text-lg !text-foreground-200">
-                    {toast.message}
-                  </p>
-                </Card>
-              );
-            })}
+            .map((toast) => (
+              <Card
+                isPressable
+                role="alert"
+                aria-label={`Notification: ${toast.type}`}
+                key={toast.id}
+                className={`w-full cursor-pointer flex-row items-center gap-4 rounded-md px-4 py-3 shadow-md ${TOAST_BACKGROUNDS[toast.type]}`}
+                onPress={() => toastManager.emit('remove', toast.id)}
+              >
+                <p className="text-lg !text-foreground-200">{toast.message}</p>
+              </Card>
+            ))}
         </div>
       ))}
     </>
