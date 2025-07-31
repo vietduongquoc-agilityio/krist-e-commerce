@@ -10,6 +10,7 @@ export interface ProductModel {
   images: string[];
   sizes: string[];
   rating: number;
+  quantity: number;
   reviewCount: number;
   createdAt?: string;
   updatedAt?: string;

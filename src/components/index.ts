@@ -13,3 +13,4 @@ export * from './StarRating';
 export * from './SaleCountdown';
 export * from './StockStatusBar';
 export * from './ViewerCount';
+export * from './MiniCart';
