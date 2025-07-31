@@ -48,13 +48,13 @@ export const CartContent = ({ items }: CartContentProps) => {
     0,
   );
 
-  //   if (cartItems.length === 0) {
-  //     return (
-  //       <p className="text-center py-10 text-red text-xl font-secondary">
-  //         Your cart is empty.
-  //       </p>
-  //     );
-  //   }
+  if (cartItems.length === 0) {
+    return (
+      <p className="text-center py-10 text-red text-xl font-secondary">
+        Your cart is empty.
+      </p>
+    );
+  }
 
   return (
     <div className="flex flex-col  justify-between gap-10 max-w-[1280px] mx-auto">
