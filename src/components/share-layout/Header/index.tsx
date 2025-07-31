@@ -40,6 +40,30 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
     );
   };
 
+  const handleSignIn = () => {
+    router.push(ROUTER.SIGNIN);
+  };
+
+  const handleSignUp = () => {
+    router.push(ROUTER.SIGNUP);
+  };
+
+  const handleLogout = () => {
+    router.push(ROUTER.SIGNIN);
+  };
+
+  const handleCartClick = () => {
+    setIsCartOpen(true);
+  };
+
+  const handleCartClose = () => {
+    setIsCartOpen(false);
+  };
+
+  const handleCheckout = () => {
+    console.log('Checkout successful');
+  };
+
   return (
     <header className="w-full py-4 flex justify-between items-center">
       <Navbar className="flex items-center w-[1282px] mx-auto">
@@ -79,9 +103,7 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
                   <DropdownItem
                     key="logout"
                     className="flex items-center justify-center"
-                    onClick={() => {
-                      router.push('/signin');
-                    }}
+                    onClick={handleLogout}
                   >
                     Logout
                   </DropdownItem>
@@ -89,41 +111,23 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
               </Dropdown>
 
               <IconStar className="cursor-not-allowed" />
-              {/* <IconCart className="cursor-pointer" /> */}
-              <IconCart
-                className="cursor-pointer"
-                onClick={() => {
-                  if (cartItems.length === 0) {
-                    setCartItems(productMock);
-                  }
-                  setIsCartOpen(true);
-                }}
-              />
+
+              <IconCart className="cursor-pointer" onClick={handleCartClick} />
 
               <MiniCartPopup
                 isOpen={isCartOpen}
-                onClose={() => setIsCartOpen(false)}
+                onClose={handleCartClose}
                 cartItems={cartItems.length === 0 ? productMock : cartItems}
                 onUpdateQuantity={handleUpdateQuantity}
-                onCheckout={() => {
-                  console.log('Checkout successful');
-                }}
+                onCheckout={handleCheckout}
               />
             </>
           ) : (
             <>
-              <Button
-                variant="solid"
-                type="button"
-                onClick={() => router.push(ROUTER.SIGNIN)}
-              >
+              <Button variant="solid" type="button" onClick={handleSignIn}>
                 Sign in
               </Button>
-              <Button
-                variant="solid"
-                type="button"
-                onClick={() => router.push(ROUTER.SIGNUP)}
-              >
+              <Button variant="solid" type="button" onClick={handleSignUp}>
                 Sign Up
               </Button>
             </>

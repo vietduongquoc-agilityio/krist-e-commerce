@@ -5,3 +5,4 @@ export * from './Text';
 export * from './Navbar';
 export * from './Pagination';
 export * from './ColorCircle';
+export * from './Checkbox';
