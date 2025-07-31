@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`CartContent should render CartContent component and match snapshot 1`] = `
+<div>
+  <p
+    class="text-center py-10 text-red text-xl font-secondary"
+  >
+    Your cart is empty.
+  </p>
+</div>
+`;
