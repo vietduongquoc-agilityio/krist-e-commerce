@@ -61,12 +61,8 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
     router.push(ROUTER.SIGNIN);
   };
 
-  const handleCartClick = () => {
-    setIsCartOpen(true);
-  };
-
-  const handleCartClose = () => {
-    setIsCartOpen(false);
+  const handleToggleCart = () => {
+    setIsCartOpen((prevCartState) => !prevCartState);
   };
 
   const handleCheckout = () => {
@@ -121,11 +117,11 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
 
               <IconStar className="cursor-not-allowed" />
 
-              <IconCart className="cursor-pointer" onClick={handleCartClick} />
+              <IconCart className="cursor-pointer" onClick={handleToggleCart} />
 
               <MiniCartPopup
                 isOpen={isCartOpen}
-                onClose={handleCartClose}
+                onClose={handleToggleCart}
                 cartItems={cartItems.length === 0 ? productMock : cartItems}
                 onUpdateQuantity={handleUpdateQuantity}
                 onCheckout={handleCheckout}
