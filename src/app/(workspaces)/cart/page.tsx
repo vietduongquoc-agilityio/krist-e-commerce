@@ -1,5 +1,11 @@
 import { Metadata } from 'next';
 
+// Components
+import { Breadcrumb, CartContent } from '@/components';
+
+// Mock
+import { productMock } from '@/mocks';
+
 export const metadata: Metadata = {
   title: 'Cart Page',
   description: 'View and manage your shopping cart',
@@ -7,11 +13,13 @@ export const metadata: Metadata = {
 
 export default function CartPage() {
   return (
-    <div>
-      <h1 className="text-green-600 text-4xl">Cart Page</h1>
-      <p className="font-secondary text-base text-coralRed">
-        Manage your shopping cart.
-      </p>
-    </div>
+    <section>
+      {/* Breadcrumb */}
+      <Breadcrumb
+        items={[{ name: 'Home', href: '/' }, { name: 'Shopping Cart' }]}
+      />
+
+      <CartContent items={productMock} />
+    </section>
   );
 }
