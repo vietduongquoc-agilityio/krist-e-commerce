@@ -17,6 +17,10 @@ export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
 
   const total = wrapGift ? subtotal + 10 : subtotal;
 
+  const handleToggleWrapGift = () => {
+    setWrapGift((prev) => !prev);
+  };
+
   return (
     <Card className="mt-4 pt-4 w-full max-w-[613px]">
       <label
@@ -26,7 +30,7 @@ export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
         <Checkbox
           isSelected={wrapGift}
           id="wrap-gift-checkbox"
-          onChange={() => setWrapGift(!wrapGift)}
+          onChange={handleToggleWrapGift}
           classNames={{
             wrapper: 'rounded-[3px] border-[2px] border-black bg-white w-8 h-8',
           }}
