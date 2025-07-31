@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Card, Checkbox, cn } from '@heroui/react';
+import { Card, Checkbox } from '@heroui/react';
 
 // Components
 import { Button } from '@/components';

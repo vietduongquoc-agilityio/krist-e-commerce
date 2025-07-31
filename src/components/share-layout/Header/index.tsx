@@ -14,12 +14,21 @@ import { usePathname, useRouter } from 'next/navigation';
 
 // Components
 import { Button } from '@/components/commons/Button';
-import { IconUser, IconCart, IconSearch, IconStar } from '@/components';
+import {
+  IconUser,
+  IconCart,
+  IconSearch,
+  IconStar,
+  MiniCartPopup,
+} from '@/components';
 
 // Constants
 import { NAVITEMS, ROUTER } from '@/constants';
-import { MiniCartPopup } from '@/components/MiniCart/MiniCartPopup';
+
+// Mocks
 import { productMock } from '@/mocks';
+
+// Models
 import { ProductModel } from '@/models';
 
 interface HeaderProps {
