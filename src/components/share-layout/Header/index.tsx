@@ -14,19 +14,11 @@ import { usePathname, useRouter } from 'next/navigation';
 
 // Components
 import { Button } from '@/components/commons/Button';
-import {
-  IconUser,
-  IconCart,
-  IconSearch,
-  IconStar,
-  MiniCartPopup,
-} from '@/components';
+import { IconUser, IconCart, IconSearch, IconStar } from '@/components';
 
 // Constants
 import { NAVITEMS, ROUTER } from '@/constants';
 import { MiniCartPopup } from '@/components/MiniCart/MiniCartPopup';
-import { productMock } from '@/mocks';
-import { ProductModel } from '@/models';
 
 // Mocks
 import { productMock } from '@/mocks';
