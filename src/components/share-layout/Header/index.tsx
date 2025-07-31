@@ -9,14 +9,27 @@ import {
   DropdownTrigger,
   DropdownItem,
 } from '@heroui/react';
+import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
 // Components
 import { Button } from '@/components/commons/Button';
-import { IconUser, IconCart, IconSearch, IconStar } from '@/components';
+import {
+  IconUser,
+  IconCart,
+  IconSearch,
+  IconStar,
+  MiniCartPopup,
+} from '@/components';
 
 // Constants
 import { NAVITEMS, ROUTER } from '@/constants';
+
+// Mocks
+import { productMock } from '@/mocks';
+
+// Models
+import { ProductModel } from '@/models';
 
 interface HeaderProps {
   username?: string;
@@ -27,6 +40,34 @@ interface HeaderProps {
 export const Header = ({ isAuthenticated }: HeaderProps) => {
   const pathname = usePathname();
   const router = useRouter();
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState<ProductModel[]>([]);
+
+  const handleUpdateQuantity = (id: string, quantity: number) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item)),
+    );
+  };
+
+  const handleSignIn = () => {
+    router.push(ROUTER.SIGNIN);
+  };
+
+  const handleSignUp = () => {
+    router.push(ROUTER.SIGNUP);
+  };
+
+  const handleLogout = () => {
+    router.push(ROUTER.SIGNIN);
+  };
+
+  const handleToggleCart = () => {
+    setIsCartOpen((prevCartState) => !prevCartState);
+  };
+
+  const handleCheckout = () => {
+    console.log('Checkout successful');
+  };
 
   return (
     <header className="w-full py-4 flex justify-between items-center">
@@ -67,9 +108,7 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
                   <DropdownItem
                     key="logout"
                     className="flex items-center justify-center"
-                    onClick={() => {
-                      router.push('/signin');
-                    }}
+                    onClick={handleLogout}
                   >
                     Logout
                   </DropdownItem>
@@ -77,22 +116,23 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
               </Dropdown>
 
               <IconStar className="cursor-not-allowed" />
-              <IconCart className="cursor-pointer" />
+
+              <IconCart className="cursor-pointer" onClick={handleToggleCart} />
+
+              <MiniCartPopup
+                isOpen={isCartOpen}
+                onClose={handleToggleCart}
+                cartItems={cartItems.length === 0 ? productMock : cartItems}
+                onUpdateQuantity={handleUpdateQuantity}
+                onCheckout={handleCheckout}
+              />
             </>
           ) : (
             <>
-              <Button
-                variant="solid"
-                type="button"
-                onClick={() => router.push(ROUTER.SIGNIN)}
-              >
+              <Button variant="solid" type="button" onClick={handleSignIn}>
                 Sign in
               </Button>
-              <Button
-                variant="solid"
-                type="button"
-                onClick={() => router.push(ROUTER.SIGNUP)}
-              >
+              <Button variant="solid" type="button" onClick={handleSignUp}>
                 Sign Up
               </Button>
             </>

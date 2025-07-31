@@ -8,7 +8,7 @@ export default function Shop() {
   return (
     <div>
       {/* Product Detail Card */}
-      <ProductDetailCard product={productMock} />
+      <ProductDetailCard product={productMock[0]} />
 
       {/* About Section */}
       <AboutSection />
