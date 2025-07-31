@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Volkhov, Poppins } from 'next/font/google';
 import './globals.css';
+import { ToastProvider } from '@/components';
 
 const volkhov = Volkhov({
   subsets: ['latin'],
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.className} ${volkhov.className}`}>
       <body>
         <main className="mx-auto">{children}</main>
+        <ToastProvider />
       </body>
     </html>
   );
