@@ -15,11 +15,9 @@ interface CartContentProps {
 export const CartContent = ({ items }: CartContentProps) => {
   const [cartItems, setCartItems] = useState<ProductModel[]>([]);
 
-  // Load from localStorage
   useEffect(() => {
-    const stored = localStorage.getItem('cart');
-    setCartItems(stored ? JSON.parse(stored) : []);
-  }, []);
+    setCartItems(items);
+  }, [items]);
 
   // Update quantity
   const handleUpdateQuantity = (id: string, quantity: number) => {
@@ -27,20 +25,17 @@ export const CartContent = ({ items }: CartContentProps) => {
       item.id === id ? { ...item, quantity } : item,
     );
     setCartItems(updated);
-    localStorage.setItem('cart', JSON.stringify(updated));
   };
 
   // Remove item
   const handleRemoveItem = (id: string) => {
     const updated = cartItems.filter((item) => item.id !== id);
     setCartItems(updated);
-    localStorage.setItem('cart', JSON.stringify(updated));
   };
 
   const handleCheckout = () => {
     alert('Proceeding to checkout...');
-    setCartItems([]);
-    localStorage.removeItem('cart');
+    setCartItems([]); // Clear cart on checkout
   };
 
   const subtotal = items.reduce(
