@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`NotFound component renders correctly and matches snapshot 1`] = `
+<div>
+  <section
+    class="flex flex-col items-center justify-center min-h-screen px-6 text-center bg-white"
+  >
+    <img
+      alt="Not found image page"
+      class="mb-7 w-[500px]"
+      data-nimg="1"
+      decoding="async"
+      height="40"
+      loading="lazy"
+      sizes="(100vw - 20px) 100vw, 500px"
+      src="/_next/image?url=%2Fimg.jpg&w=3840&q=75"
+      srcset="/_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
+      style="color: transparent;"
+      width="40"
+    />
+    <h1
+      class="text-4xl font-bold text-charcoal mb-4"
+    >
+      Oops! Page not found
+    </h1>
+    <p
+      class="text-lg mb-8"
+    >
+      The page you are looking for does not exist or has been moved.
+    </p>
+    <a
+      class="text-lg font-lg text-white py-3 px-8 bg-primary rounded-10 hover:bg-gray hover:text-black transition"
+      href="/"
+    >
+      Go back home
+    </a>
+  </section>
+</div>
+`;
