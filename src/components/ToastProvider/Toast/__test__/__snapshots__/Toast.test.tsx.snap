@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Toast Component should match snapshot 1`] = `
+<div>
+  <div
+    aria-live="polite"
+    class="fixed z-50 space-y-2 top-5 right-5"
+  />
+  <div
+    aria-live="polite"
+    class="fixed z-50 space-y-2 top-5 left-5"
+  />
+  <div
+    aria-live="polite"
+    class="fixed z-50 space-y-2 top-5 left-1/2 transform -translate-x-1/2"
+  />
+  <div
+    aria-live="polite"
+    class="fixed z-50 space-y-2 bottom-5 right-5"
+  />
+  <div
+    aria-live="polite"
+    class="fixed z-50 space-y-2 bottom-5 left-5"
+  />
+  <div
+    aria-live="polite"
+    class="fixed z-50 space-y-2 bottom-5 left-1/2 transform -translate-x-1/2"
+  />
+</div>
+`;

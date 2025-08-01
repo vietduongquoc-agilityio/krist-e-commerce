@@ -14,4 +14,4 @@ export * from './SaleCountdown';
 export * from './StockStatusBar';
 export * from './ViewerCount';
 export * from './MiniCart';
-export * from './Cart';
+export * from './ToastProvider';
