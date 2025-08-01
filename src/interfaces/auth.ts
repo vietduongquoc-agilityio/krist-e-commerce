@@ -1,0 +1,24 @@
+export interface IUser {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  phone?: string;
+  confirmPassword?: string;
+  token: string;
+  provider?: string;
+  confirmed?: boolean;
+  blocked?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+  avatar?: string;
+  updates?: boolean;
+  events?: boolean;
+}
+
+export interface TSignInFormData {
+  identifier: string;
+  password: string;
+}
