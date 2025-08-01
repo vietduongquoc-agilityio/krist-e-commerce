@@ -15,3 +15,4 @@ export * from './StockStatusBar';
 export * from './ViewerCount';
 export * from './MiniCart';
 export * from './ToastProvider';
+export * from './Cart';
