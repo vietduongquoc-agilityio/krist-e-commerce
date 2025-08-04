@@ -27,6 +27,7 @@ import { toastManager } from '@/utils';
 import {
   ERROR_MESSAGES,
   ROUTER,
+  SIGNUPFIELDS,
   SUCCESS_MESSAGES,
   TEXT_SIZE,
 } from '@/constants';
@@ -55,17 +56,7 @@ export const SignUpForm = () => {
 
   const onSubmit = async (data: ISignUpFormData) => {
     try {
-      const { firstName, lastName, email, phone, password, confirmPassword } =
-        data;
-
-      const response = await signUp({
-        firstName,
-        lastName,
-        email,
-        phone,
-        password,
-        confirmPassword,
-      });
+      const response = await signUp(data);
 
       if (response) {
         toastManager.showToast(
@@ -91,7 +82,6 @@ export const SignUpForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <h2 className="font-secondary text-[30px] mb-8">Create Account</h2>
-
       <div className="w-full flex justify-between gap-16 mb-16">
         <Button
           variant="ghost"
@@ -112,7 +102,6 @@ export const SignUpForm = () => {
           Sign up with GitHub
         </Button>
       </div>
-
       {/* OR Divider */}
       <div className="w-full flex items-center justify-center gap-4 mb-10">
         <span className="w-[30px] h-[5px] bg-gray"></span>
@@ -121,93 +110,33 @@ export const SignUpForm = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-8">
-        <Controller
-          name="firstName"
-          control={control}
-          rules={{ required: 'First name is required' }}
-          render={({ field, fieldState: { error } }) => (
-            <Input
-              type="text"
-              aria-label="firstName"
-              placeholder="First Name"
-              isInvalid={!!error?.message}
-              errorMessage={error?.message}
-              {...field}
-            />
-          )}
-        />
-
-        <Controller
-          control={control}
-          name="lastName"
-          render={({ field, fieldState: { error } }) => (
-            <Input
-              type="text"
-              aria-label="lastName"
-              placeholder="Last Name"
-              isInvalid={!!error?.message}
-              errorMessage={error?.message}
-              {...field}
-            />
-          )}
-        />
-        <Controller
-          control={control}
-          name="email"
-          render={({ field, fieldState: { error } }) => (
-            <Input
-              type="text"
-              aria-label="email"
-              placeholder="Email Address"
-              isInvalid={!!error?.message}
-              errorMessage={error?.message}
-              {...field}
-            />
-          )}
-        />
-
-        <Controller
-          control={control}
-          name="phone"
-          render={({ field, fieldState: { error } }) => (
-            <Input
-              type="text"
-              aria-label="phone"
-              placeholder="Phone Number"
-              isInvalid={!!error?.message}
-              errorMessage={error?.message}
-              {...field}
-            />
-          )}
-        />
-
-        <Controller
-          control={control}
-          name="password"
-          render={({ field, fieldState: { error } }) => (
-            <Input
-              placeholder="Password"
-              isInvalid={!!error?.message}
-              errorMessage={error?.message}
-              {...field}
-            />
-          )}
-        />
-
-        <Controller
-          control={control}
-          name="confirmPassword"
-          render={({ field, fieldState: { error } }) => (
-            <Input
-              placeholder="Confirm Password"
-              isInvalid={!!error?.message}
-              errorMessage={error?.message}
-              {...field}
-            />
-          )}
-        />
+        {SIGNUPFIELDS.map((field) => (
+          <Controller
+            key={field.name}
+            name={
+              field.name as
+                | 'email'
+                | 'firstName'
+                | 'lastName'
+                | 'phone'
+                | 'password'
+                | 'confirmPassword'
+            }
+            control={control}
+            rules={field.required ? { required: field.required } : undefined}
+            render={({ field: controllerField, fieldState: { error } }) => (
+              <Input
+                type={field.type}
+                aria-label={field.name}
+                placeholder={field.placeholder}
+                isInvalid={!!error?.message}
+                errorMessage={error?.message}
+                {...controllerField}
+              />
+            )}
+          />
+        ))}
       </div>
-
       {/* Sign In Button */}
       <div className="w-[575px] font-semibold ml-16 flex flex-col gap-8 mt-6 items-center">
         <Button

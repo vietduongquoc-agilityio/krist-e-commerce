@@ -170,8 +170,8 @@ exports[`SignUpForm should render SignUpForm correctly and match snapshot 1`] = 
           
         "
           name="email"
-          placeholder="Email Address"
-          type="text"
+          placeholder="Email"
+          type="email"
           value=""
         />
       </div>
@@ -194,8 +194,8 @@ exports[`SignUpForm should render SignUpForm correctly and match snapshot 1`] = 
           
         "
           name="phone"
-          placeholder="Phone Number"
-          type="text"
+          placeholder="Phone"
+          type="tel"
           value=""
         />
       </div>
@@ -203,6 +203,7 @@ exports[`SignUpForm should render SignUpForm correctly and match snapshot 1`] = 
         class="w-full"
       >
         <input
+          aria-label="password"
           class="
           
           w-full
@@ -218,7 +219,7 @@ exports[`SignUpForm should render SignUpForm correctly and match snapshot 1`] = 
         "
           name="password"
           placeholder="Password"
-          type="text"
+          type="password"
           value=""
         />
       </div>
@@ -226,6 +227,7 @@ exports[`SignUpForm should render SignUpForm correctly and match snapshot 1`] = 
         class="w-full"
       >
         <input
+          aria-label="confirmPassword"
           class="
           
           w-full
@@ -241,7 +243,7 @@ exports[`SignUpForm should render SignUpForm correctly and match snapshot 1`] = 
         "
           name="confirmPassword"
           placeholder="Confirm Password"
-          type="text"
+          type="password"
           value=""
         />
       </div>
