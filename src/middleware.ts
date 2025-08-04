@@ -12,12 +12,7 @@ export default auth(async (req) => {
 
   const redirectIfLoggedInPages = [ROUTER.SIGNIN, ROUTER.SIGNUP];
 
-  const freelyAccessiblePages = [
-    ROUTER.HOME,
-    ROUTER.SHOP,
-    '/sitemap.xml',
-    '/robots.txt',
-  ];
+  const freelyAccessiblePages = [ROUTER.HOME, ROUTER.SHOP];
 
   const currentPath = req.nextUrl.pathname;
   const isPublicPage = freelyAccessiblePages.includes(currentPath);

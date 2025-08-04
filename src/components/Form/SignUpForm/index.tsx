@@ -1,6 +1,10 @@
 'use client';
 
+// Libs
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller, useForm } from 'react-hook-form';
 
 // Components
 import { IconGithub, IconGoogle, Text } from '@/components';
@@ -10,9 +14,77 @@ import Input from '@/components/commons/Input';
 // Interfaces
 import { TEXT_SIZE } from '@/interfaces';
 
+// Actions
+import { signUp } from '@/actions/auth';
+
+// Schemas
+import { signUpSchema, SignUpSchema } from '@/schemas';
+
+// Utils
+import { toastManager } from '@/utils';
+
+// Constants
+import { ERROR_MESSAGES, ROUTER, SUCCESS_MESSAGES } from '@/constants';
+
 export const SignUpForm = () => {
+  const router = useRouter();
+
+  const {
+    control,
+    handleSubmit,
+
+    formState: { isDirty, isValid, isSubmitting },
+  } = useForm<SignUpSchema>({
+    resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      password: '',
+      confirmPassword: '',
+    },
+    reValidateMode: 'onBlur',
+    mode: 'onBlur',
+  });
+
+  const onSubmit = async (data: SignUpSchema) => {
+    try {
+      const { firstName, lastName, email, phone, password, confirmPassword } =
+        data;
+
+      const response = await signUp({
+        firstName,
+        lastName,
+        email,
+        phone,
+        password,
+        confirmPassword,
+      });
+
+      if (response) {
+        toastManager.showToast(
+          `${SUCCESS_MESSAGES.SIGN_UP} `,
+          'success',
+          'top-center',
+        );
+
+        router.push(ROUTER.SIGNIN);
+      }
+    } catch (error) {
+      toastManager.showToast(
+        `${ERROR_MESSAGES.ERROR_SIGN_UP_FORM} ${error instanceof Error ? error.message : ''}`,
+        'error',
+        'top-center',
+      );
+    }
+  };
+
   return (
-    <form className="w-full mx-auto flex flex-col gap-6">
+    <form
+      className="w-full mx-auto flex flex-col gap-6"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <h2 className="font-secondary text-[30px] mb-8">Create Account</h2>
 
       <div className="w-full flex justify-between gap-16 mb-16">
@@ -44,17 +116,101 @@ export const SignUpForm = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-8">
-        <Input type="text" placeholder="First Name" />
-        <Input type="text" placeholder="Last Name" />
-        <Input type="email" placeholder="Email Address" />
-        <Input type="tel" placeholder="Phone Number" />
-        <Input type="password" placeholder="Password" />
-        <Input type="password" placeholder="Confirm Password" />
+        <Controller
+          name="firstName"
+          control={control}
+          rules={{ required: 'First name is required' }}
+          render={({ field, fieldState: { error } }) => (
+            <Input
+              type="text"
+              aria-label="firstName"
+              placeholder="First Name"
+              isInvalid={!!error?.message}
+              errorMessage={error?.message}
+              {...field}
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="lastName"
+          render={({ field, fieldState: { error } }) => (
+            <Input
+              type="text"
+              aria-label="lastName"
+              placeholder="Last Name"
+              isInvalid={!!error?.message}
+              errorMessage={error?.message}
+              {...field}
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="email"
+          render={({ field, fieldState: { error } }) => (
+            <Input
+              type="text"
+              aria-label="email"
+              placeholder="Email Address"
+              isInvalid={!!error?.message}
+              errorMessage={error?.message}
+              {...field}
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="phone"
+          render={({ field, fieldState: { error } }) => (
+            <Input
+              type="text"
+              aria-label="phone"
+              placeholder="Phone Number"
+              isInvalid={!!error?.message}
+              errorMessage={error?.message}
+              {...field}
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="password"
+          render={({ field, fieldState: { error } }) => (
+            <Input
+              placeholder="Password"
+              isInvalid={!!error?.message}
+              errorMessage={error?.message}
+              {...field}
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="confirmPassword"
+          render={({ field, fieldState: { error } }) => (
+            <Input
+              placeholder="Confirm Password"
+              isInvalid={!!error?.message}
+              errorMessage={error?.message}
+              {...field}
+            />
+          )}
+        />
       </div>
 
       {/* Sign In Button */}
       <div className="w-[575px] font-semibold ml-16 flex flex-col gap-8 mt-6 items-center">
-        <Button variant="solid" type="submit">
+        <Button
+          variant="solid"
+          type="submit"
+          isDisabled={!isDirty || !isValid}
+          isLoading={isSubmitting}
+        >
           Create Account
         </Button>
 
