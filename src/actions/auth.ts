@@ -1,7 +1,7 @@
 'use server';
 
 // Config
-import { signIn } from '@/config/auth';
+import { signIn, signOut as nextAuthSignOut } from '@/config/auth';
 import { ERROR_MESSAGES } from '@/constants';
 
 // Interfaces
@@ -40,3 +40,5 @@ export const signUp = async (payload: ISignUpFormData) => {
     );
   }
 };
+
+export const signOut = async () => await nextAuthSignOut({ redirect: false });

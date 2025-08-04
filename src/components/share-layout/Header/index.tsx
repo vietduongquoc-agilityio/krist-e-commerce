@@ -18,7 +18,12 @@ import { Button } from '@/components/commons/Button';
 import { IconUser, IconCart, IconSearch, IconStar } from '@/components';
 
 // Constants
-import { NAVITEMS, ROUTER } from '@/constants';
+import {
+  ERROR_MESSAGES,
+  NAVITEMS,
+  ROUTER,
+  SUCCESS_MESSAGES,
+} from '@/constants';
 import { MiniCartPopup } from '@/components/MiniCart/MiniCartPopup';
 
 // Mocks
@@ -26,6 +31,8 @@ import { productMock } from '@/mocks';
 
 // Models
 import { ProductModel } from '@/models';
+import { signOut } from '@/actions/auth';
+import { toastManager } from '@/utils';
 
 interface HeaderProps {
   username?: string;
@@ -53,8 +60,25 @@ export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
     router.push(ROUTER.SIGNUP);
   };
 
-  const handleLogout = () => {
-    router.push(ROUTER.SIGNIN);
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+
+      toastManager.showToast(
+        SUCCESS_MESSAGES.SIGN_OUT,
+        'success',
+        'top-center',
+      );
+
+      router.replace(ROUTER.HOME);
+      router.refresh();
+    } catch (error) {
+      toastManager.showToast(
+        ERROR_MESSAGES.SIGN_OUT_ERROR,
+        'error',
+        'top-center',
+      );
+    }
   };
 
   const handleToggleCart = () => {
@@ -119,7 +143,7 @@ export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
                   <DropdownItem
                     key="logout"
                     className="rounded-b-[5px] border-t-1 border-gray text-center bg-black text-white hover:bg-gray transition"
-                    onClick={handleLogout}
+                    onClick={handleSignOut}
                   >
                     Logout
                   </DropdownItem>
