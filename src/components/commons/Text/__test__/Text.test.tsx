@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-// Interfaces
-import { TEXT_SIZE, TEXT_VARIANT } from '@/interfaces';
-
 // Components
 import { Text } from '@/components';
+
+// Constants
+import { TEXT_SIZE, TEXT_VARIANT } from '@/constants';
 
 describe('Text component', () => {
   it('renders default correctly', () => {
