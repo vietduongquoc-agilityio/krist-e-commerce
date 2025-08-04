@@ -12,7 +12,7 @@ import { Button } from '@/components/commons/Button';
 import Input from '@/components/commons/Input';
 
 // Interfaces
-import { ISignUpFormData, TEXT_SIZE } from '@/interfaces';
+import { ISignUpFormData } from '@/interfaces';
 
 // Actions
 import { signUp } from '@/actions/auth';
@@ -24,7 +24,12 @@ import { signUpSchema } from '@/schemas';
 import { toastManager } from '@/utils';
 
 // Constants
-import { ERROR_MESSAGES, ROUTER, SUCCESS_MESSAGES } from '@/constants';
+import {
+  ERROR_MESSAGES,
+  ROUTER,
+  SUCCESS_MESSAGES,
+  TEXT_SIZE,
+} from '@/constants';
 
 export const SignUpForm = () => {
   const router = useRouter();
