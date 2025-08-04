@@ -5,12 +5,12 @@ import { signIn, signOut as nextAuthSignOut } from '@/config/auth';
 import { ERROR_MESSAGES } from '@/constants';
 
 // Interfaces
-import { AuthResponse, ISignUpFormData, TSignInFormData } from '@/interfaces';
+import { AuthResponse, ISignUpFormData, ISignInFormData } from '@/interfaces';
 
 // Services
 import { apiClient } from '@/services';
 
-export const authenticateUser = async (formData: TSignInFormData) => {
+export const authenticateUser = async (formData: ISignInFormData) => {
   return await signIn('credentials', {
     redirect: false,
     ...formData,

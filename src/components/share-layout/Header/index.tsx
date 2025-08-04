@@ -15,7 +15,8 @@ import { usePathname, useRouter } from 'next/navigation';
 
 // Components
 import { Button } from '@/components/commons/Button';
-import { IconUser, IconCart, IconSearch, IconStar } from '@/components';
+import { IconCart, IconSearch, IconStar } from '@/components';
+import AvatarImageBackup from '@/public/images/avatar.webp';
 
 // Constants
 import {
@@ -124,9 +125,9 @@ export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
                 <DropdownTrigger>
                   <Avatar
                     alt="User Avatar"
-                    src={avatar || '/images/avatar.webp'}
+                    src={avatar || AvatarImageBackup.src}
                     className="cursor-pointer"
-                    fallback="/images/avatar.webp"
+                    fallback={AvatarImageBackup.src}
                     classNames={{
                       base: 'w-8 h-8',
                       img: 'opacity-1',
