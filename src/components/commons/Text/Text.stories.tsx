@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from '@storybook/nextjs';
 // Components
 import { Text } from '@/components';
 
-// Interfaces
-import { TEXT_SIZE, TEXT_VARIANT } from '@/interfaces';
+// Constants
+import { TEXT_SIZE, TEXT_VARIANT } from '@/constants';
 
 const meta: Meta<typeof Text> = {
   title: 'Components/Text',
