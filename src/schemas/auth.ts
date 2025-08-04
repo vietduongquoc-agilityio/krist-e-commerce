@@ -15,8 +15,8 @@ export const signInSchema = z.object({
 
 export const signUpSchema = z
   .object({
-    firstName: z.string().min(1, 'First name is required'),
-    lastName: z.string().min(1, 'Last name is required'),
+    firstName: z.string().min(1, ERROR_MESSAGES.FIELD_REQUIRED),
+    lastName: z.string().min(1, ERROR_MESSAGES.FIELD_REQUIRED),
 
     email: z
       .string()
@@ -24,7 +24,7 @@ export const signUpSchema = z
       .min(1, ERROR_MESSAGES.FIELD_REQUIRED)
       .regex(REGEX.EMAIL, ERROR_MESSAGES.INVALID_EMAIL)
       .transform((value) => value.trim()),
-    phone: z.string().min(1, 'Phone number is required'),
+    phone: z.string().min(1, ERROR_MESSAGES.FIELD_REQUIRED),
     password: z
       .string()
       .trim()
@@ -33,8 +33,6 @@ export const signUpSchema = z
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match',
+    message: ERROR_MESSAGES.PASSWORDS_DO_NOT_MATCH,
     path: ['confirmPassword'],
   });
-
-export type SignUpSchema = z.infer<typeof signUpSchema>;

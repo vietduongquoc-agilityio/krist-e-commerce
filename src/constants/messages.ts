@@ -13,6 +13,7 @@ export const ERROR_MESSAGES = {
 
   SIGN_OUT_ERROR: 'Log out error. Please try again.',
 
+  PASSWORDS_DO_NOT_MATCH: 'Passwords do not match',
   ACCOUNT_AND_PASSWORD_INVALID:
     'Your account or password is incorrect, please try again.',
 };
