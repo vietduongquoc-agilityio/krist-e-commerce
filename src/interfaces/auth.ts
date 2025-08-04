@@ -19,7 +19,7 @@ export interface IUser {
   events?: boolean;
 }
 
-export interface TSignInFormData {
+export interface ISignInFormData {
   identifier: string;
   password: string;
 }
