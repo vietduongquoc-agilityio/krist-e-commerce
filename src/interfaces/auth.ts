@@ -6,7 +6,7 @@ export interface IUser {
   password: string;
   phone?: string;
   confirmPassword?: string;
-  token: string;
+  token?: string;
   provider?: string;
   confirmed?: boolean;
   blocked?: boolean;
@@ -21,4 +21,18 @@ export interface IUser {
 export interface TSignInFormData {
   identifier: string;
   password: string;
+}
+
+export interface ISignUpFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export interface AuthResponse {
+  jwt: string;
+  user: IUser;
 }
