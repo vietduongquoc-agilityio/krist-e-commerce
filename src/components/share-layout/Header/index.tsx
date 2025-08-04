@@ -8,6 +8,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
   DropdownItem,
+  Avatar,
 } from '@heroui/react';
 import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
@@ -32,7 +33,7 @@ interface HeaderProps {
   avatar?: string;
 }
 
-export const Header = ({ isAuthenticated }: HeaderProps) => {
+export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -97,12 +98,27 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
               {/* IconUser + Dropdown */}
               <Dropdown placement="bottom-end">
                 <DropdownTrigger>
-                  <IconUser className="cursor-pointer" />
+                  <Avatar
+                    alt="User Avatar"
+                    src={avatar || '/images/avatar.webp'}
+                    className="cursor-pointer"
+                    fallback="/images/avatar.webp"
+                    classNames={{
+                      base: 'w-8 h-8',
+                      img: 'opacity-1',
+                    }}
+                  />
                 </DropdownTrigger>
-                <DropdownMenu className="border-1 rounded-xl bg-black text-white hover:bg-gray transition w-[160px] py-3">
+                <DropdownMenu className="border-1 rounded-md w-[120px]">
+                  <DropdownItem
+                    key="username"
+                    className="rounded-t-[5px] text-center bg-black text-white hover:bg-gray transition"
+                  >
+                    <p>{username}</p>
+                  </DropdownItem>
                   <DropdownItem
                     key="logout"
-                    className="flex items-center justify-center"
+                    className="rounded-b-[5px] border-t-1 border-gray text-center bg-black text-white hover:bg-gray transition"
                     onClick={handleLogout}
                   >
                     Logout
