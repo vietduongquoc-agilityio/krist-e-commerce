@@ -12,13 +12,13 @@ import { Button } from '@/components/commons/Button';
 import Input from '@/components/commons/Input';
 
 // Interfaces
-import { TEXT_SIZE } from '@/interfaces';
+import { ISignUpFormData, TEXT_SIZE } from '@/interfaces';
 
 // Actions
 import { signUp } from '@/actions/auth';
 
 // Schemas
-import { signUpSchema, SignUpSchema } from '@/schemas';
+import { signUpSchema } from '@/schemas';
 
 // Utils
 import { toastManager } from '@/utils';
@@ -34,7 +34,7 @@ export const SignUpForm = () => {
     handleSubmit,
 
     formState: { isDirty, isValid, isSubmitting },
-  } = useForm<SignUpSchema>({
+  } = useForm<ISignUpFormData>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       firstName: '',
@@ -48,7 +48,7 @@ export const SignUpForm = () => {
     mode: 'onBlur',
   });
 
-  const onSubmit = async (data: SignUpSchema) => {
+  const onSubmit = async (data: ISignUpFormData) => {
     try {
       const { firstName, lastName, email, phone, password, confirmPassword } =
         data;
