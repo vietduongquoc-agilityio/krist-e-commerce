@@ -13,11 +13,16 @@ const config: Config = {
   testEnvironment: 'jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '@app/auth': '<rootDir>/authConfig/mocks/auth.ts',
-    'next-auth/providers/credentials':
-      '<rootDir>/authConfig/mocks/next-auth-providers-credentials.ts',
-    'next-auth': '<rootDir>/authConfig/mocks/next-auth.ts',
+    '^next-auth/react$': '<rootDir>/authConfig/__mocks__/next-auth/react.ts',
+    '^next-auth/providers/credentials$':
+      '<rootDir>/authConfig/__mocks__/next-auth/providers/credentials.ts',
+    '^next-auth/providers/google$':
+      '<rootDir>/authConfig/__mocks__/next-auth/providers/google.ts',
+    '^next-auth/providers/github$':
+      '<rootDir>/authConfig/__mocks__/next-auth/providers/github.ts',
+    '^next-auth$': '<rootDir>/authConfig/__mocks__/next-auth/index.ts',
   },
+
   collectCoverageFrom: [
     'src/components/**',
     'src/hooks/**',
