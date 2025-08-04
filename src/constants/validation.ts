@@ -1,0 +1,4 @@
+export const VALIDATION_LIMITS = {
+  MIN_LENGTH: 1,
+  PASSWORD_MIN_LENGTH: 8,
+};

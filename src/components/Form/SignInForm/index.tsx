@@ -12,9 +12,6 @@ import Input from '@/components/commons/Input';
 import { Text } from '@/components/commons/Text';
 import { IconGithub, IconGoogle } from '@/components';
 
-// Interfaces
-import { TEXT_SIZE, TEXT_VARIANT } from '@/interfaces';
-
 // Actions
 import { authenticateUser } from '@/actions/auth';
 
@@ -30,6 +27,8 @@ import {
   PUBLIC_URL,
   ROUTER,
   SUCCESS_MESSAGES,
+  TEXT_SIZE,
+  TEXT_VARIANT,
 } from '@/constants';
 
 // Utils
