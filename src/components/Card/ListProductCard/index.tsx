@@ -11,14 +11,21 @@ import { getProducts } from '@/services';
 // Models
 import { ProductModel } from '@/models';
 
-export const ListProductCard = () => {
+interface ListProductCardProps {
+  searchParams?: {
+    page: string;
+    pageSize: string;
+  };
+}
+
+export const ListProductCard = ({ searchParams }: ListProductCardProps) => {
   const [productsData, setProductsData] = useState<ProductModel[]>([]);
 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const { productsData, error } = await getProducts();
+      const { productsData, error } = await getProducts({ searchParams });
       if (!error) {
         setProductsData(productsData ?? []);
       }
