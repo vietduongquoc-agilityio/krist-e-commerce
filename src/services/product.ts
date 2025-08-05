@@ -8,7 +8,7 @@ import { API_ENDPOINTS } from '@/constants';
 import { apiClient } from '@/services';
 
 export const getProducts = async () => {
-  const url = `${API_ENDPOINTS.PRODUCTS}?populate=*`;
+  const url = `${API_ENDPOINTS.PRODUCTS}`;
 
   console.log('url', url);
 
