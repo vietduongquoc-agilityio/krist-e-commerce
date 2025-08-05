@@ -19,6 +19,42 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
       >
         <div
           class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(255, 0, 0);"
+        />
+      </button>
+      <button
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
+        type="button"
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(0, 0, 0);"
+        />
+      </button>
+      <button
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
+        type="button"
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(157, 157, 157);"
+        />
+      </button>
+      <button
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
+        type="button"
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
+          style="background-color: rgb(255, 255, 0);"
+        />
+      </button>
+      <button
+        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
+        type="button"
+      >
+        <div
+          class="rounded-full transition-all w-8 h-8"
           style="background-color: rgb(255, 108, 108);"
         />
       </button>
@@ -73,33 +109,6 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
       >
         <div
           class="rounded-full transition-all w-8 h-8"
-          style="background-color: rgb(108, 185, 255);"
-        />
-      </button>
-      <button
-        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
-        type="button"
-      >
-        <div
-          class="rounded-full transition-all w-8 h-8"
-          style="background-color: rgb(108, 246, 255);"
-        />
-      </button>
-      <button
-        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
-        type="button"
-      >
-        <div
-          class="rounded-full transition-all w-8 h-8"
-          style="background-color: rgb(108, 167, 255);"
-        />
-      </button>
-      <button
-        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
-        type="button"
-      >
-        <div
-          class="rounded-full transition-all w-8 h-8"
           style="background-color: rgb(108, 123, 255);"
         />
       </button>
@@ -128,15 +137,6 @@ exports[`ColorSelection should render corectly  and match snapshot 1`] = `
         <div
           class="rounded-full transition-all w-8 h-8"
           style="background-color: rgb(252, 108, 255);"
-        />
-      </button>
-      <button
-        class="rounded-full flex items-center justify-center transition-all w-8 h-8 border border-gray hover:border-black"
-        type="button"
-      >
-        <div
-          class="rounded-full transition-all w-8 h-8"
-          style="background-color: rgb(255, 0, 0);"
         />
       </button>
     </div>

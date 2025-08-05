@@ -36,6 +36,11 @@ export const ProductItem = ({
     onChange?.(newColor || '');
   };
 
+  const colorArray =
+    typeof colors === 'string'
+      ? (colors as string).split(',').map((c: string) => c.trim())
+      : (colors ?? []);
+
   return (
     <Card
       onClick={handleCardClick}
@@ -48,6 +53,7 @@ export const ProductItem = ({
           sizes="(100vw - 20px) 100vw, 302px"
           width={302}
           height={403}
+          className="w-[302px] h-[403px] object-cover"
         />
         {isSoldOut && (
           <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
@@ -64,9 +70,9 @@ export const ProductItem = ({
       </figure>
       <div className="ml-4 mb-3">
         <h3 className="font-secondary mb-[5px]">{title}</h3>
-        <p>${price}</p>
+        <p>${price.toFixed(2)}</p>
         <div className="flex gap-2 mt-4">
-          {(colors ?? []).map((color) => {
+          {colorArray.map((color) => {
             const isSelected = selectedColor === color;
             return (
               <ColorButton

@@ -1,19 +1,22 @@
 'use client';
 
-// Types
-import { ItemCardProps } from '@/types';
+// Libs
+import { useState } from 'react';
 
 // Components
 import { ProductItem } from '@/components/Item';
 import { Pagination } from '@/components';
-import { useState } from 'react';
+
+// Models
+import { ProductModel } from '@/models';
 
 type ListItemProps = {
-  items: ItemCardProps[];
+  items: ProductModel[];
 };
 
 export const ListProductItem = ({ items }: ListItemProps) => {
   const [currentPage, setCurrentPage] = useState(1);
+
   if (!items || items.length === 0) {
     return (
       <div className="text-center text-red text-xl py-10">No items found.</div>

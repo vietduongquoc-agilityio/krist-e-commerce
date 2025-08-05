@@ -11,16 +11,16 @@ import {
   PriceSelection,
   SizeSelection,
 } from '@/components';
-
-// Mocks
-import { ITEMS } from '@/mocks';
+import { getProducts } from '@/services';
 
 export const metadata: Metadata = {
   title: 'Shop Page',
   description: 'Browse and purchase products',
 };
 
-export default function ShopPage() {
+export default async function ShopPage() {
+  const { productsData } = await getProducts();
+
   return (
     <section>
       {/* Breadcrumb */}
@@ -40,7 +40,7 @@ export default function ShopPage() {
         </div>
 
         <div>
-          <ListProductItem items={ITEMS} />
+          <ListProductItem items={productsData || []} />
         </div>
       </div>
 

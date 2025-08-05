@@ -1,20 +1,20 @@
 import { colors } from '@/themes/colors';
 
 export const COLOR_LIST = [
+  colors.red,
+  colors.black,
+  colors.gray,
+  colors.yellow,
   colors.coralRed,
   colors.orangePeel,
   colors.sunYellow,
   colors.lime,
   colors.neonGreen,
   colors.mintGreen,
-  colors.iceBlue,
-  colors.aquaMint,
-  colors.skyBlue,
   colors.cornFlower,
   colors.mediumSlate,
   colors.orchid,
   colors.pinkLavender,
-  colors.red,
 ];
 
 export const PRICE_RANGE = [
