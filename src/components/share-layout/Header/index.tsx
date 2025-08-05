@@ -139,7 +139,7 @@ export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
                     key="username"
                     className="rounded-t-[5px] text-center bg-black text-white hover:bg-gray transition"
                   >
-                    <p>{username}</p>
+                    <p>{username || 'User'}</p>
                   </DropdownItem>
                   <DropdownItem
                     key="logout"
