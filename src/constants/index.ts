@@ -6,3 +6,4 @@ export * from './regex';
 export * from './text';
 export * from './validation';
 export * from './signUpFields';
+export * from './endpoints';

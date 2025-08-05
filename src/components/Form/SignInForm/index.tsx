@@ -24,7 +24,7 @@ import { signInSchema } from '@/schemas';
 // Constants
 import {
   ERROR_MESSAGES,
-  PUBLIC_URL,
+  BASE_URL,
   ROUTER,
   SUCCESS_MESSAGES,
   TEXT_SIZE,
@@ -62,7 +62,7 @@ export const SignInForm = () => {
       toastManager.showToast(SUCCESS_MESSAGES.LOGIN, 'success', 'top-center');
 
       if (callbackUrl) {
-        return router.push(callbackUrl.replace(PUBLIC_URL!, ''));
+        return router.push(callbackUrl.replace(BASE_URL!, ''));
       }
 
       router.push(ROUTER.HOME);

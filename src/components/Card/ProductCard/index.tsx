@@ -6,30 +6,27 @@ import { useRouter } from 'next/navigation';
 
 // Components
 import { StarIcon } from '@/components';
+
+// Constants
 import { ROUTER } from '@/constants';
 
-// Types
-import { ProductCardProps } from '@/types';
+// Models
+import { ProductModel } from '@/models';
 
-export const ProductCard = ({
-  id,
-  thumbnailUrl,
-  title,
-  brand = 'Al Karam',
-  rating,
-  reviews = '(4.1k) Customer Reviews',
-  price,
-  status = 'Almost Sold Out',
-}: ProductCardProps) => {
+interface ProductCardProps {
+  productCard: ProductModel;
+}
+
+export const ProductCard = ({ productCard }: ProductCardProps) => {
   const router = useRouter();
 
   const handleCardClick = () => {
-    router.push(`${ROUTER.PRODUCT}/${id}`);
+    router.push(`${ROUTER.PRODUCT}/${productCard.id}`);
   };
 
   const renderStars = (count: number = 4) => {
     return Array.from({ length: count }, (_, index) => (
-      <StarIcon key={`${id}-star-${index}`} />
+      <StarIcon key={index} />
     ));
   };
 
@@ -40,10 +37,11 @@ export const ProductCard = ({
     >
       <figure className="rounded-2xl overflow-hidden">
         <Image
-          src={thumbnailUrl || '/images/product-img.webp'}
-          alt={title}
+          src={productCard.thumbnailUrl || '/images/product-img.webp'}
+          alt={productCard.title}
           width={336}
           height={244}
+          className="w-[336px] h-[244px] object-cover"
           sizes="(100vw - 20px) 100vw, 336px"
         />
       </figure>
@@ -51,23 +49,29 @@ export const ProductCard = ({
       <div className="mt-4 space-y-1">
         <div className="flex items-center justify-between pb-4">
           <div>
-            <h3 className="text-xl font-medium text-charcoal">{title}</h3>
-            <p className="text-xs text-gray">{brand}</p>
+            <h3 className="text-xl font-medium text-charcoal">
+              {productCard.title}
+            </h3>
+            <p className="text-xs text-gray">{productCard.brand}</p>
           </div>
 
           <div className="flex items-center space-x-0.5">
-            {renderStars(rating)}
+            {renderStars(productCard.rating)}
           </div>
         </div>
 
-        <p className="text-xs text-charcoal">({reviews}) Customer Reviews</p>
+        <p className="text-xs text-charcoal">
+          ({productCard.reviews}) Customer Reviews
+        </p>
 
         <div className="flex items-center justify-between pt-4 pb-6">
           <span className="text-2xl font-medium text-charcoal">
-            ${price.toFixed(2)}
+            ${productCard.price.toFixed(2)}
           </span>
-          {status && (
-            <span className="text-sm text-coralRed font-medium">{status}</span>
+          {productCard.status && (
+            <span className="text-sm text-coralRed font-medium">
+              {productCard.status}
+            </span>
           )}
         </div>
       </div>
