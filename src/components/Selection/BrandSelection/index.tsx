@@ -3,19 +3,19 @@
 import { useSearchParams, useRouter } from 'next/navigation';
 
 // Constants
-import { BRANDS } from '@/constants';
+import { BRANDS, QUERY_KEY } from '@/constants';
 
 export const BrandSelection = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const selectedBrand = searchParams.get('brand');
+  const selectedBrand = searchParams.get(QUERY_KEY.BRAND);
 
   const handleClick = (brand: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (selectedBrand === brand) {
-      params.delete('brand');
+      params.delete(QUERY_KEY.BRAND);
     } else {
-      params.set('brand', brand);
+      params.set(QUERY_KEY.BRAND, brand);
     }
     router.push(`?${params.toString()}`);
   };

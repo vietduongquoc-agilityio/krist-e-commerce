@@ -8,7 +8,13 @@ import { API_ENDPOINTS, PAGE_SIZE } from '@/constants';
 import { apiClient } from '@/services';
 
 // Utils
-import { parseCommaStringToArray } from '@/utils';
+import {
+  filterByBrand,
+  filterByColor,
+  filterByPrice,
+  filterBySearch,
+  filterBySize,
+} from '@/utils';
 
 type IParams = {
   searchParams?: {
@@ -35,47 +41,25 @@ export const getProducts = async ({ searchParams }: IParams) => {
   let products = data?.data ?? [];
 
   if (searchParams?.size) {
-    const selectedSizes = Array.isArray(searchParams.size)
-      ? searchParams.size
-      : searchParams.size.split(',');
-
-    products = products.filter((p) => {
-      return selectedSizes.some((size) => p.sizes.includes(size));
-    });
+    products = filterBySize(products, searchParams.size);
   }
 
   if (searchParams?.color) {
-    const selectedColors = searchParams.color.split(',');
-
-    products = products.filter((p) => {
-      return selectedColors.some((color) => p.colors.includes(color));
-    });
+    products = filterByColor(products, searchParams.color);
   }
 
   if (searchParams?.brand) {
-    products = products.filter((p) => p.brand === searchParams.brand);
+    products = filterByBrand(products, searchParams.brand);
   }
 
   if (searchParams?.price) {
-    console.log(searchParams.price);
-
-    const [min, max] = searchParams.price
-      .replace(/\$/g, '')
-      .split('-')
-      .map(Number);
-
-    products = products.filter((p) => {
-      return (
-        (!isNaN(min) ? p.price >= min : true) &&
-        (!isNaN(max) ? p.price <= max : true)
-      );
-    });
+    products = filterByPrice(products, searchParams.price);
   }
 
   if (searchParams?.search) {
-    const search = searchParams.search.toLowerCase();
-    products = products.filter((p) => p.title.toLowerCase().includes(search));
+    products = filterBySearch(products, searchParams.search);
   }
+
   const total = products.length;
   const start = (page - 1) * pageSize;
   const end = start + pageSize;
