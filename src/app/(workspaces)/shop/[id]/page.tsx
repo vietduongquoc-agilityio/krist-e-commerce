@@ -1,14 +1,39 @@
+import { Suspense } from 'react';
+
 // Components
 import { AboutSection, ProductDetailCard } from '@/components';
 
-// Mock
-import { productMock } from '@/mocks';
+// Services
+import { getProductDetail } from '@/services';
+import { notFound } from 'next/navigation';
 
-export default function Shop() {
+export default async function ProductDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
+  const { productData, error } = await getProductDetail(id);
+
+  if (error) {
+    return (
+      <h2 className="text-red text-2xl p-4 font-medium tracking-[2%]">
+        No product found
+      </h2>
+    );
+  }
+
+  if (!productData) {
+    notFound();
+  }
+
   return (
     <div>
       {/* Product Detail Card */}
-      <ProductDetailCard product={productMock[0]} />
+      <Suspense>
+        <ProductDetailCard product={productData} />
+      </Suspense>
 
       {/* About Section */}
       <AboutSection />

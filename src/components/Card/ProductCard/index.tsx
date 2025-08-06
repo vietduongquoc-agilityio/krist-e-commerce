@@ -5,7 +5,7 @@ import { Card } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 
 // Components
-import { StarIcon } from '@/components';
+import { Button, StarIcon } from '@/components';
 
 // Constants
 import { ROUTER } from '@/constants';
@@ -20,8 +20,12 @@ interface ProductCardProps {
 export const ProductCard = ({ productCard }: ProductCardProps) => {
   const router = useRouter();
 
-  const handleCardClick = () => {
-    router.push(`${ROUTER.PRODUCT}/${productCard.id}`);
+  const handleNavigate = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
+    if (!productCard.isSoldOut) {
+      router.push(`${ROUTER.SHOP}/${productCard.documentId}`);
+    }
   };
 
   const renderStars = (count: number = 4) => {
@@ -32,10 +36,14 @@ export const ProductCard = ({ productCard }: ProductCardProps) => {
 
   return (
     <Card
-      onClick={handleCardClick}
-      className="bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition"
+      className={`bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition ${
+        productCard.isSoldOut ? 'cursor-not-allowed opacity-80' : ''
+      }`}
     >
-      <figure className="rounded-2xl overflow-hidden">
+      <figure
+        className="rounded-2xl overflow-hidden cusor-pointer"
+        onClick={handleNavigate}
+      >
         <Image
           src={productCard.thumbnailUrl || '/images/product-img.webp'}
           alt={productCard.title}
@@ -44,6 +52,18 @@ export const ProductCard = ({ productCard }: ProductCardProps) => {
           className="w-[336px] h-[244px] object-cover"
           sizes="(100vw - 20px) 100vw, 336px"
         />
+        {productCard.isSoldOut && (
+          <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+            <Button
+              variant="ghost"
+              className="bg-black text-white text-[10px] font-black rounded-full w-[62px] h-[62px] flex flex-col items-center justify-center pointer-events-none leading-tight text-center"
+            >
+              SOLD
+              <br />
+              OUT
+            </Button>
+          </div>
+        )}
       </figure>
 
       <div className="mt-4 space-y-1">
