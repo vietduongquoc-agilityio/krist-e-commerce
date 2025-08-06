@@ -15,7 +15,7 @@ import { ROUTER } from '@/constants';
 import { ColorButton } from '@/components';
 
 export const ProductItem = ({
-  id,
+  documentId,
   thumbnailUrl,
   title,
   colors,
@@ -24,11 +24,14 @@ export const ProductItem = ({
   isSoldOut = false,
 }: ItemCardProps) => {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
+
   const router = useRouter();
 
-  const handleCardClick = () => {
+  const handleNavigate = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
     if (!isSoldOut) {
-      router.push(`${ROUTER.PRODUCT}/${id}`);
+      router.push(`${ROUTER.SHOP}/${documentId}`);
     }
   };
 
@@ -45,10 +48,11 @@ export const ProductItem = ({
 
   return (
     <Card
-      onClick={handleCardClick}
-      className="cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-xl transition"
+      className={`cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-xl transition ${
+        isSoldOut ? 'cursor-not-allowed opacity-60' : ''
+      }`}
     >
-      <figure className="relative">
+      <figure className="relative cursor-pointer" onClick={handleNavigate}>
         <Image
           src={thumbnailUrl || '/images/productItem1.webp'}
           alt="Product Item"

@@ -16,6 +16,8 @@ import {
   ViewerCount,
 } from '@/components';
 
+import { colorNameToHex, parseCommaStringToArray } from '@/utils';
+
 // Models
 import { ProductModel } from '@/models';
 
@@ -29,13 +31,29 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     price,
     salePrice,
     thumbnailUrl,
-    colors,
-    sizes,
     rating,
     reviewCount,
-    stock = 4,
-    images,
+    stock = 0,
+    id,
   } = product;
+
+  const images = Array.isArray(product.images)
+    ? product.images
+    : product.images
+      ? parseCommaStringToArray(product.images)
+      : [];
+
+  const sizes = Array.isArray(product.sizes)
+    ? product.sizes
+    : product.sizes
+      ? parseCommaStringToArray(product.sizes)
+      : [];
+
+  const colors = Array.isArray(product.colors)
+    ? product.colors
+    : product.colors
+      ? parseCommaStringToArray(product.colors)
+      : [];
 
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
@@ -56,14 +74,14 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     const colorName = colors.find((color) => color === selectedColor);
 
     const item = {
-      id: product.id,
-      title: product.title,
-      thumbnailUrl: product.thumbnailUrl,
-      price: product.salePrice || product.price,
+      id,
+      title,
+      thumbnailUrl,
+      price: salePrice || price,
       color: colorName,
-      sizes: product.sizes,
+      sizes,
       quantity,
-      stock: product.stock,
+      stock,
     };
 
     // TODO: Replace with cart store logic
@@ -71,9 +89,9 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   };
 
   return (
-    <section className="flex gap-[50px] justify-center pt-[78px]">
+    <section key={id} className="flex gap-[50px] justify-center pt-[78px]">
       <div className="flex flex-col gap-4">
-        {(images ?? [thumbnailUrl]).map((img, index) => (
+        {(images.length > 0 ? images : [thumbnailUrl]).map((img, index) => (
           <Button
             key={index}
             onClick={() => setSelectedImage(img)}
@@ -93,6 +111,8 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
           </Button>
         ))}
       </div>
+
+      {/* Main image */}
       <figure>
         <Image
           src={selectedImage}
@@ -119,7 +139,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
           <div className="flex items-center gap-3 my-8">
             {salePrice && (
               <span className="text-[24px] font-secondary">
-                ${salePrice.toLocaleString()}
+                ${salePrice.toFixed(2)}
               </span>
             )}
             <span
@@ -129,11 +149,11 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
                   : 'text-xl font-bold text-black line-none'
               }`}
             >
-              ${price.toLocaleString()}
+              ${price.toFixed(2)}
             </span>
             {salePrice && (
               <span className="text-sm font-secondary text-white bg-strawberry py-[1px] px-3 rounded-10">
-                Save 33%
+                Save {Math.round(((price - salePrice) / price) * 100)}%
               </span>
             )}
           </div>
@@ -151,7 +171,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
           <div className="flex gap-2 flex-col my-5">
             <span className="font-bold font-secondary">Sizes</span>
             <div className="flex gap-2">
-              {(sizes ?? []).map((size) => {
+              {sizes.map((size) => {
                 const isSelectedSize = selectedSize === size;
                 return (
                   <div
@@ -176,12 +196,12 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
           <div className="flex gap-3 flex-col">
             <span className="font-bold font-secondary">Colors</span>
             <div className="flex gap-[10px]">
-              {(colors ?? []).map((color) => {
+              {colors.map((color) => {
                 const isSelected = selectedColor === color;
                 return (
                   <ColorButton
                     key={color}
-                    color={color}
+                    color={colorNameToHex[color] || color}
                     isSelected={isSelected}
                     onClick={() => handleSelectColor(color)}
                     as="div"
@@ -209,7 +229,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
                 onClick={handleAddToCart}
                 isDisabled={stock === 0}
               >
-                Add to cart
+                {stock === 0 ? 'Out of stock' : 'Add to cart'}
               </Button>
             </div>
           </div>

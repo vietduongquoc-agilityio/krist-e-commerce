@@ -64,3 +64,20 @@ export const getProducts = async ({ searchParams }: IParams) => {
     error,
   };
 };
+
+export const getProductDetail = async (id: string) => {
+  if (!id) {
+    throw new Error('Product id is required to fetch product detail,');
+  }
+
+  const url = `${API_ENDPOINTS.PRODUCTS}/${id}?populate=*`;
+
+  const { data, error } = await apiClient.get<{ data: ProductModel }>(url, {
+    next: { revalidate: 3600 },
+  });
+
+  return {
+    productData: data?.data,
+    error,
+  };
+};
