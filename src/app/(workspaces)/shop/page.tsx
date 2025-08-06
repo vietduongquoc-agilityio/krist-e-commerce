@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 // Components
 import {
@@ -22,8 +23,13 @@ export const metadata: Metadata = {
 
 interface ShopPageProps {
   searchParams: Promise<{
-    page: string;
-    pageSize: string;
+    page?: string;
+    pageSize?: string;
+    size?: string;
+    color?: string;
+    brand?: string;
+    price?: string;
+    search?: string;
   }>;
 }
 
@@ -49,9 +55,9 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           <BrandSelection />
         </div>
 
-        <div>
+        <Suspense>
           <ListProductItem items={productsData || []} meta={meta} />
-        </div>
+        </Suspense>
       </div>
 
       {/* About Section */}
