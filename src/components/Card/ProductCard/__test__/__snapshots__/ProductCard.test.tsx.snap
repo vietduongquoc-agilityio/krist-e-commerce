@@ -7,7 +7,7 @@ exports[`ProductCard should render correctly and match snapshot 1`] = `
     tabindex="-1"
   >
     <figure
-      class="rounded-2xl overflow-hidden"
+      class="rounded-2xl overflow-hidden cusor-pointer"
     >
       <img
         alt="Nike Air Max 270"
