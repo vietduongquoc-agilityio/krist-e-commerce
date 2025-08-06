@@ -5,7 +5,7 @@ import {
   ModelSection,
 } from '@/components';
 
-export default function LandingPage() {
+export default async function LandingPage() {
   return (
     <div>
       {/* Banner */}

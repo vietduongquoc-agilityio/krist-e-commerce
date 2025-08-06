@@ -2,11 +2,11 @@ import { ListProductItem } from '@/components';
 import { render } from '@testing-library/react';
 
 // Mock
-import { ITEMS } from '@/mocks';
+import { productMock } from '@/mocks';
 
 describe('ListProductItem', () => {
   it('should render ListProductItem component and match snapshot', () => {
-    const { container } = render(<ListProductItem items={ITEMS} />);
+    const { container } = render(<ListProductItem items={productMock} />);
     expect(container).toMatchSnapshot();
   });
 

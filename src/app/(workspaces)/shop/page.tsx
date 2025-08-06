@@ -12,15 +12,25 @@ import {
   SizeSelection,
 } from '@/components';
 
-// Mocks
-import { ITEMS } from '@/mocks';
+// Services
+import { getProducts } from '@/services';
 
 export const metadata: Metadata = {
   title: 'Shop Page',
   description: 'Browse and purchase products',
 };
 
-export default function ShopPage() {
+interface ShopPageProps {
+  searchParams: Promise<{
+    page: string;
+    pageSize: string;
+  }>;
+}
+
+export default async function ShopPage({ searchParams }: ShopPageProps) {
+  const params = await searchParams;
+  const { productsData, meta } = await getProducts({ searchParams: params });
+
   return (
     <section>
       {/* Breadcrumb */}
@@ -40,7 +50,7 @@ export default function ShopPage() {
         </div>
 
         <div>
-          <ListProductItem items={ITEMS} />
+          <ListProductItem items={productsData || []} meta={meta} />
         </div>
       </div>
 

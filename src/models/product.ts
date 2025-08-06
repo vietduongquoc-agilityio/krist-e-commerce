@@ -15,4 +15,7 @@ export interface ProductModel {
   createdAt?: string;
   updatedAt?: string;
   stock: number;
+  brand?: string;
+  status?: string;
+  reviews?: string;
 }
