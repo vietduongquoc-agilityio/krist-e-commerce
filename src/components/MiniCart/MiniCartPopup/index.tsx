@@ -1,15 +1,20 @@
 'use client';
 
-import { ItemMiniCart, PaymentCard } from '@/components';
-// Models
-import { ProductModel } from '@/models';
 import { Button, Modal } from '@heroui/react';
+
+// Components
+import { ItemMiniCart, PaymentCard } from '@/components';
+
+// Models
 import { useMemo } from 'react';
+
+// Types
+import { ItemCardProps } from '@/types';
 
 interface MiniCartPopupProps {
   isOpen: boolean;
   onClose: () => void;
-  cartItems: ProductModel[];
+  cartItems: ItemCardProps[];
   onUpdateQuantity?: (id: string, quantity: number) => void;
   onCheckout?: () => void;
 }

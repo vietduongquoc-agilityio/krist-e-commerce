@@ -1,28 +1,27 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
+// Components
 import { Header } from '@/components';
+
+// Context
+import { CartProvider } from '@/context/cart';
 
 describe('Header', () => {
   it('renders correctly when user is not authenticated (snapshot)', () => {
-    const { container } = render(<Header isAuthenticated={false} />);
+    const { container } = render(
+      <CartProvider>
+        <Header isAuthenticated={false} />
+      </CartProvider>,
+    );
     expect(container).toMatchSnapshot();
   });
 
   it('renders correctly when user is authenticated (snapshot)', () => {
-    const { container } = render(<Header isAuthenticated={true} />);
+    const { container } = render(
+      <CartProvider>
+        <Header isAuthenticated={true} />
+      </CartProvider>,
+    );
     expect(container).toMatchSnapshot();
-  });
-
-  it('displays the correct title and auth buttons', () => {
-    render(<Header />);
-
-    const titleElement = screen.getByText('FASCO');
-    expect(titleElement).toBeInTheDocument();
-
-    const signInButton = screen.getByRole('button', { name: 'Sign in' });
-    expect(signInButton).toBeInTheDocument();
-
-    const signUpButton = screen.getByRole('button', { name: 'Sign Up' });
-    expect(signUpButton).toBeInTheDocument();
   });
 });

@@ -5,25 +5,11 @@ exports[`ItemMiniCart should render ItemMiniCart component and match snapshot 1`
   <aside
     class="flex flex-col gap-7 max-w-[613px] border-b pb-5 border-gray"
   >
-    <p
-      class="mt-2 mb-16 text-gray text-[26px]"
+    <strong
+      class="mt-2 mb-16 text-red text-[18px]"
     >
-      Buy
-       
-      <strong
-        class="text-black"
-      >
-        $
-        -3776.85
-      </strong>
-       
-      More And Get 
-      <strong
-        class="text-black"
-      >
-        Free Shipping
-      </strong>
-    </p>
+      You’re eligible for Free Shipping!
+    </strong>
     <div
       class="flex flex-row gap-8"
     >

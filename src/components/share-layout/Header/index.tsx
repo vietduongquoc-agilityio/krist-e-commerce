@@ -27,13 +27,14 @@ import {
 } from '@/constants';
 import { MiniCartPopup } from '@/components/MiniCart/MiniCartPopup';
 
-// Mocks
-import { productMock } from '@/mocks';
-
-// Models
-import { ProductModel } from '@/models';
+// Actions
 import { signOut } from '@/actions/auth';
+
+// Utils
 import { toastManager } from '@/utils';
+
+// Hooks
+import { useCart } from '@/hooks/useCart';
 
 interface HeaderProps {
   username?: string;
@@ -45,13 +46,8 @@ export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<ProductModel[]>([]);
 
-  const handleUpdateQuantity = (id: string, quantity: number) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item)),
-    );
-  };
+  const { cartItems, updateQuantity } = useCart();
 
   const handleSignIn = () => {
     router.push(ROUTER.SIGNIN);
@@ -158,8 +154,8 @@ export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
               <MiniCartPopup
                 isOpen={isCartOpen}
                 onClose={handleToggleCart}
-                cartItems={cartItems.length === 0 ? productMock : cartItems}
-                onUpdateQuantity={handleUpdateQuantity}
+                cartItems={cartItems}
+                onUpdateQuantity={updateQuantity}
                 onCheckout={handleCheckout}
               />
             </>
