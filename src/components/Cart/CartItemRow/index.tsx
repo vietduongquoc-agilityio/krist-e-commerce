@@ -2,14 +2,14 @@
 
 import Image from 'next/image';
 
-// Models
-import { ProductModel } from '@/models';
+// Types
+import { ItemCardProps } from '@/types';
 
 // Components
 import { Button, QuantityInput } from '@/components';
 
 interface CartItemProps {
-  productItem: ProductModel;
+  productItem: ItemCardProps;
   onQuantityChange?: (id: string, quantity: number) => void;
   onRemove?: () => void;
 }

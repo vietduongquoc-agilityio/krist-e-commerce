@@ -28,4 +28,7 @@ export const SUCCESS_MESSAGES = {
   COURSE_PURCHASE: 'Course purchased successfully!',
 
   ADD_PRODUCT_TO_CART: 'Product added to cart successfully.',
+  CHECKOUT_SUCCESS: 'Checkout successful.',
+
+  REMOVE_PRODUCT_FROM_CART: 'Product removed from cart successfully.',
 };
