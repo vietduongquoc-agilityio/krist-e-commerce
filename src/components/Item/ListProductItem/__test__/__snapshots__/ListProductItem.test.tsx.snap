@@ -13,7 +13,7 @@ exports[`ListProductItem should render ListProductItem component and match snaps
         tabindex="-1"
       >
         <figure
-          class="relative"
+          class="relative cursor-pointer"
         >
           <img
             alt="Product Item"
