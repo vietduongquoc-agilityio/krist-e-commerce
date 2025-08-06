@@ -1,25 +1,36 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 // Services
-import { getProducts } from '@/services';
+import { apiClient } from '@/services';
 
-export async function GET() {
-  try {
-    const { productsData, error } = await getProducts();
+// Constants
+import { API_ENDPOINTS, PAGE_SIZE } from '@/constants';
 
-    if (error) {
-      return NextResponse.json(
-        { message: 'Failed to fetch products', error },
-        { status: 500 },
-      );
-    }
+// Models
+import { ProductModel } from '@/models';
 
-    return NextResponse.json({ data: productsData }, { status: 200 });
-  } catch (err: any) {
-    console.error('API Error:', err);
-    return NextResponse.json(
-      { message: 'Internal server error', error: err.message },
-      { status: 500 },
-    );
-  }
+export async function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams;
+
+  const query = searchParams.get('query') ?? '';
+  const page = searchParams.get('page') ?? '1';
+  const pageSize = searchParams.get('pageSize');
+
+  const params = new URLSearchParams();
+  params.set('pagination[page]', page);
+  params.set('pagination[pageSize]', pageSize ?? String(PAGE_SIZE));
+  params.set('filters[title][$containsi]', query);
+
+  const url = `${API_ENDPOINTS.PRODUCTS}?${params.toString()}`;
+
+  console.log(url);
+
+  const { data } = await apiClient.get<{
+    data: ProductModel[];
+    meta: any;
+  }>(url, {
+    next: { revalidate: 3600 },
+  });
+
+  return NextResponse.json({ data: data?.data }, { status: 200 });
 }

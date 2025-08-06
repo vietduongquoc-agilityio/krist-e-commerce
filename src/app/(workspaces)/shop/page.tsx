@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 // Components
 import {
@@ -11,6 +12,8 @@ import {
   PriceSelection,
   SizeSelection,
 } from '@/components';
+
+// Services
 import { getProducts } from '@/services';
 
 export const metadata: Metadata = {
@@ -18,8 +21,21 @@ export const metadata: Metadata = {
   description: 'Browse and purchase products',
 };
 
-export default async function ShopPage() {
-  const { productsData } = await getProducts();
+interface ShopPageProps {
+  searchParams: Promise<{
+    page?: string;
+    pageSize?: string;
+    size?: string;
+    color?: string;
+    brand?: string;
+    price?: string;
+    search?: string;
+  }>;
+}
+
+export default async function ShopPage({ searchParams }: ShopPageProps) {
+  const params = await searchParams;
+  const { productsData, meta } = await getProducts({ searchParams: params });
 
   return (
     <section>
@@ -39,9 +55,9 @@ export default async function ShopPage() {
           <BrandSelection />
         </div>
 
-        <div>
-          <ListProductItem items={productsData || []} />
-        </div>
+        <Suspense>
+          <ListProductItem items={productsData || []} meta={meta} />
+        </Suspense>
       </div>
 
       {/* About Section */}

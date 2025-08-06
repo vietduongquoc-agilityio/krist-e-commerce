@@ -1,7 +1,25 @@
+'use client';
+
+import { useSearchParams, useRouter } from 'next/navigation';
+
 // Constants
-import { BRANDS } from '@/constants';
+import { BRANDS, QUERY_KEY } from '@/constants';
 
 export const BrandSelection = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const selectedBrand = searchParams.get(QUERY_KEY.BRAND);
+
+  const handleClick = (brand: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (selectedBrand === brand) {
+      params.delete(QUERY_KEY.BRAND);
+    } else {
+      params.set(QUERY_KEY.BRAND, brand);
+    }
+    router.push(`?${params.toString()}`);
+  };
+
   return (
     <div className="mb-6 w-full">
       <div className="flex items-center justify-between cursor-pointer max-w-[310px]">
@@ -11,7 +29,11 @@ export const BrandSelection = () => {
 
       <div className="flex flex-wrap gap-2 mt-3 text-gray max-w-[220px]">
         {BRANDS.map((brand, i) => (
-          <span key={i} className="cursor-pointer hover:text-black transition">
+          <span
+            key={i}
+            onClick={() => handleClick(brand)}
+            className="cursor-pointer hover:text-black transition"
+          >
             {brand}
           </span>
         ))}
