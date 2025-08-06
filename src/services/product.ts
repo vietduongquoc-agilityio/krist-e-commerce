@@ -40,30 +40,15 @@ export const getProducts = async ({ searchParams }: IParams) => {
 
   let products = data?.data ?? [];
 
-  if (searchParams?.size) {
-    products = filterBySize(products, searchParams.size);
-  }
-
-  if (searchParams?.color) {
-    products = filterByColor(products, searchParams.color);
-  }
-
-  if (searchParams?.brand) {
-    products = filterByBrand(products, searchParams.brand);
-  }
-
-  if (searchParams?.price) {
-    products = filterByPrice(products, searchParams.price);
-  }
-
-  if (searchParams?.search) {
-    products = filterBySearch(products, searchParams.search);
-  }
+  products = filterBySize(products, searchParams?.size ?? '');
+  products = filterByColor(products, searchParams?.color ?? '');
+  products = filterByBrand(products, searchParams?.brand ?? '');
+  products = filterByPrice(products, searchParams?.price ?? '');
+  products = filterBySearch(products, searchParams?.search ?? '');
 
   const total = products.length;
   const start = (page - 1) * pageSize;
   const end = start + pageSize;
-
   const paginatedItems = products.slice(start, end);
 
   return {
