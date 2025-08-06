@@ -16,6 +16,9 @@ export const ERROR_MESSAGES = {
   PASSWORDS_DO_NOT_MATCH: 'Passwords do not match',
   ACCOUNT_AND_PASSWORD_INVALID:
     'Your account or password is incorrect, please try again.',
+
+  PLEASE_SELECT_COLOR: 'Please select a color',
+  PLEASE_SELECT_SIZE: 'Please select a size',
 };
 
 export const SUCCESS_MESSAGES = {
@@ -23,4 +26,9 @@ export const SUCCESS_MESSAGES = {
   SIGN_UP: 'Registration successful! Redirecting to login',
   SIGN_OUT: 'Log out successful.',
   COURSE_PURCHASE: 'Course purchased successfully!',
+
+  ADD_PRODUCT_TO_CART: 'Product added to cart successfully.',
+  CHECKOUT_SUCCESS: 'Checkout successful.',
+
+  REMOVE_PRODUCT_FROM_CART: 'Product removed from cart successfully.',
 };

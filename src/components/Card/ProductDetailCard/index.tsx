@@ -16,10 +16,19 @@ import {
   ViewerCount,
 } from '@/components';
 
-import { colorNameToHex, parseCommaStringToArray } from '@/utils';
+import { colorNameToHex, parseCommaStringToArray, toastManager } from '@/utils';
 
 // Models
 import { ProductModel } from '@/models';
+
+// Constants
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
+
+// Types
+import { ItemCardProps } from '@/types';
+
+// Hooks
+import { useCart } from '@/hooks/useCart';
 
 interface ProductDetailCardProps {
   product: ProductModel;
@@ -70,22 +79,37 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     setSelectedSize(newSize);
   };
 
-  const handleAddToCart = () => {
-    const colorName = colors.find((color) => color === selectedColor);
+  const { addToCart } = useCart();
 
-    const item = {
+  const handleAddToCart = () => {
+    if (!selectedColor || !selectedSize) {
+      toastManager.showToast(
+        ERROR_MESSAGES.PLEASE_SELECT_COLOR,
+        'error',
+        'top-center',
+      );
+      return;
+    }
+
+    const item: ItemCardProps = {
       id,
       title,
       thumbnailUrl,
       price: salePrice || price,
-      color: colorName,
+      color: colorNameToHex[selectedColor] || selectedColor,
       sizes,
       quantity,
       stock,
+      selectedSize,
     };
 
-    // TODO: Replace with cart store logic
-    console.log(item);
+    addToCart(item);
+
+    toastManager.showToast(
+      SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART,
+      'success',
+      'top-center',
+    );
   };
 
   return (

@@ -9,6 +9,9 @@ export const ITEMS: ItemCardProps[] = [
     colors: ['#FF6C6C', '#FC6CFF'],
     isSoldOut: false,
     documentId: 'doc-1',
+    sizes: [],
+    quantity: 0,
+    stock: 0,
   },
   {
     id: '2',
@@ -18,6 +21,9 @@ export const ITEMS: ItemCardProps[] = [
     colors: ['#6C7BFF', '#6CFF9E'],
     isSoldOut: true,
     documentId: 'doc-2',
+    sizes: [],
+    quantity: 0,
+    stock: 0,
   },
   {
     id: '3',
@@ -27,6 +33,9 @@ export const ITEMS: ItemCardProps[] = [
     colors: ['#FF0000', '#FFF06C'],
     isSoldOut: false,
     documentId: 'doc-3',
+    sizes: [],
+    quantity: 0,
+    stock: 0,
   },
   {
     id: '4',
@@ -36,6 +45,9 @@ export const ITEMS: ItemCardProps[] = [
     colors: ['#FCA120', '#6CFFDC'],
     isSoldOut: true,
     documentId: 'doc-4',
+    sizes: [],
+    quantity: 0,
+    stock: 0,
   },
   {
     id: '5',
@@ -45,6 +57,9 @@ export const ITEMS: ItemCardProps[] = [
     colors: ['#9BFF6C'],
     isSoldOut: false,
     documentId: 'doc-5',
+    sizes: [],
+    quantity: 0,
+    stock: 0,
   },
   {
     id: '6',
@@ -54,5 +69,8 @@ export const ITEMS: ItemCardProps[] = [
     colors: ['#FF0000', '#FCA120', '#6CFF9E'],
     isSoldOut: false,
     documentId: 'doc-6',
+    sizes: [],
+    quantity: 0,
+    stock: 0,
   },
 ];

@@ -6,10 +6,13 @@ import Image from 'next/image';
 import { QuantityInput } from '@/components/commons';
 
 // models
-import { ProductModel } from '@/models';
+import { ItemCardProps } from '@/types';
+
+// constants
+import { FREE_SHIPPING_AMOUNT } from '@/constants';
 
 interface ItemMiniCartProps {
-  productItem: ProductModel;
+  productItem: ItemCardProps;
   onQuantityChange?: (id: string, quantity: number) => void;
 }
 
@@ -18,19 +21,24 @@ export const ItemMiniCart = ({
   onQuantityChange,
 }: ItemMiniCartProps) => {
   const { thumbnailUrl, title, price, quantity, id, stock } = productItem;
-  const freeShippingAmount = 123.15;
 
   const subtotal = price * quantity;
 
+  const remaining = Math.max(FREE_SHIPPING_AMOUNT - subtotal, 0);
+
   return (
     <aside className="flex flex-col gap-7 max-w-[613px] border-b pb-5 border-gray">
-      <p className="mt-2 mb-16 text-gray text-[26px]">
-        Buy{' '}
-        <strong className="text-black">
-          ${(freeShippingAmount - subtotal).toFixed(2)}
-        </strong>{' '}
-        More And Get <strong className="text-black">Free Shipping</strong>
-      </p>
+      {remaining > 0 ? (
+        <p className="mt-2 mb-16 text-gray text-[26px]">
+          Buy <strong className="text-black">${remaining.toFixed(2)}</strong>{' '}
+          More And Get <strong className="text-black">Free Shipping</strong>
+        </p>
+      ) : (
+        <strong className="mt-2 mb-16 text-red text-[18px]">
+          You’re eligible for Free Shipping!
+        </strong>
+      )}
+
       <div className="flex flex-row gap-8">
         <Image
           src={thumbnailUrl}

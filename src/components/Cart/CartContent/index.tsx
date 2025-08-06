@@ -1,44 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
-// Models
-import { ProductModel } from '@/models';
-
 // Components
 import { CartItemRow, PaymentCard } from '@/components';
 
-interface CartContentProps {
-  items: ProductModel[];
-}
+// Hooks
+import { useCart } from '@/hooks/useCart';
 
-export const CartContent = ({ items }: CartContentProps) => {
-  const [cartItems, setCartItems] = useState<ProductModel[]>([]);
+// Utils
+import { handleCheckout } from '@/utils';
 
-  useEffect(() => {
-    setCartItems(items);
-  }, [items]);
+export const CartContent = () => {
+  const { cartItems, updateQuantity, removeItem, clearCart } = useCart();
 
-  // Update quantity
-  const handleUpdateQuantity = (id: string, quantity: number) => {
-    const updated = cartItems.map((item) =>
-      item.id === id ? { ...item, quantity } : item,
-    );
-    setCartItems(updated);
-  };
-
-  // Remove item
-  const handleRemoveItem = (id: string) => {
-    const updated = cartItems.filter((item) => item.id !== id);
-    setCartItems(updated);
-  };
-
-  const handleCheckout = () => {
-    alert('Proceeding to checkout...');
-    setCartItems([]); // Clear cart on checkout
-  };
-
-  const subtotal = items.reduce(
+  const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
@@ -64,25 +38,24 @@ export const CartContent = ({ items }: CartContentProps) => {
 
         {/* Item Rows */}
         <div className="border-y border-gray divide-y divide-gray">
-          {items.length === 0 ? (
-            <p className="text-xl text-red">Your cart is empty.</p>
-          ) : (
-            items.map((item) => (
-              <CartItemRow
-                key={item.id}
-                productItem={item}
-                onQuantityChange={(id, qty) => handleUpdateQuantity(id, qty)}
-                onRemove={() => handleRemoveItem(item.id)}
-              />
-            ))
-          )}
+          {cartItems.map((item) => (
+            <CartItemRow
+              key={item.id}
+              productItem={item}
+              onQuantityChange={(id, qty) => updateQuantity(id, qty)}
+              onRemove={() => removeItem(item.id)}
+            />
+          ))}
         </div>
       </div>
 
       {/* Payment Summary */}
-      {items.length > 0 && (
+      {cartItems.length > 0 && (
         <div className="flex justify-end">
-          <PaymentCard subtotal={subtotal} onCheckout={handleCheckout} />
+          <PaymentCard
+            subtotal={subtotal}
+            onCheckout={() => handleCheckout(clearCart)}
+          />
         </div>
       )}
     </div>

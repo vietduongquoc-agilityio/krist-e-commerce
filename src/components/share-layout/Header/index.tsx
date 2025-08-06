@@ -10,7 +10,7 @@ import {
   DropdownItem,
   Avatar,
 } from '@heroui/react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
 // Components
@@ -27,13 +27,14 @@ import {
 } from '@/constants';
 import { MiniCartPopup } from '@/components/MiniCart/MiniCartPopup';
 
-// Mocks
-import { productMock } from '@/mocks';
-
-// Models
-import { ProductModel } from '@/models';
+// Actions
 import { signOut } from '@/actions/auth';
+
+// Utils
 import { toastManager } from '@/utils';
+
+// Hooks
+import { useCart } from '@/hooks/useCart';
 
 interface HeaderProps {
   username?: string;
@@ -45,13 +46,12 @@ export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<ProductModel[]>([]);
 
-  const handleUpdateQuantity = (id: string, quantity: number) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item)),
-    );
-  };
+  const { cartItems, updateQuantity } = useCart();
+
+  const totalQuantity = useMemo(() => {
+    return cartItems.reduce((total, item) => total + item.quantity, 0);
+  }, [cartItems]);
 
   const handleSignIn = () => {
     router.push(ROUTER.SIGNIN);
@@ -84,10 +84,6 @@ export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
 
   const handleToggleCart = () => {
     setIsCartOpen((prevCartState) => !prevCartState);
-  };
-
-  const handleCheckout = () => {
-    console.log('Checkout successful');
   };
 
   return (
@@ -153,14 +149,23 @@ export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
 
               <IconStar className="cursor-not-allowed" />
 
-              <IconCart className="cursor-pointer" onClick={handleToggleCart} />
+              <div
+                className="relative cursor-pointer"
+                onClick={handleToggleCart}
+              >
+                <IconCart />
+                {totalQuantity > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red text-white text-xs font-bold px-2 py-1 rounded-full">
+                    {totalQuantity}
+                  </span>
+                )}
+              </div>
 
               <MiniCartPopup
                 isOpen={isCartOpen}
                 onClose={handleToggleCart}
-                cartItems={cartItems.length === 0 ? productMock : cartItems}
-                onUpdateQuantity={handleUpdateQuantity}
-                onCheckout={handleCheckout}
+                cartItems={cartItems}
+                onUpdateQuantity={updateQuantity}
               />
             </>
           ) : (
