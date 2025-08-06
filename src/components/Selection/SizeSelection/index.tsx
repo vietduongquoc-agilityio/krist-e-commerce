@@ -1,22 +1,27 @@
 'use client';
 
+// Libs
+import { useSearchParams, useRouter } from 'next/navigation';
 import { cn, Button } from '@heroui/react';
-import { useState } from 'react';
 
-interface SizeSelectionProps {
-  sizes?: string[];
-  onChange?: (size: string) => void;
-}
+// Constants
+import { QUERY_KEY } from '@/constants';
 
-export const SizeSelection = ({
-  sizes = ['S', 'M', 'L', 'XL'],
-  onChange,
-}: SizeSelectionProps) => {
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+const sizes = ['S', 'M', 'L', 'XL'];
+
+export const SizeSelection = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const selectedSize = searchParams.get(QUERY_KEY.SIZE);
 
   const handleClick = (size: string) => {
-    setSelectedSize(size);
-    onChange?.(size);
+    const params = new URLSearchParams(searchParams.toString());
+    if (selectedSize === size) {
+      params.delete(QUERY_KEY.SIZE);
+    } else {
+      params.set(QUERY_KEY.SIZE, size);
+    }
+    router.push(`?${params.toString()}`);
   };
 
   return (

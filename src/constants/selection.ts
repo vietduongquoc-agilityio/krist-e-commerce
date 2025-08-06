@@ -1,33 +1,32 @@
-import { colors } from '@/themes/colors';
-
 export const COLOR_LIST = [
-  colors.red,
-  colors.black,
-  colors.gray,
-  colors.yellow,
-  colors.coralRed,
-  colors.orangePeel,
-  colors.sunYellow,
-  colors.lime,
-  colors.neonGreen,
-  colors.mintGreen,
-  colors.cornFlower,
-  colors.mediumSlate,
-  colors.orchid,
-  colors.pinkLavender,
+  'Black',
+  'Gray',
+  'Red',
+  'Yellow',
+  'Coral Red',
+  'Orange Peel',
+  'Sun Yellow',
+  'Lime',
+  'Neon Green',
+  'Mint Green',
+  'Corn Flower',
+  'Medium Slate',
+  'Orchid',
+  'Pink Lavender',
 ];
 
 export const PRICE_RANGE = [
-  '$0–$50',
-  '$50–$100',
-  '$100–$150',
-  '$150–$200',
-  '$300–$400',
+  { label: '$0–$50', value: '0-50' },
+  { label: '$50–$100', value: '50-100' },
+  { label: '$100–$150', value: '100-150' },
+  { label: '$150–$200', value: '150-200' },
+  { label: '$300–$400', value: '300-400' },
 ];
 
 export const BRANDS = [
   'Minimog',
-  'Retrolie Brook',
+  'Retrolie',
+  'Brooks',
   'Learts',
   'Vagabond',
   'Abby',
@@ -39,6 +38,8 @@ export const COLLECTIONS = [
   'New arrivals',
   'Accessories',
 ];
+
+export const SIZES = ['S', 'M', 'L', 'XL'];
 
 export const TAGS = [
   'Fashion',
