@@ -1,39 +1,71 @@
 'use client';
 
+import { useSession } from 'next-auth/react';
 import { Button, Modal } from '@heroui/react';
 
 // Components
 import { ItemMiniCart, PaymentCard } from '@/components';
 
 // Models
-import { useMemo } from 'react';
-
-// Types
-import { ItemCardProps } from '@/types';
+import { useEffect, useMemo, useState } from 'react';
 
 // Utils
-import { handleCheckout } from '@/utils';
-import { useCart } from '@/hooks/useCart';
+import {
+  // clearCart,
+  getCartItemsByUserId,
+  updateCartItemQuantity,
+} from '@/services';
+import { ProductModel } from '@/models';
 
 interface MiniCartPopupProps {
   isOpen: boolean;
   onClose: () => void;
-  cartItems: ItemCardProps[];
-  onUpdateQuantity?: (id: string, quantity: number) => void;
 }
 
-export const MiniCartPopup = ({
-  isOpen,
-  onClose,
-  cartItems,
-  onUpdateQuantity,
-}: MiniCartPopupProps) => {
-  const subtotal = useMemo(
-    () => cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0),
-    [cartItems],
-  );
+export const MiniCartPopup = ({ isOpen, onClose }: MiniCartPopupProps) => {
+  const { data: session } = useSession();
 
-  const { clearCart } = useCart();
+  console.log('session', session);
+
+  const [cartItems, setCartItems] = useState<ProductModel[]>([]);
+  console.log('cartItems', cartItems);
+  const [loading, setLoading] = useState(true);
+
+  const jwt = session?.user.token;
+  const userId = session?.user?.id;
+
+  useEffect(() => {
+    if (!isOpen || !userId || !jwt) return;
+    setLoading(true);
+
+    getCartItemsByUserId(userId, jwt)
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setCartItems(data);
+        } else {
+          setCartItems([]);
+        }
+      })
+      .finally(() => setLoading(false));
+  }, [isOpen, userId, jwt]);
+
+  const subtotal = useMemo(() => {
+    if (!Array.isArray(cartItems)) return 0;
+    return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  }, [cartItems]);
+
+  const onUpdateQuantity = async (id: string, qty: number) => {
+    await updateCartItemQuantity(id, qty, jwt);
+    setCartItems((prev) =>
+      prev.map((c) => (c.id === id ? { ...c, quantity: qty } : c)),
+    );
+  };
+
+  // const handleCheckout = async () => {
+  //   await clearCart(userId!, jwt);
+  //   setCartItems([]);
+  //   onClose();
+  // };
 
   return (
     <Modal
@@ -55,7 +87,9 @@ export const MiniCartPopup = ({
         </div>
 
         <div className="space-y-8">
-          {cartItems.length === 0 ? (
+          {loading ? (
+            <p className="text-gray">Loading your cart...</p>
+          ) : cartItems.length === 0 ? (
             <p className="text-xl text-red">Your cart is empty.</p>
           ) : (
             cartItems.map((item) => (
@@ -72,7 +106,7 @@ export const MiniCartPopup = ({
           <div className="mt-10">
             <PaymentCard
               subtotal={subtotal}
-              onCheckout={() => handleCheckout(clearCart)}
+              // onCheckout={() => handleCheckout()}
             />
           </div>
         )}

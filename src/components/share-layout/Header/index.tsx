@@ -10,8 +10,9 @@ import {
   DropdownItem,
   Avatar,
 } from '@heroui/react';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 // Components
 import { Button } from '@/components/commons/Button';
@@ -33,8 +34,11 @@ import { signOut } from '@/actions/auth';
 // Utils
 import { toastManager } from '@/utils';
 
-// Hooks
-import { useCart } from '@/hooks/useCart';
+// Services
+import { getCartItemsByUserId } from '@/services';
+
+// Models
+import { ProductModel } from '@/models';
 
 interface HeaderProps {
   username?: string;
@@ -45,12 +49,29 @@ interface HeaderProps {
 export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
   const pathname = usePathname();
   const router = useRouter();
-  const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const { cartItems, updateQuantity } = useCart();
+  const { data: session } = useSession();
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState<ProductModel[]>([]);
+
+  const jwt = session?.user.token;
+  const userId = session?.user?.id;
+
+  useEffect(() => {
+    if (!isAuthenticated || !userId || !jwt) return;
+    getCartItemsByUserId(userId, jwt).then((items) => {
+      setCartItems(items as ProductModel[]);
+    });
+  }, [userId, jwt, isAuthenticated]);
+
+  // const totalQuantity = useMemo(() => {
+  //   if (!Array.isArray(cartItems)) return 0;
+  //   return cartItems.reduce((total, item) => total + item.quantity, 0);
+  // }, [cartItems]);
 
   const totalQuantity = useMemo(() => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
+    const items = Array.isArray(cartItems) ? cartItems : [];
+    return items.reduce((total, item) => total + item.quantity, 0);
   }, [cartItems]);
 
   const handleSignIn = () => {
@@ -161,12 +182,7 @@ export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
                 )}
               </div>
 
-              <MiniCartPopup
-                isOpen={isCartOpen}
-                onClose={handleToggleCart}
-                cartItems={cartItems}
-                onUpdateQuantity={updateQuantity}
-              />
+              <MiniCartPopup isOpen={isCartOpen} onClose={handleToggleCart} />
             </>
           ) : (
             <>

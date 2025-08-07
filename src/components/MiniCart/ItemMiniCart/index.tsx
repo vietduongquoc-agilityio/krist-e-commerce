@@ -5,14 +5,14 @@ import Image from 'next/image';
 // components
 import { QuantityInput } from '@/components/commons';
 
-// models
-import { ItemCardProps } from '@/types';
-
 // constants
 import { FREE_SHIPPING_AMOUNT } from '@/constants';
 
+// models
+import { ProductModel } from '@/models';
+
 interface ItemMiniCartProps {
-  productItem: ItemCardProps;
+  productItem: ProductModel;
   onQuantityChange?: (id: string, quantity: number) => void;
 }
 

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 // Components
 import {
@@ -24,11 +25,8 @@ import { ProductModel } from '@/models';
 // Constants
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
-// Types
-import { ItemCardProps } from '@/types';
-
-// Hooks
-import { useCart } from '@/hooks/useCart';
+// Services
+import { addNewCardByAccountId, CartPayload } from '@/services';
 
 interface ProductDetailCardProps {
   product: ProductModel;
@@ -79,9 +77,9 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     setSelectedSize(newSize);
   };
 
-  const { addToCart } = useCart();
+  const { data: session } = useSession();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     if (!selectedColor || !selectedSize) {
       toastManager.showToast(
         ERROR_MESSAGES.PLEASE_SELECT_COLOR,
@@ -91,19 +89,28 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
       return;
     }
 
-    const item: ItemCardProps = {
-      id,
+    const item: CartPayload = {
       title,
       thumbnailUrl,
       price: salePrice || price,
       color: colorNameToHex[selectedColor] || selectedColor,
-      sizes,
       quantity,
       stock,
-      selectedSize,
+      product: id,
     };
-
-    addToCart(item);
+    try {
+      await addNewCardByAccountId(
+        session?.user.id || '',
+        item,
+        session?.user.token,
+      );
+    } catch (error) {
+      toastManager.showToast(
+        ERROR_MESSAGES.ADD_TO_CART_FAIL,
+        'error',
+        'top-center',
+      );
+    }
 
     toastManager.showToast(
       SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART,
