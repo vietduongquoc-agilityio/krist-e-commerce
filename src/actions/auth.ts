@@ -18,15 +18,18 @@ export const authenticateUser = async (formData: ISignInFormData) => {
 };
 
 export const signUp = async (payload: ISignUpFormData) => {
+  console.log('Signing up with', payload);
   try {
-    const response = await apiClient.post<AuthResponse>('auth/local/register', {
-      body: {
-        username: `${payload.firstName} ${payload.lastName}`,
-        email: payload.email,
-        password: payload.password,
-        phone: payload.phone,
+    const response = await apiClient.post<AuthResponse>(
+      '/auth/local/register',
+      {
+        body: {
+          username: `${payload.firstName} ${payload.lastName}`,
+          email: payload.email,
+          password: payload.password,
+        },
       },
-    });
+    );
 
     if (response.error) {
       throw new Error(response.error.message);

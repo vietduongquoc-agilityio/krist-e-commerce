@@ -7,4 +7,5 @@ const REGEX_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
 export const REGEX = {
   PASSWORD: REGEX_PASSWORD,
   EMAIL: REGEX_EMAIL,
+  PHONE: /^[0-9]+$/,
 };
