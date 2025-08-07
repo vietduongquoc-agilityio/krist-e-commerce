@@ -84,11 +84,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
 
   const handleAddToCart = () => {
     if (!selectedColor || !selectedSize) {
-      toastManager.showToast(
-        ERROR_MESSAGES.PLEASE_SELECT_COLOR,
-        'error',
-        'top-center',
-      );
+      toastManager.showToast(ERROR_MESSAGES.PLEASE_SELECT_COLOR, 'error');
       return;
     }
 
@@ -106,11 +102,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
 
     addToCart(item);
 
-    toastManager.showToast(
-      SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART,
-      'success',
-      'top-center',
-    );
+    toastManager.showToast(SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART, 'success');
   };
 
   return (

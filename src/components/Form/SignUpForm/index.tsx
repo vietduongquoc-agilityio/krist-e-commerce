@@ -38,6 +38,14 @@ export const SignUpForm = () => {
   const param = useSearchParams();
   const callbackUrl = param.get('callbackUrl');
 
+  const handleSignInWithGoogle = () => {
+    signIn('google', { callbackUrl: callbackUrl || ROUTER.HOME });
+  };
+
+  const handleSignInWithGithub = () => {
+    signIn('github', { callbackUrl: callbackUrl || ROUTER.HOME });
+  };
+
   const {
     control,
     handleSubmit,
@@ -90,9 +98,7 @@ export const SignUpForm = () => {
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
-          onClick={() =>
-            signIn('google', { callbackUrl: callbackUrl || ROUTER.HOME })
-          }
+          onClick={handleSignInWithGoogle}
         >
           <span className="flex items-center">
             <IconGoogle className="w-[36px] h-[36px] rounded-full" />
@@ -102,9 +108,7 @@ export const SignUpForm = () => {
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
-          onClick={() =>
-            signIn('github', { callbackUrl: callbackUrl || ROUTER.HOME })
-          }
+          onClick={handleSignInWithGithub}
         >
           <span className="flex items-center">
             <IconGithub className="w-[42px] h-[42px] rounded-full" />
