@@ -7,15 +7,16 @@ import { CartItemRow, PaymentCard } from '@/components';
 import { useCart } from '@/hooks/useCart';
 
 // Utils
-import { handleCheckout } from '@/utils';
+import { toastManager } from '@/utils';
 
 export const CartContent = () => {
-  const { cartItems, updateQuantity, removeItem, clearCart } = useCart();
+  const { cartItems, updateQuantity, removeItem, clearCart, subtotal } =
+    useCart();
 
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
+  const handleCheckout = () => {
+    clearCart();
+    toastManager.showToast('Checkout successful', 'success');
+  };
 
   if (cartItems.length === 0) {
     return (
@@ -54,7 +55,7 @@ export const CartContent = () => {
         <div className="flex justify-end">
           <PaymentCard
             subtotal={subtotal}
-            onCheckout={() => handleCheckout(clearCart)}
+            onCheckout={() => handleCheckout()}
           />
         </div>
       )}

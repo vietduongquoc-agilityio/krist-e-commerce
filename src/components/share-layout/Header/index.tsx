@@ -10,7 +10,7 @@ import {
   DropdownItem,
   Avatar,
 } from '@heroui/react';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
 // Components
@@ -47,11 +47,7 @@ export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
   const router = useRouter();
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const { cartItems, updateQuantity } = useCart();
-
-  const totalQuantity = useMemo(() => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
-  }, [cartItems]);
+  const { cartItems, updateQuantity, totalQuantity } = useCart();
 
   const handleSignIn = () => {
     router.push(ROUTER.SIGNIN);
@@ -65,20 +61,12 @@ export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
     try {
       await signOut();
 
-      toastManager.showToast(
-        SUCCESS_MESSAGES.SIGN_OUT,
-        'success',
-        'top-center',
-      );
+      toastManager.showToast(SUCCESS_MESSAGES.SIGN_OUT, 'success');
 
       router.replace(ROUTER.HOME);
       router.refresh();
     } catch (error) {
-      toastManager.showToast(
-        ERROR_MESSAGES.SIGN_OUT_ERROR,
-        'error',
-        'top-center',
-      );
+      toastManager.showToast(ERROR_MESSAGES.SIGN_OUT_ERROR, 'error');
     }
   };
 

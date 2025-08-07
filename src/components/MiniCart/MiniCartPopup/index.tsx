@@ -5,15 +5,12 @@ import { Button, Modal } from '@heroui/react';
 // Components
 import { ItemMiniCart, PaymentCard } from '@/components';
 
-// Models
-import { useMemo } from 'react';
-
 // Types
 import { ItemCardProps } from '@/types';
 
 // Utils
-import { handleCheckout } from '@/utils';
 import { useCart } from '@/hooks/useCart';
+import { toastManager } from '@/utils';
 
 interface MiniCartPopupProps {
   isOpen: boolean;
@@ -28,12 +25,13 @@ export const MiniCartPopup = ({
   cartItems,
   onUpdateQuantity,
 }: MiniCartPopupProps) => {
-  const subtotal = useMemo(
-    () => cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0),
-    [cartItems],
-  );
+  const { clearCart, subtotal } = useCart();
 
-  const { clearCart } = useCart();
+  const handleCheckout = () => {
+    clearCart();
+    onClose();
+    toastManager.showToast('Checkout successful', 'success');
+  };
 
   return (
     <Modal
@@ -72,7 +70,7 @@ export const MiniCartPopup = ({
           <div className="mt-10">
             <PaymentCard
               subtotal={subtotal}
-              onCheckout={() => handleCheckout(clearCart)}
+              onCheckout={() => handleCheckout()}
             />
           </div>
         )}

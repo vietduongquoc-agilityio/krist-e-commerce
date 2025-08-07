@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useState, ReactNode } from 'react';
+import React, { createContext, useState, ReactNode, useMemo } from 'react';
 
 // Models
 import { ItemCardProps } from '@/types';
@@ -13,6 +13,8 @@ export interface CartContextType {
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
   removeItem: (id: string) => void;
+  subtotal: number;
+  totalQuantity: number;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(
@@ -25,13 +27,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const addToCart = (item: ItemCardProps) => {
     setCartItems((prev) => {
       const exists = prev.find((p) => p.id === item.id);
+
       if (exists) {
         return prev.map((p) =>
           p.id === item.id ? { ...p, quantity: p.quantity + item.quantity } : p,
         );
-      } else {
-        return [...prev, item];
       }
+
+      return [...prev, item];
     });
   };
 
@@ -50,13 +53,28 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     toastManager.showToast(
       SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
       'success',
-      'top-center',
     );
   };
 
+  const subtotal = useMemo(() => {
+    return cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  }, [cartItems]);
+
+  const totalQuantity = useMemo(() => {
+    return cartItems.reduce((total, item) => total + item.quantity, 0);
+  }, [cartItems]);
+
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, updateQuantity, clearCart, removeItem }}
+      value={{
+        cartItems,
+        addToCart,
+        updateQuantity,
+        clearCart,
+        removeItem,
+        subtotal,
+        totalQuantity,
+      }}
     >
       {children}
     </CartContext.Provider>
