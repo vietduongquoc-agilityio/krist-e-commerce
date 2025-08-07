@@ -43,7 +43,9 @@ class APIClient {
     };
 
     try {
-      const res = await fetch(`${SERVER_URL}/${url}`, options);
+      const fullUrl = `${SERVER_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+
+      const res = await fetch(fullUrl, options);
 
       if (!res.ok) return (await res.json()) as FailedResponse;
 

@@ -19,6 +19,9 @@ export const ERROR_MESSAGES = {
 
   PLEASE_SELECT_COLOR: 'Please select a color',
   PLEASE_SELECT_SIZE: 'Please select a size',
+
+  INVALID_PHONE_NUMBER: 'Invalid phone number',
+  PHONE_PATTERN: 'Phone number must be at least 9 digits long.',
 };
 
 export const SUCCESS_MESSAGES = {
