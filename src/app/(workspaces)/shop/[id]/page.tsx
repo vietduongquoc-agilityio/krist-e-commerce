@@ -1,11 +1,11 @@
 import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
 
 // Components
 import { AboutSection, ProductDetailCard } from '@/components';
 
 // Services
 import { getProductDetail } from '@/services';
-import { notFound } from 'next/navigation';
 
 export default async function ProductDetailPage({
   params,

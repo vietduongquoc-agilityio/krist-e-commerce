@@ -1,7 +1,7 @@
 'use client';
 
 // Components
-import { CartItemRow, PaymentCard } from '@/components';
+import { CartItemRow, CartItemRowSkeleton, PaymentCard } from '@/components';
 
 // Hooks
 import { useCart } from '@/hooks/useCart';
@@ -12,12 +12,14 @@ import { handleCheckout } from '@/utils';
 export const CartContent = () => {
   const { cartItems, updateQuantity, removeItem, clearCart } = useCart();
 
+  const isLoading = cartItems === undefined;
+
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
 
-  if (cartItems.length === 0) {
+  if (!isLoading && cartItems.length === 0) {
     return (
       <p className="text-center py-10 text-red text-xl font-secondary">
         Your cart is empty.
@@ -35,17 +37,20 @@ export const CartContent = () => {
           <p>Quantity</p>
           <p className="pl-[57px]">Total</p>
         </div>
-
         {/* Item Rows */}
         <div className="border-y border-gray divide-y divide-gray">
-          {cartItems.map((item) => (
-            <CartItemRow
-              key={item.id}
-              productItem={item}
-              onQuantityChange={(id, qty) => updateQuantity(id, qty)}
-              onRemove={() => removeItem(item.id)}
-            />
-          ))}
+          {isLoading
+            ? Array.from({ length: 3 }).map((_, i) => (
+                <CartItemRowSkeleton key={i} />
+              ))
+            : cartItems.map((item) => (
+                <CartItemRow
+                  key={item.id}
+                  productItem={item}
+                  onQuantityChange={(id, qty) => updateQuantity(id, qty)}
+                  onRemove={() => removeItem(item.id)}
+                />
+              ))}
         </div>
       </div>
 
