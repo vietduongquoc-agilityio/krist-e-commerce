@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+
+import { useState, useMemo } from 'react';
 
 // Components
 import {
@@ -46,23 +47,23 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     id,
   } = product;
 
-  const images = Array.isArray(product.images)
-    ? product.images
-    : product.images
-      ? parseCommaStringToArray(product.images)
-      : [];
+  const images = useMemo(() => {
+    if (Array.isArray(product.images)) return product.images;
+    if (product.images) return parseCommaStringToArray(product.images);
+    return [];
+  }, [product.images]);
 
-  const sizes = Array.isArray(product.sizes)
-    ? product.sizes
-    : product.sizes
-      ? parseCommaStringToArray(product.sizes)
-      : [];
+  const sizes = useMemo(() => {
+    if (Array.isArray(product.sizes)) return product.sizes;
+    if (product.sizes) return parseCommaStringToArray(product.sizes);
+    return [];
+  }, [product.sizes]);
 
-  const colors = Array.isArray(product.colors)
-    ? product.colors
-    : product.colors
-      ? parseCommaStringToArray(product.colors)
-      : [];
+  const colors = useMemo(() => {
+    if (Array.isArray(product.colors)) return product.colors;
+    if (product.colors) return parseCommaStringToArray(product.colors);
+    return [];
+  }, [product.colors]);
 
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
