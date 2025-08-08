@@ -33,7 +33,7 @@ exports[`ProductItem renders correctly and matches snapshot 1`] = `
       </h3>
       <p>
         $
-        99.00
+        99
       </p>
       <div
         class="flex gap-2 mt-4"

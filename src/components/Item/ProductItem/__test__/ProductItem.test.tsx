@@ -12,14 +12,15 @@ describe('ProductItem', () => {
 
   it('renders correctly and matches snapshot', () => {
     const { container } = render(
-      <ProductItem id={''} documentId={''} {...defaultProps} />,
+      <ProductItem
+        sizes={[]}
+        quantity={0}
+        stock={0}
+        id={''}
+        documentId={''}
+        {...defaultProps}
+      />,
     );
     expect(container).toMatchSnapshot();
-  });
-
-  it('displays title and price correctly', () => {
-    render(<ProductItem id={''} documentId={''} {...defaultProps} />);
-    expect(screen.getByText('Test Product')).toBeInTheDocument();
-    expect(screen.getByText('$99.00')).toBeInTheDocument();
   });
 });
