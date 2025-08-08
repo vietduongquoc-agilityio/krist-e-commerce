@@ -7,16 +7,16 @@ import { CartItemRow, PaymentCard } from '@/components';
 import { CartModel } from '@/models/cart';
 
 interface CartContentProps {
-  cartsList: CartModel[];
+  cartsItems: CartModel[];
 }
 
-export const CartContent = ({ cartsList }: CartContentProps) => {
-  const subtotal = cartsList.reduce(
+export const CartContent = ({ cartsItems }: CartContentProps) => {
+  const subtotal = cartsItems.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
     0,
   );
 
-  if (!cartsList.length) {
+  if (!cartsItems.length) {
     return (
       <p className="text-center py-10 text-red text-xl font-secondary">
         Your cart is empty.
@@ -36,7 +36,7 @@ export const CartContent = ({ cartsList }: CartContentProps) => {
         </div>
         {/* Item Rows */}
         <div className="border-y border-gray divide-y divide-gray">
-          {cartsList.map(({ product, color, quantity, id }) => {
+          {cartsItems.map(({ product, color, quantity, id }) => {
             return (
               <CartItemRow
                 key={id}
@@ -52,7 +52,7 @@ export const CartContent = ({ cartsList }: CartContentProps) => {
       </div>
 
       {/* Payment Summary */}
-      {cartsList.length > 0 && (
+      {cartsItems.length > 0 && (
         <div className="flex justify-end">
           <PaymentCard
             subtotal={subtotal}
