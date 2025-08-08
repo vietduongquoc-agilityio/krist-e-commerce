@@ -86,7 +86,7 @@ export const ProductCard = ({ productCard }: ProductCardProps) => {
 
         <div className="flex items-center justify-between pt-4 pb-6">
           <span className="text-2xl font-medium text-charcoal">
-            ${productCard.price.toFixed(2)}
+            ${productCard.price}
           </span>
           {productCard.status && (
             <span className="text-sm text-coralRed font-medium">

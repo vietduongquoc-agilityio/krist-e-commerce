@@ -5,3 +5,5 @@ export const QUERY_KEY = {
   PRICE: 'price',
   BRAND: 'brand',
 };
+
+export const STORAGE_KEY = 'cart-items';

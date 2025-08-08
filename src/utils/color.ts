@@ -14,3 +14,7 @@ export const colorNameToHex: Record<string, string> = {
   Orchid: '#DA70D6',
   'Pink Lavender': '#E6E6FA',
 };
+
+export const colorHexToName: Record<string, string> = Object.fromEntries(
+  Object.entries(colorNameToHex).map(([key, value]) => [value, key]),
+);

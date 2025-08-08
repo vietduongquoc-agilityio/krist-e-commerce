@@ -22,6 +22,8 @@ export const ERROR_MESSAGES = {
 
   INVALID_PHONE_NUMBER: 'Invalid phone number',
   PHONE_PATTERN: 'Phone number must be at least 9 digits long.',
+
+  ADD_TO_CART_FAIL: 'Error adding product to cart. Please try again.',
 };
 
 export const SUCCESS_MESSAGES = {

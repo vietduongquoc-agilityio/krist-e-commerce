@@ -1,2 +1,3 @@
 export * from './ItemMiniCart';
-export * from './MiniCartPopup';
+export * from './MiniCartPopupClient';
+export * from './MiniCartPopupWrapper';

@@ -28,6 +28,11 @@ exports[`CartItemRow should render CartItemRow component and match snapshot 1`] 
           <h3>
             Nike Air Max 270
           </h3>
+          <p
+            class="text-[22px] text-gray"
+          >
+            Color: 
+          </p>
           <button
             class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 min-w-20 h-10 text-small gap-2 rounded-medium [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none bg-default/40 data-[hover=true]:opacity-hover underline text-gray px-0 hover:text-black transition"
             data-react-aria-pressable="true"
@@ -42,7 +47,7 @@ exports[`CartItemRow should render CartItemRow component and match snapshot 1`] 
         class="text-lg font-medium w-[100px] text-center"
       >
         $
-        3900.00
+        3900
       </div>
       <div
         class="mt-[-5px]"
@@ -63,7 +68,7 @@ exports[`CartItemRow should render CartItemRow component and match snapshot 1`] 
           <span
             class="mx-4 w-4 text-center text-lg transition-all duration-200 ease-in-out"
           >
-            1
+            0
           </span>
           <button
             class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-medium bg-transparent px-3 min-w-16 h-8 text-tiny gap-2 rounded-small [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none border-default text-default-foreground data-[hover=true]:!bg-default transition hover:bg-whiteSmoke"
@@ -79,7 +84,7 @@ exports[`CartItemRow should render CartItemRow component and match snapshot 1`] 
         class="text-lg font-semibold w-[100px] text-right"
       >
         $
-        3900.00
+        0
       </div>
     </div>
   </section>

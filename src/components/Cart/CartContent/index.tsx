@@ -4,21 +4,19 @@
 import { CartItemRow, PaymentCard } from '@/components';
 
 // Hooks
-import { useCart } from '@/hooks/useCart';
+import { CartModel } from '@/models/cart';
 
-// Utils
-import { toastManager } from '@/utils';
+interface CartContentProps {
+  cartsList: CartModel[];
+}
 
-export const CartContent = () => {
-  const { cartItems, updateQuantity, removeItem, clearCart, subtotal } =
-    useCart();
+export const CartContent = ({ cartsList }: CartContentProps) => {
+  const subtotal = cartsList.reduce(
+    (sum, item) => sum + item.product.price * item.quantity,
+    0,
+  );
 
-  const handleCheckout = () => {
-    clearCart();
-    toastManager.showToast('Checkout successful', 'success');
-  };
-
-  if (cartItems.length === 0) {
+  if (!cartsList.length) {
     return (
       <p className="text-center py-10 text-red text-xl font-secondary">
         Your cart is empty.
@@ -36,26 +34,29 @@ export const CartContent = () => {
           <p>Quantity</p>
           <p className="pl-[57px]">Total</p>
         </div>
-
         {/* Item Rows */}
         <div className="border-y border-gray divide-y divide-gray">
-          {cartItems.map((item) => (
-            <CartItemRow
-              key={item.id}
-              productItem={item}
-              onQuantityChange={(id, qty) => updateQuantity(id, qty)}
-              onRemove={() => removeItem(item.id)}
-            />
-          ))}
+          {cartsList.map(({ product, color, quantity, id }) => {
+            return (
+              <CartItemRow
+                key={id}
+                productItem={product}
+                color={color}
+                quantity={quantity}
+                // onQuantityChange={(id, quantity) => handleUpdateQuantity(id, quantity)}
+                // onRemove={(id) => handleRemove(id)}
+              />
+            );
+          })}
         </div>
       </div>
 
       {/* Payment Summary */}
-      {cartItems.length > 0 && (
+      {cartsList.length > 0 && (
         <div className="flex justify-end">
           <PaymentCard
             subtotal={subtotal}
-            onCheckout={() => handleCheckout()}
+            // onCheckout={() => handleCheckout()}
           />
         </div>
       )}
