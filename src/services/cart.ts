@@ -47,7 +47,7 @@ export const getCartItemsByUserId = async (
   params.set('pagination[page]', page);
   params.set('pagination[pageSize]', pageSize);
 
-  const url = `${API_ENDPOINTS.CARTS}?filters[users_permissions_user][id][$eq]=${userId}&populate=*&${params.toString()}`;
+  const url = `${API_ENDPOINTS.CARTS}?filters[users_permissions_user][id][$eq]=${userId}&populate=*&`;
 
   const { data, error } = await apiClient.get<{ data: CartModel[] }>(url, {
     headers: {

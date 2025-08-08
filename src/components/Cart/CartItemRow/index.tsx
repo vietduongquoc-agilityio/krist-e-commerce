@@ -8,7 +8,9 @@ import {} from '@/types';
 // Components
 import { Button, QuantityInput } from '@/components';
 
+// Models
 import { ProductModel } from '@/models';
+import { colorHexToName } from '@/utils';
 
 interface CartItemProps {
   productItem: ProductModel;
@@ -25,8 +27,9 @@ export const CartItemRow = ({
   color,
   quantity,
 }: CartItemProps) => {
-  console.log('productItem in row', productItem);
   const { thumbnailUrl, id, title, price, stock } = productItem;
+
+  const colorName = colorHexToName[color.toLowerCase()] || color;
 
   return (
     <section>
@@ -45,9 +48,9 @@ export const CartItemRow = ({
             sizes="(100vw - 20px) 100vw, 168px"
           />
 
-          <p>Color: {color}</p>
           <div className="flex flex-col text-[22px] items-start gap-5">
             <h3>{title}</h3>
+            <p className="text-[22px] text-gray">Color: {colorName}</p>
             <Button
               onClick={onRemove}
               variant="flat"

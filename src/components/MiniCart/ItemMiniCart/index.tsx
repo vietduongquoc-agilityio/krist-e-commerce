@@ -11,20 +11,29 @@ import { FREE_SHIPPING_AMOUNT } from '@/constants';
 // models
 import { ProductModel } from '@/models';
 
+// utils
+import { colorHexToName } from '@/utils';
+
 interface ItemMiniCartProps {
   productItem: ProductModel;
+  color: string;
+  quantity: number;
   onQuantityChange?: (id: string, quantity: number) => void;
 }
 
 export const ItemMiniCart = ({
   productItem,
+  color,
   onQuantityChange,
+  quantity,
 }: ItemMiniCartProps) => {
-  const { thumbnailUrl, title, price, quantity, id, stock } = productItem;
+  const { thumbnailUrl, title, price, id, stock } = productItem;
 
   const subtotal = price * quantity;
 
   const remaining = Math.max(FREE_SHIPPING_AMOUNT - subtotal, 0);
+
+  const colorName = colorHexToName[color.toLowerCase()] || color;
 
   return (
     <aside className="flex flex-col gap-7 max-w-[613px] border-b pb-5 border-gray">
@@ -51,7 +60,8 @@ export const ItemMiniCart = ({
         <div className="flex flex-col">
           <div className="text-[22px]">
             <h4 className="font-secondary ">{title}</h4>
-            <p className="my-5">${price}</p>
+            <p className="text-gray pt-3">Color: {colorName}</p>
+            <p className="my-4">${price}</p>
           </div>
           {/* <QuantityInput /> */}
           <QuantityInput

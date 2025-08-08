@@ -2,7 +2,11 @@ import { Metadata } from 'next';
 
 // Components
 import { Breadcrumb, CartContent } from '@/components';
+
+// Config
 import { auth } from '@/config/auth';
+
+// Services
 import { getCartItemsByUserId } from '@/services';
 
 export const metadata: Metadata = {

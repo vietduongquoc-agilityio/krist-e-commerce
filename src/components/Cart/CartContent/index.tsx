@@ -1,70 +1,28 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
 // Components
-import { CartItemRow, CartItemRowSkeleton, PaymentCard } from '@/components';
-
-// Services
-import {
-  CartPayload,
-  // clearCart,
-  getCartItemsByUserId,
-  removeCartItem,
-  updateCartItemQuantity,
-} from '@/services';
+import { CartItemRow, PaymentCard } from '@/components';
 
 // Hooks
-import { useSession } from 'next-auth/react';
 import { CartModel } from '@/models/cart';
 
-export const CartContent = ({ cartsList }: { cartsList: CartModel[] }) => {
-  // const [cartItems, setCartItems] = useState<CartModel[]>(cartsList);
-  const [loading, setLoading] = useState(true);
+interface CartContentProps {
+  cartsList: CartModel[];
+}
 
-  console.log(' cartsList', cartsList);
+export const CartContent = ({ cartsList }: CartContentProps) => {
+  const subtotal = cartsList.reduce(
+    (sum, item) => sum + item.product.price * item.quantity,
+    0,
+  );
 
-  // const handleUpdateQuantity = async (id: string, quantity: number) => {
-  //   await updateCartItemQuantity(id, quantity, jwt);
-  //   setCartItems((prev) =>
-  //     prev.map((c) => (c.product === id ? { ...c, quantity } : c)),
-  //   );
-  // };
-
-  // const handleRemove = async (id: string) => {
-  //   await removeCartItem(id, jwt);
-  //   setCartItems((prev) => prev.filter((c) => c.product !== id));
-  // };
-
-  // const handleCheckout = async () => {
-  //   await clearCart(userId!, jwt);
-  //   setCartItems([]);
-  // };
-
-  // const subtotal = cartItems.reduce(
-  //   (sum, item) => sum + item.price * item.quantity,
-  //   0,
-  // );
-
-  if (loading) {
+  if (!cartsList.length) {
     return (
-      <div>
-        {Array(3)
-          .fill(0)
-          .map((_, i) => (
-            <CartItemRowSkeleton key={i} />
-          ))}
-      </div>
+      <p className="text-center py-10 text-red text-xl font-secondary">
+        Your cart is empty.
+      </p>
     );
   }
-
-  // if (!cartItems.length) {
-  //   return (
-  //     <p className="text-center py-10 text-red text-xl font-secondary">
-  //       Your cart is empty.
-  //     </p>
-  //   );
-  // }
 
   return (
     <div className="flex flex-col  justify-between gap-10 max-w-[1280px] mx-auto">
@@ -79,8 +37,6 @@ export const CartContent = ({ cartsList }: { cartsList: CartModel[] }) => {
         {/* Item Rows */}
         <div className="border-y border-gray divide-y divide-gray">
           {cartsList.map(({ product, color, quantity, id }) => {
-            console.log('product maping cart item');
-
             return (
               <CartItemRow
                 key={id}
@@ -96,14 +52,14 @@ export const CartContent = ({ cartsList }: { cartsList: CartModel[] }) => {
       </div>
 
       {/* Payment Summary */}
-      {/* {cartItems.length > 0 && (
+      {cartsList.length > 0 && (
         <div className="flex justify-end">
           <PaymentCard
-            // subtotal={subtotal}
+            subtotal={subtotal}
             // onCheckout={() => handleCheckout()}
           />
         </div>
-      )} */}
+      )}
     </div>
   );
 };
