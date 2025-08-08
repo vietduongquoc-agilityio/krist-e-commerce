@@ -30,8 +30,8 @@ export const ItemMiniCart = ({
     <aside className="flex flex-col gap-7 max-w-[613px] border-b pb-5 border-gray">
       {remaining > 0 ? (
         <p className="mt-2 mb-16 text-gray text-[26px]">
-          Buy <strong className="text-black">${remaining.toFixed(2)}</strong>{' '}
-          More And Get <strong className="text-black">Free Shipping</strong>
+          Buy <strong className="text-black">${remaining}</strong> More And Get{' '}
+          <strong className="text-black">Free Shipping</strong>
         </p>
       ) : (
         <strong className="mt-2 mb-16 text-red text-[18px]">
@@ -51,7 +51,7 @@ export const ItemMiniCart = ({
         <div className="flex flex-col">
           <div className="text-[22px]">
             <h4 className="font-secondary ">{title}</h4>
-            <p className="my-5">${price.toFixed(2)}</p>
+            <p className="my-5">${price}</p>
           </div>
           {/* <QuantityInput /> */}
           <QuantityInput

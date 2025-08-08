@@ -25,10 +25,8 @@ interface MiniCartPopupProps {
 export const MiniCartPopup = ({ isOpen, onClose }: MiniCartPopupProps) => {
   const { data: session } = useSession();
 
-  console.log('session', session);
-
   const [cartItems, setCartItems] = useState<ProductModel[]>([]);
-  console.log('cartItems', cartItems);
+
   const [loading, setLoading] = useState(true);
 
   const jwt = session?.user.token;

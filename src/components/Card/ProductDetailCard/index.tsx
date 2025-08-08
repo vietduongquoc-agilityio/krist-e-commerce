@@ -42,6 +42,8 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     reviewCount,
     stock = 0,
     id,
+
+    documentId,
   } = product;
 
   const images = Array.isArray(product.images)
@@ -78,6 +80,9 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   };
 
   const { data: session } = useSession();
+  if (!session) {
+    return null;
+  }
 
   const handleAddToCart = async () => {
     if (!selectedColor || !selectedSize) {
@@ -90,20 +95,15 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     }
 
     const item: CartPayload = {
-      title,
-      thumbnailUrl,
-      price: salePrice || price,
       color: colorNameToHex[selectedColor] || selectedColor,
       quantity,
-      stock,
-      product: id,
+      product: documentId,
+      users_permissions_user: session?.user.id,
+      size: selectedSize,
     };
+
     try {
-      await addNewCardByAccountId(
-        session?.user.id || '',
-        item,
-        session?.user.token,
-      );
+      await addNewCardByAccountId(item, session?.user.token);
     } catch (error) {
       toastManager.showToast(
         ERROR_MESSAGES.ADD_TO_CART_FAIL,
@@ -169,9 +169,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
 
           <div className="flex items-center gap-3 my-8">
             {salePrice && (
-              <span className="text-[24px] font-secondary">
-                ${salePrice.toFixed(2)}
-              </span>
+              <span className="text-[24px] font-secondary">${salePrice}</span>
             )}
             <span
               className={`text-gray line-through ${
@@ -180,7 +178,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
                   : 'text-xl font-bold text-black line-none'
               }`}
             >
-              ${price.toFixed(2)}
+              ${price}
             </span>
             {salePrice && (
               <span className="text-sm font-secondary text-white bg-strawberry py-[1px] px-3 rounded-10">

@@ -1,31 +1,29 @@
-import { API_ENDPOINTS } from '@/constants';
+import { API_ENDPOINTS, PAGE_SIZE } from '@/constants';
+import { CartModel } from '@/models/cart';
 
 import { apiClient } from '@/services/api';
 
 export interface CartPayload {
   color: string;
+  users_permissions_user: string;
+  size: string;
   product: string;
-  documentId?: string;
-  title: string;
-  price: string;
-  thumbnailUrl: string;
   quantity: number;
-  stock: number;
 }
 
 export const addNewCardByAccountId = async (
-  users_permissions_user: string,
   payload: CartPayload,
   jwtToken?: string,
 ) => {
   try {
     const response = await apiClient.post(API_ENDPOINTS.CARTS, {
-      headers: { Authorization: `Bearer ${jwtToken}` },
       body: {
-        users_permissions_user,
         data: payload,
       },
+      headers: { Authorization: `Bearer ${jwtToken}` },
     });
+
+    console.log('response add new card', response.data);
 
     return response.data;
   } catch (error) {
@@ -36,19 +34,35 @@ export const addNewCardByAccountId = async (
 export const getCartItemsByUserId = async (
   userId: string,
   jwtToken?: string,
-) => {
-  try {
-    const response = await apiClient.get(
-      `${API_ENDPOINTS.CARTS}?filters[users_permissions_user][id][$eq]=${userId}`,
-      {
-        headers: { Authorization: `Bearer ${jwtToken}` },
-      },
-    );
+  searchParams?: {
+    page: string;
+    pageSize: string;
+  },
+): Promise<CartModel[]> => {
+  const params = new URLSearchParams();
 
-    return response.data || [];
-  } catch (error) {
-    throw error;
+  const page = searchParams?.page ?? '1';
+  const pageSize = searchParams?.pageSize ?? String(PAGE_SIZE);
+
+  params.set('pagination[page]', page);
+  params.set('pagination[pageSize]', pageSize);
+
+  const url = `${API_ENDPOINTS.CARTS}?filters[users_permissions_user][id][$eq]=${userId}&populate=*&${params.toString()}`;
+
+  const { data, error } = await apiClient.get<{ data: CartModel[] }>(url, {
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+    },
+  });
+
+  console.log('data respon cart page', data);
+
+  if (error || !data) {
+    console.error('Error fetching cart items:', error?.message);
+    return [];
   }
+
+  return data.data ?? [];
 };
 
 export const updateCartItemQuantity = async (

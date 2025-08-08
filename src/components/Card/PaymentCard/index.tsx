@@ -44,7 +44,7 @@ export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
 
       <div className="flex font-secondary text-[22px] justify-between items-center pb-7 pt-[51px]">
         <span>Subtotal</span>
-        <span className="font-bold">${total.toFixed(2)}</span>
+        <span className="font-bold">${total}</span>
       </div>
 
       <Button
