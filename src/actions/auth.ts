@@ -2,7 +2,9 @@
 
 // Config
 import { signIn, signOut as nextAuthSignOut } from '@/config/auth';
-import { ERROR_MESSAGES } from '@/constants';
+
+// Constants
+import { ERROR_MESSAGES, REGISTER_ENDPOINT } from '@/constants';
 
 // Interfaces
 import { AuthResponse, ISignUpFormData, ISignInFormData } from '@/interfaces';
@@ -18,18 +20,18 @@ export const authenticateUser = async (formData: ISignInFormData) => {
 };
 
 export const signUp = async (payload: ISignUpFormData) => {
-  console.log('Signing up with', payload);
   try {
-    const response = await apiClient.post<AuthResponse>(
-      '/auth/local/register',
-      {
-        body: {
-          username: `${payload.firstName} ${payload.lastName}`,
-          email: payload.email,
-          password: payload.password,
-        },
-      },
-    );
+    const { firstName, lastName, email, password } = payload;
+
+    const requestBody = {
+      username: `${firstName} ${lastName}`,
+      email,
+      password,
+    };
+
+    const response = await apiClient.post<AuthResponse>(REGISTER_ENDPOINT, {
+      body: requestBody,
+    });
 
     if (response.error) {
       throw new Error(response.error.message);

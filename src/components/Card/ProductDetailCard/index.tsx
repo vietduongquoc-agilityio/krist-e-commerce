@@ -1,8 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
-import { useSession } from 'next-auth/react';
+import { useMemo, useState } from 'react';
 
 // Components
 import {
@@ -27,6 +26,7 @@ import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
 // Services
 import { addNewCardByAccountId, CartPayload } from '@/services';
+import { useSession } from 'next-auth/react';
 
 interface ProductDetailCardProps {
   product: ProductModel;
@@ -46,23 +46,23 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     documentId,
   } = product;
 
-  const images = Array.isArray(product.images)
-    ? product.images
-    : product.images
-      ? parseCommaStringToArray(product.images)
-      : [];
+  const images = useMemo(() => {
+    if (Array.isArray(product.images)) return product.images;
+    if (product.images) return parseCommaStringToArray(product.images);
+    return [];
+  }, [product.images]);
 
-  const sizes = Array.isArray(product.sizes)
-    ? product.sizes
-    : product.sizes
-      ? parseCommaStringToArray(product.sizes)
-      : [];
+  const sizes = useMemo(() => {
+    if (Array.isArray(product.sizes)) return product.sizes;
+    if (product.sizes) return parseCommaStringToArray(product.sizes);
+    return [];
+  }, [product.sizes]);
 
-  const colors = Array.isArray(product.colors)
-    ? product.colors
-    : product.colors
-      ? parseCommaStringToArray(product.colors)
-      : [];
+  const colors = useMemo(() => {
+    if (Array.isArray(product.colors)) return product.colors;
+    if (product.colors) return parseCommaStringToArray(product.colors);
+    return [];
+  }, [product.colors]);
 
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
@@ -86,11 +86,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
 
   const handleAddToCart = async () => {
     if (!selectedColor || !selectedSize) {
-      toastManager.showToast(
-        ERROR_MESSAGES.PLEASE_SELECT_COLOR,
-        'error',
-        'top-center',
-      );
+      toastManager.showToast(ERROR_MESSAGES.PLEASE_SELECT_COLOR, 'error');
       return;
     }
 
@@ -112,11 +108,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
       );
     }
 
-    toastManager.showToast(
-      SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART,
-      'success',
-      'top-center',
-    );
+    toastManager.showToast(SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART, 'success');
   };
 
   return (

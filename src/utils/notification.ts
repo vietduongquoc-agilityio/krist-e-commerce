@@ -5,7 +5,7 @@ class ToastManager extends EventEmitter {
   showToast(
     message: string,
     type: ToastType = 'success',
-    position: ToastPosition = 'top-right',
+    position: ToastPosition = 'top-center',
     timeOut = 3000,
   ) {
     const id = Date.now();
