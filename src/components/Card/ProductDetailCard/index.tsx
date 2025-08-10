@@ -25,7 +25,7 @@ import { ProductModel } from '@/models';
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
 // Services
-import { addNewCardByAccountId, CartPayload } from '@/services';
+import { addNewproductByAccountId, CartPayload } from '@/services';
 import { useSession } from 'next-auth/react';
 
 interface ProductDetailCardProps {
@@ -99,7 +99,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     };
 
     try {
-      await addNewCardByAccountId(item, session?.user.token);
+      await addNewproductByAccountId(item, session?.user.token);
     } catch (error) {
       toastManager.showToast(
         ERROR_MESSAGES.ADD_TO_CART_FAIL,

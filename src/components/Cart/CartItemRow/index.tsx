@@ -17,7 +17,8 @@ interface CartItemProps {
   color: string;
   quantity: number;
   onQuantityChange?: (id: string, quantity: number) => void;
-  onRemove?: () => void;
+  onRemove?: (id: string) => void;
+  cartItemId: string;
 }
 
 export const CartItemRow = ({
@@ -26,6 +27,7 @@ export const CartItemRow = ({
   onRemove,
   color,
   quantity,
+  cartItemId,
 }: CartItemProps) => {
   const { thumbnailUrl, id, title, price, stock } = productItem;
 
@@ -52,7 +54,7 @@ export const CartItemRow = ({
             <h3>{title}</h3>
             <p className="text-[22px] text-gray">Color: {colorName}</p>
             <Button
-              onClick={onRemove}
+              onClick={() => onRemove?.(cartItemId)}
               variant="flat"
               className="underline text-gray px-0 hover:text-black transition"
             >

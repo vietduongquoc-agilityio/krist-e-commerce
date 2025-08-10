@@ -10,7 +10,7 @@ import { getCartItemsByUserId } from '@/services';
 import { MiniCartPopupClient } from '@/components';
 
 // Models
-import { CartModel } from '@/models/cart';
+import { CartModel } from '@/models';
 
 interface MiniCartPopupWrapperProps {
   isOpen: boolean;

@@ -1,5 +1,8 @@
+// Constants
 import { API_ENDPOINTS, PAGE_SIZE } from '@/constants';
-import { CartModel } from '@/models/cart';
+
+// Models
+import { CartModel } from '@/models';
 
 import { apiClient } from '@/services/api';
 
@@ -11,7 +14,7 @@ export interface CartPayload {
   quantity: number;
 }
 
-export const addNewCardByAccountId = async (
+export const addNewproductByAccountId = async (
   payload: CartPayload,
   jwtToken?: string,
 ) => {
@@ -22,8 +25,6 @@ export const addNewCardByAccountId = async (
       },
       headers: { Authorization: `Bearer ${jwtToken}` },
     });
-
-    console.log('response add new card', response.data);
 
     return response.data;
   } catch (error) {
@@ -55,8 +56,6 @@ export const getCartItemsByUserId = async (
     },
   });
 
-  console.log('data respon cart page', data);
-
   if (error || !data) {
     console.error('Error fetching cart items:', error?.message);
     return [];
@@ -81,16 +80,39 @@ export const updateCartItemQuantity = async (
       },
     );
 
+    console.log('response update cart item', response.data);
     return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-export const removeCartItem = async (cartItemId: string, jwtToken?: string) => {
+// export const removeCartItem = async (cartItemId: string, jwtToken?: string) => {
+//   try {
+//     const response = await apiClient.delete(
+//       `${API_ENDPOINTS.CARTS}/${cartItemId}`,
+//       {
+//         headers: { Authorization: `Bearer ${jwtToken}` },
+//       },
+//     );
+
+//     console.log(`${API_ENDPOINTS.CARTS}/${cartItemId}`);
+
+//     console.log('response remove cart item', response.data);
+
+//     return response.data;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
+
+export const removeCartItem = async (
+  cartItemDocumentId: string,
+  jwtToken?: string,
+) => {
   try {
     const response = await apiClient.delete(
-      `${API_ENDPOINTS.CARTS}/${cartItemId}`,
+      `${API_ENDPOINTS.CARTS}/${cartItemDocumentId}`,
       {
         headers: { Authorization: `Bearer ${jwtToken}` },
       },
@@ -98,6 +120,7 @@ export const removeCartItem = async (cartItemId: string, jwtToken?: string) => {
 
     return response.data;
   } catch (error) {
+    console.error('Error removing cart item', error);
     throw error;
   }
 };
