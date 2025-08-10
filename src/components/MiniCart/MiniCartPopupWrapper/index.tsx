@@ -10,7 +10,7 @@ import { getCartItemsByUserId } from '@/services';
 import { MiniCartPopupClient } from '@/components';
 
 // Models
-import { CartModel } from '@/models/cart';
+import { CartModel } from '@/models';
 
 interface MiniCartPopupWrapperProps {
   isOpen: boolean;
@@ -22,7 +22,7 @@ export function MiniCartPopupWrapper({
   onClose,
 }: MiniCartPopupWrapperProps) {
   const { data: session } = useSession();
-  const [cartItems, setCartItems] = useState<CartModel[]>([]);
+  const [cartItem, setCartItems] = useState<CartModel[]>([]);
 
   useEffect(() => {
     if (!isOpen || !session?.user) return;
@@ -41,7 +41,7 @@ export function MiniCartPopupWrapper({
     <MiniCartPopupClient
       isOpen={isOpen}
       onClose={onClose}
-      cartItems={cartItems}
+      cartItems={cartItem}
     />
   );
 }

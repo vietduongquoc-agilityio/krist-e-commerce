@@ -1,22 +1,63 @@
 'use client';
 
+import { useSession } from 'next-auth/react';
+import { useState } from 'react';
+
 // Components
 import { CartItemRow, PaymentCard } from '@/components';
 
-// Hooks
-import { CartModel } from '@/models/cart';
+// Models
+import { CartModel } from '@/models';
+
+// Services
+import { removeCartItem } from '@/services';
+
+// Utils
+import { toastManager } from '@/utils';
+
+// Constants
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
 interface CartContentProps {
   cartsItems: CartModel[];
 }
 
 export const CartContent = ({ cartsItems }: CartContentProps) => {
-  const subtotal = cartsItems.reduce(
+  const [cartItem, setCartItem] = useState<CartModel[]>(cartsItems);
+
+  const subtotal = cartItem.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
     0,
   );
 
-  if (!cartsItems.length) {
+  const { data: session } = useSession();
+  if (!session) {
+    return null;
+  }
+
+  const handleRemove = async (cartItemDocumentId: string) => {
+    try {
+      await removeCartItem(cartItemDocumentId, session?.user.token);
+
+      setCartItem((prev) =>
+        prev.filter((item) => item.documentId !== cartItemDocumentId),
+      );
+      window.dispatchEvent(
+        new CustomEvent('cartUpdated', {
+          detail: { type: 'remove', documentId: cartItemDocumentId },
+        }),
+      );
+    } catch (error) {
+      console.error('Error removing item:', error);
+      toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_FAIL, 'error');
+    }
+    toastManager.showToast(
+      SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
+      'success',
+    );
+  };
+
+  if (!cartItem.length) {
     return (
       <p className="text-center py-10 text-red text-xl font-secondary">
         Your cart is empty.
@@ -36,15 +77,18 @@ export const CartContent = ({ cartsItems }: CartContentProps) => {
         </div>
         {/* Item Rows */}
         <div className="border-y border-gray divide-y divide-gray">
-          {cartsItems.map(({ product, color, quantity, id }) => {
+          {cartItem.map(({ product, color, quantity, documentId }) => {
             return (
               <CartItemRow
-                key={id}
+                key={documentId}
                 productItem={product}
+                cartItemId={documentId}
                 color={color}
                 quantity={quantity}
                 // onQuantityChange={(id, quantity) => handleUpdateQuantity(id, quantity)}
-                // onRemove={(id) => handleRemove(id)}
+                onRemove={(cartItemDocumentId) =>
+                  handleRemove(cartItemDocumentId)
+                }
               />
             );
           })}
@@ -52,7 +96,7 @@ export const CartContent = ({ cartsItems }: CartContentProps) => {
       </div>
 
       {/* Payment Summary */}
-      {cartsItems.length > 0 && (
+      {cartItem.length > 0 && (
         <div className="flex justify-end">
           <PaymentCard
             subtotal={subtotal}

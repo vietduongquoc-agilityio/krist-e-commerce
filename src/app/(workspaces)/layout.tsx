@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { SessionProvider } from 'next-auth/react';
 
 // Components
-import { Footer, Header } from '@/components';
+import { WorkspacesLayoutClient } from '@/components';
 
 // Config
 import { auth } from '@/config/auth';
@@ -27,13 +27,13 @@ export default async function WorkspacesLayout({
 
   return (
     <SessionProvider session={session}>
-      <Header
+      <WorkspacesLayoutClient
         username={username}
         avatar={avatar}
         isAuthenticated={isAuthenticated}
-      />
-      {children}
-      <Footer />
+      >
+        {children}
+      </WorkspacesLayoutClient>
     </SessionProvider>
   );
 }

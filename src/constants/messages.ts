@@ -24,6 +24,8 @@ export const ERROR_MESSAGES = {
   PHONE_PATTERN: 'Phone number must be at least 9 digits long.',
 
   ADD_TO_CART_FAIL: 'Error adding product to cart. Please try again.',
+
+  REMOVE_CART_FAIL: 'Error removing product from cart. Please try again.',
 };
 
 export const SUCCESS_MESSAGES = {

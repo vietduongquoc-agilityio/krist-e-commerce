@@ -5,13 +5,13 @@ import { Navbar, NavbarContent } from '@heroui/react';
 import { usePathname } from 'next/navigation';
 import { useState, useMemo } from 'react';
 
-// models
-import { ProductModel } from '@/models';
+// Models
+import { CartModel } from '@/models';
 
-// constants
+// Constants
 import { NAVITEMS } from '@/constants';
 
-// components
+// Components
 import {
   HeaderAuthMenu,
   HeaderGuestMenu,
@@ -19,13 +19,11 @@ import {
   MiniCartPopupWrapper,
 } from '@/components';
 
-// components
-
 interface HeaderProps {
   username?: string;
   isAuthenticated?: boolean;
   avatar?: string;
-  cartItems?: ProductModel[];
+  cartItems?: CartModel[];
 }
 
 export const Header = ({
@@ -35,12 +33,10 @@ export const Header = ({
   cartItems = [],
 }: HeaderProps) => {
   const pathname = usePathname();
-
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const totalQuantity = useMemo(() => {
-    const items = Array.isArray(cartItems) ? cartItems : [];
-    return items.reduce((total, item) => total + item.quantity, 0);
+    return cartItems.reduce((total, item) => total + item.quantity, 0);
   }, [cartItems]);
 
   const handleToggleCart = () => {
@@ -72,6 +68,7 @@ export const Header = ({
           ) : (
             <HeaderGuestMenu />
           )}
+
           {/* Mini Cart */}
           <MiniCartPopupWrapper
             isOpen={isCartOpen}

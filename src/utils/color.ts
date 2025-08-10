@@ -15,6 +15,9 @@ export const colorNameToHex: Record<string, string> = {
   'Pink Lavender': '#E6E6FA',
 };
 
-export const colorHexToName: Record<string, string> = Object.fromEntries(
-  Object.entries(colorNameToHex).map(([key, value]) => [value, key]),
+export const colorHexToName = Object.fromEntries(
+  Object.entries(colorNameToHex).map(([name, hex]) => [
+    hex.toLowerCase(),
+    name,
+  ]),
 );

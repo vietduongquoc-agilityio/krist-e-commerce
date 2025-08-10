@@ -6,8 +6,8 @@ import { useMemo } from 'react';
 // Components
 import { ItemMiniCart, PaymentCard } from '@/components';
 
-// Hooks
-import { CartModel } from '@/models/cart';
+// Models
+import { CartModel } from '@/models';
 
 interface MiniCartPopupClientProps {
   isOpen: boolean;
