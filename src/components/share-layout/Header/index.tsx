@@ -75,7 +75,7 @@ export const Header = ({
           {/* Mini Cart */}
           <MiniCartPopupWrapper
             isOpen={isCartOpen}
-            onClose={() => setIsCartOpen(false)}
+            onClose={handleToggleCart}
           />
         </NavbarContent>
       </Navbar>
