@@ -42,6 +42,11 @@ export const CartContent = ({ cartsItems }: CartContentProps) => {
       setCartItem((prev) =>
         prev.filter((item) => item.documentId !== cartItemDocumentId),
       );
+      window.dispatchEvent(
+        new CustomEvent('cartUpdated', {
+          detail: { type: 'remove', documentId: cartItemDocumentId },
+        }),
+      );
     } catch (error) {
       console.error('Error removing item:', error);
       toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_FAIL, 'error');

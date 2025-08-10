@@ -22,7 +22,7 @@ export function MiniCartPopupWrapper({
   onClose,
 }: MiniCartPopupWrapperProps) {
   const { data: session } = useSession();
-  const [cartItems, setCartItems] = useState<CartModel[]>([]);
+  const [cartItem, setCartItems] = useState<CartModel[]>([]);
 
   useEffect(() => {
     if (!isOpen || !session?.user) return;
@@ -41,7 +41,7 @@ export function MiniCartPopupWrapper({
     <MiniCartPopupClient
       isOpen={isOpen}
       onClose={onClose}
-      cartItems={cartItems}
+      cartItems={cartItem}
     />
   );
 }
