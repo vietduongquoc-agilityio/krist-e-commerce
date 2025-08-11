@@ -28,7 +28,12 @@ exports[`BrandSelection Component should render BrandSelection component and mat
       <span
         class="cursor-pointer hover:text-black transition"
       >
-        Retrolie Brook
+        Retrolie
+      </span>
+      <span
+        class="cursor-pointer hover:text-black transition"
+      >
+        Brooks
       </span>
       <span
         class="cursor-pointer hover:text-black transition"

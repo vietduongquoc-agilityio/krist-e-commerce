@@ -4,6 +4,7 @@ export interface ProductModel {
   title: string;
   description?: string;
   price: number;
+  slug?: string;
   salePrice?: number;
   thumbnailUrl: string;
   colors: string[];
@@ -15,4 +16,8 @@ export interface ProductModel {
   createdAt?: string;
   updatedAt?: string;
   stock: number;
+  brand?: string;
+  status?: string;
+  reviews?: string;
+  isSoldOut?: boolean;
 }

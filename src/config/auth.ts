@@ -1,4 +1,6 @@
 import Credentials from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google';
+import GitHubProvider from 'next-auth/providers/github';
 import NextAuth from 'next-auth';
 import { z } from 'zod';
 
@@ -13,6 +15,7 @@ export const { handlers, auth, signIn, signOut, unstable_update } = NextAuth({
   secret: process.env.AUTH_SECRET,
 
   providers: [
+    // Credentials (Strapi)
     Credentials({
       name: 'Credentials',
       credentials: {
@@ -52,6 +55,17 @@ export const { handlers, auth, signIn, signOut, unstable_update } = NextAuth({
           return null;
         }
       },
+    }),
+    // Google OAuth
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
+
+    // GitHub OAuth
+    GitHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     }),
   ],
 });

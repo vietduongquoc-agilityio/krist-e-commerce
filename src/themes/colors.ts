@@ -35,6 +35,7 @@ export const colors = {
   sunYellow: '#FFF06C',
   tangerine: '#FF7629',
   orangePeel: '#FCA120',
+  yellow: '#FFFF00',
 };
 
 // Theme-based alias

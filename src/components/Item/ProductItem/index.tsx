@@ -10,10 +10,12 @@ import { ItemCardProps } from '@/types';
 
 // Constants
 import { ROUTER } from '@/constants';
+
+// Components
 import { ColorButton } from '@/components';
 
 export const ProductItem = ({
-  id,
+  documentId,
   thumbnailUrl,
   title,
   colors,
@@ -22,11 +24,14 @@ export const ProductItem = ({
   isSoldOut = false,
 }: ItemCardProps) => {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
+
   const router = useRouter();
 
-  const handleCardClick = () => {
+  const handleNavigate = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
     if (!isSoldOut) {
-      router.push(`${ROUTER.PRODUCT}/${id}`);
+      router.push(`${ROUTER.SHOP}/${documentId}`);
     }
   };
 
@@ -36,18 +41,25 @@ export const ProductItem = ({
     onChange?.(newColor || '');
   };
 
+  const colorArray =
+    typeof colors === 'string'
+      ? (colors as string).split(',').map((c: string) => c.trim())
+      : (colors ?? []);
+
   return (
     <Card
-      onClick={handleCardClick}
-      className="cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-xl transition"
+      className={`cursor-pointer flex flex-col gap-5 group relative overflow-hidden hover:shadow-xl transition ${
+        isSoldOut ? 'cursor-not-allowed opacity-60' : ''
+      }`}
     >
-      <figure className="relative">
+      <figure className="relative cursor-pointer" onClick={handleNavigate}>
         <Image
           src={thumbnailUrl || '/images/productItem1.webp'}
           alt="Product Item"
           sizes="(100vw - 20px) 100vw, 302px"
           width={302}
           height={403}
+          className="w-[302px] h-[403px] object-cover"
         />
         {isSoldOut && (
           <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
@@ -64,9 +76,9 @@ export const ProductItem = ({
       </figure>
       <div className="ml-4 mb-3">
         <h3 className="font-secondary mb-[5px]">{title}</h3>
-        <p>${price}</p>
+        <p>${price.toFixed(2)}</p>
         <div className="flex gap-2 mt-4">
-          {(colors ?? []).map((color) => {
+          {colorArray.map((color) => {
             const isSelected = selectedColor === color;
             return (
               <ColorButton
