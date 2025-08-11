@@ -1,6 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 // Components
 import { Button } from '@/components/commons/Button';
@@ -8,12 +12,75 @@ import Input from '@/components/commons/Input';
 import { Text } from '@/components/commons/Text';
 import { IconGithub, IconGoogle } from '@/components';
 
-// Interfaces
-import { TEXT_SIZE, TEXT_VARIANT } from '@/interfaces';
+// Actions
+import { authenticateUser } from '@/actions/auth';
+
+// Models
+import { ISignInFormData } from '@/models';
+
+// Schemas
+import { signInSchema } from '@/schemas';
+
+// Constants
+import {
+  ERROR_MESSAGES,
+  BASE_URL,
+  ROUTER,
+  SUCCESS_MESSAGES,
+  TEXT_SIZE,
+  TEXT_VARIANT,
+} from '@/constants';
+
+// Utils
+import { toastManager } from '@/utils';
+import { signIn } from 'next-auth/react';
 
 export const SignInForm = () => {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const router = useRouter();
+  const param = useSearchParams();
+  const callbackUrl = param.get('callbackUrl');
+
+  const {
+    control,
+    handleSubmit,
+    formState: { isDirty, isValid, isSubmitting },
+  } = useForm<ISignInFormData>({
+    resolver: zodResolver(signInSchema),
+    defaultValues: {
+      identifier: '',
+      password: '',
+    },
+    mode: 'all',
+  });
+
+  const onSubmit = async (data: ISignInFormData) => {
+    try {
+      await authenticateUser(data);
+
+      toastManager.showToast(SUCCESS_MESSAGES.LOGIN, 'success', 'top-center');
+
+      if (callbackUrl) {
+        return router.push(callbackUrl.replace(BASE_URL!, ''));
+      }
+
+      router.push(ROUTER.HOME);
+    } catch (error) {
+      setErrorMessage(ERROR_MESSAGES.ACCOUNT_AND_PASSWORD_INVALID);
+      toastManager.showToast(
+        ERROR_MESSAGES.ACCOUNT_AND_PASSWORD_INVALID,
+        'error',
+        'top-center',
+      );
+    }
+  };
+
   return (
-    <form className="w-full mx-auto flex flex-col gap-6">
+    <form
+      className="w-full mx-auto flex flex-col gap-6"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       {/* Title */}
       <h2 className="font-secondary text-[30px] mb-8">Sign In To FASCO</h2>
 
@@ -22,6 +89,9 @@ export const SignInForm = () => {
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
+          onClick={() =>
+            signIn('google', { callbackUrl: callbackUrl || ROUTER.HOME })
+          }
         >
           <span className="flex items-center">
             <IconGoogle className="w-[36px] h-[36px] rounded-full" />
@@ -31,6 +101,9 @@ export const SignInForm = () => {
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
+          onClick={() =>
+            signIn('github', { callbackUrl: callbackUrl || ROUTER.HOME })
+          }
         >
           <span className="flex items-center">
             <IconGithub className="w-[42px] h-[42px] rounded-full" />
@@ -46,12 +119,61 @@ export const SignInForm = () => {
         <span className="w-[30px] h-[5px] bg-gray"></span>
       </div>
 
-      <Input type="email" placeholder="Email" />
-      <Input type="password" placeholder="Password" />
+      {/* Email Input */}
+      <Controller
+        control={control}
+        name="identifier"
+        render={({ field, fieldState: { error } }) => (
+          <Input
+            type="email"
+            placeholder="Email"
+            {...field}
+            isInvalid={!!error?.message}
+            errorMessage={error?.message}
+            onChange={(e) => {
+              field.onChange(e);
+              setErrorMessage(null);
+            }}
+          />
+        )}
+      />
+
+      {/* Password Input */}
+      <Controller
+        control={control}
+        name="password"
+        render={({ field, fieldState: { error } }) => (
+          <Input
+            type="password"
+            placeholder="Password"
+            {...field}
+            isInvalid={!!error?.message}
+            errorMessage={error?.message}
+            onChange={(e) => {
+              field.onChange(e);
+              setErrorMessage(null);
+            }}
+          />
+        )}
+      />
+
+      {/* Custom error (e.g. backend invalid account) */}
+      {errorMessage && (
+        <Text size={TEXT_SIZE.BASE} variant={TEXT_VARIANT.ERROR}>
+          {errorMessage}
+        </Text>
+      )}
 
       {/* Sign In Button */}
       <div className="w-[575px] font-semibold ml-16 flex flex-col gap-5 mt-6">
-        <Button variant="solid">Sign In</Button>
+        <Button
+          variant="solid"
+          type="submit"
+          isDisabled={!isDirty || !isValid}
+          isLoading={isSubmitting}
+        >
+          Sign In
+        </Button>
 
         <Link
           href="/signup"

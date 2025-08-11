@@ -8,16 +8,23 @@ import {
   DropdownMenu,
   DropdownTrigger,
   DropdownItem,
+  Avatar,
 } from '@heroui/react';
 import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
 // Components
 import { Button } from '@/components/commons/Button';
-import { IconUser, IconCart, IconSearch, IconStar } from '@/components';
+import { IconCart, IconSearch, IconStar } from '@/components';
+import AvatarImageBackup from '@/public/images/avatar.webp';
 
 // Constants
-import { NAVITEMS, ROUTER } from '@/constants';
+import {
+  ERROR_MESSAGES,
+  NAVITEMS,
+  ROUTER,
+  SUCCESS_MESSAGES,
+} from '@/constants';
 import { MiniCartPopup } from '@/components/MiniCart/MiniCartPopup';
 
 // Mocks
@@ -25,6 +32,8 @@ import { productMock } from '@/mocks';
 
 // Models
 import { ProductModel } from '@/models';
+import { signOut } from '@/actions/auth';
+import { toastManager } from '@/utils';
 
 interface HeaderProps {
   username?: string;
@@ -32,7 +41,7 @@ interface HeaderProps {
   avatar?: string;
 }
 
-export const Header = ({ isAuthenticated }: HeaderProps) => {
+export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -52,8 +61,25 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
     router.push(ROUTER.SIGNUP);
   };
 
-  const handleLogout = () => {
-    router.push(ROUTER.SIGNIN);
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+
+      toastManager.showToast(
+        SUCCESS_MESSAGES.SIGN_OUT,
+        'success',
+        'top-center',
+      );
+
+      router.replace(ROUTER.HOME);
+      router.refresh();
+    } catch (error) {
+      toastManager.showToast(
+        ERROR_MESSAGES.SIGN_OUT_ERROR,
+        'error',
+        'top-center',
+      );
+    }
   };
 
   const handleToggleCart = () => {
@@ -97,13 +123,28 @@ export const Header = ({ isAuthenticated }: HeaderProps) => {
               {/* IconUser + Dropdown */}
               <Dropdown placement="bottom-end">
                 <DropdownTrigger>
-                  <IconUser className="cursor-pointer" />
+                  <Avatar
+                    alt="User Avatar"
+                    src={avatar || AvatarImageBackup.src}
+                    className="cursor-pointer"
+                    fallback={AvatarImageBackup.src}
+                    classNames={{
+                      base: 'w-8 h-8',
+                      img: 'opacity-1',
+                    }}
+                  />
                 </DropdownTrigger>
-                <DropdownMenu className="border-1 rounded-xl bg-black text-white hover:bg-gray transition w-[160px] py-3">
+                <DropdownMenu className="border-1 rounded-md w-[120px]">
+                  <DropdownItem
+                    key="username"
+                    className="rounded-t-[5px] text-center bg-black text-white hover:bg-gray transition"
+                  >
+                    <p>{username || 'User'}</p>
+                  </DropdownItem>
                   <DropdownItem
                     key="logout"
-                    className="flex items-center justify-center"
-                    onClick={handleLogout}
+                    className="rounded-b-[5px] border-t-1 border-gray text-center bg-black text-white hover:bg-gray transition"
+                    onClick={handleSignOut}
                   >
                     Logout
                   </DropdownItem>

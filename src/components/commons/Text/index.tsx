@@ -1,10 +1,9 @@
 'use client';
 
-// interfaces
-import { TEXT_SIZE, TEXT_VARIANT } from '@/interfaces';
 import { cn } from '@heroui/react';
 
-// Interfaces
+// constants
+import { TEXT_SIZE, TEXT_VARIANT } from '@/constants';
 
 const sizes: { [key in TEXT_SIZE]: string } = {
   [TEXT_SIZE['BASE']]: 'text-base',

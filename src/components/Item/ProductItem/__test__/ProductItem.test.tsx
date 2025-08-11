@@ -20,6 +20,6 @@ describe('ProductItem', () => {
   it('displays title and price correctly', () => {
     render(<ProductItem id={''} documentId={''} {...defaultProps} />);
     expect(screen.getByText('Test Product')).toBeInTheDocument();
-    expect(screen.getByText('$99')).toBeInTheDocument();
+    expect(screen.getByText('$99.00')).toBeInTheDocument();
   });
 });
