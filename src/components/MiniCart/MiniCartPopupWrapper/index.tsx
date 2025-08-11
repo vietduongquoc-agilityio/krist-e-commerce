@@ -17,10 +17,10 @@ interface MiniCartPopupWrapperProps {
   onClose: () => void;
 }
 
-export function MiniCartPopupWrapper({
+export const MiniCartPopupWrapper = ({
   isOpen,
   onClose,
-}: MiniCartPopupWrapperProps) {
+}: MiniCartPopupWrapperProps) => {
   const { data: session } = useSession();
   const [cartItem, setCartItems] = useState<CartModel[]>([]);
 
@@ -28,8 +28,8 @@ export function MiniCartPopupWrapper({
     if (!isOpen || !session?.user) return;
 
     const fetchCart = async () => {
-      const { token, id: userId } = session.user;
-      const data = await getCartItemsByUserId(userId, token);
+      const { id: userId } = session.user;
+      const data = await getCartItemsByUserId(userId);
 
       setCartItems(data);
     };
@@ -44,4 +44,4 @@ export function MiniCartPopupWrapper({
       cartItems={cartItem}
     />
   );
-}
+};

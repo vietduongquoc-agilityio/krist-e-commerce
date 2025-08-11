@@ -9,24 +9,21 @@ import { ItemMiniCart, PaymentCard } from '@/components';
 // Models
 import { CartModel } from '@/models';
 
+// Utils
+import { calculateSubtotal } from '@/utils';
+
 interface MiniCartPopupClientProps {
   isOpen: boolean;
   onClose: () => void;
   cartItems: CartModel[];
 }
 
-export function MiniCartPopupClient({
+export const MiniCartPopupClient = ({
   isOpen,
   onClose,
   cartItems,
-}: MiniCartPopupClientProps) {
-  const subtotal = useMemo(() => {
-    if (!Array.isArray(cartItems)) return 0;
-    return cartItems.reduce(
-      (acc, item) => acc + item.product.price * item.quantity,
-      0,
-    );
-  }, [cartItems]);
+}: MiniCartPopupClientProps) => {
+  const subtotal = useMemo(() => calculateSubtotal(cartItems), [cartItems]);
 
   return (
     <Modal
@@ -70,4 +67,4 @@ export function MiniCartPopupClient({
       </div>
     </Modal>
   );
-}
+};

@@ -1,61 +1,25 @@
 'use client';
 
-import { useSession } from 'next-auth/react';
-import { useState } from 'react';
-
 // Components
 import { CartItemRow, PaymentCard } from '@/components';
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
 // Models
 import { CartModel } from '@/models';
-
-// Services
 import { removeCartItem } from '@/services';
 
 // Utils
-import { toastManager } from '@/utils';
-
-// Constants
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
+import { calculateSubtotal, toastManager } from '@/utils';
+import { useMemo, useState } from 'react';
 
 interface CartContentProps {
-  cartsItems: CartModel[];
+  cartItems: CartModel[];
 }
 
-export const CartContent = ({ cartsItems }: CartContentProps) => {
-  const [cartItem, setCartItem] = useState<CartModel[]>(cartsItems);
+export const CartContent = ({ cartItems }: CartContentProps) => {
+  const subtotal = useMemo(() => calculateSubtotal(cartItems), [cartItems]);
 
-  const subtotal = cartItem.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
-    0,
-  );
-
-  const { data: session } = useSession();
-  if (!session) {
-    return null;
-  }
-
-  const handleRemove = async (cartItemDocumentId: string) => {
-    try {
-      await removeCartItem(cartItemDocumentId, session?.user.token);
-
-      setCartItem((prev) =>
-        prev.filter((item) => item.documentId !== cartItemDocumentId),
-      );
-      window.dispatchEvent(
-        new CustomEvent('cartUpdated', {
-          detail: { type: 'remove', documentId: cartItemDocumentId },
-        }),
-      );
-    } catch (error) {
-      console.error('Error removing item:', error);
-      toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_FAIL, 'error');
-    }
-    toastManager.showToast(
-      SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
-      'success',
-    );
-  };
+  const [cartItem, setCartItem] = useState<CartModel[]>(cartItems);
 
   if (!cartItem.length) {
     return (
@@ -64,6 +28,22 @@ export const CartContent = ({ cartsItems }: CartContentProps) => {
       </p>
     );
   }
+  const handleRemove = async (cartItemDocumentId: string) => {
+    try {
+      await removeCartItem(cartItemDocumentId);
+
+      setCartItem((prev) =>
+        prev.filter((item) => item.documentId !== cartItemDocumentId),
+      );
+    } catch (error) {
+      console.error('Error removing item:', error);
+      toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL, 'error');
+    }
+    toastManager.showToast(
+      SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
+      'success',
+    );
+  };
 
   return (
     <div className="flex flex-col  justify-between gap-10 max-w-[1280px] mx-auto">
@@ -85,10 +65,7 @@ export const CartContent = ({ cartsItems }: CartContentProps) => {
                 cartItemId={documentId}
                 color={color}
                 quantity={quantity}
-                // onQuantityChange={(id, quantity) => handleUpdateQuantity(id, quantity)}
-                onRemove={(cartItemDocumentId) =>
-                  handleRemove(cartItemDocumentId)
-                }
+                onRemove={handleRemove}
               />
             );
           })}
@@ -98,10 +75,7 @@ export const CartContent = ({ cartsItems }: CartContentProps) => {
       {/* Payment Summary */}
       {cartItem.length > 0 && (
         <div className="flex justify-end">
-          <PaymentCard
-            subtotal={subtotal}
-            // onCheckout={() => handleCheckout()}
-          />
+          <PaymentCard subtotal={subtotal} />
         </div>
       )}
     </div>

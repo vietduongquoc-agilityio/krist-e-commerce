@@ -6,13 +6,10 @@ import Image from 'next/image';
 import { QuantityInput } from '@/components/commons';
 
 // constants
-import { FREE_SHIPPING_AMOUNT } from '@/constants';
+import { FREE_SHIPPING_AMOUNT, colorHexToName } from '@/constants';
 
 // models
 import { ProductModel } from '@/models';
-
-// utils
-import { colorHexToName } from '@/utils';
 
 interface ItemMiniCartProps {
   productItem: ProductModel;

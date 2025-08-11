@@ -3,7 +3,7 @@
 import { useSearchParams, useRouter } from 'next/navigation';
 
 // Constants
-import { COLOR_LIST, QUERY_KEY } from '@/constants';
+import { COLOR_LIST, SELECTION_KEY } from '@/constants';
 
 // Components
 import { ColorButton } from '@/components';
@@ -14,14 +14,14 @@ import { colorNameToHex } from '@/utils';
 export const ColorSelection = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const selectedColor = searchParams.get(QUERY_KEY.COLOR);
+  const selectedColor = searchParams.get(SELECTION_KEY.COLOR);
 
   const handleSelect = (color: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (selectedColor === color) {
-      params.delete(QUERY_KEY.COLOR);
+      params.delete(SELECTION_KEY.COLOR);
     } else {
-      params.set(QUERY_KEY.COLOR, color);
+      params.set(SELECTION_KEY.COLOR, color);
     }
     router.push(`?${params.toString()}`);
   };

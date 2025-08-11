@@ -19,9 +19,9 @@ export default async function CartPage() {
 
   if (!session) return;
 
-  const { token, id: userId } = session.user;
+  const { id: userId } = session.user;
 
-  const data = await getCartItemsByUserId(userId, token);
+  const data = await getCartItemsByUserId(userId);
 
   return (
     <section>
@@ -30,7 +30,7 @@ export default async function CartPage() {
         items={[{ name: 'Home', href: '/' }, { name: 'Shopping Cart' }]}
       />
 
-      <CartContent cartsItems={data || []} />
+      <CartContent cartItems={data || []} />
     </section>
   );
 }

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 // Components
 import {
@@ -25,8 +26,7 @@ import { ProductModel } from '@/models';
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
 // Services
-import { addNewproductByAccountId, CartPayload } from '@/services';
-import { useSession } from 'next-auth/react';
+import { addCartItemByAccountId, CartPayload } from '@/services';
 
 interface ProductDetailCardProps {
   product: ProductModel;
@@ -94,12 +94,12 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
       color: colorNameToHex[selectedColor] || selectedColor,
       quantity,
       product: documentId,
-      users_permissions_user: session?.user.id,
+      usersPermissionsUser: session?.user.id,
       size: selectedSize,
     };
 
     try {
-      await addNewproductByAccountId(item, session?.user.token);
+      await addCartItemByAccountId(item);
       window.dispatchEvent(
         new CustomEvent('cartUpdated', {
           detail: { type: 'add', item: item },
