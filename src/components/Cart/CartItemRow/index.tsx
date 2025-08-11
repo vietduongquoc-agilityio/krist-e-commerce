@@ -31,7 +31,7 @@ export const CartItemRow = ({
   quantity,
   cartItemId,
 }: CartItemProps) => {
-  const { thumbnailUrl, id, title, price, stock } = productItem;
+  const { thumbnailUrl, title, price, stock } = productItem;
 
   const colorName = colorHexToName[color.toLowerCase()] || color;
 
@@ -76,7 +76,7 @@ export const CartItemRow = ({
             value={quantity}
             min={1}
             max={stock}
-            onChange={(val) => onQuantityChange?.(id, val)}
+            onChange={(val) => onQuantityChange?.(cartItemId, val)}
             aria-label={`Quantity for ${title}`}
           />
         </div>

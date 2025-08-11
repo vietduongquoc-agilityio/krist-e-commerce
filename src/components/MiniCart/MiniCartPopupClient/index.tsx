@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, Modal } from '@heroui/react';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 // Components
 import { ItemMiniCart, PaymentCard } from '@/components';
@@ -10,20 +10,31 @@ import { ItemMiniCart, PaymentCard } from '@/components';
 import { CartModel } from '@/models';
 
 // Utils
-import { calculateSubtotal } from '@/utils';
+import { calculateSubtotal, handleQuantityChange } from '@/utils';
 
 interface MiniCartPopupClientProps {
   isOpen: boolean;
   onClose: () => void;
   cartItems: CartModel[];
+  onQuantityChange?: (cartItemDocumentId: string, newQuantity: number) => void;
 }
 
 export const MiniCartPopupClient = ({
   isOpen,
   onClose,
   cartItems,
+  onQuantityChange,
 }: MiniCartPopupClientProps) => {
-  const subtotal = useMemo(() => calculateSubtotal(cartItems), [cartItems]);
+  const [cartItem, setCartItem] = useState<CartModel[]>(cartItems);
+
+  const subtotal = useMemo(() => calculateSubtotal(cartItem), [cartItem]);
+  const handleQuantityOnChange = (id: string, quantity: number) => {
+    handleQuantityChange(id, quantity, setCartItem);
+  };
+
+  useEffect(() => {
+    setCartItem(cartItems);
+  }, [cartItems]);
 
   return (
     <Modal
@@ -45,21 +56,23 @@ export const MiniCartPopupClient = ({
         </div>
 
         <div className="space-y-8">
-          {cartItems.length === 0 ? (
+          {cartItem.length === 0 ? (
             <p className="text-xl text-red">Your cart is empty.</p>
           ) : (
-            cartItems.map(({ product, color, quantity, id }) => (
+            cartItem.map(({ product, color, quantity, documentId }) => (
               <ItemMiniCart
-                key={id}
+                key={documentId}
                 productItem={product}
                 color={color}
                 quantity={quantity}
+                onQuantityChange={handleQuantityOnChange}
+                cartItemId={documentId}
               />
             ))
           )}
         </div>
 
-        {cartItems.length > 0 && (
+        {cartItem.length > 0 && (
           <div className="mt-10">
             <PaymentCard subtotal={subtotal} />
           </div>

@@ -24,6 +24,7 @@ interface HeaderProps {
   isAuthenticated?: boolean;
   avatar?: string;
   cartItems?: CartModel[];
+  onQuantityChange?: (cartItemDocumentId: string, newQuantity: number) => void;
 }
 
 export const Header = ({
@@ -31,6 +32,7 @@ export const Header = ({
   avatar,
   username,
   cartItems = [],
+  onQuantityChange,
 }: HeaderProps) => {
   const pathname = usePathname();
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -73,6 +75,8 @@ export const Header = ({
           <MiniCartPopupWrapper
             isOpen={isCartOpen}
             onClose={handleToggleCart}
+            cartItems={cartItems}
+            onQuantityChange={onQuantityChange}
           />
         </NavbarContent>
       </Navbar>

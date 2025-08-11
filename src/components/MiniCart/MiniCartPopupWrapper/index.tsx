@@ -15,11 +15,14 @@ import { CartModel } from '@/models';
 interface MiniCartPopupWrapperProps {
   isOpen: boolean;
   onClose: () => void;
+  cartItems?: CartModel[];
+  onQuantityChange?: (cartItemDocumentId: string, newQuantity: number) => void;
 }
 
 export const MiniCartPopupWrapper = ({
   isOpen,
   onClose,
+  onQuantityChange,
 }: MiniCartPopupWrapperProps) => {
   const { data: session } = useSession();
   const [cartItem, setCartItems] = useState<CartModel[]>([]);
@@ -42,6 +45,7 @@ export const MiniCartPopupWrapper = ({
       isOpen={isOpen}
       onClose={onClose}
       cartItems={cartItem}
+      onQuantityChange={onQuantityChange}
     />
   );
 };

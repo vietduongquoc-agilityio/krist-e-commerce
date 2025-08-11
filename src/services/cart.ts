@@ -53,11 +53,11 @@ export const getCartItemsByUserId = async (
 };
 
 export const updateCartItemQuantity = async (
-  cartItemId: string,
+  cartItemDocumentId: string,
   newQuantity: number,
 ): Promise<CartModel> => {
   const { data, error } = await apiClient.put<CartModel>(
-    `${API_ENDPOINTS.CARTS}/${cartItemId}`,
+    `${API_ENDPOINTS.CARTS}/${cartItemDocumentId}`,
     {
       body: { data: keysToSnake({ quantity: newQuantity }) },
     },

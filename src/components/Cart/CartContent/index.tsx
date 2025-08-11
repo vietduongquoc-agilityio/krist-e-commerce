@@ -3,23 +3,29 @@
 // Components
 import { CartItemRow, PaymentCard } from '@/components';
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
+import { use, useEffect, useMemo, useState } from 'react';
 
 // Models
 import { CartModel } from '@/models';
+
+// Services
 import { removeCartItem } from '@/services';
 
 // Utils
-import { calculateSubtotal, toastManager } from '@/utils';
-import { useMemo, useState } from 'react';
+import { calculateSubtotal, handleQuantityChange, toastManager } from '@/utils';
 
 interface CartContentProps {
   cartItems: CartModel[];
 }
 
 export const CartContent = ({ cartItems }: CartContentProps) => {
-  const subtotal = useMemo(() => calculateSubtotal(cartItems), [cartItems]);
-
   const [cartItem, setCartItem] = useState<CartModel[]>(cartItems);
+
+  const subtotal = useMemo(() => calculateSubtotal(cartItem), [cartItem]);
+
+  useEffect(() => {
+    setCartItem(cartItems);
+  }, [cartItems]);
 
   if (!cartItem.length) {
     return (
@@ -35,14 +41,23 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
       setCartItem((prev) =>
         prev.filter((item) => item.documentId !== cartItemDocumentId),
       );
+      toastManager.showToast(
+        SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
+        'success',
+      );
+      window.dispatchEvent(
+        new CustomEvent('cartUpdated', {
+          detail: { type: 'remove', documentId: cartItemDocumentId },
+        }),
+      );
     } catch (error) {
       console.error('Error removing item:', error);
       toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL, 'error');
     }
-    toastManager.showToast(
-      SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
-      'success',
-    );
+  };
+
+  const handleQuantityOnChange = (id: string, quantity: number) => {
+    handleQuantityChange(id, quantity, setCartItem);
   };
 
   return (
@@ -66,6 +81,7 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
                 color={color}
                 quantity={quantity}
                 onRemove={handleRemove}
+                onQuantityChange={handleQuantityOnChange}
               />
             );
           })}

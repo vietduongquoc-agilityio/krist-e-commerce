@@ -48,12 +48,12 @@ export const WorkspacesLayoutClient = ({
   useEffect(() => {
     const onCartUpdated = (
       e: CustomEvent<{
-        type: 'add' | 'remove';
+        type: 'add' | 'remove' | 'update';
         item?: CartModel;
         documentId?: string;
       }>,
     ) => {
-      if (['add', 'remove'].includes(e.detail.type)) {
+      if (['add', 'remove', 'update'].includes(e.detail.type)) {
         fetchCart();
       }
     };
@@ -61,7 +61,7 @@ export const WorkspacesLayoutClient = ({
     window.addEventListener('cartUpdated', onCartUpdated as EventListener);
     return () =>
       window.removeEventListener('cartUpdated', onCartUpdated as EventListener);
-  }, []);
+  }, [fetchCart]);
 
   return (
     <>
