@@ -1,22 +1,29 @@
 'use client';
 
-import { useState } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 // Constants
-import { COLOR_LIST } from '@/constants';
+import { COLOR_LIST, QUERY_KEY } from '@/constants';
+
+// Components
 import { ColorButton } from '@/components';
 
-interface ColorSelectionProps {
-  onChange?: (color: string) => void;
-}
+// Utils
+import { colorNameToHex } from '@/utils';
 
-export const ColorSelection = ({ onChange }: ColorSelectionProps) => {
-  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+export const ColorSelection = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const selectedColor = searchParams.get(QUERY_KEY.COLOR);
 
   const handleSelect = (color: string) => {
-    const newColor = selectedColor === color ? null : color;
-    setSelectedColor(newColor);
-    onChange?.(newColor || '');
+    const params = new URLSearchParams(searchParams.toString());
+    if (selectedColor === color) {
+      params.delete(QUERY_KEY.COLOR);
+    } else {
+      params.set(QUERY_KEY.COLOR, color);
+    }
+    router.push(`?${params.toString()}`);
   };
 
   return (
@@ -28,7 +35,7 @@ export const ColorSelection = ({ onChange }: ColorSelectionProps) => {
           return (
             <ColorButton
               key={color}
-              color={color}
+              color={colorNameToHex[color]}
               isSelected={isSelected}
               onClick={() => handleSelect(color)}
               as="button"

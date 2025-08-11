@@ -24,7 +24,7 @@ import { signInSchema } from '@/schemas';
 // Constants
 import {
   ERROR_MESSAGES,
-  PUBLIC_URL,
+  BASE_URL,
   ROUTER,
   SUCCESS_MESSAGES,
   TEXT_SIZE,
@@ -33,6 +33,7 @@ import {
 
 // Utils
 import { toastManager } from '@/utils';
+import { signIn } from 'next-auth/react';
 
 export const SignInForm = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -61,7 +62,7 @@ export const SignInForm = () => {
       toastManager.showToast(SUCCESS_MESSAGES.LOGIN, 'success', 'top-center');
 
       if (callbackUrl) {
-        return router.push(callbackUrl.replace(PUBLIC_URL!, ''));
+        return router.push(callbackUrl.replace(BASE_URL!, ''));
       }
 
       router.push(ROUTER.HOME);
@@ -88,6 +89,9 @@ export const SignInForm = () => {
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
+          onClick={() =>
+            signIn('google', { callbackUrl: callbackUrl || ROUTER.HOME })
+          }
         >
           <span className="flex items-center">
             <IconGoogle className="w-[36px] h-[36px] rounded-full" />
@@ -97,6 +101,9 @@ export const SignInForm = () => {
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
+          onClick={() =>
+            signIn('github', { callbackUrl: callbackUrl || ROUTER.HOME })
+          }
         >
           <span className="flex items-center">
             <IconGithub className="w-[42px] h-[42px] rounded-full" />
