@@ -1,37 +1,29 @@
 'use client';
 
 import { Button, Modal } from '@heroui/react';
+import { useMemo } from 'react';
 
 // Components
 import { ItemMiniCart, PaymentCard } from '@/components';
 
-// Types
-import { ItemCardProps } from '@/types';
+// Hooks
+import { CartModel } from '@/models/cart';
 
 // Utils
-import { useCart } from '@/hooks/useCart';
-import { toastManager } from '@/utils';
+import { calculateSubtotal } from '@/utils';
 
-interface MiniCartPopupProps {
+interface MiniCartPopupClientProps {
   isOpen: boolean;
   onClose: () => void;
-  cartItems: ItemCardProps[];
-  onUpdateQuantity?: (id: string, quantity: number) => void;
+  cartItems: CartModel[];
 }
 
-export const MiniCartPopup = ({
+export const MiniCartPopupClient = ({
   isOpen,
   onClose,
   cartItems,
-  onUpdateQuantity,
-}: MiniCartPopupProps) => {
-  const { clearCart, subtotal } = useCart();
-
-  const handleCheckout = () => {
-    clearCart();
-    onClose();
-    toastManager.showToast('Checkout successful', 'success');
-  };
+}: MiniCartPopupClientProps) => {
+  const subtotal = useMemo(() => calculateSubtotal(cartItems), [cartItems]);
 
   return (
     <Modal
@@ -56,11 +48,12 @@ export const MiniCartPopup = ({
           {cartItems.length === 0 ? (
             <p className="text-xl text-red">Your cart is empty.</p>
           ) : (
-            cartItems.map((item) => (
+            cartItems.map(({ product, color, quantity, id }) => (
               <ItemMiniCart
-                key={item.id}
-                productItem={item}
-                onQuantityChange={onUpdateQuantity}
+                key={id}
+                productItem={product}
+                color={color}
+                quantity={quantity}
               />
             ))
           )}
@@ -68,10 +61,7 @@ export const MiniCartPopup = ({
 
         {cartItems.length > 0 && (
           <div className="mt-10">
-            <PaymentCard
-              subtotal={subtotal}
-              onCheckout={() => handleCheckout()}
-            />
+            <PaymentCard subtotal={subtotal} />
           </div>
         )}
       </div>

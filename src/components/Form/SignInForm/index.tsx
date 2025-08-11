@@ -67,7 +67,7 @@ export const SignInForm = () => {
     try {
       await authenticateUser(data);
 
-      toastManager.showToast(SUCCESS_MESSAGES.LOGIN, 'success', 'top-center');
+      toastManager.showToast(SUCCESS_MESSAGES.LOGIN, 'success');
 
       if (callbackUrl) {
         return router.push(callbackUrl.replace(BASE_URL!, ''));
@@ -79,7 +79,6 @@ export const SignInForm = () => {
       toastManager.showToast(
         ERROR_MESSAGES.ACCOUNT_AND_PASSWORD_INVALID,
         'error',
-        'top-center',
       );
     }
   };

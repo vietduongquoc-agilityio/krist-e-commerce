@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-
-import { useState, useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 // Components
 import {
@@ -25,11 +25,8 @@ import { ProductModel } from '@/models';
 // Constants
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
-// Types
-import { ItemCardProps } from '@/types';
-
-// Hooks
-import { useCart } from '@/hooks/useCart';
+// Services
+import { addCartItemByAccountId, CartPayload } from '@/services';
 
 interface ProductDetailCardProps {
   product: ProductModel;
@@ -45,6 +42,8 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     reviewCount,
     stock = 0,
     id,
+
+    documentId,
   } = product;
 
   const images = useMemo(() => {
@@ -80,27 +79,34 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     setSelectedSize(newSize);
   };
 
-  const { addToCart } = useCart();
+  const { data: session } = useSession();
+  if (!session) {
+    return null;
+  }
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     if (!selectedColor || !selectedSize) {
       toastManager.showToast(ERROR_MESSAGES.PLEASE_SELECT_COLOR, 'error');
       return;
     }
 
-    const item: ItemCardProps = {
-      id,
-      title,
-      thumbnailUrl,
-      price: salePrice || price,
+    const item: CartPayload = {
       color: colorNameToHex[selectedColor] || selectedColor,
-      sizes,
       quantity,
-      stock,
-      selectedSize,
+      product: documentId,
+      usersPermissionsUser: session?.user.id,
+      size: selectedSize,
     };
 
-    addToCart(item);
+    try {
+      await addCartItemByAccountId(item);
+    } catch (error) {
+      toastManager.showToast(
+        ERROR_MESSAGES.ADD_TO_CART_FAIL,
+        'error',
+        'top-center',
+      );
+    }
 
     toastManager.showToast(SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART, 'success');
   };
@@ -155,9 +161,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
 
           <div className="flex items-center gap-3 my-8">
             {salePrice && (
-              <span className="text-[24px] font-secondary">
-                ${salePrice.toFixed(2)}
-              </span>
+              <span className="text-[24px] font-secondary">${salePrice}</span>
             )}
             <span
               className={`text-gray line-through ${
@@ -166,7 +170,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
                   : 'text-xl font-bold text-black line-none'
               }`}
             >
-              ${price.toFixed(2)}
+              ${price}
             </span>
             {salePrice && (
               <span className="text-sm font-secondary text-white bg-strawberry py-[1px] px-3 rounded-10">

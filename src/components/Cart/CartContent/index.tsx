@@ -4,21 +4,20 @@
 import { CartItemRow, PaymentCard } from '@/components';
 
 // Hooks
-import { useCart } from '@/hooks/useCart';
+import { CartModel } from '@/models/cart';
 
 // Utils
-import { toastManager } from '@/utils';
+import { calculateSubtotal } from '@/utils';
+import { useMemo } from 'react';
 
-export const CartContent = () => {
-  const { cartItems, updateQuantity, removeItem, clearCart, subtotal } =
-    useCart();
+interface CartContentProps {
+  cartItems: CartModel[];
+}
 
-  const handleCheckout = () => {
-    clearCart();
-    toastManager.showToast('Checkout successful', 'success');
-  };
+export const CartContent = ({ cartItems }: CartContentProps) => {
+  const subtotal = useMemo(() => calculateSubtotal(cartItems), [cartItems]);
 
-  if (cartItems.length === 0) {
+  if (!cartItems.length) {
     return (
       <p className="text-center py-10 text-red text-xl font-secondary">
         Your cart is empty.
@@ -36,27 +35,25 @@ export const CartContent = () => {
           <p>Quantity</p>
           <p className="pl-[57px]">Total</p>
         </div>
-
         {/* Item Rows */}
         <div className="border-y border-gray divide-y divide-gray">
-          {cartItems.map((item) => (
-            <CartItemRow
-              key={item.id}
-              productItem={item}
-              onQuantityChange={(id, qty) => updateQuantity(id, qty)}
-              onRemove={() => removeItem(item.id)}
-            />
-          ))}
+          {cartItems.map(({ product, color, quantity, id }) => {
+            return (
+              <CartItemRow
+                key={id}
+                productItem={product}
+                color={color}
+                quantity={quantity}
+              />
+            );
+          })}
         </div>
       </div>
 
       {/* Payment Summary */}
       {cartItems.length > 0 && (
         <div className="flex justify-end">
-          <PaymentCard
-            subtotal={subtotal}
-            onCheckout={() => handleCheckout()}
-          />
+          <PaymentCard subtotal={subtotal} />
         </div>
       )}
     </div>
