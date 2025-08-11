@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useSession } from 'next-auth/react';
 
 // Components
 import { Header, Footer } from '@/components';
@@ -25,20 +24,22 @@ export const WorkspacesLayoutClient = ({
   avatar,
   isAuthenticated,
 }: Props) => {
-  const { data: session } = useSession();
   const [cartItems, setCartItems] = useState<CartModel[]>([]);
 
   const fetchCart = useCallback(async () => {
-    if (!session?.user) return;
+    if (!isAuthenticated || !username) {
+      setCartItems([]);
+      return;
+    }
     try {
-      const { token, id: userId } = session.user;
+      const userId = username;
       const data = await getCartItemsByUserId(userId);
       setCartItems(Array.isArray(data) ? data : []);
     } catch (err) {
       console.error('Failed to fetch cart on layout mount', err);
       setCartItems([]);
     }
-  }, [session]);
+  }, [isAuthenticated, username]);
 
   useEffect(() => {
     fetchCart();
