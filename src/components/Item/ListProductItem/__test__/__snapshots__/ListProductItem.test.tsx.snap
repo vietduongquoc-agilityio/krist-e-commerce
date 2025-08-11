@@ -39,7 +39,7 @@ exports[`ListProductItem should render ListProductItem component and match snaps
           </h3>
           <p>
             $
-            3900.00
+            3900
           </p>
           <div
             class="flex gap-2 mt-4"

@@ -8,7 +8,9 @@ import { productMock } from '@/mocks';
 
 describe('ItemMiniCart', () => {
   it('should render ItemMiniCart component and match snapshot', () => {
-    const { container } = render(<ItemMiniCart productItem={productMock[0]} />);
+    const { container } = render(
+      <ItemMiniCart productItem={productMock[0]} color={''} quantity={0} />,
+    );
     expect(container).toMatchSnapshot();
   });
 });

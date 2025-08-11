@@ -3,25 +3,14 @@ import { render } from '@testing-library/react';
 // Components
 import { Header } from '@/components';
 
-// Context
-import { CartProvider } from '@/context/cart';
-
 describe('Header', () => {
   it('renders correctly when user is not authenticated (snapshot)', () => {
-    const { container } = render(
-      <CartProvider>
-        <Header isAuthenticated={false} />
-      </CartProvider>,
-    );
+    const { container } = render(<Header isAuthenticated={false} />);
     expect(container).toMatchSnapshot();
   });
 
   it('renders correctly when user is authenticated (snapshot)', () => {
-    const { container } = render(
-      <CartProvider>
-        <Header isAuthenticated={true} />
-      </CartProvider>,
-    );
+    const { container } = render(<Header isAuthenticated={true} />);
     expect(container).toMatchSnapshot();
   });
 });

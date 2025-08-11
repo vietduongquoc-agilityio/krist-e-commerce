@@ -3,19 +3,19 @@
 import { useSearchParams, useRouter } from 'next/navigation';
 
 // Constants
-import { PRICE_RANGE, QUERY_KEY } from '@/constants';
+import { PRICE_RANGE, SELECTION_KEY } from '@/constants';
 
 export const PriceSelection = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const selectedPrice = searchParams.get(QUERY_KEY.PRICE);
+  const selectedPrice = searchParams.get(SELECTION_KEY.PRICE);
 
   const handleClick = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (selectedPrice === value) {
-      params.delete(QUERY_KEY.PRICE);
+      params.delete(SELECTION_KEY.PRICE);
     } else {
-      params.set(QUERY_KEY.PRICE, value);
+      params.set(SELECTION_KEY.PRICE, value);
     }
     router.push(`?${params.toString()}`);
   };
