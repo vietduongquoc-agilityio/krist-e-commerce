@@ -6,9 +6,6 @@ import { Chip } from '@heroui/react';
 // Components
 import { Button, ListProductCard } from '@/components';
 
-// Mocks
-import { PRODUCTS } from '@/mocks';
-
 const categories = [
   'Men’s Fashion',
   'Women’s Fashion',
@@ -39,7 +36,7 @@ export const ArrivalSection = () => (
       ))}
     </div>
 
-    <ListProductCard products={PRODUCTS} />
+    <ListProductCard />
     <Link href="/shop">
       <Button variant="solid" className="py-4 w-[220px]">
         View More

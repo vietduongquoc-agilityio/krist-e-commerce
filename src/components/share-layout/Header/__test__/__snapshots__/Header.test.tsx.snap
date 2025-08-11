@@ -73,41 +73,23 @@ exports[`Header renders correctly when user is authenticated (snapshot) 1`] = `
               </clippath>
             </defs>
           </svg>
-          <svg
+          <span
             aria-expanded="false"
             aria-haspopup="true"
-            class="z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased cursor-pointer"
+            class="flex relative justify-center items-center box-border overflow-hidden align-middle outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-tiny bg-default text-default-foreground rounded-full w-8 h-8 z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased cursor-pointer"
             data-react-aria-pressable="true"
             data-slot="trigger"
-            fill="none"
-            height="22"
             id="react-aria-«r0»"
             tabindex="0"
             type="button"
-            width="22"
-            xmlns="http://www.w3.org/2000/svg"
           >
-            <g
-              clip-path="url(#a)"
-            >
-              <path
-                d="M13.5 11.875c-1.121 0-1.66.625-3.5.625s-2.375-.625-3.5-.625a5.251 5.251 0 0 0-5.25 5.25v1C1.25 19.16 2.09 20 3.125 20h13.75c1.035 0 1.875-.84 1.875-1.875v-1a5.251 5.251 0 0 0-5.25-5.25Zm3.375 6.25H3.125v-1A3.38 3.38 0 0 1 6.5 13.75c.57 0 1.496.625 3.5.625 2.02 0 2.926-.625 3.5-.625a3.38 3.38 0 0 1 3.375 3.375v1ZM10 11.25a5.626 5.626 0 0 0 5.625-5.625A5.626 5.626 0 0 0 10 0a5.626 5.626 0 0 0-5.625 5.625A5.626 5.626 0 0 0 10 11.25Zm0-9.375a3.756 3.756 0 0 1 3.75 3.75A3.756 3.756 0 0 1 10 9.375a3.756 3.756 0 0 1-3.75-3.75A3.756 3.756 0 0 1 10 1.875Z"
-                fill="#484848"
-                stroke="#484848"
-                stroke-width="0.039"
-              />
-            </g>
-            <defs>
-              <clippath
-                id="a"
-              >
-                <path
-                  d="M0 0h20v20H0z"
-                  fill="#fff"
-                />
-              </clippath>
-            </defs>
-          </svg>
+            <img
+              alt="User Avatar"
+              class="flex object-cover w-full h-full transition-opacity !duration-500 data-[loaded=true]:opacity-100 opacity-1"
+              data-loaded="true"
+              src="/img.jpg"
+            />
+          </span>
           <svg
             class="cursor-not-allowed"
             fill="none"
@@ -124,29 +106,16 @@ exports[`Header renders correctly when user is authenticated (snapshot) 1`] = `
             class="cursor-pointer"
             fill="none"
             height="20"
+            style="vertical-align: middle;"
             width="20"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g
-              clip-path="url(#a)"
-            >
-              <path
-                d="M15 5c0-2.757-2.243-5-5-5S5 2.243 5 5H1.25v11.875C1.25 18.601 2.65 20 4.375 20h11.25c1.726 0 3.125-1.4 3.125-3.125V5H15Zm-5-3.125A3.129 3.129 0 0 1 13.125 5h-6.25A3.129 3.129 0 0 1 10 1.875Zm6.875 15c0 .69-.56 1.25-1.25 1.25H4.375c-.69 0-1.25-.56-1.25-1.25v-10H5v1.563a.937.937 0 1 0 1.875 0V6.875h6.25v1.563a.937.937 0 1 0 1.875 0V6.875h1.875v10Z"
-                fill="#484848"
-                stroke="#484848"
-                stroke-width="0.039"
-              />
-            </g>
-            <defs>
-              <clippath
-                id="a"
-              >
-                <path
-                  d="M0 0h20v20H0z"
-                  fill="#fff"
-                />
-              </clippath>
-            </defs>
+            <path
+              d="M15 5c0-2.757-2.243-5-5-5S5 2.243 5 5H1.25v11.875C1.25 18.601 2.65 20 4.375 20h11.25c1.726 0 3.125-1.4 3.125-3.125V5H15Zm-5-3.125A3.129 3.129 0 0 1 13.125 5h-6.25A3.129 3.129 0 0 1 10 1.875Zm6.875 15c0 .69-.56 1.25-1.25 1.25H4.375c-.69 0-1.25-.56-1.25-1.25v-10H5v1.563a.937.937 0 1 0 1.875 0V6.875h6.25v1.563a.937.937 0 1 0 1.875 0V6.875h1.875v10Z"
+              fill="#484848"
+              stroke="#484848"
+              stroke-width="0.039"
+            />
           </svg>
         </ul>
       </header>
