@@ -100,6 +100,11 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
 
     try {
       await addCartItemByAccountId(item);
+      window.dispatchEvent(
+        new CustomEvent('cartUpdated', {
+          detail: { type: 'add', item: item },
+        }),
+      );
     } catch (error) {
       toastManager.showToast(
         ERROR_MESSAGES.ADD_TO_CART_FAIL,

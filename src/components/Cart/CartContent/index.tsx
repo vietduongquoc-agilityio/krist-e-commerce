@@ -2,13 +2,15 @@
 
 // Components
 import { CartItemRow, PaymentCard } from '@/components';
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
 // Models
 import { CartModel } from '@/models';
+import { removeCartItem } from '@/services';
 
 // Utils
-import { calculateSubtotal } from '@/utils';
-import { useMemo } from 'react';
+import { calculateSubtotal, toastManager } from '@/utils';
+import { useMemo, useState } from 'react';
 
 interface CartContentProps {
   cartItems: CartModel[];
@@ -17,13 +19,31 @@ interface CartContentProps {
 export const CartContent = ({ cartItems }: CartContentProps) => {
   const subtotal = useMemo(() => calculateSubtotal(cartItems), [cartItems]);
 
-  if (!cartItems.length) {
+  const [cartItem, setCartItem] = useState<CartModel[]>(cartItems);
+
+  if (!cartItem.length) {
     return (
       <p className="text-center py-10 text-red text-xl font-secondary">
         Your cart is empty.
       </p>
     );
   }
+  const handleRemove = async (cartItemDocumentId: string) => {
+    try {
+      await removeCartItem(cartItemDocumentId);
+
+      setCartItem((prev) =>
+        prev.filter((item) => item.documentId !== cartItemDocumentId),
+      );
+    } catch (error) {
+      console.error('Error removing item:', error);
+      toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL, 'error');
+    }
+    toastManager.showToast(
+      SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
+      'success',
+    );
+  };
 
   return (
     <div className="flex flex-col  justify-between gap-10 max-w-[1280px] mx-auto">
@@ -37,7 +57,7 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
         </div>
         {/* Item Rows */}
         <div className="border-y border-gray divide-y divide-gray">
-          {cartItems.map(({ product, color, quantity, documentId }) => {
+          {cartItem.map(({ product, color, quantity, documentId }) => {
             return (
               <CartItemRow
                 key={documentId}
@@ -45,6 +65,7 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
                 cartItemId={documentId}
                 color={color}
                 quantity={quantity}
+                onRemove={handleRemove}
               />
             );
           })}
@@ -52,7 +73,7 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
       </div>
 
       {/* Payment Summary */}
-      {cartItems.length > 0 && (
+      {cartItem.length > 0 && (
         <div className="flex justify-end">
           <PaymentCard subtotal={subtotal} />
         </div>

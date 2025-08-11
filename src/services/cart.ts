@@ -71,15 +71,12 @@ export const updateCartItemQuantity = async (
   return keysToCamel(data);
 };
 
-export const removeCartItem = async (cartItemId: string): Promise<boolean> => {
-  const { data, error } = await apiClient.delete(
-    `${API_ENDPOINTS.CARTS}/${cartItemId}`,
+export const removeCartItem = async (
+  cartItemDocumentId: string,
+): Promise<boolean> => {
+  const { data } = await apiClient.delete(
+    `${API_ENDPOINTS.CARTS}/${cartItemDocumentId}`,
   );
-
-  if (error) {
-    console.error(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL, error);
-    throw new Error(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL);
-  }
 
   return data as boolean;
 };
