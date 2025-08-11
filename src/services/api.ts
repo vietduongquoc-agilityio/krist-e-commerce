@@ -31,28 +31,11 @@ class APIClient {
 
     const hasBody = method === 'POST' || method === 'PUT';
 
-<<<<<<< Updated upstream
     const customHeader: Record<string, string> = {
       ...(headers as Record<string, string>),
       ...(this.jwtToken && { Authorization: `Bearer ${this.jwtToken}` }),
       ...(hasBody && { 'Content-Type': 'application/json' }),
-=======
-    const authHeader = this.jwtToken
-      ? { Authorization: `Bearer ${this.jwtToken}` }
-      : {};
-
-    const customHeader: Record<string, string> = {
-      ...(headers as Record<string, string>),
-      ...(authHeader as Record<string, string>),
-      ...(hasBody && {
-        'Content-Type': 'application/json',
-      }),
->>>>>>> Stashed changes
     };
-
-    if (!this.jwtToken && 'Authorization' in customHeader) {
-      delete customHeader['Authorization'];
-    }
 
     const options = {
       method,
