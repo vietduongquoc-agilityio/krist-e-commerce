@@ -32,7 +32,7 @@ export const WorkspacesLayoutClient = ({
     if (!session?.user) return;
     try {
       const { token, id: userId } = session.user;
-      const data = await getCartItemsByUserId(userId, token);
+      const data = await getCartItemsByUserId(userId);
       setCartItems(Array.isArray(data) ? data : []);
     } catch (err) {
       console.error('Failed to fetch cart on layout mount', err);

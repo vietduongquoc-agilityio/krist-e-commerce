@@ -1,63 +1,23 @@
 'use client';
 
-import { useSession } from 'next-auth/react';
-import { useState } from 'react';
-
 // Components
 import { CartItemRow, PaymentCard } from '@/components';
 
 // Models
 import { CartModel } from '@/models';
 
-// Services
-import { removeCartItem } from '@/services';
-
 // Utils
-import { toastManager } from '@/utils';
-
-// Constants
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
+import { calculateSubtotal } from '@/utils';
+import { useMemo } from 'react';
 
 interface CartContentProps {
-  cartsItems: CartModel[];
+  cartItems: CartModel[];
 }
 
-export const CartContent = ({ cartsItems }: CartContentProps) => {
-  const [cartItem, setCartItem] = useState<CartModel[]>(cartsItems);
+export const CartContent = ({ cartItems }: CartContentProps) => {
+  const subtotal = useMemo(() => calculateSubtotal(cartItems), [cartItems]);
 
-  const subtotal = cartItem.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
-    0,
-  );
-
-  const { data: session } = useSession();
-  if (!session) {
-    return null;
-  }
-
-  const handleRemove = async (cartItemDocumentId: string) => {
-    try {
-      await removeCartItem(cartItemDocumentId, session?.user.token);
-
-      setCartItem((prev) =>
-        prev.filter((item) => item.documentId !== cartItemDocumentId),
-      );
-      window.dispatchEvent(
-        new CustomEvent('cartUpdated', {
-          detail: { type: 'remove', documentId: cartItemDocumentId },
-        }),
-      );
-    } catch (error) {
-      console.error('Error removing item:', error);
-      toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_FAIL, 'error');
-    }
-    toastManager.showToast(
-      SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
-      'success',
-    );
-  };
-
-  if (!cartItem.length) {
+  if (!cartItems.length) {
     return (
       <p className="text-center py-10 text-red text-xl font-secondary">
         Your cart is empty.
@@ -77,7 +37,7 @@ export const CartContent = ({ cartsItems }: CartContentProps) => {
         </div>
         {/* Item Rows */}
         <div className="border-y border-gray divide-y divide-gray">
-          {cartItem.map(({ product, color, quantity, documentId }) => {
+          {cartItems.map(({ product, color, quantity, documentId }) => {
             return (
               <CartItemRow
                 key={documentId}
@@ -85,10 +45,6 @@ export const CartContent = ({ cartsItems }: CartContentProps) => {
                 cartItemId={documentId}
                 color={color}
                 quantity={quantity}
-                // onQuantityChange={(id, quantity) => handleUpdateQuantity(id, quantity)}
-                onRemove={(cartItemDocumentId) =>
-                  handleRemove(cartItemDocumentId)
-                }
               />
             );
           })}
@@ -96,12 +52,9 @@ export const CartContent = ({ cartsItems }: CartContentProps) => {
       </div>
 
       {/* Payment Summary */}
-      {cartItem.length > 0 && (
+      {cartItems.length > 0 && (
         <div className="flex justify-end">
-          <PaymentCard
-            subtotal={subtotal}
-            // onCheckout={() => handleCheckout()}
-          />
+          <PaymentCard subtotal={subtotal} />
         </div>
       )}
     </div>

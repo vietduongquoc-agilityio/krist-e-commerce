@@ -10,7 +10,9 @@ import { Button, QuantityInput } from '@/components';
 
 // Models
 import { ProductModel } from '@/models';
-import { colorHexToName } from '@/utils';
+
+// Utils
+import { colorHexToName } from '@/constants';
 
 interface CartItemProps {
   productItem: ProductModel;

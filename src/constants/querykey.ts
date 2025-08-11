@@ -1,5 +1,5 @@
 // constants/queryKeys.ts
-export const QUERY_KEY = {
+export const SELECTION_KEY = {
   COLOR: 'color',
   SIZE: 'size',
   PRICE: 'price',

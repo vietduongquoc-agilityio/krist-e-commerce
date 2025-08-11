@@ -5,21 +5,21 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { cn, Button } from '@heroui/react';
 
 // Constants
-import { QUERY_KEY } from '@/constants';
+import { SELECTION_KEY } from '@/constants';
 
 const sizes = ['S', 'M', 'L', 'XL'];
 
 export const SizeSelection = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const selectedSize = searchParams.get(QUERY_KEY.SIZE);
+  const selectedSize = searchParams.get(SELECTION_KEY.SIZE);
 
   const handleClick = (size: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (selectedSize === size) {
-      params.delete(QUERY_KEY.SIZE);
+      params.delete(SELECTION_KEY.SIZE);
     } else {
-      params.set(QUERY_KEY.SIZE, size);
+      params.set(SELECTION_KEY.SIZE, size);
     }
     router.push(`?${params.toString()}`);
   };

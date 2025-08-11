@@ -32,19 +32,11 @@ export const HeaderAuthMenu = ({
   const handleSignOut = async () => {
     try {
       await signOut();
-      toastManager.showToast(
-        SUCCESS_MESSAGES.SIGN_OUT,
-        'success',
-        'top-center',
-      );
+      toastManager.showToast(SUCCESS_MESSAGES.SIGN_OUT, 'success');
       router.replace(ROUTER.HOME);
       router.refresh();
     } catch (error) {
-      toastManager.showToast(
-        ERROR_MESSAGES.SIGN_OUT_ERROR,
-        'error',
-        'top-center',
-      );
+      toastManager.showToast(ERROR_MESSAGES.SIGN_OUT_ERROR, 'error');
     }
   };
 

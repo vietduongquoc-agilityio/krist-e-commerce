@@ -1,44 +1,36 @@
 // Constants
-import { API_ENDPOINTS, PAGE_SIZE } from '@/constants';
+import { API_ENDPOINTS, ERROR_MESSAGES, PAGE_SIZE } from '@/constants';
 
 // Models
 import { CartModel } from '@/models';
 
+// Services
 import { apiClient } from '@/services/api';
+
+// Utils
+import { keysToCamel, keysToSnake } from '@/utils';
 
 export interface CartPayload {
   color: string;
-  users_permissions_user: string;
+  usersPermissionsUser: string;
   size: string;
   product: string;
   quantity: number;
 }
 
-export const addNewproductByAccountId = async (
-  payload: CartPayload,
-  jwtToken?: string,
-) => {
-  try {
-    const response = await apiClient.post(API_ENDPOINTS.CARTS, {
-      body: {
-        data: payload,
-      },
-      headers: { Authorization: `Bearer ${jwtToken}` },
-    });
+export const addCartItemByAccountId = async (payload: CartPayload) => {
+  const snakePayload = keysToSnake(payload);
 
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+  const response = await apiClient.post(API_ENDPOINTS.CARTS, {
+    body: { data: snakePayload },
+  });
+
+  return keysToCamel(response.data);
 };
 
 export const getCartItemsByUserId = async (
   userId: string,
-  jwtToken?: string,
-  searchParams?: {
-    page: string;
-    pageSize: string;
-  },
+  searchParams?: { page: string; pageSize: string },
 ): Promise<CartModel[]> => {
   const params = new URLSearchParams();
 
@@ -48,93 +40,46 @@ export const getCartItemsByUserId = async (
   params.set('pagination[page]', page);
   params.set('pagination[pageSize]', pageSize);
 
-  const url = `${API_ENDPOINTS.CARTS}?filters[users_permissions_user][id][$eq]=${userId}&populate=*&`;
+  const url = `${API_ENDPOINTS.CARTS}?filters[users_permissions_user][id][$eq]=${userId}&populate=*&${params.toString()}`;
 
-  const { data, error } = await apiClient.get<{ data: CartModel[] }>(url, {
-    headers: {
-      Authorization: `Bearer ${jwtToken}`,
-    },
-  });
+  const { data, error } = await apiClient.get<{ data: CartModel[] }>(url);
 
   if (error || !data) {
     console.error('Error fetching cart items:', error?.message);
     return [];
   }
 
-  return data.data ?? [];
+  return data.data.map(keysToCamel);
 };
 
 export const updateCartItemQuantity = async (
   cartItemId: string,
   newQuantity: number,
-  jwtToken?: string,
-) => {
-  try {
-    const response = await apiClient.put(
-      `${API_ENDPOINTS.CARTS}/${cartItemId}`,
-      {
-        headers: { Authorization: `Bearer ${jwtToken}` },
-        body: {
-          data: { quantity: newQuantity },
-        },
-      },
-    );
+): Promise<CartModel> => {
+  const { data, error } = await apiClient.put<CartModel>(
+    `${API_ENDPOINTS.CARTS}/${cartItemId}`,
+    {
+      body: { data: keysToSnake({ quantity: newQuantity }) },
+    },
+  );
 
-    console.log('response update cart item', response.data);
-    return response.data;
-  } catch (error) {
-    throw error;
+  if (error || !data) {
+    console.error(ERROR_MESSAGES.UPDATE_CART_ITEM_QUANTITY_FAIL, error);
+    throw new Error(ERROR_MESSAGES.UPDATE_CART_ITEM_QUANTITY_FAIL);
   }
+
+  return keysToCamel(data);
 };
 
-// export const removeCartItem = async (cartItemId: string, jwtToken?: string) => {
-//   try {
-//     const response = await apiClient.delete(
-//       `${API_ENDPOINTS.CARTS}/${cartItemId}`,
-//       {
-//         headers: { Authorization: `Bearer ${jwtToken}` },
-//       },
-//     );
+export const removeCartItem = async (cartItemId: string): Promise<boolean> => {
+  const { data, error } = await apiClient.delete(
+    `${API_ENDPOINTS.CARTS}/${cartItemId}`,
+  );
 
-//     console.log(`${API_ENDPOINTS.CARTS}/${cartItemId}`);
-
-//     console.log('response remove cart item', response.data);
-
-//     return response.data;
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-
-export const removeCartItem = async (
-  cartItemDocumentId: string,
-  jwtToken?: string,
-) => {
-  try {
-    const response = await apiClient.delete(
-      `${API_ENDPOINTS.CARTS}/${cartItemDocumentId}`,
-      {
-        headers: { Authorization: `Bearer ${jwtToken}` },
-      },
-    );
-
-    return response.data;
-  } catch (error) {
-    console.error('Error removing cart item', error);
-    throw error;
+  if (error) {
+    console.error(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL, error);
+    throw new Error(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL);
   }
+
+  return data as boolean;
 };
-
-// export const clearCart = async (userId: string, jwtToken?: string) => {
-//   try {
-//     const cartItems = await getCartItemsByUserId(userId, jwtToken);
-
-//     const deletePromises = cartItems.map((item: any) =>
-//       removeCartItem(item.id, jwtToken),
-//     );
-
-//     await Promise.all(deletePromises);
-//   } catch (error) {
-//     throw error;
-//   }
-// };

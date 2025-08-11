@@ -25,7 +25,9 @@ export const ERROR_MESSAGES = {
 
   ADD_TO_CART_FAIL: 'Error adding product to cart. Please try again.',
 
-  REMOVE_CART_FAIL: 'Error removing product from cart. Please try again.',
+  UPDATE_CART_ITEM_QUANTITY_FAIL: 'Failed to update cart item quantity',
+
+  REMOVE_CART_ITEM_FAIL: 'Error removing product from cart. Please try again.',
 };
 
 export const SUCCESS_MESSAGES = {

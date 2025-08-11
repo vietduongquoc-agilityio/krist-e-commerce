@@ -8,30 +8,51 @@ export type FailedResponse = { data: null; error: { message: string } };
 
 class APIClient {
   private static _apiClient: APIClient;
+  private jwtToken?: string;
+
   private constructor() {}
 
   static get apiClient() {
     if (!this._apiClient) {
       this._apiClient = new APIClient();
     }
-
     return this._apiClient;
+  }
+
+  setToken(token?: string) {
+    this.jwtToken = token;
   }
 
   private apiRequest = async <T>(
     url: string,
     init?: RequestOption,
   ): Promise<SuccessResponse<T> | FailedResponse> => {
-    const { method = 'GET', body, headers, ...rest } = init || {};
+    const { method = 'GET', body, headers = {}, ...rest } = init || {};
 
     const hasBody = method === 'POST' || method === 'PUT';
 
-    const customHeader = {
-      ...headers,
+<<<<<<< Updated upstream
+    const customHeader: Record<string, string> = {
+      ...(headers as Record<string, string>),
+      ...(this.jwtToken && { Authorization: `Bearer ${this.jwtToken}` }),
+      ...(hasBody && { 'Content-Type': 'application/json' }),
+=======
+    const authHeader = this.jwtToken
+      ? { Authorization: `Bearer ${this.jwtToken}` }
+      : {};
+
+    const customHeader: Record<string, string> = {
+      ...(headers as Record<string, string>),
+      ...(authHeader as Record<string, string>),
       ...(hasBody && {
         'Content-Type': 'application/json',
       }),
+>>>>>>> Stashed changes
     };
+
+    if (!this.jwtToken && 'Authorization' in customHeader) {
+      delete customHeader['Authorization'];
+    }
 
     const options = {
       method,
@@ -70,9 +91,7 @@ class APIClient {
   }
 
   async post<T>(url: string, init?: Omit<RequestOption, 'method'>) {
-    const { ...rest } = init || {};
-
-    return this.apiRequest<T>(url, { ...rest, method: 'POST' });
+    return this.apiRequest<T>(url, { ...init, method: 'POST' });
   }
 
   async put<T>(url: string, init?: Omit<RequestOption, 'method'>) {
