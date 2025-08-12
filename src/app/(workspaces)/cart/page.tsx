@@ -30,7 +30,7 @@ export default async function CartPage() {
         items={[{ name: 'Home', href: '/' }, { name: 'Shopping Cart' }]}
       />
 
-      <CartContent cartItems={data || []} userId={userId} />
+      <CartContent cartItems={data || []} />
     </section>
   );
 }
