@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Navbar, NavbarContent } from '@heroui/react';
 import { usePathname } from 'next/navigation';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 
 // Models
 import { CartModel } from '@/models';
@@ -16,7 +16,7 @@ import {
   HeaderAuthMenu,
   HeaderGuestMenu,
   HeaderNavLinks,
-  MiniCartPopupWrapper,
+  MiniCartPopup,
 } from '@/components';
 
 interface HeaderProps {
@@ -35,12 +35,25 @@ export const Header = ({
   const pathname = usePathname();
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+  const isCartPage = pathname === '/cart';
+
+  useEffect(() => {
+    if (isCartPage && isCartOpen) {
+      setIsCartOpen(false);
+    }
+  }, [isCartPage, isCartOpen]);
+
   const totalQuantity = useMemo(() => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
+    return (Array.isArray(cartItems) ? cartItems : []).reduce((total, item) => {
+      const qty = Number(item?.quantity ?? 0) || 0;
+      return total + qty;
+    }, 0);
   }, [cartItems]);
 
   const handleToggleCart = () => {
-    setIsCartOpen((prev) => !prev);
+    if (!isCartPage) {
+      setIsCartOpen((prev) => !prev);
+    }
   };
 
   return (
@@ -64,16 +77,16 @@ export const Header = ({
               username={username}
               totalQuantity={totalQuantity}
               onToggleCart={handleToggleCart}
+              isCartPage={isCartPage}
             />
           ) : (
-            <HeaderGuestMenu />
+            !isCartPage && <HeaderGuestMenu />
           )}
 
           {/* Mini Cart */}
-          <MiniCartPopupWrapper
-            isOpen={isCartOpen}
-            onClose={handleToggleCart}
-          />
+          {!isCartPage && (
+            <MiniCartPopup isOpen={isCartOpen} onClose={handleToggleCart} />
+          )}
         </NavbarContent>
       </Navbar>
     </header>

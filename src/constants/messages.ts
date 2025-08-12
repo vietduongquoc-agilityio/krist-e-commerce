@@ -40,4 +40,5 @@ export const SUCCESS_MESSAGES = {
   CHECKOUT_SUCCESS: 'Checkout successful.',
 
   REMOVE_PRODUCT_FROM_CART: 'Product removed from cart successfully.',
+  UPDATE_CART_ITEM_QUANTITY: 'Cart item quantity updated successfully.',
 };

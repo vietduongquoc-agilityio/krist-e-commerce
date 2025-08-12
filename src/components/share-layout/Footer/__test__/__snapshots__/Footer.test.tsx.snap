@@ -52,6 +52,7 @@ exports[`Footer Component renders correctly and matches snapshot 1`] = `
           py-2
           
         "
+            id="«r0»"
             placeholder="michael@ymail.com"
             type="email"
           />

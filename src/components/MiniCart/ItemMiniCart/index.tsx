@@ -16,6 +16,7 @@ interface ItemMiniCartProps {
   color: string;
   quantity: number;
   onQuantityChange?: (id: string, quantity: number) => void;
+  cartItemId: string;
 }
 
 export const ItemMiniCart = ({
@@ -23,8 +24,9 @@ export const ItemMiniCart = ({
   color,
   onQuantityChange,
   quantity,
+  cartItemId,
 }: ItemMiniCartProps) => {
-  const { thumbnailUrl, title, price, id, stock } = productItem;
+  const { thumbnailUrl, title, price, stock } = productItem;
 
   const subtotal = price * quantity;
 
@@ -65,7 +67,7 @@ export const ItemMiniCart = ({
             value={quantity}
             min={1}
             max={stock}
-            onChange={(val) => onQuantityChange?.(id, val)}
+            onChange={(val) => onQuantityChange?.(cartItemId, val)}
             aria-label={`Quantity for ${title}`}
           />
         </div>
