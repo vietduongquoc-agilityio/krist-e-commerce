@@ -19,7 +19,7 @@ interface HeaderAuthMenuProps {
   username?: string;
   totalQuantity: number;
   onToggleCart: () => void;
-  isCartPage?: boolean;
+  isShowCartIcon?: boolean;
 }
 
 export const HeaderAuthMenu = ({
@@ -27,7 +27,7 @@ export const HeaderAuthMenu = ({
   username,
   totalQuantity,
   onToggleCart,
-  isCartPage = false,
+  isShowCartIcon = false,
 }: HeaderAuthMenuProps) => {
   const router = useRouter();
 
@@ -80,7 +80,7 @@ export const HeaderAuthMenu = ({
       <IconStar className="cursor-not-allowed" />
 
       {/* Cart icon */}
-      {!isCartPage && (
+      {!isShowCartIcon && (
         <div className="relative cursor-pointer" onClick={onToggleCart}>
           <IconCart />
           {totalQuantity > 0 && (

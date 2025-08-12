@@ -77,7 +77,7 @@ export const Header = ({
               username={username}
               totalQuantity={totalQuantity}
               onToggleCart={handleToggleCart}
-              isCartPage={isCartPage}
+              isShowCartIcon={isCartPage}
             />
           ) : (
             !isCartPage && <HeaderGuestMenu />
