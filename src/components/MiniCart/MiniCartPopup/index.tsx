@@ -2,19 +2,22 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useSession } from 'next-auth/react';
+import { Button, Modal } from '@heroui/react';
 
 // Services
-import { getCartItemsByUserId, updateCartItemQuantity } from '@/services';
+import {
+  checkoutCart,
+  getCartItemsByUserId,
+  updateCartItemQuantity,
+} from '@/services';
 
 // Models
 import { CartModel } from '@/models';
 
-import { Button, Modal } from '@heroui/react';
-
 // Components
 import { ItemMiniCart, PaymentCard } from '@/components';
 import { calculateSubtotal, toastManager } from '@/utils';
-import { ERROR_MESSAGES } from '@/constants';
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
 interface MiniCartPopupProps {
   isOpen: boolean;
@@ -78,6 +81,21 @@ export const MiniCartPopup = ({ isOpen, onClose }: MiniCartPopupProps) => {
     }
   };
 
+  const handleCheckout = async () => {
+    try {
+      await checkoutCart(cartItems, () => {});
+      setCartItems([]);
+      toastManager.showToast(SUCCESS_MESSAGES.CHECKOUT_SUCCESS, 'success');
+      window.dispatchEvent(
+        new CustomEvent('cartUpdated', { detail: { type: 'checkout' } }),
+      );
+      onClose();
+    } catch (error) {
+      console.error('Error checking out cart:', error);
+      toastManager.showToast(ERROR_MESSAGES.CHECKOUT_FAIL, 'error');
+    }
+  };
+
   const renderCartItems = useMemo(() => {
     if (isLoading) {
       return <p className="text-xl text-red">Loading cart...</p>;
@@ -125,7 +143,7 @@ export const MiniCartPopup = ({ isOpen, onClose }: MiniCartPopupProps) => {
 
         {cartItems.length > 0 && (
           <div className="mt-10">
-            <PaymentCard subtotal={subtotal} />
+            <PaymentCard subtotal={subtotal} onCheckout={handleCheckout} />
           </div>
         )}
       </div>

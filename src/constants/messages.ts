@@ -28,6 +28,8 @@ export const ERROR_MESSAGES = {
   UPDATE_CART_ITEM_QUANTITY_FAIL: 'Failed to update cart item quantity',
 
   REMOVE_CART_ITEM_FAIL: 'Error removing product from cart. Please try again.',
+
+  CHECKOUT_FAIL: 'Error checking out. Please try again.',
 };
 
 export const SUCCESS_MESSAGES = {
