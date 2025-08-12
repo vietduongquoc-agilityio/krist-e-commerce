@@ -1,30 +1,125 @@
 'use client';
 
-import { ItemMiniCart, PaymentCard } from '@/components';
-// Models
-import { ProductModel } from '@/models';
+import { useEffect, useMemo, useState } from 'react';
+import { useSession } from 'next-auth/react';
 import { Button, Modal } from '@heroui/react';
-import { useMemo } from 'react';
+
+// Services
+import {
+  checkoutCart,
+  getCartItemsByUserId,
+  updateCartItemQuantity,
+} from '@/services';
+
+// Models
+import { CartModel } from '@/models';
+
+// Components
+import { ItemMiniCart, PaymentCard } from '@/components';
+import { calculateSubtotal, toastManager } from '@/utils';
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
 interface MiniCartPopupProps {
   isOpen: boolean;
   onClose: () => void;
-  cartItems: ProductModel[];
-  onUpdateQuantity?: (id: string, quantity: number) => void;
-  onCheckout?: () => void;
 }
 
-export const MiniCartPopup = ({
-  isOpen,
-  onClose,
-  cartItems,
-  onUpdateQuantity,
-  onCheckout,
-}: MiniCartPopupProps) => {
-  const subtotal = useMemo(
-    () => cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0),
-    [cartItems],
-  );
+export const MiniCartPopup = ({ isOpen, onClose }: MiniCartPopupProps) => {
+  const { data: session } = useSession();
+  const [cartItems, setCartItems] = useState<CartModel[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen || !session?.user) return;
+
+    const fetchCart = async () => {
+      setIsLoading(true);
+      const { id: userId } = session.user;
+      const data = await getCartItemsByUserId(userId);
+
+      if (data?.length) {
+        setCartItems(data);
+      }
+
+      setIsLoading(false);
+    };
+
+    fetchCart();
+  }, [isOpen, session]);
+
+  const subtotal = useMemo(() => calculateSubtotal(cartItems), [cartItems]);
+
+  const handleQuantityChange = async (
+    cartItemDocumentId: string,
+    newQuantity: number,
+  ) => {
+    if (newQuantity < 1) return;
+
+    try {
+      setCartItems((prev) =>
+        prev.map((item) =>
+          item.documentId === cartItemDocumentId
+            ? { ...item, quantity: newQuantity }
+            : item,
+        ),
+      );
+
+      await updateCartItemQuantity(cartItemDocumentId, newQuantity);
+
+      window.dispatchEvent(
+        new CustomEvent('cartUpdated', {
+          detail: { type: 'update', documentId: cartItemDocumentId },
+        }),
+      );
+    } catch (error) {
+      console.error('Error updating quantity:', error);
+
+      toastManager.showToast(
+        ERROR_MESSAGES.UPDATE_CART_ITEM_QUANTITY_FAIL,
+        'error',
+      );
+    }
+  };
+
+  const handleCheckout = async () => {
+    try {
+      await checkoutCart(cartItems, () => {});
+      setCartItems([]);
+      toastManager.showToast(SUCCESS_MESSAGES.CHECKOUT_SUCCESS, 'success');
+      window.dispatchEvent(
+        new CustomEvent('cartUpdated', { detail: { type: 'checkout' } }),
+      );
+      onClose();
+    } catch (error) {
+      console.error('Error checking out cart:', error);
+      toastManager.showToast(ERROR_MESSAGES.CHECKOUT_FAIL, 'error');
+    }
+  };
+
+  const renderCartItems = useMemo(() => {
+    if (isLoading) {
+      return <p className="text-xl text-red">Loading cart...</p>;
+    }
+
+    if (!cartItems.length)
+      return <p className="text-xl text-red">Your cart is empty.</p>;
+
+    return cartItems.map((item) => {
+      const { documentId, product, color, quantity } = item;
+
+      return (
+        <ItemMiniCart
+          key={documentId}
+          productItem={product}
+          color={color}
+          quantity={quantity}
+          onQuantityChange={handleQuantityChange}
+          cartItemId={documentId}
+        />
+      );
+    });
+  }, [cartItems, isLoading]);
+
   return (
     <Modal
       isOpen={isOpen}
@@ -44,23 +139,11 @@ export const MiniCartPopup = ({
           </Button>
         </div>
 
-        <div className="space-y-8">
-          {cartItems.length === 0 ? (
-            <p className="text-xl text-red">Your cart is empty.</p>
-          ) : (
-            cartItems.map((item) => (
-              <ItemMiniCart
-                key={item.id}
-                productItem={item}
-                onQuantityChange={onUpdateQuantity}
-              />
-            ))
-          )}
-        </div>
+        <div className="space-y-8">{renderCartItems}</div>
 
         {cartItems.length > 0 && (
           <div className="mt-10">
-            <PaymentCard subtotal={subtotal} onCheckout={onCheckout} />
+            <PaymentCard subtotal={subtotal} onCheckout={handleCheckout} />
           </div>
         )}
       </div>

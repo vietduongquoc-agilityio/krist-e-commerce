@@ -1,177 +1,91 @@
 'use client';
 
 import Link from 'next/link';
-import {
-  Navbar,
-  NavbarContent,
-  Dropdown,
-  DropdownMenu,
-  DropdownTrigger,
-  DropdownItem,
-  Avatar,
-} from '@heroui/react';
-import { useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
-
-// Components
-import { Button } from '@/components/commons/Button';
-import { IconCart, IconSearch, IconStar } from '@/components';
-import AvatarImageBackup from '@/public/images/avatar.webp';
-
-// Constants
-import {
-  ERROR_MESSAGES,
-  NAVITEMS,
-  ROUTER,
-  SUCCESS_MESSAGES,
-} from '@/constants';
-import { MiniCartPopup } from '@/components/MiniCart/MiniCartPopup';
-
-// Mocks
-import { productMock } from '@/mocks';
+import { Navbar, NavbarContent } from '@heroui/react';
+import { usePathname } from 'next/navigation';
+import { useState, useMemo, useEffect } from 'react';
 
 // Models
-import { ProductModel } from '@/models';
-import { signOut } from '@/actions/auth';
-import { toastManager } from '@/utils';
+import { CartModel } from '@/models';
+
+// Constants
+import { NAVITEMS } from '@/constants';
+
+// Components
+import {
+  HeaderAuthMenu,
+  HeaderGuestMenu,
+  HeaderNavLinks,
+  MiniCartPopup,
+} from '@/components';
 
 interface HeaderProps {
   username?: string;
   isAuthenticated?: boolean;
   avatar?: string;
+  cartItems?: CartModel[];
 }
 
-export const Header = ({ isAuthenticated, avatar, username }: HeaderProps) => {
+export const Header = ({
+  isAuthenticated,
+  avatar,
+  username,
+  cartItems = [],
+}: HeaderProps) => {
   const pathname = usePathname();
-  const router = useRouter();
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<ProductModel[]>([]);
 
-  const handleUpdateQuantity = (id: string, quantity: number) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item)),
-    );
-  };
+  const isCartPage = pathname === '/cart';
 
-  const handleSignIn = () => {
-    router.push(ROUTER.SIGNIN);
-  };
-
-  const handleSignUp = () => {
-    router.push(ROUTER.SIGNUP);
-  };
-
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-
-      toastManager.showToast(
-        SUCCESS_MESSAGES.SIGN_OUT,
-        'success',
-        'top-center',
-      );
-
-      router.replace(ROUTER.HOME);
-      router.refresh();
-    } catch (error) {
-      toastManager.showToast(
-        ERROR_MESSAGES.SIGN_OUT_ERROR,
-        'error',
-        'top-center',
-      );
+  useEffect(() => {
+    if (isCartPage && isCartOpen) {
+      setIsCartOpen(false);
     }
-  };
+  }, [isCartPage, isCartOpen]);
+
+  const totalQuantity = useMemo(() => {
+    return (Array.isArray(cartItems) ? cartItems : []).reduce((total, item) => {
+      const qty = Number(item?.quantity ?? 0) || 0;
+      return total + qty;
+    }, 0);
+  }, [cartItems]);
 
   const handleToggleCart = () => {
-    setIsCartOpen((prevCartState) => !prevCartState);
-  };
-
-  const handleCheckout = () => {
-    console.log('Checkout successful');
+    if (!isCartPage) {
+      setIsCartOpen((prev) => !prev);
+    }
   };
 
   return (
     <header className="w-full py-4 flex justify-between items-center">
       <Navbar className="flex items-center w-[1282px] mx-auto">
+        {/* Logo */}
         <Link href="/" className="text-4xl font-extrabold font-serif">
           FASCO
         </Link>
 
+        {/* Navigation links */}
         <NavbarContent className="flex items-center justify-between w-[300px]">
-          {NAVITEMS.map((item) => {
-            const isActive = pathname === item.path;
-            return (
-              <Link
-                key={item.text}
-                href={item.path}
-                className={`transition-colors ${
-                  isActive
-                    ? 'text-black font-semibold text-lg'
-                    : 'text-charcoal hover:text-black'
-                }`}
-              >
-                {item.text}
-              </Link>
-            );
-          })}
+          <HeaderNavLinks pathname={pathname} navItems={NAVITEMS} />
         </NavbarContent>
 
+        {/* Right section */}
         <NavbarContent className="flex items-center w-[300px] gap-7 justify-end relative">
           {isAuthenticated ? (
-            <>
-              <IconSearch className="cursor-not-allowed" />
-              {/* IconUser + Dropdown */}
-              <Dropdown placement="bottom-end">
-                <DropdownTrigger>
-                  <Avatar
-                    alt="User Avatar"
-                    src={avatar || AvatarImageBackup.src}
-                    className="cursor-pointer"
-                    fallback={AvatarImageBackup.src}
-                    classNames={{
-                      base: 'w-8 h-8',
-                      img: 'opacity-1',
-                    }}
-                  />
-                </DropdownTrigger>
-                <DropdownMenu className="border-1 rounded-md w-[120px]">
-                  <DropdownItem
-                    key="username"
-                    className="rounded-t-[5px] text-center bg-black text-white hover:bg-gray transition"
-                  >
-                    <p>{username || 'User'}</p>
-                  </DropdownItem>
-                  <DropdownItem
-                    key="logout"
-                    className="rounded-b-[5px] border-t-1 border-gray text-center bg-black text-white hover:bg-gray transition"
-                    onClick={handleSignOut}
-                  >
-                    Logout
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-
-              <IconStar className="cursor-not-allowed" />
-
-              <IconCart className="cursor-pointer" onClick={handleToggleCart} />
-
-              <MiniCartPopup
-                isOpen={isCartOpen}
-                onClose={handleToggleCart}
-                cartItems={cartItems.length === 0 ? productMock : cartItems}
-                onUpdateQuantity={handleUpdateQuantity}
-                onCheckout={handleCheckout}
-              />
-            </>
+            <HeaderAuthMenu
+              avatar={avatar}
+              username={username}
+              totalQuantity={totalQuantity}
+              onToggleCart={handleToggleCart}
+              isShowCartIcon={isCartPage}
+            />
           ) : (
-            <>
-              <Button variant="solid" type="button" onClick={handleSignIn}>
-                Sign in
-              </Button>
-              <Button variant="solid" type="button" onClick={handleSignUp}>
-                Sign Up
-              </Button>
-            </>
+            !isCartPage && <HeaderGuestMenu />
+          )}
+
+          {/* Mini Cart */}
+          {!isCartPage && (
+            <MiniCartPopup isOpen={isCartOpen} onClose={handleToggleCart} />
           )}
         </NavbarContent>
       </Navbar>

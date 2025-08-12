@@ -117,6 +117,7 @@ exports[`SignInForm should render SignInForm correctly and match snapshot 1`] = 
           py-2
           
         "
+        id="«r0»"
         name="identifier"
         placeholder="Email"
         type="email"
@@ -140,6 +141,7 @@ exports[`SignInForm should render SignInForm correctly and match snapshot 1`] = 
           py-2
           
         "
+        id="«r1»"
         name="password"
         placeholder="Password"
         type="password"

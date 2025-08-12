@@ -7,3 +7,4 @@ export * from './Pagination';
 export * from './ColorCircle';
 export * from './Checkbox';
 export * from './PasswordInput';
+export * from './LoadingIndicator';

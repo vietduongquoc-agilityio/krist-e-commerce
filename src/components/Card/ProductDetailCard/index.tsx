@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-
-import { useState, useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 // Components
 import {
@@ -17,10 +17,16 @@ import {
   ViewerCount,
 } from '@/components';
 
-import { colorNameToHex, parseCommaStringToArray } from '@/utils';
+import { colorNameToHex, parseCommaStringToArray, toastManager } from '@/utils';
 
 // Models
 import { ProductModel } from '@/models';
+
+// Constants
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
+
+// Services
+import { addCartItemByAccountId, CartPayload } from '@/services';
 
 interface ProductDetailCardProps {
   product: ProductModel;
@@ -36,6 +42,8 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     reviewCount,
     stock = 0,
     id,
+
+    documentId,
   } = product;
 
   const images = useMemo(() => {
@@ -71,22 +79,41 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     setSelectedSize(newSize);
   };
 
-  const handleAddToCart = () => {
-    const colorName = colors.find((color) => color === selectedColor);
+  const { data: session } = useSession();
+  if (!session) {
+    return null;
+  }
 
-    const item = {
-      id,
-      title,
-      thumbnailUrl,
-      price: salePrice || price,
-      color: colorName,
-      sizes,
+  const handleAddToCart = async () => {
+    if (!selectedColor || !selectedSize) {
+      toastManager.showToast(ERROR_MESSAGES.PLEASE_SELECT_COLOR, 'error');
+      return;
+    }
+
+    const item: CartPayload = {
+      color: colorNameToHex[selectedColor] || selectedColor,
       quantity,
-      stock,
+      product: documentId,
+      usersPermissionsUser: session?.user.id,
+      size: selectedSize,
     };
 
-    // TODO: Replace with cart store logic
-    console.log(item);
+    try {
+      await addCartItemByAccountId(item);
+      window.dispatchEvent(
+        new CustomEvent('cartUpdated', {
+          detail: { type: 'add', item: item },
+        }),
+      );
+    } catch (error) {
+      toastManager.showToast(
+        ERROR_MESSAGES.ADD_TO_CART_FAIL,
+        'error',
+        'top-center',
+      );
+    }
+
+    toastManager.showToast(SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART, 'success');
   };
 
   return (
@@ -139,9 +166,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
 
           <div className="flex items-center gap-3 my-8">
             {salePrice && (
-              <span className="text-[24px] font-secondary">
-                ${salePrice.toFixed(2)}
-              </span>
+              <span className="text-[24px] font-secondary">${salePrice}</span>
             )}
             <span
               className={`text-gray line-through ${
@@ -150,7 +175,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
                   : 'text-xl font-bold text-black line-none'
               }`}
             >
-              ${price.toFixed(2)}
+              ${price}
             </span>
             {salePrice && (
               <span className="text-sm font-secondary text-white bg-strawberry py-[1px] px-3 rounded-10">

@@ -1,49 +1,36 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 
-// Models
-import { ProductModel } from '@/models';
+// Constants
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
 // Components
 import { CartItemRow, PaymentCard } from '@/components';
 
+// Models
+import { CartModel } from '@/models';
+
+// Services
+import {
+  checkoutCart,
+  removeCartItem,
+  updateCartItemQuantity,
+} from '@/services';
+
+// Utils
+import { calculateSubtotal, toastManager } from '@/utils';
+
 interface CartContentProps {
-  items: ProductModel[];
+  cartItems: CartModel[];
 }
 
-export const CartContent = ({ items }: CartContentProps) => {
-  const [cartItems, setCartItems] = useState<ProductModel[]>([]);
+export const CartContent = ({ cartItems }: CartContentProps) => {
+  const [items, setItems] = useState<CartModel[]>(cartItems);
 
-  useEffect(() => {
-    setCartItems(items);
-  }, [items]);
+  const subtotal = useMemo(() => calculateSubtotal(items), [items]);
 
-  // Update quantity
-  const handleUpdateQuantity = (id: string, quantity: number) => {
-    const updated = cartItems.map((item) =>
-      item.id === id ? { ...item, quantity } : item,
-    );
-    setCartItems(updated);
-  };
-
-  // Remove item
-  const handleRemoveItem = (id: string) => {
-    const updated = cartItems.filter((item) => item.id !== id);
-    setCartItems(updated);
-  };
-
-  const handleCheckout = () => {
-    alert('Proceeding to checkout...');
-    setCartItems([]); // Clear cart on checkout
-  };
-
-  const subtotal = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
-
-  if (cartItems.length === 0) {
+  if (!items.length) {
     return (
       <p className="text-center py-10 text-red text-xl font-secondary">
         Your cart is empty.
@@ -51,8 +38,66 @@ export const CartContent = ({ items }: CartContentProps) => {
     );
   }
 
+  const handleRemove = async (cartItemDocumentId: string) => {
+    try {
+      await removeCartItem(cartItemDocumentId);
+
+      setItems((prev) =>
+        prev.filter((item) => item.documentId !== cartItemDocumentId),
+      );
+
+      toastManager.showToast(
+        SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
+        'success',
+      );
+
+      window.dispatchEvent(
+        new CustomEvent('cartUpdated', {
+          detail: { type: 'remove', documentId: cartItemDocumentId },
+        }),
+      );
+    } catch (error) {
+      console.error('Error removing item:', error);
+      toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL, 'error');
+    }
+  };
+
+  const handleQuantityChange = async (
+    cartItemDocumentId: string,
+    newQuantity: number,
+  ) => {
+    if (newQuantity < 1) return;
+
+    try {
+      await updateCartItemQuantity(cartItemDocumentId, newQuantity);
+
+      window.dispatchEvent(
+        new CustomEvent('cartUpdated', {
+          detail: { type: 'update', documentId: cartItemDocumentId },
+        }),
+      );
+    } catch (error) {
+      console.error('Error updating quantity:', error);
+      toastManager.showToast(
+        ERROR_MESSAGES.UPDATE_CART_ITEM_QUANTITY_FAIL,
+        'error',
+      );
+    }
+  };
+
+  const handleCheckout = async () => {
+    try {
+      await checkoutCart(items, () => {});
+      setItems([]);
+      toastManager.showToast(SUCCESS_MESSAGES.CHECKOUT_SUCCESS, 'success');
+    } catch (error) {
+      console.error('Error checking out cart:', error);
+      toastManager.showToast(ERROR_MESSAGES.CHECKOUT_FAIL, 'error');
+    }
+  };
+
   return (
-    <div className="flex flex-col  justify-between gap-10 max-w-[1280px] mx-auto">
+    <div className="flex flex-col justify-between gap-10 max-w-[1280px] mx-auto">
       <div className="flex-1">
         {/* Table Header */}
         <div className="text-[22px] pb-[34px] font-secondary flex justify-between">
@@ -64,18 +109,17 @@ export const CartContent = ({ items }: CartContentProps) => {
 
         {/* Item Rows */}
         <div className="border-y border-gray divide-y divide-gray">
-          {items.length === 0 ? (
-            <p className="text-xl text-red">Your cart is empty.</p>
-          ) : (
-            items.map((item) => (
-              <CartItemRow
-                key={item.id}
-                productItem={item}
-                onQuantityChange={(id, qty) => handleUpdateQuantity(id, qty)}
-                onRemove={() => handleRemoveItem(item.id)}
-              />
-            ))
-          )}
+          {items.map(({ product, color, quantity, documentId }) => (
+            <CartItemRow
+              key={documentId}
+              productItem={product}
+              cartItemId={documentId}
+              color={color}
+              quantity={quantity}
+              onRemove={handleRemove}
+              onQuantityChange={handleQuantityChange}
+            />
+          ))}
         </div>
       </div>
 

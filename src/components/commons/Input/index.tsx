@@ -36,7 +36,7 @@ const Input = ({
       )}
 
       <input
-        id={label}
+        id={reactId}
         type={type}
         {...props}
         className={`

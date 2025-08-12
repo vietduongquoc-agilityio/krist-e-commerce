@@ -33,9 +33,7 @@ export const signUpSchema = z
       .regex(REGEX.EMAIL, ERROR_MESSAGES.INVALID_EMAIL)
       .transform((value) => value.trim()),
 
-    phone: z
-      .string()
-      .min(VALIDATION_LIMITS.MIN_LENGTH, ERROR_MESSAGES.FIELD_REQUIRED),
+    phone: z.string().trim().regex(REGEX.PHONE, ERROR_MESSAGES.PHONE_PATTERN),
 
     password: z
       .string()
