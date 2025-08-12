@@ -14,32 +14,36 @@ import { getCartItemsByUserId } from '@/services';
 interface Props {
   children: React.ReactNode;
   username?: string;
+  userId?: string;
   avatar?: string;
   isAuthenticated?: boolean;
+  cartItems?: CartModel[];
 }
 
 export const WorkspacesLayoutClient = ({
+  userId,
   children,
   username,
   avatar,
   isAuthenticated,
+  cartItems: initialCartItems = [],
 }: Props) => {
-  const [cartItems, setCartItems] = useState<CartModel[]>([]);
+  const [cartItems, setCartItems] = useState<CartModel[]>(initialCartItems);
 
   const fetchCart = useCallback(async () => {
-    if (!isAuthenticated || !username) {
+    if (!isAuthenticated || !userId) {
       setCartItems([]);
       return;
     }
     try {
-      const userId = username;
       const data = await getCartItemsByUserId(userId);
-      setCartItems(Array.isArray(data) ? data : []);
+
+      setCartItems(Array.isArray(data) ? [...data] : []);
     } catch (err) {
       console.error('Failed to fetch cart on layout mount', err);
       setCartItems([]);
     }
-  }, [isAuthenticated, username]);
+  }, [isAuthenticated, userId]);
 
   useEffect(() => {
     fetchCart();

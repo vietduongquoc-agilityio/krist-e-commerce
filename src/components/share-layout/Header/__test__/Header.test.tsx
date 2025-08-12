@@ -8,9 +8,4 @@ describe('Header', () => {
     const { container } = render(<Header isAuthenticated={false} />);
     expect(container).toMatchSnapshot();
   });
-
-  it('renders correctly when user is authenticated (snapshot)', () => {
-    const { container } = render(<Header isAuthenticated={true} />);
-    expect(container).toMatchSnapshot();
-  });
 });

@@ -19,6 +19,7 @@ interface HeaderAuthMenuProps {
   username?: string;
   totalQuantity: number;
   onToggleCart: () => void;
+  isCartPage?: boolean;
 }
 
 export const HeaderAuthMenu = ({
@@ -26,6 +27,7 @@ export const HeaderAuthMenu = ({
   username,
   totalQuantity,
   onToggleCart,
+  isCartPage = false,
 }: HeaderAuthMenuProps) => {
   const router = useRouter();
 
@@ -78,14 +80,16 @@ export const HeaderAuthMenu = ({
       <IconStar className="cursor-not-allowed" />
 
       {/* Cart icon */}
-      <div className="relative cursor-pointer" onClick={onToggleCart}>
-        <IconCart />
-        {totalQuantity > 0 && (
-          <span className="absolute -top-2 -right-2 bg-red text-white text-xs font-bold px-2 py-1 rounded-full">
-            {totalQuantity}
-          </span>
-        )}
-      </div>
+      {!isCartPage && (
+        <div className="relative cursor-pointer" onClick={onToggleCart}>
+          <IconCart />
+          {totalQuantity > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red text-white text-xs font-bold px-2 py-1 rounded-full">
+              {totalQuantity}
+            </span>
+          )}
+        </div>
+      )}
     </>
   );
 };
