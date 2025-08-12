@@ -80,3 +80,15 @@ export const removeCartItem = async (
 
   return data as boolean;
 };
+
+export const checkoutCart = async (
+  cartItems: CartModel[],
+  clearCart: () => void,
+) => {
+  try {
+    await Promise.all(cartItems.map((item) => removeCartItem(item.documentId)));
+    clearCart();
+  } catch (error) {
+    console.error('Error during checkout:', error);
+  }
+};

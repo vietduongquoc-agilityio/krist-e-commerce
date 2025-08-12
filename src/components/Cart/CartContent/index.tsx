@@ -1,23 +1,32 @@
 'use client';
 
-import { CartItemRow, PaymentCard } from '@/components';
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 import { useMemo, useState } from 'react';
+
+// Constants
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
+
+// Components
+import { CartItemRow, PaymentCard } from '@/components';
 
 // Models
 import { CartModel } from '@/models';
 
 // Services
-import { removeCartItem, updateCartItemQuantity } from '@/services';
+import {
+  checkoutCart,
+  removeCartItem,
+  updateCartItemQuantity,
+} from '@/services';
 
 // Utils
 import { calculateSubtotal, toastManager } from '@/utils';
 
 interface CartContentProps {
   cartItems: CartModel[];
+  userId: string;
 }
 
-export const CartContent = ({ cartItems }: CartContentProps) => {
+export const CartContent = ({ cartItems, userId }: CartContentProps) => {
   const [items, setItems] = useState<CartModel[]>(cartItems);
 
   const subtotal = useMemo(() => calculateSubtotal(items), [items]);
@@ -77,6 +86,17 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
     }
   };
 
+  const handleCheckout = async () => {
+    try {
+      await checkoutCart(items, () => {});
+      setItems([]);
+      toastManager.showToast(SUCCESS_MESSAGES.CHECKOUT_SUCCESS, 'success');
+    } catch (error) {
+      console.error('Error checking out cart:', error);
+      toastManager.showToast(ERROR_MESSAGES.CHECKOUT_FAIL, 'error');
+    }
+  };
+
   return (
     <div className="flex flex-col justify-between gap-10 max-w-[1280px] mx-auto">
       <div className="flex-1">
@@ -107,7 +127,7 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
       {/* Payment Summary */}
       {items.length > 0 && (
         <div className="flex justify-end">
-          <PaymentCard subtotal={subtotal} />
+          <PaymentCard subtotal={subtotal} onCheckout={handleCheckout} />
         </div>
       )}
     </div>

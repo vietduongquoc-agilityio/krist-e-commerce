@@ -7,12 +7,22 @@ import {
   DropdownItem,
   Avatar,
 } from '@heroui/react';
-import { IconSearch, IconStar, IconCart } from '@/components';
-import AvatarImageBackup from '@/public/images/avatar.webp';
-import { signOut } from '@/actions/auth';
-import { ROUTER, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
-import { toastManager } from '@/utils';
 import { useRouter } from 'next/navigation';
+
+// Components
+import { IconSearch, IconStar, IconCart } from '@/components';
+
+// Assets
+import AvatarImageBackup from '@/public/images/avatar.webp';
+
+// Actions
+import { signOut } from '@/actions/auth';
+
+// Constants
+import { ROUTER, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
+
+// Utils
+import { toastManager } from '@/utils';
 
 interface HeaderAuthMenuProps {
   avatar?: string;

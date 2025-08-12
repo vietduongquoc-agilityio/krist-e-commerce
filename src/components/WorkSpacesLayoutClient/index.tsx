@@ -52,13 +52,15 @@ export const WorkspacesLayoutClient = ({
   useEffect(() => {
     const onCartUpdated = (
       e: CustomEvent<{
-        type: 'add' | 'remove' | 'update';
+        type: 'add' | 'remove' | 'update' | 'checkout';
         item?: CartModel;
         documentId?: string;
       }>,
     ) => {
       if (['add', 'remove', 'update'].includes(e.detail.type)) {
         fetchCart();
+      } else if (e.detail.type === 'checkout') {
+        setCartItems([]);
       }
     };
 
