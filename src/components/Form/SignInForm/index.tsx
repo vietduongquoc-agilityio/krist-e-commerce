@@ -55,11 +55,19 @@ export const SignInForm = () => {
     mode: 'all',
   });
 
+  const handleSignInWithGoogle = () => {
+    signIn('google', { callbackUrl: callbackUrl || ROUTER.HOME });
+  };
+
+  const handleSignInWithGithub = () => {
+    signIn('github', { callbackUrl: callbackUrl || ROUTER.HOME });
+  };
+
   const onSubmit = async (data: ISignInFormData) => {
     try {
       await authenticateUser(data);
 
-      toastManager.showToast(SUCCESS_MESSAGES.LOGIN, 'success', 'top-center');
+      toastManager.showToast(SUCCESS_MESSAGES.LOGIN, 'success');
 
       if (callbackUrl) {
         return router.push(callbackUrl.replace(BASE_URL!, ''));
@@ -71,7 +79,6 @@ export const SignInForm = () => {
       toastManager.showToast(
         ERROR_MESSAGES.ACCOUNT_AND_PASSWORD_INVALID,
         'error',
-        'top-center',
       );
     }
   };
@@ -89,9 +96,7 @@ export const SignInForm = () => {
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
-          onClick={() =>
-            signIn('google', { callbackUrl: callbackUrl || ROUTER.HOME })
-          }
+          onClick={handleSignInWithGoogle}
         >
           <span className="flex items-center">
             <IconGoogle className="w-[36px] h-[36px] rounded-full" />
@@ -101,9 +106,7 @@ export const SignInForm = () => {
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
-          onClick={() =>
-            signIn('github', { callbackUrl: callbackUrl || ROUTER.HOME })
-          }
+          onClick={handleSignInWithGithub}
         >
           <span className="flex items-center">
             <IconGithub className="w-[42px] h-[42px] rounded-full" />

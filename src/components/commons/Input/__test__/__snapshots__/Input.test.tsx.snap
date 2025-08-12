@@ -19,6 +19,7 @@ exports[`Input component should render correctly and match snapshot 1`] = `
           py-2
           
         "
+      id="«r0»"
       placeholder="Enter value"
       type="text"
     />

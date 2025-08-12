@@ -8,29 +8,33 @@ export type FailedResponse = { data: null; error: { message: string } };
 
 class APIClient {
   private static _apiClient: APIClient;
+  private jwtToken?: string;
+
   private constructor() {}
 
   static get apiClient() {
     if (!this._apiClient) {
       this._apiClient = new APIClient();
     }
-
     return this._apiClient;
+  }
+
+  setToken(token?: string) {
+    this.jwtToken = token;
   }
 
   private apiRequest = async <T>(
     url: string,
     init?: RequestOption,
   ): Promise<SuccessResponse<T> | FailedResponse> => {
-    const { method = 'GET', body, headers, ...rest } = init || {};
+    const { method = 'GET', body, headers = {}, ...rest } = init || {};
 
     const hasBody = method === 'POST' || method === 'PUT';
 
-    const customHeader = {
-      ...headers,
-      ...(hasBody && {
-        'Content-Type': 'application/json',
-      }),
+    const customHeader: Record<string, string> = {
+      ...(headers as Record<string, string>),
+      ...(this.jwtToken && { Authorization: `Bearer ${this.jwtToken}` }),
+      ...(hasBody && { 'Content-Type': 'application/json' }),
     };
 
     const options = {
@@ -43,7 +47,9 @@ class APIClient {
     };
 
     try {
-      const res = await fetch(`${SERVER_URL}/${url}`, options);
+      const fullUrl = `${SERVER_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+
+      const res = await fetch(fullUrl, options);
 
       if (!res.ok) return (await res.json()) as FailedResponse;
 
@@ -68,9 +74,7 @@ class APIClient {
   }
 
   async post<T>(url: string, init?: Omit<RequestOption, 'method'>) {
-    const { ...rest } = init || {};
-
-    return this.apiRequest<T>(url, { ...rest, method: 'POST' });
+    return this.apiRequest<T>(url, { ...init, method: 'POST' });
   }
 
   async put<T>(url: string, init?: Omit<RequestOption, 'method'>) {

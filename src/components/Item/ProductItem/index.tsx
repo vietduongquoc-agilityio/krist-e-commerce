@@ -76,7 +76,7 @@ export const ProductItem = ({
       </figure>
       <div className="ml-4 mb-3">
         <h3 className="font-secondary mb-[5px]">{title}</h3>
-        <p>${price.toFixed(2)}</p>
+        <p>${price}</p>
         <div className="flex gap-2 mt-4">
           {colorArray.map((color) => {
             const isSelected = selectedColor === color;

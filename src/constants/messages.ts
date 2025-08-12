@@ -16,6 +16,20 @@ export const ERROR_MESSAGES = {
   PASSWORDS_DO_NOT_MATCH: 'Passwords do not match',
   ACCOUNT_AND_PASSWORD_INVALID:
     'Your account or password is incorrect, please try again.',
+
+  PLEASE_SELECT_COLOR: 'Please select a color',
+  PLEASE_SELECT_SIZE: 'Please select a size',
+
+  INVALID_PHONE_NUMBER: 'Invalid phone number',
+  PHONE_PATTERN: 'Phone number must be at least 9 digits long.',
+
+  ADD_TO_CART_FAIL: 'Error adding product to cart. Please try again.',
+
+  UPDATE_CART_ITEM_QUANTITY_FAIL: 'Failed to update cart item quantity',
+
+  REMOVE_CART_ITEM_FAIL: 'Error removing product from cart. Please try again.',
+
+  CHECKOUT_FAIL: 'Error checking out. Please try again.',
 };
 
 export const SUCCESS_MESSAGES = {
@@ -23,4 +37,10 @@ export const SUCCESS_MESSAGES = {
   SIGN_UP: 'Registration successful! Redirecting to login',
   SIGN_OUT: 'Log out successful.',
   COURSE_PURCHASE: 'Course purchased successfully!',
+
+  ADD_PRODUCT_TO_CART: 'Product added to cart successfully.',
+  CHECKOUT_SUCCESS: 'Checkout successful.',
+
+  REMOVE_PRODUCT_FROM_CART: 'Product removed from cart successfully.',
+  UPDATE_CART_ITEM_QUANTITY: 'Cart item quantity updated successfully.',
 };

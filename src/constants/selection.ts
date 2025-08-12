@@ -23,6 +23,8 @@ export const PRICE_RANGE = [
   { label: '$300–$400', value: '300-400' },
 ];
 
+export const FREE_SHIPPING_AMOUNT = 150;
+
 export const BRANDS = [
   'Minimog',
   'Retrolie',

@@ -2,7 +2,7 @@
 
 // Libs
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -10,6 +10,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { IconGithub, IconGoogle, Text } from '@/components';
 import { Button } from '@/components/commons/Button';
 import Input from '@/components/commons/Input';
+import { signIn } from 'next-auth/react';
 
 // Interfaces
 import { ISignUpFormData } from '@/interfaces';
@@ -34,6 +35,16 @@ import {
 
 export const SignUpForm = () => {
   const router = useRouter();
+  const param = useSearchParams();
+  const callbackUrl = param.get('callbackUrl');
+
+  const handleSignInWithGoogle = () => {
+    signIn('google', { callbackUrl: callbackUrl || ROUTER.HOME });
+  };
+
+  const handleSignInWithGithub = () => {
+    signIn('github', { callbackUrl: callbackUrl || ROUTER.HOME });
+  };
 
   const {
     control,
@@ -82,24 +93,27 @@ export const SignUpForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <h2 className="font-secondary text-[30px] mb-8">Create Account</h2>
+      {/* Social Signin Buttons */}
       <div className="w-full flex justify-between gap-16 mb-16">
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
+          onClick={handleSignInWithGoogle}
         >
           <span className="flex items-center">
             <IconGoogle className="w-[36px] h-[36px] rounded-full" />
           </span>
-          Sign up with Google
+          Sign in with Google
         </Button>
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
+          onClick={handleSignInWithGithub}
         >
           <span className="flex items-center">
             <IconGithub className="w-[42px] h-[42px] rounded-full" />
           </span>
-          Sign up with GitHub
+          Sign in with GitHub
         </Button>
       </div>
       {/* OR Divider */}
