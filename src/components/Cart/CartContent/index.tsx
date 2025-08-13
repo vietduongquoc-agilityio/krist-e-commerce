@@ -6,7 +6,12 @@ import { useMemo, useState } from 'react';
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
 // Components
-import { CartItemRow, PaymentCard } from '@/components';
+import {
+  CartItemRow,
+  CartItemRowSkeleton,
+  ListCartItemRowSkeleton,
+  PaymentCard,
+} from '@/components';
 
 // Models
 import { CartModel } from '@/models';
@@ -27,6 +32,8 @@ interface CartContentProps {
 
 export const CartContent = ({ cartItems }: CartContentProps) => {
   const [items, setItems] = useState<CartModel[]>(cartItems);
+  const [loadingRemoveId, setLoadingRemoveId] = useState<string | null>(null);
+  const [loadingCheckout, setLoadingCheckout] = useState(false);
 
   const subtotal = useMemo(() => calculateSubtotal(items), [items]);
 
@@ -40,6 +47,7 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
 
   const handleRemove = async (cartItemDocumentId: string) => {
     try {
+      setLoadingRemoveId(cartItemDocumentId);
       await removeCartItem(cartItemDocumentId);
 
       setItems((prev) =>
@@ -59,6 +67,8 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
     } catch (error) {
       console.error('Error removing item:', error);
       toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL, 'error');
+    } finally {
+      setLoadingRemoveId(null);
     }
   };
 
@@ -87,12 +97,15 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
 
   const handleCheckout = async () => {
     try {
+      setLoadingCheckout(true);
       await checkoutCart(items, () => {});
       setItems([]);
       toastManager.showToast(SUCCESS_MESSAGES.CHECKOUT_SUCCESS, 'success');
     } catch (error) {
       console.error('Error checking out cart:', error);
       toastManager.showToast(ERROR_MESSAGES.CHECKOUT_FAIL, 'error');
+    } finally {
+      setLoadingCheckout(false);
     }
   };
 
@@ -108,8 +121,8 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
         </div>
 
         {/* Item Rows */}
-        <div className="border-y border-gray divide-y divide-gray">
-          {items.map(({ product, color, quantity, documentId }) => (
+
+        {/* {items.map(({ product, color, quantity, documentId }) => (
             <CartItemRow
               key={documentId}
               productItem={product}
@@ -119,14 +132,38 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
               onRemove={handleRemove}
               onQuantityChange={handleQuantityChange}
             />
-          ))}
-        </div>
+          ))} */}
+        {loadingCheckout ? (
+          <ListCartItemRowSkeleton count={items.length || 3} />
+        ) : (
+          <div className="border-y border-gray divide-y divide-gray">
+            {items.map(({ product, color, quantity, documentId }) =>
+              loadingRemoveId === documentId ? (
+                <CartItemRowSkeleton key={documentId} />
+              ) : (
+                <CartItemRow
+                  key={documentId}
+                  productItem={product}
+                  cartItemId={documentId}
+                  color={color}
+                  quantity={quantity}
+                  onRemove={handleRemove}
+                  onQuantityChange={handleQuantityChange}
+                />
+              ),
+            )}
+          </div>
+        )}
       </div>
 
       {/* Payment Summary */}
       {items.length > 0 && (
         <div className="flex justify-end">
-          <PaymentCard subtotal={subtotal} onCheckout={handleCheckout} />
+          <PaymentCard
+            subtotal={subtotal}
+            onCheckout={handleCheckout}
+            disabled={loadingCheckout}
+          />
         </div>
       )}
     </div>

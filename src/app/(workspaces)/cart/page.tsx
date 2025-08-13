@@ -1,13 +1,15 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 // Components
-import { Breadcrumb, CartContent } from '@/components';
+import {
+  Breadcrumb,
+  CartContentContainer,
+  ListCartItemRowSkeleton,
+} from '@/components';
 
 // Config
 import { auth } from '@/config/auth';
-
-// Services
-import { getCartItemsByUserId } from '@/services';
 
 export const metadata: Metadata = {
   title: 'Cart Page',
@@ -21,8 +23,6 @@ export default async function CartPage() {
 
   const { id: userId } = session.user;
 
-  const data = await getCartItemsByUserId(userId);
-
   return (
     <section>
       {/* Breadcrumb */}
@@ -30,7 +30,9 @@ export default async function CartPage() {
         items={[{ name: 'Home', href: '/' }, { name: 'Shopping Cart' }]}
       />
 
-      <CartContent cartItems={data || []} />
+      <Suspense fallback={<ListCartItemRowSkeleton />}>
+        <CartContentContainer userId={userId} />
+      </Suspense>
     </section>
   );
 }

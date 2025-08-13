@@ -10,6 +10,7 @@ import { Button } from '@/components';
 interface PaymentCardProps {
   subtotal: number;
   onCheckout?: () => void;
+  disabled?: boolean;
 }
 
 export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
