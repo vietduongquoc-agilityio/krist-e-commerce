@@ -1,44 +1,14 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-
 // Components
 import { ProductCard } from '@/components';
-
-// Services
-import { getProducts } from '@/services';
 
 // Models
 import { ProductModel } from '@/models';
 
 interface ListProductCardProps {
-  searchParams?: {
-    page: string;
-    pageSize: string;
-  };
+  productsData: ProductModel[];
 }
 
-export const ListProductCard = ({ searchParams }: ListProductCardProps) => {
-  const [productsData, setProductsData] = useState<ProductModel[]>([]);
-
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const { productsData, error } = await getProducts({ searchParams });
-      if (!error) {
-        setProductsData(productsData ?? []);
-      }
-      setLoading(false);
-    };
-
-    fetchProducts();
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
+export const ListProductCard = ({ productsData }: ListProductCardProps) => {
   if (!productsData || productsData.length === 0) {
     return (
       <h2 className="text-center text-red text-xl py-10">No products found.</h2>

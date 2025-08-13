@@ -1,13 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-// Mocks
-import { PRODUCTS } from '@/mocks';
-
 // Component
 import { ArrivalSection } from '@/components';
-
-// Mock children components used inside ArrivalSection
 
 describe('ArrivalSection', () => {
   it('should render correctly and matches snapshot', () => {
