@@ -44,7 +44,7 @@ export const BannerMainContent = () => {
             <Button
               type="button"
               variant="solid"
-              className="mt-6 mb-9 w-[210px]"
+              className="mt-6 mb-9 w-[210px] h-auto"
             >
               SHOP NOW
             </Button>

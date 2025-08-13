@@ -58,7 +58,7 @@ exports[`Footer Component renders correctly and matches snapshot 1`] = `
           />
         </div>
         <button
-          class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover py-3 rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-black hover:bg-secondary text-white text-base w-[200px] cursor-not-allowed"
+          class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover h-full py-3 rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-black hover:bg-secondary text-white text-base w-[200px] cursor-not-allowed"
           data-react-aria-pressable="true"
           disabled=""
           tabindex="0"

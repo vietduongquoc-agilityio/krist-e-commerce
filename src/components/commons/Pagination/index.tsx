@@ -1,9 +1,9 @@
 'use client';
-import { Button } from '@/components/commons/Button';
 import {
   ChevronDoubleRightIcon,
   ChevronDoubleLeftIcon,
 } from '@heroicons/react/20/solid';
+import { Button } from '@heroui/react';
 
 interface PaginationProps {
   currentPage: number;
