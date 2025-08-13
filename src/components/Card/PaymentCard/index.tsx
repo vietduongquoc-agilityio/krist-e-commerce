@@ -33,7 +33,9 @@ export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
           id="wrap-gift-checkbox"
           onChange={handleToggleWrapGift}
           classNames={{
-            wrapper: 'rounded-[3px] border-[2px] border-black bg-white w-8 h-8',
+            wrapper:
+              'rounded-[3px] h-auto w-8 h-8 border-2 border-black text-black bg-white',
+            hiddenInput: 'hidden',
           }}
         />
 
