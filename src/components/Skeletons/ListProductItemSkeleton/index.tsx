@@ -1,6 +1,6 @@
 'use client';
 
-import { ProductItemSkeleton } from '@/components';
+import { ProductItemSkeleton } from '@/components/Skeletons';
 
 interface ListProductItemSkeletonProps {
   count?: number;

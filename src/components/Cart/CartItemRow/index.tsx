@@ -6,7 +6,8 @@ import Image from 'next/image';
 import {} from '@/types';
 
 // Components
-import { Button, QuantityInput } from '@/components';
+import { QuantityInput } from '@/components';
+import { Button } from '@/components/commons/Button';
 
 // Models
 import { ProductModel } from '@/models';

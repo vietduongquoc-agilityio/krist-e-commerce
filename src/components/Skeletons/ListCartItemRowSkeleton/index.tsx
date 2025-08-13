@@ -1,7 +1,7 @@
 'use client';
 
 // Components
-import { CartItemRowSkeleton } from '@/components';
+import { CartItemRowSkeleton } from '@/components/Skeletons';
 
 interface ListCartItemRowSkeletonProps {
   count?: number;

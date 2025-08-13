@@ -7,12 +7,12 @@ import {
   BrandSelection,
   Breadcrumb,
   ColorSelection,
-  ListProductItemContainer,
-  ListProductItemSkeleton,
   ModelSection,
   PriceSelection,
   SizeSelection,
 } from '@/components';
+import { ListProductItemContainer } from '@/components/Item';
+import { ListProductItemSkeleton } from '@/components/Skeletons';
 
 export const metadata: Metadata = {
   title: 'Shop Page',
@@ -52,9 +52,9 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           <BrandSelection />
         </div>
 
-        <Suspense fallback={<ListProductItemSkeleton />}>
-          <ListProductItemContainer searchParams={params} />
-        </Suspense>
+        {/* <Suspense fallback={<ListProductItemSkeleton />}> */}
+        <ListProductItemContainer searchParams={params} />
+        {/* </Suspense> */}
       </div>
 
       {/* About Section */}

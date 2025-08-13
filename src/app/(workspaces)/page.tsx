@@ -7,10 +7,10 @@ import {
   ArrivalSection,
   Banner,
   ModelSection,
-  Button,
-  ListProductCardSkeleton,
-  ListProductCardContainer,
 } from '@/components';
+import { ListProductCardSkeleton } from '@/components/Skeletons';
+import { ListProductCardContainer } from '@/components/Card';
+import { Button } from '@/components/commons/Button';
 
 export default async function LandingPage() {
   return (
@@ -23,9 +23,9 @@ export default async function LandingPage() {
         <ArrivalSection />
 
         {/* Product list */}
-        <Suspense fallback={<ListProductCardSkeleton />}>
-          <ListProductCardContainer />
-        </Suspense>
+        {/* <Suspense fallback={<ListProductCardSkeleton />}> */}
+        <ListProductCardContainer />
+        {/* </Suspense> */}
 
         {/* View more button */}
         <Link href="/shop">

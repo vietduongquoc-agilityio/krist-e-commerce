@@ -2,11 +2,8 @@ import { Metadata } from 'next';
 import { Suspense } from 'react';
 
 // Components
-import {
-  Breadcrumb,
-  CartContentContainer,
-  ListCartItemRowSkeleton,
-} from '@/components';
+import { Breadcrumb, CartContentContainer } from '@/components';
+import { ListCartItemRowSkeleton } from '@/components/Skeletons';
 
 // Config
 import { auth } from '@/config/auth';
@@ -30,9 +27,9 @@ export default async function CartPage() {
         items={[{ name: 'Home', href: '/' }, { name: 'Shopping Cart' }]}
       />
 
-      <Suspense fallback={<ListCartItemRowSkeleton />}>
-        <CartContentContainer userId={userId} />
-      </Suspense>
+      {/* <Suspense fallback={<ListCartItemRowSkeleton />}> */}
+      <CartContentContainer userId={userId} />
+      {/* </Suspense> */}
     </section>
   );
 }

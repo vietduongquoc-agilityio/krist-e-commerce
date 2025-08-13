@@ -1,8 +1,8 @@
-// Components
-import { ProductCard } from '@/components';
-
 // Models
 import { ProductModel } from '@/models';
+
+// Components
+import { ProductCard } from '@/components/Card';
 
 interface ListProductCardProps {
   productsData: ProductModel[];

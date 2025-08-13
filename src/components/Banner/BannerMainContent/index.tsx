@@ -2,10 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Components
-import { Button } from '@/components/commons';
 
 // Constants
 import { ROUTER } from '@/constants';
+import { Button } from '@/components/commons/Button';
 
 export const BannerMainContent = () => {
   return (

@@ -6,7 +6,6 @@ import { useSession } from 'next-auth/react';
 
 // Components
 import {
-  Button,
   ColorButton,
   IconStar,
   ProductInfoPanel,
@@ -16,6 +15,7 @@ import {
   StockStatusBar,
   ViewerCount,
 } from '@/components';
+import { Button } from '@/components/commons/Button';
 
 import { colorNameToHex, parseCommaStringToArray, toastManager } from '@/utils';
 

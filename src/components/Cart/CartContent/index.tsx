@@ -7,11 +7,11 @@ import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
 // Components
 import {
-  CartItemRow,
   CartItemRowSkeleton,
   ListCartItemRowSkeleton,
-  PaymentCard,
-} from '@/components';
+} from '@/components/Skeletons';
+import { PaymentCard } from '@/components/Card';
+import { CartItemRow } from '@/components';
 
 // Models
 import { CartModel } from '@/models';
@@ -121,18 +121,6 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
         </div>
 
         {/* Item Rows */}
-
-        {/* {items.map(({ product, color, quantity, documentId }) => (
-            <CartItemRow
-              key={documentId}
-              productItem={product}
-              cartItemId={documentId}
-              color={color}
-              quantity={quantity}
-              onRemove={handleRemove}
-              onQuantityChange={handleQuantityChange}
-            />
-          ))} */}
         {loadingCheckout ? (
           <ListCartItemRowSkeleton count={items.length || 3} />
         ) : (

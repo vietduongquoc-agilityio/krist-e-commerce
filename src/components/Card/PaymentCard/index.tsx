@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Card, Checkbox } from '@heroui/react';
 
 // Components
-import { Button } from '@/components';
+import { Button } from '@/components/commons/Button';
 
 interface PaymentCardProps {
   subtotal: number;

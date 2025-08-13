@@ -2,7 +2,7 @@
 import { getProducts } from '@/services';
 
 // Components
-import { ListProductCard } from '@/components';
+import { ListProductCard } from '@/components/Card';
 
 interface Props {
   searchParams?: {

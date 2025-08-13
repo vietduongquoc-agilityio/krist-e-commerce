@@ -1,5 +1,5 @@
 // Components
-import { ListProductItem } from '@/components';
+import { ListProductItem } from '@/components/Item';
 
 // Services
 import { getProducts } from '@/services';
