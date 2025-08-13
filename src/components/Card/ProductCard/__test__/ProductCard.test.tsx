@@ -1,4 +1,4 @@
-import { ProductCard } from '@/components';
+import { ProductCard } from '@/components/Card';
 import { productMock } from '@/mocks';
 import { render } from '@testing-library/react';
 import { useRouter } from 'next/navigation';
