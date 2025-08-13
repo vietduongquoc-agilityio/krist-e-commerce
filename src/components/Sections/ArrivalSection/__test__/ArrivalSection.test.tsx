@@ -1,13 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-// Mocks
-import { PRODUCTS } from '@/mocks';
-
 // Component
-import { ArrivalSection } from '@/components';
-
-// Mock children components used inside ArrivalSection
+import { ArrivalSection } from '@/components/';
 
 describe('ArrivalSection', () => {
   it('should render correctly and matches snapshot', () => {
@@ -38,12 +33,5 @@ describe('ArrivalSection', () => {
     categories.forEach((category) => {
       expect(screen.getByText(category)).toBeInTheDocument();
     });
-  });
-
-  it('renders the View More button', () => {
-    render(<ArrivalSection />);
-    expect(
-      screen.getByRole('button', { name: /View More/i }),
-    ).toBeInTheDocument();
   });
 });

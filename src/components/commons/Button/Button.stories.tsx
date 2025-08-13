@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
 // Components
-import { Button } from '@/components';
+import { Button } from '@/components/commons/Button';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',

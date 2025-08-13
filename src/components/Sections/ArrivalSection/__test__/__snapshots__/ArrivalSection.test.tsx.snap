@@ -3,7 +3,7 @@
 exports[`ArrivalSection should render correctly and matches snapshot 1`] = `
 <DocumentFragment>
   <section
-    class="flex flex-col gap-[50px] w-full max-w-[1281px] mx-auto items-center py-36"
+    class="flex flex-col gap-[50px] w-full max-w-[1281px] mx-auto items-center"
   >
     <div
       class="flex flex-col gap-5 max-w-[620px] w-full items-center text-center"
@@ -68,21 +68,6 @@ exports[`ArrivalSection should render correctly and matches snapshot 1`] = `
         </span>
       </div>
     </div>
-    <div>
-      Loading...
-    </div>
-    <a
-      href="/shop"
-    >
-      <button
-        class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-black hover:bg-secondary text-white text-base py-4 w-[220px]"
-        data-react-aria-pressable="true"
-        tabindex="0"
-        type="button"
-      >
-        View More
-      </button>
-    </a>
   </section>
 </DocumentFragment>
 `;
