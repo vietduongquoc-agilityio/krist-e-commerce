@@ -7,7 +7,7 @@ describe('APIClient', () => {
   const mockFetch = jest.fn();
   const originalFetch = global.fetch;
 
-  const mockResponse = (data: any, ok = true) => ({
+  const mockResponse = <T>(data: T, ok = true) => ({
     ok,
     json: async () => data,
   });
@@ -17,10 +17,6 @@ describe('APIClient', () => {
     jest.clearAllMocks();
     apiClient.setToken(undefined); // reset token
 
-    mockFetch.mockResolvedValue({
-      ok: true,
-      json: async () => ({}),
-    });
     mockFetch.mockResolvedValue(mockResponse({}));
   });
 
