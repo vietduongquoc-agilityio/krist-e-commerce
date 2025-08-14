@@ -18,7 +18,7 @@ export const ERROR_MESSAGES = {
   ACCOUNT_AND_PASSWORD_INVALID:
     'Your account or password is incorrect, please try again.',
 
-  PLEASE_SELECT_COLOR: 'Please select a color',
+  PLEASE_SELECT_COLOR: 'Please select a color and size',
   PLEASE_SELECT_SIZE: 'Please select a size',
 
   INVALID_PHONE_NUMBER: 'Invalid phone number',
