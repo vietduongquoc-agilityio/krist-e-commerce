@@ -23,9 +23,9 @@ export default async function LandingPage() {
         <ArrivalSection />
 
         {/* Product list */}
-        {/* <Suspense fallback={<ListProductCardSkeleton />}> */}
-        <ListProductCardContainer />
-        {/* </Suspense> */}
+        <Suspense fallback={<ListProductCardSkeleton />}>
+          <ListProductCardContainer />
+        </Suspense>
 
         {/* View more button */}
         <Link href="/shop">

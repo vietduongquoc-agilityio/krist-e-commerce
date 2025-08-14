@@ -27,9 +27,9 @@ export default async function CartPage() {
         items={[{ name: 'Home', href: '/' }, { name: 'Shopping Cart' }]}
       />
 
-      {/* <Suspense fallback={<ListCartItemRowSkeleton />}> */}
-      <CartContentContainer userId={userId} />
-      {/* </Suspense> */}
+      <Suspense fallback={<ListCartItemRowSkeleton />}>
+        <CartContentContainer userId={userId} />
+      </Suspense>
     </section>
   );
 }
