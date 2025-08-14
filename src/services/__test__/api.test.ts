@@ -1,4 +1,6 @@
 import { apiClient } from '../api';
+
+// Constants
 import { ERROR_MESSAGES, SERVER_URL } from '@/constants';
 
 describe('APIClient', () => {
@@ -9,6 +11,15 @@ describe('APIClient', () => {
     global.fetch = mockFetch as any;
     jest.clearAllMocks();
     apiClient.setToken(undefined); // reset token
+
+    mockFetch.mockResolvedValue({
+      ok: true,
+      json: async () => ({}),
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   afterAll(() => {
@@ -54,10 +65,6 @@ describe('APIClient', () => {
 
   it('should send Authorization header if token is set', async () => {
     apiClient.setToken('abc123');
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({}),
-    });
 
     await apiClient.get('/profile');
     expect(mockFetch).toHaveBeenCalledWith(

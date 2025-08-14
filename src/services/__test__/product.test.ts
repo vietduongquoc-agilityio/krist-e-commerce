@@ -1,5 +1,7 @@
 import { getProducts, getProductDetail } from '../product';
 import { apiClient } from '@/services';
+
+// Utils
 import {
   filterByBrand,
   filterByColor,
@@ -7,7 +9,11 @@ import {
   filterBySearch,
   filterBySize,
 } from '@/utils';
+
+// Constants
 import { API_ENDPOINTS } from '@/constants';
+
+// Models
 import type { ProductModel } from '@/models';
 
 jest.mock('../../services/api', () => ({
@@ -33,7 +39,7 @@ jest.mock('../../constants', () => ({
 }));
 
 describe('Product Service', () => {
-  beforeEach(() => {
+  afterEach(() => {
     jest.clearAllMocks();
   });
 
