@@ -10,7 +10,7 @@ import { ToastType, ToastPosition } from '@/interfaces';
 import { toastManager } from '@/utils';
 
 // Components
-import { Button } from '@/components';
+import { Button } from '@/components/commons/Button';
 import Toast from '@/components/ToastProvider/Toast';
 
 const meta = {

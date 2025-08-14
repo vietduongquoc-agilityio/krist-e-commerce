@@ -5,7 +5,7 @@ import { cn, extendVariants, Button as NextUIButton } from '@heroui/react';
 
 // Extracted base classes
 const baseButtonClass =
-  'w-full py-3 rounded-[10px] border border-border-input-100 transition hover:delay-75';
+  'w-full h-full py-3 rounded-[10px] border border-border-input-100 transition hover:delay-75';
 
 export const Button = extendVariants(NextUIButton, {
   variants: {

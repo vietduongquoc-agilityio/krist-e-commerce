@@ -5,11 +5,12 @@ import { useState } from 'react';
 import { Card, Checkbox } from '@heroui/react';
 
 // Components
-import { Button } from '@/components';
+import { Button } from '@/components/commons/Button';
 
 interface PaymentCardProps {
   subtotal: number;
   onCheckout?: () => void;
+  disabled?: boolean;
 }
 
 export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
@@ -32,7 +33,9 @@ export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
           id="wrap-gift-checkbox"
           onChange={handleToggleWrapGift}
           classNames={{
-            wrapper: 'rounded-[3px] border-[2px] border-black bg-white w-8 h-8',
+            wrapper:
+              'rounded-[3px] h-auto w-8 h-8 border-2 border-black text-black bg-white',
+            hiddenInput: 'hidden',
           }}
         />
 

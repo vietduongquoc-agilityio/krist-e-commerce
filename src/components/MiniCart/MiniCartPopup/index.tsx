@@ -15,9 +15,10 @@ import {
 import { CartModel } from '@/models';
 
 // Components
-import { ItemMiniCart, PaymentCard } from '@/components';
+import { ItemMiniCart } from '@/components';
 import { calculateSubtotal, toastManager } from '@/utils';
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
+import { PaymentCard } from '@/components/Card';
 
 interface MiniCartPopupProps {
   isOpen: boolean;
