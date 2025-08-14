@@ -1,5 +1,5 @@
 import { ProductCard } from '@/components';
-import { productMock } from '@/mocks';
+import { PRODUCTMOCK } from '@/mocks';
 import { render } from '@testing-library/react';
 import { useRouter } from 'next/navigation';
 
@@ -15,7 +15,7 @@ describe('ProductCard', () => {
   });
 
   it('should render correctly and match snapshot', () => {
-    const { asFragment } = render(<ProductCard productCard={productMock[0]} />);
+    const { asFragment } = render(<ProductCard productCard={PRODUCTMOCK[0]} />);
     expect(asFragment()).toMatchSnapshot();
   });
 });

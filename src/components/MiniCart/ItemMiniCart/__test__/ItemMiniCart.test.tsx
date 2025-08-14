@@ -4,12 +4,12 @@ import { render } from '@testing-library/react';
 import { ItemMiniCart } from '@/components';
 
 // Mocks
-import { productMock } from '@/mocks';
+import { PRODUCTMOCK } from '@/mocks';
 
 describe('ItemMiniCart', () => {
   it('should render ItemMiniCart component and match snapshot', () => {
     const { container } = render(
-      <ItemMiniCart productItem={productMock[0]} color={''} quantity={0} />,
+      <ItemMiniCart productItem={PRODUCTMOCK[0]} color={''} quantity={0} />,
     );
     expect(container).toMatchSnapshot();
   });

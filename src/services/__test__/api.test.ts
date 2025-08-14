@@ -7,15 +7,17 @@ describe('APIClient', () => {
   const mockFetch = jest.fn();
   const originalFetch = global.fetch;
 
+  const mockResponse = <T>(data: T, ok = true) => ({
+    ok,
+    json: async () => data,
+  });
+
   beforeEach(() => {
     global.fetch = mockFetch as any;
     jest.clearAllMocks();
     apiClient.setToken(undefined); // reset token
 
-    mockFetch.mockResolvedValue({
-      ok: true,
-      json: async () => ({}),
-    });
+    mockFetch.mockResolvedValue(mockResponse({}));
   });
 
   afterEach(() => {
@@ -28,10 +30,7 @@ describe('APIClient', () => {
 
   it('should call GET and return success', async () => {
     const mockData = { name: 'John' };
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockData,
-    });
+    mockFetch.mockResolvedValueOnce(mockResponse(mockData));
 
     const res = await apiClient.get<typeof mockData>('/users');
     expect(res).toEqual({ data: mockData, error: null });
@@ -43,10 +42,7 @@ describe('APIClient', () => {
 
   it('should call POST with body and return success', async () => {
     const mockData = { id: 1 };
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockData,
-    });
+    mockFetch.mockResolvedValueOnce(mockResponse(mockData));
 
     const body = { name: 'John' };
     const res = await apiClient.post<typeof mockData>('/users', { body });
@@ -79,10 +75,7 @@ describe('APIClient', () => {
 
   it('should call PUT and return success', async () => {
     const mockData = { updated: true };
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockData,
-    });
+    mockFetch.mockResolvedValueOnce(mockResponse(mockData));
 
     const res = await apiClient.put<typeof mockData>('/users/1', {
       body: { name: 'Jane' },
@@ -96,10 +89,7 @@ describe('APIClient', () => {
 
   it('should call DELETE and return success', async () => {
     const mockData = { deleted: true };
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockData,
-    });
+    mockFetch.mockResolvedValueOnce(mockResponse(mockData));
 
     const res = await apiClient.delete('/users/1');
     expect(res).toEqual({ data: mockData, error: null });
@@ -111,10 +101,7 @@ describe('APIClient', () => {
 
   it('should return FailedResponse if fetch returns not ok', async () => {
     const errorData = { data: null, error: { message: 'Not found' } };
-    mockFetch.mockResolvedValueOnce({
-      ok: false,
-      json: async () => errorData,
-    });
+    mockFetch.mockResolvedValueOnce(mockResponse(errorData, false));
 
     const res = await apiClient.get('/not-found');
     expect(res).toEqual(errorData);
