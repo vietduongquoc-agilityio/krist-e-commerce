@@ -1,4 +1,4 @@
-import { ListProductItem } from '@/components';
+import { ListProductItem } from '@/components/Item';
 import { render } from '@testing-library/react';
 
 // Mock

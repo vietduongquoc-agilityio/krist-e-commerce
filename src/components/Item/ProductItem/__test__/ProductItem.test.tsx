@@ -1,5 +1,5 @@
-import { ProductItem } from '@/components';
-import { render, screen } from '@testing-library/react';
+import { ProductItem } from '@/components/Item';
+import { render } from '@testing-library/react';
 
 describe('ProductItem', () => {
   const defaultProps = {

@@ -1,8 +1,9 @@
 'use client';
-import { Button, useDisclosure } from '@heroui/react';
+import { useDisclosure } from '@heroui/react';
 
 // Components
 import { EyeIcon, EyeSlashIcon } from '@/components';
+import { Button } from '@/components/commons/Button';
 
 interface PasswordInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
