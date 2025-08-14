@@ -81,9 +81,9 @@ export const PRODUCTS = [
   // Add more...
 ];
 
-// mock/productMock.ts
+// mock/PRODUCT_MOCK.ts
 
-export const productMock: ProductModel[] = [
+export const PRODUCT_MOCK: ProductModel[] = [
   {
     id: '1',
     documentId: 'doc-1',
