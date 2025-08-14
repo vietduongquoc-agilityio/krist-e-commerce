@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 
 // Components
-import { AboutSection } from '@/components';
+import { AboutSection, LoadingIndicator } from '@/components';
 import { ProductDetailCard } from '@/components/Card';
 
 // Services
@@ -32,7 +32,7 @@ export default async function ProductDetailPage({
   return (
     <div>
       {/* Product Detail Card */}
-      <Suspense>
+      <Suspense fallback={<LoadingIndicator />}>
         <ProductDetailCard product={productData} />
       </Suspense>
 

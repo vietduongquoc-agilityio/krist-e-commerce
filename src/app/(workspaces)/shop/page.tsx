@@ -52,9 +52,9 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           <BrandSelection />
         </div>
 
-        {/* <Suspense fallback={<ListProductItemSkeleton />}> */}
-        <ListProductItemContainer searchParams={params} />
-        {/* </Suspense> */}
+        <Suspense fallback={<ListProductItemSkeleton />}>
+          <ListProductItemContainer searchParams={params} />
+        </Suspense>
       </div>
 
       {/* About Section */}
