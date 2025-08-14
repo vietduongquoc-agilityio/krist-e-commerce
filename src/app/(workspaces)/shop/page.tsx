@@ -7,14 +7,12 @@ import {
   BrandSelection,
   Breadcrumb,
   ColorSelection,
-  ListProductItem,
   ModelSection,
   PriceSelection,
   SizeSelection,
 } from '@/components';
-
-// Services
-import { getProducts } from '@/services';
+import { ListProductItemContainer } from '@/components/Item';
+import { ListProductItemSkeleton } from '@/components/Skeletons';
 
 export const metadata: Metadata = {
   title: 'Shop Page',
@@ -35,7 +33,6 @@ interface ShopPageProps {
 
 export default async function ShopPage({ searchParams }: ShopPageProps) {
   const params = await searchParams;
-  const { productsData, meta } = await getProducts({ searchParams: params });
 
   return (
     <section>
@@ -55,9 +52,9 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           <BrandSelection />
         </div>
 
-        <Suspense>
-          <ListProductItem items={productsData || []} meta={meta} />
-        </Suspense>
+        {/* <Suspense fallback={<ListProductItemSkeleton />}> */}
+        <ListProductItemContainer searchParams={params} />
+        {/* </Suspense> */}
       </div>
 
       {/* About Section */}

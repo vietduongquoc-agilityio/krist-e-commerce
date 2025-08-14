@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 
 // Components
-import { Button } from '@/components';
+import { Button } from '@/components/commons/Button';
 
 describe('Button component', () => {
   it('renders default solid variant correctly', () => {

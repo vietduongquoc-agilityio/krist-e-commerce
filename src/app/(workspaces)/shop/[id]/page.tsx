@@ -2,7 +2,8 @@ import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 
 // Components
-import { AboutSection, ProductDetailCard } from '@/components';
+import { AboutSection } from '@/components';
+import { ProductDetailCard } from '@/components/Card';
 
 // Services
 import { getProductDetail } from '@/services';
