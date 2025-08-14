@@ -5,13 +5,14 @@ import { Card } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 
 // Components
-import { Button, StarIcon } from '@/components';
+import { StarIcon } from '@/components';
 
 // Constants
 import { ROUTER } from '@/constants';
 
 // Models
 import { ProductModel } from '@/models';
+import { Button } from '@/components/commons/Button';
 
 interface ProductCardProps {
   productCard: ProductModel;

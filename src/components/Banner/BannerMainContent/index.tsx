@@ -2,10 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Components
-import { Button } from '@/components/commons';
 
 // Constants
 import { ROUTER } from '@/constants';
+import { Button } from '@/components/commons/Button';
 
 export const BannerMainContent = () => {
   return (
@@ -44,7 +44,7 @@ export const BannerMainContent = () => {
             <Button
               type="button"
               variant="solid"
-              className="mt-6 mb-9 w-[210px]"
+              className="mt-6 mb-9 w-[210px] h-auto"
             >
               SHOP NOW
             </Button>

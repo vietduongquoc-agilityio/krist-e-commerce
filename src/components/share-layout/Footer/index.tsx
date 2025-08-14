@@ -6,11 +6,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Components
-import { Button, Text } from '@/components/commons';
+import { Text } from '@/components/commons';
 import Input from '@/components/commons/Input';
 
 // Constants
 import { NAVITEMS } from '@/constants';
+import { Button } from '@/components/commons/Button';
 
 export const Footer = () => {
   const pathname = usePathname();

@@ -1,4 +1,5 @@
 export const ERROR_MESSAGES = {
+  DEFAULT: 'Something went wrong. Please try again.',
   FIELD_REQUIRED: 'This field is required',
   ERROR_TO_FETCH_API: 'Error to fetch API',
 

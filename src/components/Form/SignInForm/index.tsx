@@ -97,20 +97,16 @@ export const SignInForm = () => {
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
           onClick={handleSignInWithGoogle}
+          endContent={<IconGoogle className="w-[36px] h-[36px] rounded-full" />}
         >
-          <span className="flex items-center">
-            <IconGoogle className="w-[36px] h-[36px] rounded-full" />
-          </span>
           Sign in with Google
         </Button>
         <Button
           variant="ghost"
           className="flex gap-5 border-skyBlue hover:bg-skyBlue"
           onClick={handleSignInWithGithub}
+          endContent={<IconGithub className="w-[42px] h-[42px] rounded-full" />}
         >
-          <span className="flex items-center">
-            <IconGithub className="w-[42px] h-[42px] rounded-full" />
-          </span>
           Sign in with GitHub
         </Button>
       </div>

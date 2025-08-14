@@ -2,8 +2,10 @@
 
 exports[`ListProductCard Component should render ListProductCard correctly and match snapshot 1`] = `
 <DocumentFragment>
-  <div>
-    Loading...
-  </div>
+  <h2
+    class="text-center text-red text-xl py-10"
+  >
+    No products found.
+  </h2>
 </DocumentFragment>
 `;
