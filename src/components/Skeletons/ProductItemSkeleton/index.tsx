@@ -1,6 +1,10 @@
-'use client';
+interface ProductItemSkeletonProps {
+  colorCount?: number;
+}
 
-export const ProductItemSkeleton = () => {
+export const ProductItemSkeleton = ({
+  colorCount = 3,
+}: ProductItemSkeletonProps) => {
   return (
     <div className="cursor-pointer flex flex-col gap-5 group relative overflow-hidden animate-pulse">
       {/* Image placeholder */}
@@ -15,7 +19,7 @@ export const ProductItemSkeleton = () => {
 
         {/* Color circles */}
         <div className="flex gap-2 mt-4">
-          {Array.from({ length: 3 }).map((_, i) => (
+          {Array.from({ length: colorCount }).map((_, i) => (
             <div key={i} className="w-5 h-5 rounded-full bg-gray" />
           ))}
         </div>

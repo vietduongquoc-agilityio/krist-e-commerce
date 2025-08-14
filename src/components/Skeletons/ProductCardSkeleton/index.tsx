@@ -1,4 +1,10 @@
-export const ProductCardSkeleton = () => {
+interface ProductCardSkeletonProps {
+  starCount?: number;
+}
+
+export const ProductCardSkeleton = ({
+  starCount = 5,
+}: ProductCardSkeletonProps) => {
   return (
     <div className="bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] animate-pulse">
       {/* Image */}
@@ -12,7 +18,7 @@ export const ProductCardSkeleton = () => {
             <div className="h-3 w-20 bg-gray rounded" />
           </div>
           <div className="flex items-center space-x-1">
-            {Array.from({ length: 5 }).map((_, idx) => (
+            {Array.from({ length: starCount }).map((_, idx) => (
               <div key={idx} className="w-4 h-4 bg-gray rounded-full" />
             ))}
           </div>
