@@ -1,7 +1,7 @@
 import type { NextAuthConfig } from 'next-auth';
 
 // Constants
-import { ROUTER } from '@/constants';
+import { ROUTER, SERVER_URL } from '@/constants';
 
 // Interfaces
 import { IUser } from '@/interfaces';
@@ -26,20 +26,32 @@ export const authConfig = {
   },
 
   callbacks: {
+    async signIn({ user, account }) {
+      if (account?.provider === 'google' || account?.provider === 'github') {
+        try {
+          const res = await fetch(
+            `${SERVER_URL}/users?filters[email][$eq]=${encodeURIComponent(user.email!)}`,
+            { method: 'GET' },
+          );
+          const data = await res.json();
+
+          if (!Array.isArray(data) || data.length === 0) {
+            // Redirect to signup page with error flag
+            return `${ROUTER.SIGNUP}?email=${encodeURIComponent(user.email!)}`;
+          }
+        } catch (error) {
+          console.error('[SignIn Check Error]', error);
+          return false;
+        }
+      }
+      return true;
+    },
+
     async jwt({ token, user }) {
       if (user) {
         const { id, username, email, token: userToken, avatar } = user;
-
-        token = {
-          ...token,
-          id,
-          username,
-          email,
-          token: userToken,
-          avatar,
-        };
+        token = { ...token, id, username, email, token: userToken, avatar };
       }
-
       return token;
     },
 
@@ -51,7 +63,6 @@ export const authConfig = {
         session.user.token = token.token as string;
         session.user.avatar = token.avatar as string;
       }
-
       return session;
     },
   },
