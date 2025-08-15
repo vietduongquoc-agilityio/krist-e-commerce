@@ -30,7 +30,7 @@ export const authConfig = {
       if (account?.provider === 'google' || account?.provider === 'github') {
         try {
           const res = await fetch(
-            `${SERVER_URL}/api/users?filters[email][$eq]=${encodeURIComponent(user.email!)}`,
+            `${SERVER_URL}/users?filters[email][$eq]=${encodeURIComponent(user.email!)}`,
             { method: 'GET' },
           );
           const data = await res.json();
