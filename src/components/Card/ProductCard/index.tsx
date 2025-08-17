@@ -37,7 +37,7 @@ export const ProductCard = ({ productCard }: ProductCardProps) => {
 
   return (
     <Card
-      className={`bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-whiteSmoke transition ${
+      className={`bg-white rounded-[10px] shadow-md pt-5 px-6 w-full max-w-[386px] cursor-pointer hover:bg-lightGray transition ${
         productCard.isSoldOut ? 'cursor-not-allowed opacity-80' : ''
       }`}
     >

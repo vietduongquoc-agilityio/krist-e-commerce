@@ -1,6 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
+import { cn } from '@heroui/react';
 
 // Constants
 import { BRANDS, SELECTION_KEY } from '@/constants';
@@ -24,7 +25,6 @@ export const BrandSelection = () => {
     <div className="mb-6 w-full">
       <div className="flex items-center justify-between cursor-pointer max-w-[310px]">
         <h2 className="text-[18px] font-secondary">Brands</h2>
-        <span>▼</span>
       </div>
 
       <div className="flex flex-wrap gap-2 mt-3 text-gray max-w-[220px]">
@@ -32,7 +32,10 @@ export const BrandSelection = () => {
           <span
             key={i}
             onClick={() => handleClick(brand)}
-            className="cursor-pointer hover:text-black transition"
+            className={cn('hover:text-black transition cursor-pointer', {
+              'text-black font-semibold': selectedBrand === brand,
+              'text-gray': selectedBrand !== brand,
+            })}
           >
             {brand}
           </span>
