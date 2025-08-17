@@ -12,9 +12,6 @@ import { Button } from '@/components/commons/Button';
 import Input from '@/components/commons/Input';
 import { signIn } from 'next-auth/react';
 
-// Interfaces
-import { ISignUpFormData } from '@/interfaces';
-
 // Actions
 import { signUp } from '@/actions/auth';
 
@@ -32,6 +29,9 @@ import {
   SUCCESS_MESSAGES,
   TEXT_SIZE,
 } from '@/constants';
+
+// Types
+import { ISignUpFormData } from '@/types';
 
 export const SignUpForm = () => {
   const router = useRouter();

@@ -4,7 +4,6 @@ import type { Meta, StoryObj } from '@storybook/nextjs';
 
 // Types
 import { Radio, RadioGroup } from '@heroui/react';
-import { ToastType, ToastPosition } from '@/interfaces';
 
 // Utils
 import { toastManager } from '@/utils';
@@ -12,6 +11,7 @@ import { toastManager } from '@/utils';
 // Components
 import { Button } from '@/components/commons/Button';
 import Toast from '@/components/ToastProvider/Toast';
+import { ToastPosition, ToastType } from '@/types';
 
 const meta = {
   title: 'Components/Toast',
