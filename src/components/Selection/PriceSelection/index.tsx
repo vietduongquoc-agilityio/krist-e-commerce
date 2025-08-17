@@ -1,6 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
+import { cn } from '@heroui/react';
 
 // Constants
 import { PRICE_RANGE, SELECTION_KEY } from '@/constants';
@@ -27,7 +28,10 @@ export const PriceSelection = () => {
           <li
             key={i}
             onClick={() => handleClick(range.value)}
-            className="cursor-pointer hover:text-black transition"
+            className={cn('hover:text-black transition cursor-pointer', {
+              'text-black font-semibold': selectedPrice === range.value,
+              'text-gray': selectedPrice !== range.value,
+            })}
           >
             {range.label}
           </li>
