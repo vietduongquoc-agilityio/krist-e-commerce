@@ -41,7 +41,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
 
       {/* Filter Section */}
       <div className="w-full max-w-[1281px] mx-auto flex">
-        <div className="mr-5 flex flex-col gap-6">
+        <div className="mr-14 flex flex-col gap-6">
           <h4 className="text-[30px] font-secondary">Filter</h4>
           <SizeSelection />
 
