@@ -16,7 +16,7 @@ import { CartModel } from '@/models';
 
 // Components
 import { ItemMiniCart } from '@/components';
-import { calculateSubtotal, toastManager } from '@/utils';
+import { toastManager } from '@/utils';
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 import { PaymentCard } from '@/components/Card';
 
@@ -48,7 +48,13 @@ export const MiniCartPopup = ({ isOpen, onClose }: MiniCartPopupProps) => {
     fetchCart();
   }, [isOpen, session]);
 
-  const subtotal = useMemo(() => calculateSubtotal(cartItems), [cartItems]);
+  const subtotal = useMemo(() => {
+    if (!Array.isArray(cartItems)) return 0;
+    return cartItems.reduce(
+      (acc, item) => acc + item.product.price * item.quantity,
+      0,
+    );
+  }, [cartItems]);
 
   const handleQuantityChange = async (
     cartItemDocumentId: string,

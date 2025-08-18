@@ -2,17 +2,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Components
+import { Button } from '@/components/commons/Button';
 
 // Constants
-import { ROUTER } from '@/constants';
-import { Button } from '@/components/commons/Button';
+import { IMAGES, ROUTER } from '@/constants';
 
 export const BannerMainContent = () => {
   return (
     <div className="w-full max-w-[1281px] mx-auto flex gap-[35px]">
       <figure className="bg-platinum rounded-[10px] h-[756px]">
         <Image
-          src="/images/banner-img-left.webp"
+          src={IMAGES.BANNER.LEFT}
           alt="Banner left"
           width={392}
           height={570}
@@ -24,7 +24,7 @@ export const BannerMainContent = () => {
       <div className="flex flex-col">
         <figure className="bg-platinum rounded-2xl px-4">
           <Image
-            src="/images/banner-img-top.webp"
+            src={IMAGES.BANNER.TOP}
             alt="Banner top"
             width={399}
             height={150}
@@ -34,7 +34,7 @@ export const BannerMainContent = () => {
         <div className="flex flex-col items-center">
           <p className="font-medium text-[91px] text-charcoal">ULTIMATE</p>
           <Image
-            src="/images/banner-img-center.webp"
+            src={IMAGES.BANNER.CENTER}
             alt="Banner center"
             width={394}
             height={120}
@@ -53,7 +53,7 @@ export const BannerMainContent = () => {
 
         <figure className="rounded-2xl">
           <Image
-            src="/images/banner-img-bottom.webp"
+            src={IMAGES.BANNER.BOTTOM}
             alt="Banner bottom"
             width={430}
             height={150}
@@ -63,7 +63,7 @@ export const BannerMainContent = () => {
 
       <figure className="bg-platinum rounded-[10px] px-16 h-[756px]">
         <Image
-          src="/images/banner-img-right.webp"
+          src={IMAGES.BANNER.RIGHT}
           alt="Banner right"
           width={249}
           height={560}
