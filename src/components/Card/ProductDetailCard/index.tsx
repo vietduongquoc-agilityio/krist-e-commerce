@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSession } from 'next-auth/react';
 
 // Components
@@ -119,7 +119,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   return (
     <section key={id} className="flex gap-[50px] justify-center pt-[78px]">
       <div className="flex flex-col gap-4">
-        {(images.length > 0 ? images : [thumbnailUrl]).map((img, index) => (
+        {[thumbnailUrl, ...images].map((img, index) => (
           <Button
             key={index}
             onClick={() => setSelectedImage(img)}
