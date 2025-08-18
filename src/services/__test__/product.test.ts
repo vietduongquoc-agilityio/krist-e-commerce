@@ -34,7 +34,7 @@ jest.mock('../../constants', () => ({
   API_ENDPOINTS: { PRODUCTS: '/products', CARTS: '/carts' },
   PAGE_SIZE: 10,
   ERROR_MESSAGES: {},
-  colorNameToHex: { red: '#FF0000', blue: '#0000FF' },
+  HexColorMapping: { red: '#FF0000', blue: '#0000FF' },
   colorHexToName: { '#FF0000': 'red', '#0000FF': 'blue' },
 }));
 

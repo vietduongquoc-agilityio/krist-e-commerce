@@ -25,7 +25,7 @@ jest.mock('../../utils', () => ({
 }));
 
 jest.mock('../../constants/color', () => ({
-  colorNameToHex: { red: '#ff0000', blue: '#0000ff' },
+  HexColorMapping: { red: '#ff0000', blue: '#0000ff' },
   colorHexToName: { '#ff0000': 'red', '#0000ff': 'blue' },
 }));
 

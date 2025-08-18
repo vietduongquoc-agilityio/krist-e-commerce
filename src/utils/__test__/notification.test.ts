@@ -1,4 +1,4 @@
-import { ToastType, ToastPosition } from '@/interfaces';
+import { ToastPosition, ToastType } from '@/types';
 import EventEmitter, { toastManager } from '@/utils/notification';
 
 describe('EventEmitter', () => {

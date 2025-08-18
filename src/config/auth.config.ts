@@ -3,8 +3,8 @@ import type { NextAuthConfig } from 'next-auth';
 // Constants
 import { ROUTER, SERVER_URL } from '@/constants';
 
-// Interfaces
-import { IUser } from '@/interfaces';
+// Types
+import { IUser } from '@/types';
 
 declare module 'next-auth' {
   interface Session {

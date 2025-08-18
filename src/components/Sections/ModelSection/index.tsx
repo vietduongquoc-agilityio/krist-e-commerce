@@ -1,5 +1,8 @@
 import Image from 'next/image';
 
+// constants
+import { IMAGES } from '@/constants';
+
 export const ModelSection = () => {
   return (
     <section className="flex flex-col gap-24 w-full max-w-[1920px] mx-auto items-center py-24">
@@ -14,7 +17,7 @@ export const ModelSection = () => {
         </p>
       </div>
       <Image
-        src="/images/model-banner.webp"
+        src={IMAGES.MODEL_BANNER}
         alt="Brand model banner"
         width={1920}
         height={256}
