@@ -13,40 +13,37 @@ exports[`BrandSelection Component should render BrandSelection component and mat
       >
         Brands
       </h2>
-      <span>
-        ▼
-      </span>
     </div>
     <div
       class="flex flex-wrap gap-2 mt-3 text-gray max-w-[220px]"
     >
       <span
-        class="cursor-pointer hover:text-black transition"
+        class="hover:text-black transition cursor-pointer text-gray"
       >
         Minimog
       </span>
       <span
-        class="cursor-pointer hover:text-black transition"
+        class="hover:text-black transition cursor-pointer text-gray"
       >
         Retrolie
       </span>
       <span
-        class="cursor-pointer hover:text-black transition"
+        class="hover:text-black transition cursor-pointer text-gray"
       >
         Brooks
       </span>
       <span
-        class="cursor-pointer hover:text-black transition"
+        class="hover:text-black transition cursor-pointer text-gray"
       >
         Learts
       </span>
       <span
-        class="cursor-pointer hover:text-black transition"
+        class="hover:text-black transition cursor-pointer text-gray"
       >
         Vagabond
       </span>
       <span
-        class="cursor-pointer hover:text-black transition"
+        class="hover:text-black transition cursor-pointer text-gray"
       >
         Abby
       </span>
