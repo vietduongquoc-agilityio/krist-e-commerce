@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useSession } from 'next-auth/react';
 
 // Components
@@ -23,7 +23,12 @@ import { parseCommaStringToArray, toastManager } from '@/utils';
 import { ProductModel } from '@/models';
 
 // Constants
-import { ERROR_MESSAGES, HexColorMapping, SUCCESS_MESSAGES } from '@/constants';
+import {
+  colorHexToName,
+  ERROR_MESSAGES,
+  HexColorMapping,
+  SUCCESS_MESSAGES,
+} from '@/constants';
 
 // Services
 import { addCartItemByAccountId, CartPayload } from '@/services';
@@ -91,7 +96,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     }
 
     const item: CartPayload = {
-      color: HexColorMapping[selectedColor] || selectedColor,
+      color: colorHexToName[selectedColor] || selectedColor,
       quantity,
       product: documentId,
       usersPermissionsUser: session?.user.id,
