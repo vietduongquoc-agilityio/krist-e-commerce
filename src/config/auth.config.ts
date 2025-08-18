@@ -69,8 +69,6 @@ export const authConfig = {
           user.username = strapiUser.username;
           user.email = strapiUser.email;
 
-          console.log('User signed in:', user);
-
           return true;
         } catch (error) {
           console.error('[SignIn Error]', error);
