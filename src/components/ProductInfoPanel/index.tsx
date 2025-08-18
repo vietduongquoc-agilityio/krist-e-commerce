@@ -8,7 +8,7 @@ import {
 } from '@/components/icons';
 
 // constants
-import { PAYMENT_OPTIONS_IMAGE } from '@/constants';
+import { IMAGES } from '@/constants';
 
 export const ProductInfoPanel = () => {
   return (
@@ -42,7 +42,7 @@ export const ProductInfoPanel = () => {
       </div>
       <figure>
         <Image
-          src={PAYMENT_OPTIONS_IMAGE}
+          src={IMAGES.PAYMENT_OPTIONS}
           alt="Product Image"
           width={585}
           height={110}
