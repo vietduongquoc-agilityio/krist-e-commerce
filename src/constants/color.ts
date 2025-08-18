@@ -1,4 +1,4 @@
-export const colorNameToHex: Record<string, string> = {
+export const HexColorMapping: Record<string, string> = {
   Black: '#000000',
   Gray: '#808080',
   Red: '#FF0000',
@@ -16,5 +16,5 @@ export const colorNameToHex: Record<string, string> = {
 };
 
 export const colorHexToName: Record<string, string> = Object.fromEntries(
-  Object.entries(colorNameToHex).map(([key, value]) => [value, key]),
+  Object.entries(HexColorMapping).map(([key, value]) => [value, key]),
 );
