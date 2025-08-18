@@ -12,9 +12,6 @@ import { Button } from '@/components/commons/Button';
 import Input from '@/components/commons/Input';
 import { signIn } from 'next-auth/react';
 
-// Interfaces
-import { ISignUpFormData } from '@/interfaces';
-
 // Actions
 import { signUp } from '@/actions/auth';
 
@@ -32,6 +29,9 @@ import {
   SUCCESS_MESSAGES,
   TEXT_SIZE,
 } from '@/constants';
+
+// Types
+import { ISignUpFormData } from '@/types';
 
 export const SignUpForm = () => {
   const router = useRouter();
@@ -101,7 +101,7 @@ export const SignUpForm = () => {
           onClick={handleSignInWithGoogle}
           endContent={<IconGoogle className="w-[36px] h-[36px] rounded-full" />}
         >
-          Sign in with Google
+          Sign up with Google
         </Button>
         <Button
           variant="ghost"
@@ -109,7 +109,7 @@ export const SignUpForm = () => {
           onClick={handleSignInWithGithub}
           endContent={<IconGithub className="w-[42px] h-[42px] rounded-full" />}
         >
-          Sign in with GitHub
+          Sign up with GitHub
         </Button>
       </div>
       {/* OR Divider */}

@@ -17,13 +17,13 @@ import {
 } from '@/components';
 import { Button } from '@/components/commons/Button';
 
-import { colorNameToHex, parseCommaStringToArray, toastManager } from '@/utils';
+import { parseCommaStringToArray, toastManager } from '@/utils';
 
 // Models
 import { ProductModel } from '@/models';
 
 // Constants
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
+import { ERROR_MESSAGES, HexColorMapping, SUCCESS_MESSAGES } from '@/constants';
 
 // Services
 import { addCartItemByAccountId, CartPayload } from '@/services';
@@ -91,7 +91,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     }
 
     const item: CartPayload = {
-      color: colorNameToHex[selectedColor] || selectedColor,
+      color: HexColorMapping[selectedColor] || selectedColor,
       quantity,
       product: documentId,
       usersPermissionsUser: session?.user.id,
@@ -227,7 +227,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
                 return (
                   <ColorButton
                     key={color}
-                    color={colorNameToHex[color] || color}
+                    color={HexColorMapping[color] || color}
                     isSelected={isSelected}
                     onClick={() => handleSelectColor(color)}
                     as="div"

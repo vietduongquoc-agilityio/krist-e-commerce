@@ -7,6 +7,9 @@ import {
   IconShopping,
 } from '@/components/icons';
 
+// constants
+import { PAYMENT_OPTIONS_IMAGE } from '@/constants';
+
 export const ProductInfoPanel = () => {
   return (
     <div className="pt-6 space-y-6 px-4 flex flex-col">
@@ -39,7 +42,7 @@ export const ProductInfoPanel = () => {
       </div>
       <figure>
         <Image
-          src="/images/payment-options-img.webp"
+          src={PAYMENT_OPTIONS_IMAGE}
           alt="Product Image"
           width={585}
           height={110}

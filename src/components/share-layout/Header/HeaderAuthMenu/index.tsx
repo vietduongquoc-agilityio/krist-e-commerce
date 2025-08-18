@@ -12,14 +12,16 @@ import { useRouter } from 'next/navigation';
 // Components
 import { IconSearch, IconStar, IconCart } from '@/components';
 
-// Assets
-import AvatarImageBackup from '@/public/images/avatar.webp';
-
 // Actions
 import { signOut } from '@/actions/auth';
 
 // Constants
-import { ROUTER, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
+import {
+  ROUTER,
+  ERROR_MESSAGES,
+  SUCCESS_MESSAGES,
+  AVATAR_IMAGE_BACKUP,
+} from '@/constants';
 
 // Utils
 import { toastManager } from '@/utils';
@@ -61,9 +63,9 @@ export const HeaderAuthMenu = ({
         <DropdownTrigger>
           <Avatar
             alt="User Avatar"
-            src={avatar || AvatarImageBackup.src}
+            src={avatar || AVATAR_IMAGE_BACKUP}
             className="cursor-pointer"
-            fallback={AvatarImageBackup.src}
+            fallback={AVATAR_IMAGE_BACKUP}
             classNames={{
               base: 'w-8 h-8',
               img: 'opacity-1',

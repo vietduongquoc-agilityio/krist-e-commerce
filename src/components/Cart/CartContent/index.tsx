@@ -24,7 +24,7 @@ import {
 } from '@/services';
 
 // Utils
-import { calculateSubtotal, toastManager } from '@/utils';
+import { toastManager } from '@/utils';
 
 interface CartContentProps {
   cartItems: CartModel[];
@@ -35,7 +35,13 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
   const [loadingRemoveId, setLoadingRemoveId] = useState<string | null>(null);
   const [loadingCheckout, setLoadingCheckout] = useState(false);
 
-  const subtotal = useMemo(() => calculateSubtotal(items), [items]);
+  const subtotal = useMemo(() => {
+    if (!Array.isArray(items)) return 0;
+    return items.reduce(
+      (acc, item) => acc + item.product.price * item.quantity,
+      0,
+    );
+  }, [items]);
 
   if (!items.length) {
     return (

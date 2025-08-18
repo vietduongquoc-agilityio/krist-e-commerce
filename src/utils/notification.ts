@@ -1,4 +1,5 @@
-import { ToastPosition, ToastType } from '@/interfaces';
+import { ToastPosition, ToastType } from '@/types';
+
 class EventEmitter {
   private target: EventTarget;
   private listenersMap: Map<(...args: any[]) => void, EventListener>;
