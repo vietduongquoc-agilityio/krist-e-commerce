@@ -3,13 +3,10 @@
 import { useSearchParams, useRouter } from 'next/navigation';
 
 // Constants
-import { COLOR_LIST, SELECTION_KEY } from '@/constants';
+import { COLOR_LIST, SELECTION_KEY, colorNameToHex } from '@/constants';
 
 // Components
 import { ColorButton } from '@/components';
-
-// Utils
-import { colorNameToHex } from '@/utils';
 
 export const ColorSelection = () => {
   const router = useRouter();

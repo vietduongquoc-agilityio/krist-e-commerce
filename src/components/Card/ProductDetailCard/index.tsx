@@ -17,13 +17,13 @@ import {
 } from '@/components';
 import { Button } from '@/components/commons/Button';
 
-import { colorNameToHex, parseCommaStringToArray, toastManager } from '@/utils';
+import { parseCommaStringToArray, toastManager } from '@/utils';
 
 // Models
 import { ProductModel } from '@/models';
 
 // Constants
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
+import { ERROR_MESSAGES, SUCCESS_MESSAGES, colorNameToHex } from '@/constants';
 
 // Services
 import { addCartItemByAccountId, CartPayload } from '@/services';

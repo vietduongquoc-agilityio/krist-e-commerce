@@ -101,7 +101,7 @@ export const SignUpForm = () => {
           onClick={handleSignInWithGoogle}
           endContent={<IconGoogle className="w-[36px] h-[36px] rounded-full" />}
         >
-          Sign in with Google
+          Sign up with Google
         </Button>
         <Button
           variant="ghost"
@@ -109,7 +109,7 @@ export const SignUpForm = () => {
           onClick={handleSignInWithGithub}
           endContent={<IconGithub className="w-[42px] h-[42px] rounded-full" />}
         >
-          Sign in with GitHub
+          Sign up with GitHub
         </Button>
       </div>
       {/* OR Divider */}

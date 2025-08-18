@@ -1,23 +1,17 @@
 'use client';
 
-// Libs
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
 // Constants
-import { ROUTER } from '@/constants';
+import { AUTH_IMAGES, ROUTER } from '@/constants';
 
 export default function AuthLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
 
-  const bgImage =
-    pathname === ROUTER.SIGNUP
-      ? '/images/bg-signup.webp'
-      : '/images/bg-signin.webp';
+  const bgImage = AUTH_IMAGES[pathname] || AUTH_IMAGES[ROUTER.SIGNIN];
 
   return (
     <div className="w-screen h-screen margin-auto flex items-center justify-center">
@@ -33,12 +27,10 @@ export default function AuthLayout({
         />
 
         <div className="flex flex-col justify-between pt-24 px-28 w-[920px] pb-12">
-          {/* FASCO title */}
           <h1 className="text-4xl font-secondary text-charcoal mb-2 text-[66px]">
             FASCO
           </h1>
 
-          {/* Terms & Conditions */}
           {children}
 
           <p className=" text-black text-right">FASCO Terms & Conditions</p>
