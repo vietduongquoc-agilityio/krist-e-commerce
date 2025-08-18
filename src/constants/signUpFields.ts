@@ -5,7 +5,7 @@ type InputField = {
   required?: string;
 };
 
-export const SIGNUPFIELDS: InputField[] = [
+export const SIGNUP_FIELDS: InputField[] = [
   {
     name: 'firstName',
     placeholder: 'First Name',

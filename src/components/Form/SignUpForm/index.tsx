@@ -25,7 +25,7 @@ import { toastManager } from '@/utils';
 import {
   ERROR_MESSAGES,
   ROUTER,
-  SIGNUPFIELDS,
+  SIGNUP_FIELDS,
   SUCCESS_MESSAGES,
   TEXT_SIZE,
 } from '@/constants';
@@ -120,7 +120,7 @@ export const SignUpForm = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-8">
-        {SIGNUPFIELDS.map((field) => (
+        {SIGNUP_FIELDS.map((field) => (
           <Controller
             key={field.name}
             name={

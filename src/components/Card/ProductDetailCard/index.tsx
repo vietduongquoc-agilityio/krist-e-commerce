@@ -23,7 +23,12 @@ import { parseCommaStringToArray, toastManager } from '@/utils';
 import { ProductModel } from '@/models';
 
 // Constants
-import { ERROR_MESSAGES, HexColorMapping, SUCCESS_MESSAGES } from '@/constants';
+import {
+  colorHexToName,
+  ERROR_MESSAGES,
+  HexColorMapping,
+  SUCCESS_MESSAGES,
+} from '@/constants';
 
 // Services
 import { addCartItemByAccountId, CartPayload } from '@/services';
@@ -91,7 +96,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     }
 
     const item: CartPayload = {
-      color: HexColorMapping[selectedColor] || selectedColor,
+      color: colorHexToName[selectedColor] || selectedColor,
       quantity,
       product: documentId,
       usersPermissionsUser: session?.user.id,
@@ -119,7 +124,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   return (
     <section key={id} className="flex gap-[50px] justify-center pt-[78px]">
       <div className="flex flex-col gap-4">
-        {(images.length > 0 ? images : [thumbnailUrl]).map((img, index) => (
+        {[thumbnailUrl, ...images].map((img, index) => (
           <Button
             key={index}
             onClick={() => setSelectedImage(img)}
