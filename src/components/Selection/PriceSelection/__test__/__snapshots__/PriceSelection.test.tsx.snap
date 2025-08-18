@@ -14,27 +14,27 @@ exports[`PriceSelection Component should render PriceSelection component and mat
       class="space-y-3 text-gray text-sm"
     >
       <li
-        class="cursor-pointer hover:text-black transition"
+        class="hover:text-black transition cursor-pointer text-gray"
       >
         $0–$50
       </li>
       <li
-        class="cursor-pointer hover:text-black transition"
+        class="hover:text-black transition cursor-pointer text-gray"
       >
         $50–$100
       </li>
       <li
-        class="cursor-pointer hover:text-black transition"
+        class="hover:text-black transition cursor-pointer text-gray"
       >
         $100–$150
       </li>
       <li
-        class="cursor-pointer hover:text-black transition"
+        class="hover:text-black transition cursor-pointer text-gray"
       >
         $150–$200
       </li>
       <li
-        class="cursor-pointer hover:text-black transition"
+        class="hover:text-black transition cursor-pointer text-gray"
       >
         $300–$400
       </li>

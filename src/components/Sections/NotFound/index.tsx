@@ -1,17 +1,17 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
-// Images
-import notFound from '@/public/images/not-found.webp';
+import { IMAGES } from '@/constants';
 
 export const NotFound = () => {
   return (
     <section className="flex flex-col items-center justify-center min-h-screen px-6 text-center bg-white">
       <Image
-        src={notFound}
+        src={IMAGES.NOT_FOUND}
         alt="Not found image page"
         className="mb-7 w-[500px]"
         sizes="(100vw - 20px) 100vw, 500px"
+        width={500}
+        height={500}
       />
       <h1 className="text-4xl font-bold text-charcoal mb-4">
         Oops! Page not found

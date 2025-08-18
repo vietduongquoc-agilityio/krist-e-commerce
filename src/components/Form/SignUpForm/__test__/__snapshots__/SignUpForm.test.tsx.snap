@@ -19,7 +19,7 @@ exports[`SignUpForm should render SignUpForm correctly and match snapshot 1`] = 
         tabindex="0"
         type="button"
       >
-        Sign in with Google
+        Sign up with Google
         <svg
           aria-hidden="true"
           class="w-[36px] h-[36px] rounded-full"
@@ -62,7 +62,7 @@ exports[`SignUpForm should render SignUpForm correctly and match snapshot 1`] = 
         tabindex="0"
         type="button"
       >
-        Sign in with GitHub
+        Sign up with GitHub
         <svg
           aria-hidden="true"
           class="w-[42px] h-[42px] rounded-full"

@@ -6,8 +6,8 @@ import { signIn, signOut as nextAuthSignOut } from '@/config/auth';
 // Constants
 import { ERROR_MESSAGES, REGISTER_ENDPOINT } from '@/constants';
 
-// Interfaces
-import { AuthResponse, ISignUpFormData, ISignInFormData } from '@/interfaces';
+// Types
+import { AuthResponse, ISignInFormData, ISignUpFormData } from '@/types';
 
 // Services
 import { apiClient } from '@/services';
