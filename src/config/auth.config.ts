@@ -26,25 +26,64 @@ export const authConfig = {
   },
 
   callbacks: {
-    async signIn({ user, account }) {
-      if (account?.provider === 'google' || account?.provider === 'github') {
-        try {
-          const res = await fetch(
-            `${SERVER_URL}/users?filters[email][$eq]=${encodeURIComponent(user.email!)}`,
-            { method: 'GET' },
-          );
-          const data = await res.json();
+    async signIn({ user, account, profile }) {
+      try {
+        // 1. Check existing user by email
+        const res = await fetch(
+          `${SERVER_URL}/users?filters[email][$eq]=${encodeURIComponent(user.email!)}`,
+          { method: 'GET' },
+        );
 
-          if (!Array.isArray(data) || data.length === 0) {
-            // Redirect to signup page with error flag
-            return `${ROUTER.SIGNUP}?email=${encodeURIComponent(user.email!)}`;
-          }
-        } catch (error) {
-          console.error('[SignIn Check Error]', error);
+        if (!res.ok) {
+          console.error('Error fetching user:', res.statusText);
           return false;
         }
+
+        const existing = await res.json();
+
+        let strapiUser = existing[0];
+
+        // 2. If user does not exist → create
+        if (!strapiUser) {
+          const rolesRes = await fetch(`${SERVER_URL}/users-permissions/roles`);
+          const rolesData = await rolesRes.json();
+
+          const authenticatedRole = rolesData.roles.find(
+            (r: { type: string }) => r.type === 'authenticated',
+          );
+
+          const roleId = authenticatedRole?.id;
+
+          const createRes = await fetch(`${SERVER_URL}/auth/local/register`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username: profile?.name ?? user.name ?? user.email?.split('@')[0],
+              email: profile?.email ?? user.email,
+              provider: account?.provider ?? 'credentials',
+              confirmed: true,
+              password: Math.random().toString(36).slice(-12),
+              role: roleId,
+            }),
+          });
+
+          if (!createRes.ok) {
+            console.error('Error creating user:', await createRes.text());
+            return false;
+          }
+          strapiUser = await createRes.json();
+        }
+        user.id = strapiUser.id;
+        user.username = strapiUser.username;
+        user.email = strapiUser.email;
+
+        return true;
+      } catch (error) {
+        console.error('[SignIn Error]', error);
+        return false;
       }
-      return true;
     },
 
     async jwt({ token, user }) {
