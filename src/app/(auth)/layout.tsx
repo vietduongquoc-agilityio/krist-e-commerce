@@ -4,14 +4,14 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
 // Constants
-import { AUTH_IMAGES, ROUTER } from '@/constants';
+import { IMAGES, ROUTER } from '@/constants';
 
 export default function AuthLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
 
-  const bgImage = AUTH_IMAGES[pathname] || AUTH_IMAGES[ROUTER.SIGNIN];
+  const bgImage = IMAGES.AUTH[pathname] || IMAGES.AUTH[ROUTER.SIGNIN];
 
   return (
     <div className="w-screen h-screen margin-auto flex items-center justify-center">

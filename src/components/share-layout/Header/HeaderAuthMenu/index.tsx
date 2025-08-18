@@ -16,12 +16,7 @@ import { IconSearch, IconStar, IconCart } from '@/components';
 import { signOut } from '@/actions/auth';
 
 // Constants
-import {
-  ROUTER,
-  ERROR_MESSAGES,
-  SUCCESS_MESSAGES,
-  AVATAR_IMAGE_BACKUP,
-} from '@/constants';
+import { ROUTER, ERROR_MESSAGES, SUCCESS_MESSAGES, IMAGES } from '@/constants';
 
 // Utils
 import { toastManager } from '@/utils';
@@ -63,9 +58,9 @@ export const HeaderAuthMenu = ({
         <DropdownTrigger>
           <Avatar
             alt="User Avatar"
-            src={avatar || AVATAR_IMAGE_BACKUP}
+            src={avatar || IMAGES.AVATAR}
             className="cursor-pointer"
-            fallback={AVATAR_IMAGE_BACKUP}
+            fallback={IMAGES.AVATAR}
             classNames={{
               base: 'w-8 h-8',
               img: 'opacity-1',
