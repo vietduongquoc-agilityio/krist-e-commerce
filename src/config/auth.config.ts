@@ -26,21 +26,52 @@ export const authConfig = {
   },
 
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user, account, profile }) {
       if (account?.provider === 'google' || account?.provider === 'github') {
         try {
+          // 1. Check existing user by email
           const res = await fetch(
             `${SERVER_URL}/users?filters[email][$eq]=${encodeURIComponent(user.email!)}`,
             { method: 'GET' },
           );
-          const data = await res.json();
 
-          if (!Array.isArray(data) || data.length === 0) {
-            // Redirect to signup page with error flag
-            return `${ROUTER.SIGNUP}?email=${encodeURIComponent(user.email!)}`;
+          if (!res.ok) {
+            console.error('Error fetching user:', res.statusText);
+            return false;
           }
+
+          const existing = await res.json();
+
+          let strapiUser = existing[0];
+
+          // 2. If user does not exist → create
+          if (!strapiUser) {
+            const createRes = await fetch(`${SERVER_URL}/auth/local/register`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                username:
+                  profile?.name ?? user.name ?? user.email?.split('@')[0],
+                email: profile?.email ?? user.email,
+                password: Math.random().toString(36).slice(-12),
+              }),
+            });
+
+            if (!createRes.ok) {
+              console.error('Error creating user:', await createRes.text());
+              return false;
+            }
+            strapiUser = await createRes.json();
+          }
+          user.id = strapiUser.id;
+          user.username = strapiUser.username;
+          user.email = strapiUser.email;
+
+          return true;
         } catch (error) {
-          console.error('[SignIn Check Error]', error);
+          console.error('[SignIn Error]', error);
           return false;
         }
       }
@@ -49,9 +80,12 @@ export const authConfig = {
 
     async jwt({ token, user }) {
       if (user) {
-        const { id, username, email, token: userToken, avatar } = user;
-        token = { ...token, id, username, email, token: userToken, avatar };
+        token.id = user.id;
+        token.username = user.username;
+        token.email = user.email;
+        token.avatar = user.avatar;
       }
+
       return token;
     },
 
@@ -63,6 +97,7 @@ export const authConfig = {
         session.user.token = token.token as string;
         session.user.avatar = token.avatar as string;
       }
+
       return session;
     },
   },

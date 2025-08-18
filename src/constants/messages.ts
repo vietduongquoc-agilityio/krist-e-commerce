@@ -31,6 +31,9 @@ export const ERROR_MESSAGES = {
   REMOVE_CART_ITEM_FAIL: 'Error removing product from cart. Please try again.',
 
   CHECKOUT_FAIL: 'Error checking out. Please try again.',
+
+  ERROR_SIGN_IN_WITH_GOOGLE: 'Error signing in with Google. Please try again.',
+  ERROR_SIGN_IN_WITH_GITHUB: 'Error signing in with GitHub. Please try again.',
 };
 
 export const SUCCESS_MESSAGES = {
@@ -44,4 +47,6 @@ export const SUCCESS_MESSAGES = {
 
   REMOVE_PRODUCT_FROM_CART: 'Product removed from cart successfully.',
   UPDATE_CART_ITEM_QUANTITY: 'Cart item quantity updated successfully.',
+  SIGN_IN_WITH_GOOGLE: 'Signed in successfully with Google',
+  SIGN_IN_WITH_GITHUB: 'Signed in successfully with GitHub',
 };
