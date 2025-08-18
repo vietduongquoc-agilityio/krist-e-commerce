@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { NOT_FOUND_IMAGE } from '@/constants';
+import { IMAGES } from '@/constants';
 
 export const NotFound = () => {
   return (
     <section className="flex flex-col items-center justify-center min-h-screen px-6 text-center bg-white">
       <Image
-        src={NOT_FOUND_IMAGE}
+        src={IMAGES.NOT_FOUND}
         alt="Not found image page"
         className="mb-7 w-[500px]"
         sizes="(100vw - 20px) 100vw, 500px"

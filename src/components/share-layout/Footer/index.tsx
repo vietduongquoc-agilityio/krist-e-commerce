@@ -11,7 +11,7 @@ import Input from '@/components/commons/Input';
 import { Button } from '@/components/commons/Button';
 
 // Constants
-import { FOOTER_IMAGES, NAVITEMS } from '@/constants';
+import { IMAGES, NAVITEMS } from '@/constants';
 
 export const Footer = () => {
   const pathname = usePathname();
@@ -20,7 +20,7 @@ export const Footer = () => {
       <div className="flex justify-between gap-5 items-center">
         <figure>
           <Image
-            src={FOOTER_IMAGES.LEFT}
+            src={IMAGES.FOOTER.LEFT}
             alt="Footer banner"
             width={360}
             height={747}
@@ -52,7 +52,7 @@ export const Footer = () => {
 
         <figure>
           <Image
-            src={FOOTER_IMAGES.RIGHT}
+            src={IMAGES.FOOTER.RIGHT}
             alt="Footer banner"
             width={357}
             height={747}
