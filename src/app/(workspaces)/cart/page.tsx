@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Suspense } from 'react';
 
 // Components
-import { Breadcrumb, CartContentContainer } from '@/components';
+import { Breadcrumb, CartContent } from '@/components';
 import { ListCartItemRowSkeleton } from '@/components/Skeletons';
 
 // Config
@@ -28,7 +28,7 @@ export default async function CartPage() {
       />
 
       <Suspense fallback={<ListCartItemRowSkeleton />}>
-        <CartContentContainer userId={userId} />
+        <CartContent userId={userId} isAuthenticated={!!session} />
       </Suspense>
     </section>
   );

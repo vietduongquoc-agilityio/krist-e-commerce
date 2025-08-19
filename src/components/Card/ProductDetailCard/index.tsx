@@ -31,13 +31,8 @@ import {
   SUCCESS_MESSAGES,
 } from '@/constants';
 
-// Services
-import {
-  addCartItemByAccountId,
-  CartPayload,
-  getCartItemsByUserId,
-  updateCartItemById,
-} from '@/services';
+// Hooks
+import { useCart } from '@/hooks/useCart';
 
 interface ProductDetailCardProps {
   product: ProductModel;
@@ -90,65 +85,48 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   };
 
   const { data: session } = useSession();
-  if (!session) {
-    return null;
-  }
+  const userId = session?.user?.id as string | undefined;
+  const isAuthenticated = !!userId;
 
-  const handleAddToCart = async () => {
+  const { upsertCart, isUpserting } = useCart(userId || '', isAuthenticated);
+
+  const handleAddToCart = () => {
     if (!selectedColor || !selectedSize) {
       toastManager.showToast(ERROR_MESSAGES.PLEASE_SELECT_COLOR, 'error');
+      return;
+    }
+    if (!isAuthenticated || !userId) {
+      toastManager.showToast(ERROR_MESSAGES.PLEASE_LOGIN_FIRST, 'error');
       return;
     }
 
     const colorName = colorHexToName[selectedColor] || selectedColor;
 
-    try {
-      const currentCartItems = await getCartItemsByUserId(session?.user.id);
-      const existingItem = currentCartItems.find(
-        (item) =>
-          item.product?.documentId === documentId &&
-          item.color === colorName &&
-          item.size === selectedSize,
-      );
-      if (existingItem) {
-        const newQuantity =
-          Number(existingItem.quantity || 0) + Number(quantity);
-
-        const updatedItem = await updateCartItemById(existingItem.documentId, {
-          quantity: Number(newQuantity),
-        });
-
-        window.dispatchEvent(
-          new CustomEvent('cartUpdated', {
-            detail: { type: 'update', item: updatedItem },
-          }),
-        );
-      } else {
-        const payload: CartPayload = {
-          color: colorName,
-          quantity,
-          product: documentId,
-          usersPermissionsUser: session?.user.id,
-          size: selectedSize,
-        };
-
-        const newItem = await addCartItemByAccountId(payload);
-
-        window.dispatchEvent(
-          new CustomEvent('cartUpdated', {
-            detail: { type: 'add', item: newItem },
-          }),
-        );
-      }
-
-      toastManager.showToast(SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART, 'success');
-    } catch (error) {
-      toastManager.showToast(ERROR_MESSAGES.ADD_TO_CART_FAIL, 'error');
-    }
+    upsertCart(
+      {
+        userId,
+        productDocumentId: documentId,
+        colorName,
+        size: selectedSize,
+        quantity,
+      },
+      {
+        onSuccess: () => {
+          toastManager.showToast(
+            SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART,
+            'success',
+          );
+        },
+        onError: () => {
+          toastManager.showToast(ERROR_MESSAGES.ADD_TO_CART_FAIL, 'error');
+        },
+      },
+    );
   };
 
   return (
     <section key={id} className="flex gap-[50px] justify-center pt-[78px]">
+      {/* Left thumbnails */}
       <div className="flex flex-col gap-4">
         {[thumbnailUrl, ...images].map((img, index) => (
           <Button
@@ -235,12 +213,11 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
                     key={size}
                     onClick={() => handleSelectSize(size)}
                     className={`w-11 h-11 flex items-center justify-center text-[18px] border rounded cursor-pointer transition
-                            ${
-                              isSelectedSize
-                                ? 'bg-black text-white border-black'
-                                : 'border-gray text-black hover:border-black hover:bg-black hover:text-white'
-                            }
-                            `}
+                    ${
+                      isSelectedSize
+                        ? 'bg-black text-white border-black'
+                        : 'border-gray text-black hover:border-black hover:bg-black hover:text-white'
+                    }`}
                   >
                     {size}
                   </div>
@@ -268,11 +245,10 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
             </div>
           </div>
 
-          {/* Add to Cart Button */}
+          {/* Add to Cart */}
           <div className="flex mt-7 flex-col">
             <span className="font-bold font-secondary">Quantity</span>
             <div className="flex gap-9 mt-3">
-              {/* <QuantityInput /> */}
               <QuantityInput
                 value={quantity}
                 max={stock}
@@ -284,9 +260,13 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
                 variant="ghost"
                 className="font-secondary"
                 onClick={handleAddToCart}
-                isDisabled={stock === 0}
+                isDisabled={stock === 0 || isUpserting}
               >
-                {stock === 0 ? 'Out of stock' : 'Add to cart'}
+                {stock === 0
+                  ? 'Out of stock'
+                  : isUpserting
+                    ? 'Adding...'
+                    : 'Add to cart'}
               </Button>
             </div>
           </div>

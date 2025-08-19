@@ -1,45 +1,49 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
 // Constants
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 
 // Components
-import {
-  CartItemRowSkeleton,
-  ListCartItemRowSkeleton,
-} from '@/components/Skeletons';
+import { ListCartItemRowSkeleton } from '@/components/Skeletons';
 import { PaymentCard } from '@/components/Card';
 import { CartItemRow } from '@/components';
 
-// Models
-import { CartModel } from '@/models';
-
-// Services
-import { checkoutCart, removeCartItem, updateCartItemById } from '@/services';
+// Hooks
+import { useCart } from '@/hooks/useCart';
 
 // Utils
 import { toastManager } from '@/utils';
 
 interface CartContentProps {
-  cartItems: CartModel[];
+  userId: string;
+  isAuthenticated: boolean;
 }
 
-export const CartContent = ({ cartItems }: CartContentProps) => {
-  const [items, setItems] = useState<CartModel[]>(cartItems);
-  const [loadingRemoveId, setLoadingRemoveId] = useState<string | null>(null);
-  const [loadingCheckout, setLoadingCheckout] = useState(false);
+export const CartContent = ({ userId, isAuthenticated }: CartContentProps) => {
+  const {
+    cartItems,
+    removeCartItem,
+    upsertCart,
+    checkoutCart,
+    isFetching,
+    isLoading,
+  } = useCart(userId, isAuthenticated);
 
   const subtotal = useMemo(() => {
-    if (!Array.isArray(items)) return 0;
-    return items.reduce(
-      (acc, item) => acc + item.product.price * item.quantity,
+    if (!Array.isArray(cartItems)) return 0;
+    return cartItems.reduce(
+      (acc, item) => acc + (item.product?.price || 0) * (item.quantity || 0),
       0,
     );
-  }, [items]);
+  }, [cartItems]);
 
-  if (!items.length) {
+  if (isLoading) {
+    return <ListCartItemRowSkeleton count={3} />;
+  }
+
+  if (!cartItems.length) {
     return (
       <p className="text-center py-10 text-red text-xl font-secondary">
         Your cart is empty.
@@ -47,31 +51,18 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
     );
   }
 
-  const handleRemove = async (cartItemDocumentId: string) => {
-    try {
-      setLoadingRemoveId(cartItemDocumentId);
-      await removeCartItem(cartItemDocumentId);
-
-      setItems((prev) =>
-        prev.filter((item) => item.documentId !== cartItemDocumentId),
-      );
-
-      toastManager.showToast(
-        SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
-        'success',
-      );
-
-      window.dispatchEvent(
-        new CustomEvent('cartUpdated', {
-          detail: { type: 'remove', documentId: cartItemDocumentId },
-        }),
-      );
-    } catch (error) {
-      console.error('Error removing item:', error);
-      toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL, 'error');
-    } finally {
-      setLoadingRemoveId(null);
-    }
+  const handleRemove = (cartItemDocumentId: string) => {
+    removeCartItem(cartItemDocumentId, {
+      onSuccess: () => {
+        toastManager.showToast(
+          SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
+          'success',
+        );
+      },
+      onError: () => {
+        toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL, 'error');
+      },
+    });
   };
 
   const handleQuantityChange = async (
@@ -80,35 +71,30 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
   ) => {
     if (newQuantity < 1) return;
 
-    try {
-      await updateCartItemById(cartItemDocumentId, { quantity: newQuantity });
+    const cartItem = cartItems.find(
+      (item) => item.documentId === cartItemDocumentId,
+    );
 
-      window.dispatchEvent(
-        new CustomEvent('cartUpdated', {
-          detail: { type: 'update', documentId: cartItemDocumentId },
-        }),
-      );
-    } catch (error) {
-      console.error('Error updating quantity:', error);
-      toastManager.showToast(
-        ERROR_MESSAGES.UPDATE_CART_ITEM_QUANTITY_FAIL,
-        'error',
-      );
-    }
+    if (!cartItem) return;
+
+    upsertCart({
+      userId,
+      productDocumentId: cartItem.product.documentId,
+      colorName: cartItem.color,
+      size: cartItem.size,
+      quantity: Number(newQuantity),
+    });
   };
 
-  const handleCheckout = async () => {
-    try {
-      setLoadingCheckout(true);
-      await checkoutCart(items, () => {});
-      setItems([]);
-      toastManager.showToast(SUCCESS_MESSAGES.CHECKOUT_SUCCESS, 'success');
-    } catch (error) {
-      console.error('Error checking out cart:', error);
-      toastManager.showToast(ERROR_MESSAGES.CHECKOUT_FAIL, 'error');
-    } finally {
-      setLoadingCheckout(false);
-    }
+  const handleCheckout = () => {
+    checkoutCart(undefined, {
+      onSuccess: () => {
+        toastManager.showToast(SUCCESS_MESSAGES.CHECKOUT_SUCCESS, 'success');
+      },
+      onError: () => {
+        toastManager.showToast(ERROR_MESSAGES.CHECKOUT_FAIL, 'error');
+      },
+    });
   };
 
   return (
@@ -123,36 +109,32 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
         </div>
 
         {/* Item Rows */}
-        {loadingCheckout ? (
-          <ListCartItemRowSkeleton count={items.length || 3} />
+        {isFetching ? (
+          <ListCartItemRowSkeleton count={cartItems.length || 3} />
         ) : (
           <div className="border-y border-gray divide-y divide-gray">
-            {items.map(({ product, color, quantity, documentId }) =>
-              loadingRemoveId === documentId ? (
-                <CartItemRowSkeleton key={documentId} />
-              ) : (
-                <CartItemRow
-                  key={documentId}
-                  productItem={product}
-                  cartItemId={documentId}
-                  color={color}
-                  quantity={quantity}
-                  onRemove={handleRemove}
-                  onQuantityChange={handleQuantityChange}
-                />
-              ),
-            )}
+            {cartItems.map(({ product, color, quantity, documentId }) => (
+              <CartItemRow
+                key={documentId}
+                productItem={product}
+                cartItemId={documentId}
+                color={color}
+                quantity={quantity}
+                onRemove={handleRemove}
+                onQuantityChange={handleQuantityChange}
+              />
+            ))}
           </div>
         )}
       </div>
 
       {/* Payment Summary */}
-      {items.length > 0 && (
+      {cartItems.length > 0 && (
         <div className="flex justify-end">
           <PaymentCard
             subtotal={subtotal}
             onCheckout={handleCheckout}
-            disabled={loadingCheckout}
+            disabled={isFetching}
           />
         </div>
       )}
