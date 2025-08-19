@@ -64,7 +64,7 @@ export const ItemMiniCart = ({
           </div>
           {/* <QuantityInput /> */}
           <QuantityInput
-            value={quantity}
+            value={Number(quantity)}
             min={1}
             max={stock}
             onChange={(val) => onQuantityChange?.(cartItemId, val)}

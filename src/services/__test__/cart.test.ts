@@ -1,7 +1,7 @@
 import {
   addCartItemByAccountId,
   getCartItemsByUserId,
-  updateCartItemQuantity,
+  updateCartItemById,
   removeCartItem,
   checkoutCart,
 } from '../cart';
@@ -78,7 +78,7 @@ describe('CartService', () => {
     });
   });
 
-  describe('updateCartItemQuantity', () => {
+  describe('updateCartItemById', () => {
     it('should update quantity and return camelized data', async () => {
       const mockData: CartModel = { documentId: '1' } as CartModel;
       (apiClient.put as jest.Mock).mockResolvedValueOnce({
@@ -86,7 +86,7 @@ describe('CartService', () => {
         error: null,
       });
 
-      const result = await updateCartItemQuantity('item1', 5);
+      const result = await updateCartItemById('item1', { quantity: 5 });
 
       expect(apiClient.put).toHaveBeenCalledWith(
         `${API_ENDPOINTS.CARTS}/item1`,
@@ -108,9 +108,9 @@ describe('CartService', () => {
         .spyOn(console, 'error')
         .mockImplementation(() => {});
 
-      await expect(updateCartItemQuantity('item1', 5)).rejects.toThrow(
-        ERROR_MESSAGES.UPDATE_CART_ITEM_QUANTITY_FAIL,
-      );
+      await expect(
+        updateCartItemById('item1', { quantity: 5 }),
+      ).rejects.toThrow(ERROR_MESSAGES.UPDATE_CART_ITEM_QUANTITY_FAIL);
 
       expect(consoleSpy).toHaveBeenCalledWith(
         ERROR_MESSAGES.UPDATE_CART_ITEM_QUANTITY_FAIL,

@@ -17,6 +17,7 @@ import {
 } from '@/components';
 import { Button } from '@/components/commons/Button';
 
+// Utils
 import { parseCommaStringToArray, toastManager } from '@/utils';
 
 // Models
@@ -31,7 +32,12 @@ import {
 } from '@/constants';
 
 // Services
-import { addCartItemByAccountId, CartPayload } from '@/services';
+import {
+  addCartItemByAccountId,
+  CartPayload,
+  getCartItemsByUserId,
+  updateCartItemById,
+} from '@/services';
 
 interface ProductDetailCardProps {
   product: ProductModel;
@@ -47,7 +53,6 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     reviewCount,
     stock = 0,
     id,
-
     documentId,
   } = product;
 
@@ -95,30 +100,51 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
       return;
     }
 
-    const item: CartPayload = {
-      color: colorHexToName[selectedColor] || selectedColor,
-      quantity,
-      product: documentId,
-      usersPermissionsUser: session?.user.id,
-      size: selectedSize,
-    };
+    const colorName = colorHexToName[selectedColor] || selectedColor;
 
     try {
-      await addCartItemByAccountId(item);
-      window.dispatchEvent(
-        new CustomEvent('cartUpdated', {
-          detail: { type: 'add', item: item },
-        }),
+      const currentCartItems = await getCartItemsByUserId(session?.user.id);
+      const existingItem = currentCartItems.find(
+        (item) =>
+          item.product?.documentId === documentId &&
+          item.color === colorName &&
+          item.size === selectedSize,
       );
-    } catch (error) {
-      toastManager.showToast(
-        ERROR_MESSAGES.ADD_TO_CART_FAIL,
-        'error',
-        'top-center',
-      );
-    }
+      if (existingItem) {
+        const newQuantity =
+          Number(existingItem.quantity || 0) + Number(quantity);
 
-    toastManager.showToast(SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART, 'success');
+        const updatedItem = await updateCartItemById(existingItem.documentId, {
+          quantity: Number(newQuantity),
+        });
+
+        window.dispatchEvent(
+          new CustomEvent('cartUpdated', {
+            detail: { type: 'update', item: updatedItem },
+          }),
+        );
+      } else {
+        const payload: CartPayload = {
+          color: colorName,
+          quantity,
+          product: documentId,
+          usersPermissionsUser: session?.user.id,
+          size: selectedSize,
+        };
+
+        const newItem = await addCartItemByAccountId(payload);
+
+        window.dispatchEvent(
+          new CustomEvent('cartUpdated', {
+            detail: { type: 'add', item: newItem },
+          }),
+        );
+      }
+
+      toastManager.showToast(SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART, 'success');
+    } catch (error) {
+      toastManager.showToast(ERROR_MESSAGES.ADD_TO_CART_FAIL, 'error');
+    }
   };
 
   return (
