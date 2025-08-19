@@ -8,7 +8,7 @@ import { Button, Modal } from '@heroui/react';
 import {
   checkoutCart,
   getCartItemsByUserId,
-  updateCartItemQuantity,
+  updateCartItemById,
 } from '@/services';
 
 // Models
@@ -66,12 +66,14 @@ export const MiniCartPopup = ({ isOpen, onClose }: MiniCartPopupProps) => {
       setCartItems((prev) =>
         prev.map((item) =>
           item.documentId === cartItemDocumentId
-            ? { ...item, quantity: newQuantity }
+            ? { ...item, quantity: Number(newQuantity) }
             : item,
         ),
       );
 
-      await updateCartItemQuantity(cartItemDocumentId, newQuantity);
+      await updateCartItemById(cartItemDocumentId, {
+        quantity: Number(newQuantity),
+      });
 
       window.dispatchEvent(
         new CustomEvent('cartUpdated', {

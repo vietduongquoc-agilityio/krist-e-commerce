@@ -74,7 +74,7 @@ export const CartItemRow = ({
         {/* <QuantityInput /> */}
         <div className="mt-[-5px]">
           <QuantityInput
-            value={quantity}
+            value={Number(quantity)}
             min={1}
             max={stock}
             onChange={(val) => onQuantityChange?.(cartItemId, val)}

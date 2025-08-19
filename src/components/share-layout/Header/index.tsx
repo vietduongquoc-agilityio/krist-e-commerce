@@ -44,10 +44,7 @@ export const Header = ({
   }, [isCartPage, isCartOpen]);
 
   const totalQuantity = useMemo(() => {
-    return (Array.isArray(cartItems) ? cartItems : []).reduce((total, item) => {
-      const qty = Number(item?.quantity ?? 0) || 0;
-      return total + qty;
-    }, 0);
+    return Array.isArray(cartItems) ? cartItems.length : 0;
   }, [cartItems]);
 
   const handleToggleCart = () => {

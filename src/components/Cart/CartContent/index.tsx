@@ -17,11 +17,7 @@ import { CartItemRow } from '@/components';
 import { CartModel } from '@/models';
 
 // Services
-import {
-  checkoutCart,
-  removeCartItem,
-  updateCartItemQuantity,
-} from '@/services';
+import { checkoutCart, removeCartItem, updateCartItemById } from '@/services';
 
 // Utils
 import { toastManager } from '@/utils';
@@ -85,7 +81,7 @@ export const CartContent = ({ cartItems }: CartContentProps) => {
     if (newQuantity < 1) return;
 
     try {
-      await updateCartItemQuantity(cartItemDocumentId, newQuantity);
+      await updateCartItemById(cartItemDocumentId, { quantity: newQuantity });
 
       window.dispatchEvent(
         new CustomEvent('cartUpdated', {
