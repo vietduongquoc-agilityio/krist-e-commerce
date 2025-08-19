@@ -34,6 +34,9 @@ export const ERROR_MESSAGES = {
 
   ERROR_SIGN_IN_WITH_GOOGLE: 'Error signing in with Google. Please try again.',
   ERROR_SIGN_IN_WITH_GITHUB: 'Error signing in with GitHub. Please try again.',
+
+  PLEASE_LOGIN_FIRST: 'Please login first',
+  GENERIC: 'An error occurred. Please try again later.',
 };
 
 export const SUCCESS_MESSAGES = {
