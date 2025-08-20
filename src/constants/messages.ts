@@ -10,7 +10,8 @@ export const ERROR_MESSAGES = {
     'Password must contain at least one uppercase letter, one special character, and one number.',
 
   ERROR_SIGN_UP: 'Error sign up: ',
-  ERROR_SIGN_UP_FORM: 'Error in sign up form: ',
+  ERROR_SIGN_UP_FORM:
+    'Error in sign up form: Your email already exists. Please try again. ',
 
   SIGN_OUT_ERROR: 'Log out error. Please try again.',
 
