@@ -21,8 +21,9 @@ import {
 
 interface HeaderProps {
   username?: string;
-  isAuthenticated?: boolean;
+  isAuthenticated: boolean;
   avatar?: string;
+  userId: string;
   cartItems?: CartModel[];
 }
 
@@ -30,6 +31,7 @@ export const Header = ({
   isAuthenticated,
   avatar,
   username,
+  userId,
   cartItems = [],
 }: HeaderProps) => {
   const pathname = usePathname();
@@ -82,7 +84,13 @@ export const Header = ({
 
           {/* Mini Cart */}
           {!isCartPage && (
-            <MiniCartPopup isOpen={isCartOpen} onClose={handleToggleCart} />
+            <MiniCartPopup
+              isOpen={isCartOpen}
+              onClose={handleToggleCart}
+              cartItems={cartItems}
+              userId={userId}
+              isAuthenticated={isAuthenticated}
+            />
           )}
         </NavbarContent>
       </Navbar>

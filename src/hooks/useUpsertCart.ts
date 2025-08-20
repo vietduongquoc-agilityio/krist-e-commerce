@@ -17,6 +17,7 @@ type UpsertCartArgs = {
   colorName: string;
   size: string;
   quantity: number;
+  mode?: 'increment' | 'set';
 };
 
 export function useUpsertCart() {
@@ -25,7 +26,14 @@ export function useUpsertCart() {
 
   return useMutation({
     mutationFn: async (args: UpsertCartArgs) => {
-      const { userId, productDocumentId, colorName, size, quantity } = args;
+      const {
+        userId,
+        productDocumentId,
+        colorName,
+        size,
+        quantity,
+        mode = 'increment',
+      } = args;
 
       const current =
         queryClient.getQueryData<CartModel[]>(cartQueryKeys.list(userId)) || [];
@@ -39,22 +47,32 @@ export function useUpsertCart() {
       );
 
       if (existing) {
-        return updateCartItemById(existing.documentId, {
-          quantity: parseQty(quantity),
-        });
+        const nextQty =
+          mode === 'set'
+            ? parseQty(quantity)
+            : parseQty(existing.quantity) + parseQty(quantity);
+
+        return updateCartItemById(existing.documentId, { quantity: nextQty });
       }
 
       return addCartItemByAccountId({
         color: colorName,
         size,
-        quantity,
+        quantity: parseQty(quantity),
         usersPermissionsUser: userId,
         product: productDocumentId,
       });
     },
 
     onMutate: async (args: UpsertCartArgs) => {
-      const { userId, productDocumentId, colorName, size, quantity } = args;
+      const {
+        userId,
+        productDocumentId,
+        colorName,
+        size,
+        quantity,
+        mode = 'increment',
+      } = args;
 
       await queryClient.cancelQueries({ queryKey: cartQueryKeys.list(userId) });
 
@@ -65,27 +83,30 @@ export function useUpsertCart() {
         (i) =>
           i.product?.documentId === productDocumentId &&
           i.color === colorName &&
-          i.size === size,
+          i.size === size &&
+          !String(i.documentId).startsWith('optimistic'),
       );
 
-      const next: CartModel[] = existed
-        ? previous.map((i) =>
-            i.documentId === existed.documentId
-              ? { ...i, quantity: parseQty(quantity) }
-              : i,
-          )
-        : [
-            ...previous,
-            {
-              documentId: `optimistic-${Date.now()}` as any,
-              quantity,
-              color: colorName,
-              size,
-              product: { documentId: productDocumentId } as any,
-            },
-          ];
-
-      queryClient.setQueryData<CartModel[]>(cartQueryKeys.list(userId), next);
+      if (!existed) {
+        const next: CartModel[] = [
+          ...previous,
+          {
+            documentId: `optimistic-${Date.now()}` as any,
+            quantity: parseQty(quantity),
+            color: colorName,
+            size,
+            product: { documentId: productDocumentId } as any,
+          },
+        ];
+        queryClient.setQueryData<CartModel[]>(cartQueryKeys.list(userId), next);
+      } else if (mode === 'set') {
+        const next: CartModel[] = previous.map((i) =>
+          i.documentId === existed.documentId
+            ? { ...i, quantity: parseQty(quantity) }
+            : i,
+        );
+        queryClient.setQueryData<CartModel[]>(cartQueryKeys.list(userId), next);
+      }
 
       return { previous };
     },

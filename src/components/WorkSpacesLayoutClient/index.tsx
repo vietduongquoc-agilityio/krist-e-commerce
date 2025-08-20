@@ -7,7 +7,7 @@ import type { CartModel } from '@/models';
 interface Props {
   children: React.ReactNode;
   username?: string;
-  userId?: string;
+  userId: string;
   avatar?: string;
   isAuthenticated: boolean;
   cartItems?: CartModel[];
@@ -34,6 +34,7 @@ export const WorkspacesLayoutClient = ({
         avatar={avatar}
         isAuthenticated={isAuthenticated}
         cartItems={cartItems}
+        userId={userId}
       />
       {children}
       <Footer />
