@@ -73,7 +73,7 @@ exports[`PaymentCard should render PaymentCard component and match snapshot 1`] 
       </span>
     </div>
     <button
-      class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover w-full h-full rounded-[10px] border border-border-input-100 transition hover:delay-75 bg-black hover:bg-secondary text-white text-base shadow-lg py-6"
+      class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] cursor-pointer outline-hidden data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 gap-2 [&>svg]:max-w-[theme(spacing.8)] motion-reduce:transition-none data-[hover=true]:opacity-hover w-full h-full rounded-[10px] border border-border-input-100 hover:delay-75 bg-black hover:bg-secondary text-base shadow-lg py-6 transition text-gray hover:text-black"
       data-react-aria-pressable="true"
       tabindex="0"
       type="button"

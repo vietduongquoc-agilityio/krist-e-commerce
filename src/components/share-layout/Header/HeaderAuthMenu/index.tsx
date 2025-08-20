@@ -49,6 +49,9 @@ export const HeaderAuthMenu = ({
     }
   };
 
+  const dropdownItemBase =
+    'py-1 text-sm text-center bg-white text-black hover:bg-gray transition';
+
   return (
     <>
       <IconSearch className="cursor-not-allowed" />
@@ -70,14 +73,14 @@ export const HeaderAuthMenu = ({
         <DropdownMenu className="border-1 rounded-md w-[120px]">
           <DropdownItem
             key="username"
-            className="rounded-t-[5px] text-center bg-black text-white hover:bg-gray transition"
+            className={`${dropdownItemBase} rounded-t-[5px] border-black`}
           >
             <p>{username || 'User'}</p>
           </DropdownItem>
           <DropdownItem
             key="logout"
-            className="rounded-b-[5px] border-t-1 border-gray text-center bg-black text-white hover:bg-gray transition"
             onClick={handleSignOut}
+            className={`${dropdownItemBase} rounded-b-[5px] border-t-1 border-black`}
           >
             Logout
           </DropdownItem>
@@ -91,7 +94,7 @@ export const HeaderAuthMenu = ({
         <div className="relative cursor-pointer" onClick={onToggleCart}>
           <IconCart />
           {totalQuantity > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red text-white text-xs font-bold px-2 py-1 rounded-full">
+            <span className="absolute -top-2 -right-2 bg-red text-white text-xs font-bold px-[9px] py-[3px] rounded-full">
               {totalQuantity}
             </span>
           )}

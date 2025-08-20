@@ -24,6 +24,7 @@ import { toastManager } from '@/utils';
 interface CartContentProps {
   userId: string;
   isAuthenticated: boolean;
+  isRemoving?: boolean;
 }
 
 export const CartContent = ({ userId, isAuthenticated }: CartContentProps) => {
@@ -86,13 +87,24 @@ export const CartContent = ({ userId, isAuthenticated }: CartContentProps) => {
     const cartItem = cartItems.find((i) => i.documentId === cartItemDocumentId);
     if (!cartItem) return;
 
-    upsertCart.mutate({
-      userId,
-      productDocumentId: cartItem.product.documentId,
-      colorName: cartItem.color,
-      size: cartItem.size,
-      quantity: Number(newQuantity),
-    });
+    upsertCart.mutate(
+      {
+        userId,
+        productDocumentId: cartItem.product.documentId,
+        colorName: cartItem.color,
+        size: cartItem.size,
+        quantity: Number(newQuantity),
+        mode: 'set',
+      },
+      {
+        onError: () => {
+          toastManager.showToast(
+            ERROR_MESSAGES.UPDATE_CART_ITEM_QUANTITY_FAIL,
+            'error',
+          );
+        },
+      },
+    );
   };
 
   const handleCheckout = () => {
@@ -134,6 +146,10 @@ export const CartContent = ({ userId, isAuthenticated }: CartContentProps) => {
                 quantity={quantity}
                 onRemove={handleRemove}
                 onQuantityChange={handleQuantityChange}
+                isRemoving={
+                  removeCartItem.isPending &&
+                  removeCartItem.variables?.cartItemDocumentId === documentId
+                }
               />
             ))}
           </div>
@@ -147,8 +163,9 @@ export const CartContent = ({ userId, isAuthenticated }: CartContentProps) => {
             subtotal={subtotal}
             onCheckout={handleCheckout}
             disabled={
-              isFetching || removeCartItem.isPending || upsertCart.isPending
+              isFetching || removeCartItem.isPending || checkoutCart.isPending
             }
+            isCheckingOut={checkoutCart.isPending}
           />
         </div>
       )}

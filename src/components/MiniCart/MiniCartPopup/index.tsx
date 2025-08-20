@@ -1,117 +1,91 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
-import { useSession } from 'next-auth/react';
+import { useMemo } from 'react';
 import { Button, Modal } from '@heroui/react';
 
-// Services
-import {
-  checkoutCart,
-  getCartItemsByUserId,
-  updateCartItemById,
-} from '@/services';
-
-// Models
-import { CartModel } from '@/models';
+// Hooks
+import { useUpsertCart, useCheckoutCart } from '@/hooks';
 
 // Components
 import { ItemMiniCart } from '@/components';
 import { toastManager } from '@/utils';
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 import { PaymentCard } from '@/components/Card';
+import { CartModel } from '@/models';
 
 interface MiniCartPopupProps {
   isOpen: boolean;
   onClose: () => void;
+  cartItems?: CartModel[];
+  userId: string;
+  isAuthenticated: boolean;
 }
 
-export const MiniCartPopup = ({ isOpen, onClose }: MiniCartPopupProps) => {
-  const { data: session } = useSession();
-  const [cartItems, setCartItems] = useState<CartModel[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (!isOpen || !session?.user) return;
-
-    const fetchCart = async () => {
-      setIsLoading(true);
-      const { id: userId } = session.user;
-      const data = await getCartItemsByUserId(userId);
-
-      if (data?.length) {
-        setCartItems(data);
-      }
-
-      setIsLoading(false);
-    };
-
-    fetchCart();
-  }, [isOpen, session]);
+export const MiniCartPopup = ({
+  isOpen,
+  onClose,
+  cartItems = [],
+  userId,
+  isAuthenticated,
+}: MiniCartPopupProps) => {
+  const upsertCart = useUpsertCart();
+  const checkoutCart = useCheckoutCart();
 
   const subtotal = useMemo(() => {
-    if (!Array.isArray(cartItems)) return 0;
     return cartItems.reduce(
       (acc, item) => acc + item.product.price * item.quantity,
       0,
     );
   }, [cartItems]);
 
-  const handleQuantityChange = async (
+  const handleQuantityChange = (
     cartItemDocumentId: string,
     newQuantity: number,
   ) => {
     if (newQuantity < 1) return;
+    if (!userId) return;
 
-    try {
-      setCartItems((prev) =>
-        prev.map((item) =>
-          item.documentId === cartItemDocumentId
-            ? { ...item, quantity: Number(newQuantity) }
-            : item,
-        ),
-      );
+    const cartItem = cartItems.find((i) => i.documentId === cartItemDocumentId);
+    if (!cartItem) return;
 
-      await updateCartItemById(cartItemDocumentId, {
-        quantity: Number(newQuantity),
-      });
-
-      window.dispatchEvent(
-        new CustomEvent('cartUpdated', {
-          detail: { type: 'update', documentId: cartItemDocumentId },
-        }),
-      );
-    } catch (error) {
-      console.error('Error updating quantity:', error);
-
-      toastManager.showToast(
-        ERROR_MESSAGES.UPDATE_CART_ITEM_QUANTITY_FAIL,
-        'error',
-      );
-    }
+    upsertCart.mutate(
+      {
+        userId,
+        productDocumentId: cartItem.product.documentId,
+        colorName: cartItem.color,
+        size: cartItem.size,
+        quantity: newQuantity,
+        mode: 'set',
+      },
+      {
+        onError: () => {
+          toastManager.showToast(
+            ERROR_MESSAGES.UPDATE_CART_ITEM_QUANTITY_FAIL,
+            'error',
+          );
+        },
+      },
+    );
   };
 
-  const handleCheckout = async () => {
-    try {
-      await checkoutCart(cartItems, () => {});
-      setCartItems([]);
-      toastManager.showToast(SUCCESS_MESSAGES.CHECKOUT_SUCCESS, 'success');
-      window.dispatchEvent(
-        new CustomEvent('cartUpdated', { detail: { type: 'checkout' } }),
-      );
-      onClose();
-    } catch (error) {
-      console.error('Error checking out cart:', error);
-      toastManager.showToast(ERROR_MESSAGES.CHECKOUT_FAIL, 'error');
-    }
+  const handleCheckout = () => {
+    checkoutCart.mutate(
+      { userId, cartItems },
+      {
+        onSuccess: () => {
+          toastManager.showToast(SUCCESS_MESSAGES.CHECKOUT_SUCCESS, 'success');
+        },
+        onError: () => {
+          toastManager.showToast(ERROR_MESSAGES.CHECKOUT_FAIL, 'error');
+        },
+      },
+    );
   };
 
   const renderCartItems = useMemo(() => {
-    if (isLoading) {
-      return <p className="text-xl text-red">Loading cart...</p>;
-    }
-
-    if (!cartItems.length)
+    if (!cartItems.length) {
       return <p className="text-xl text-red">Your cart is empty.</p>;
+    }
 
     return cartItems.map((item) => {
       const { documentId, product, color, quantity } = item;
@@ -127,17 +101,26 @@ export const MiniCartPopup = ({ isOpen, onClose }: MiniCartPopupProps) => {
         />
       );
     });
-  }, [cartItems, isLoading]);
+  }, [cartItems]);
 
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
+      hideCloseButton
       className="relative z-50"
       aria-label="Mini cart popup"
     >
-      <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
-      <div className="fixed inset-y-0 right-0 w-full max-w-[720px] bg-white p-10 overflow-y-auto shadow-xl">
+      <div
+        className="fixed inset-0 bg-black/30"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+
+      <div
+        className="fixed inset-y-0 right-0 w-full max-w-[720px] bg-white p-10 overflow-y-auto shadow-xl"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-[42px] font-secondary">Shopping Cart</h2>
           <Button
@@ -152,7 +135,12 @@ export const MiniCartPopup = ({ isOpen, onClose }: MiniCartPopupProps) => {
 
         {cartItems.length > 0 && (
           <div className="mt-10">
-            <PaymentCard subtotal={subtotal} onCheckout={handleCheckout} />
+            <PaymentCard
+              subtotal={subtotal}
+              onCheckout={handleCheckout}
+              disabled={upsertCart.isPending || checkoutCart.isPending}
+              isCheckingOut={checkoutCart.isPending}
+            />
           </div>
         )}
       </div>

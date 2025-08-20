@@ -85,6 +85,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   };
 
   const { data: session } = useSession();
+
   const userId = session?.user?.id as string | undefined;
   const isAuthenticated = !!userId;
 
@@ -109,6 +110,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
         colorName,
         size: selectedSize,
         quantity,
+        mode: 'increment',
       },
       {
         onSuccess: () => {
@@ -229,7 +231,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
           {/* Colors */}
           <div className="flex gap-3 flex-col">
             <span className="font-bold font-secondary">Colors</span>
-            <div className="flex gap-[10px]">
+            <div className="flex gap-[10px] cursor-pointer">
               {colors.map((color) => {
                 const isSelected = selectedColor === color;
                 return (
