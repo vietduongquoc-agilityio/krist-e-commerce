@@ -32,7 +32,7 @@ import {
 } from '@/constants';
 
 // Hooks
-import { useCart } from '@/hooks/useCart';
+import { useUpsertCart } from '@/hooks';
 
 interface ProductDetailCardProps {
   product: ProductModel;
@@ -88,7 +88,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   const userId = session?.user?.id as string | undefined;
   const isAuthenticated = !!userId;
 
-  const { upsertCart, isUpserting } = useCart(userId || '', isAuthenticated);
+  const upsertCart = useUpsertCart();
 
   const handleAddToCart = () => {
     if (!selectedColor || !selectedSize) {
@@ -102,7 +102,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
 
     const colorName = colorHexToName[selectedColor] || selectedColor;
 
-    upsertCart(
+    upsertCart.mutate(
       {
         userId,
         productDocumentId: documentId,
@@ -260,11 +260,11 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
                 variant="ghost"
                 className="font-secondary"
                 onClick={handleAddToCart}
-                isDisabled={stock === 0 || isUpserting}
+                isDisabled={stock === 0 || upsertCart.isPending}
               >
                 {stock === 0
                   ? 'Out of stock'
-                  : isUpserting
+                  : upsertCart.isPending
                     ? 'Adding...'
                     : 'Add to cart'}
               </Button>

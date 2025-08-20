@@ -11,7 +11,12 @@ import { PaymentCard } from '@/components/Card';
 import { CartItemRow } from '@/components';
 
 // Hooks
-import { useCart } from '@/hooks/useCart';
+import {
+  useCheckoutCart,
+  useGetCartItems,
+  useRemoveCartItem,
+  useUpsertCart,
+} from '@/hooks';
 
 // Utils
 import { toastManager } from '@/utils';
@@ -22,14 +27,17 @@ interface CartContentProps {
 }
 
 export const CartContent = ({ userId, isAuthenticated }: CartContentProps) => {
+  // fetch
   const {
-    cartItems,
-    removeCartItem,
-    upsertCart,
-    checkoutCart,
+    data: cartItems = [],
     isFetching,
     isLoading,
-  } = useCart(userId, isAuthenticated);
+  } = useGetCartItems({ userId, isAuthenticated });
+
+  // mutations
+  const removeCartItem = useRemoveCartItem();
+  const upsertCart = useUpsertCart();
+  const checkoutCart = useCheckoutCart();
 
   const subtotal = useMemo(() => {
     if (!Array.isArray(cartItems)) return 0;
@@ -51,33 +59,34 @@ export const CartContent = ({ userId, isAuthenticated }: CartContentProps) => {
     );
   }
 
+  // handlers
   const handleRemove = (cartItemDocumentId: string) => {
-    removeCartItem(cartItemDocumentId, {
-      onSuccess: () => {
-        toastManager.showToast(
-          SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
-          'success',
-        );
+    removeCartItem.mutate(
+      { userId, cartItemDocumentId },
+      {
+        onSuccess: () => {
+          toastManager.showToast(
+            SUCCESS_MESSAGES.REMOVE_PRODUCT_FROM_CART,
+            'success',
+          );
+        },
+        onError: () => {
+          toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL, 'error');
+        },
       },
-      onError: () => {
-        toastManager.showToast(ERROR_MESSAGES.REMOVE_CART_ITEM_FAIL, 'error');
-      },
-    });
+    );
   };
 
-  const handleQuantityChange = async (
+  const handleQuantityChange = (
     cartItemDocumentId: string,
     newQuantity: number,
   ) => {
     if (newQuantity < 1) return;
 
-    const cartItem = cartItems.find(
-      (item) => item.documentId === cartItemDocumentId,
-    );
-
+    const cartItem = cartItems.find((i) => i.documentId === cartItemDocumentId);
     if (!cartItem) return;
 
-    upsertCart({
+    upsertCart.mutate({
       userId,
       productDocumentId: cartItem.product.documentId,
       colorName: cartItem.color,
@@ -87,14 +96,17 @@ export const CartContent = ({ userId, isAuthenticated }: CartContentProps) => {
   };
 
   const handleCheckout = () => {
-    checkoutCart(undefined, {
-      onSuccess: () => {
-        toastManager.showToast(SUCCESS_MESSAGES.CHECKOUT_SUCCESS, 'success');
+    checkoutCart.mutate(
+      { userId, cartItems },
+      {
+        onSuccess: () => {
+          toastManager.showToast(SUCCESS_MESSAGES.CHECKOUT_SUCCESS, 'success');
+        },
+        onError: () => {
+          toastManager.showToast(ERROR_MESSAGES.CHECKOUT_FAIL, 'error');
+        },
       },
-      onError: () => {
-        toastManager.showToast(ERROR_MESSAGES.CHECKOUT_FAIL, 'error');
-      },
-    });
+    );
   };
 
   return (
@@ -109,7 +121,7 @@ export const CartContent = ({ userId, isAuthenticated }: CartContentProps) => {
         </div>
 
         {/* Item Rows */}
-        {isFetching ? (
+        {isLoading ? (
           <ListCartItemRowSkeleton count={cartItems.length || 3} />
         ) : (
           <div className="border-y border-gray divide-y divide-gray">
@@ -134,7 +146,9 @@ export const CartContent = ({ userId, isAuthenticated }: CartContentProps) => {
           <PaymentCard
             subtotal={subtotal}
             onCheckout={handleCheckout}
-            disabled={isFetching}
+            disabled={
+              isFetching || removeCartItem.isPending || upsertCart.isPending
+            }
           />
         </div>
       )}
