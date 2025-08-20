@@ -25,5 +25,6 @@ export function useGetCartItems({
     queryFn: () => getCartItemsByUserId(userId),
     enabled: isAuthenticated && !!userId,
     initialData,
+    staleTime: 1000 * 60 * 5,
   });
 }
