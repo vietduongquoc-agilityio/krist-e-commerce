@@ -1,8 +1,8 @@
 'use client';
 
 import { Header, Footer } from '@/components';
+import { useGetCartItems } from '@/hooks';
 import type { CartModel } from '@/models';
-import { useCart } from '@/hooks/useCart';
 
 interface Props {
   children: React.ReactNode;
@@ -21,7 +21,11 @@ export const WorkspacesLayoutClient = ({
   isAuthenticated,
   cartItems: initialCartItems = [],
 }: Props) => {
-  const { cartItems } = useCart(userId, isAuthenticated, initialCartItems);
+  const { data: cartItems = [] } = useGetCartItems({
+    userId: userId || '',
+    isAuthenticated,
+    initialData: initialCartItems,
+  });
 
   return (
     <>

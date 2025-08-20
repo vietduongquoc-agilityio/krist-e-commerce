@@ -5,6 +5,6 @@ export interface CartModel {
   size: string;
   quantity: number;
   product: ProductModel;
-  id: number;
+  id?: number;
   documentId: string;
 }
