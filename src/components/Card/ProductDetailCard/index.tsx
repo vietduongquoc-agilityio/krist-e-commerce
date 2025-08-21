@@ -17,6 +17,7 @@ import {
 } from '@/components';
 import { Button } from '@/components/commons/Button';
 
+// Utils
 import { parseCommaStringToArray, toastManager } from '@/utils';
 
 // Models
@@ -30,8 +31,8 @@ import {
   SUCCESS_MESSAGES,
 } from '@/constants';
 
-// Services
-import { addCartItemByAccountId, CartPayload } from '@/services';
+// Hooks
+import { useUpsertCart } from '@/hooks';
 
 interface ProductDetailCardProps {
   product: ProductModel;
@@ -47,7 +48,6 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
     reviewCount,
     stock = 0,
     id,
-
     documentId,
   } = product;
 
@@ -85,44 +85,50 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   };
 
   const { data: session } = useSession();
-  if (!session) {
-    return null;
-  }
 
-  const handleAddToCart = async () => {
+  const userId = session?.user?.id as string | undefined;
+  const isAuthenticated = !!userId;
+
+  const upsertCart = useUpsertCart();
+
+  const handleAddToCart = () => {
     if (!selectedColor || !selectedSize) {
       toastManager.showToast(ERROR_MESSAGES.PLEASE_SELECT_COLOR, 'error');
       return;
     }
-
-    const item: CartPayload = {
-      color: colorHexToName[selectedColor] || selectedColor,
-      quantity,
-      product: documentId,
-      usersPermissionsUser: session?.user.id,
-      size: selectedSize,
-    };
-
-    try {
-      await addCartItemByAccountId(item);
-      window.dispatchEvent(
-        new CustomEvent('cartUpdated', {
-          detail: { type: 'add', item: item },
-        }),
-      );
-    } catch (error) {
-      toastManager.showToast(
-        ERROR_MESSAGES.ADD_TO_CART_FAIL,
-        'error',
-        'top-center',
-      );
+    if (!isAuthenticated || !userId) {
+      toastManager.showToast(ERROR_MESSAGES.PLEASE_LOGIN_FIRST, 'error');
+      return;
     }
 
-    toastManager.showToast(SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART, 'success');
+    const colorName = colorHexToName[selectedColor] || selectedColor;
+
+    upsertCart.mutate(
+      {
+        userId,
+        productDocumentId: documentId,
+        colorName,
+        size: selectedSize,
+        quantity,
+        mode: 'increment',
+      },
+      {
+        onSuccess: () => {
+          toastManager.showToast(
+            SUCCESS_MESSAGES.ADD_PRODUCT_TO_CART,
+            'success',
+          );
+        },
+        onError: () => {
+          toastManager.showToast(ERROR_MESSAGES.ADD_TO_CART_FAIL, 'error');
+        },
+      },
+    );
   };
 
   return (
     <section key={id} className="flex gap-[50px] justify-center pt-[78px]">
+      {/* Left thumbnails */}
       <div className="flex flex-col gap-4">
         {[thumbnailUrl, ...images].map((img, index) => (
           <Button
@@ -209,12 +215,11 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
                     key={size}
                     onClick={() => handleSelectSize(size)}
                     className={`w-11 h-11 flex items-center justify-center text-[18px] border rounded cursor-pointer transition
-                            ${
-                              isSelectedSize
-                                ? 'bg-black text-white border-black'
-                                : 'border-gray text-black hover:border-black hover:bg-black hover:text-white'
-                            }
-                            `}
+                    ${
+                      isSelectedSize
+                        ? 'bg-black text-white border-black'
+                        : 'border-gray text-black hover:border-black hover:bg-black hover:text-white'
+                    }`}
                   >
                     {size}
                   </div>
@@ -226,7 +231,7 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
           {/* Colors */}
           <div className="flex gap-3 flex-col">
             <span className="font-bold font-secondary">Colors</span>
-            <div className="flex gap-[10px]">
+            <div className="flex gap-[10px] cursor-pointer">
               {colors.map((color) => {
                 const isSelected = selectedColor === color;
                 return (
@@ -242,11 +247,10 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
             </div>
           </div>
 
-          {/* Add to Cart Button */}
+          {/* Add to Cart */}
           <div className="flex mt-7 flex-col">
             <span className="font-bold font-secondary">Quantity</span>
             <div className="flex gap-9 mt-3">
-              {/* <QuantityInput /> */}
               <QuantityInput
                 value={quantity}
                 max={stock}
@@ -258,9 +262,13 @@ export const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
                 variant="ghost"
                 className="font-secondary"
                 onClick={handleAddToCart}
-                isDisabled={stock === 0}
+                isDisabled={stock === 0 || upsertCart.isPending}
               >
-                {stock === 0 ? 'Out of stock' : 'Add to cart'}
+                {stock === 0
+                  ? 'Out of stock'
+                  : upsertCart.isPending
+                    ? 'Adding...'
+                    : 'Add to cart'}
               </Button>
             </div>
           </div>

@@ -11,9 +11,15 @@ interface PaymentCardProps {
   subtotal: number;
   onCheckout?: () => void;
   disabled?: boolean;
+  isCheckingOut?: boolean;
 }
 
-export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
+export const PaymentCard = ({
+  subtotal,
+  onCheckout,
+  disabled = false,
+  isCheckingOut = false,
+}: PaymentCardProps) => {
   const [wrapGift, setWrapGift] = useState(false);
 
   const total = wrapGift ? subtotal + 10 : subtotal;
@@ -53,10 +59,14 @@ export const PaymentCard = ({ subtotal, onCheckout }: PaymentCardProps) => {
       <Button
         onClick={onCheckout}
         variant="solid"
-        isDisabled={subtotal === 0}
-        className="shadow-lg py-6"
+        isDisabled={subtotal === 0 || disabled || isCheckingOut}
+        className={`shadow-lg py-6 transition ${
+          isCheckingOut
+            ? 'bg-strawberry text-white cursor-not-allowed'
+            : 'text-gray hover:text-black'
+        }`}
       >
-        Checkout
+        {isCheckingOut ? 'Processing…' : 'Checkout'}
       </Button>
 
       <Link

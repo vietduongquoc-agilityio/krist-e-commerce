@@ -70,20 +70,12 @@ export const SignUpForm = () => {
       const response = await signUp(data);
 
       if (response) {
-        toastManager.showToast(
-          `${SUCCESS_MESSAGES.SIGN_UP} `,
-          'success',
-          'top-center',
-        );
+        toastManager.showToast(`${SUCCESS_MESSAGES.SIGN_UP} `, 'success');
 
         router.push(ROUTER.SIGNIN);
       }
     } catch (error) {
-      toastManager.showToast(
-        `${ERROR_MESSAGES.ERROR_SIGN_UP_FORM} ${error instanceof Error ? error.message : ''}`,
-        'error',
-        'top-center',
-      );
+      toastManager.showToast(`${ERROR_MESSAGES.ERROR_SIGN_UP_FORM}`, 'error');
     }
   };
 
@@ -160,7 +152,7 @@ export const SignUpForm = () => {
 
         <Text size={TEXT_SIZE.BASE}>
           Already have an account?
-          <Link className="text-skyBlue hover:underline ml-1" href="/signin">
+          <Link className="text-skyBlue hover:underline ml-2" href="/signin">
             SignIn
           </Link>
         </Text>
