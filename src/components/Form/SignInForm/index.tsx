@@ -67,15 +67,13 @@ export const SignInForm = () => {
     try {
       await authenticateUser(data);
 
-      toastManager.showToast(SUCCESS_MESSAGES.LOGIN, 'success');
+      sessionStorage.setItem('loginSuccess', 'true');
 
-      if (callbackUrl) {
-        return router.push(callbackUrl.replace(BASE_URL!, ''));
-      }
-
-      router.push(ROUTER.HOME);
+      const targetUrl = callbackUrl?.replace(BASE_URL!, '') || ROUTER.HOME;
+      router.push(targetUrl);
     } catch (error) {
       setErrorMessage(ERROR_MESSAGES.ACCOUNT_AND_PASSWORD_INVALID);
+
       toastManager.showToast(
         ERROR_MESSAGES.ACCOUNT_AND_PASSWORD_INVALID,
         'error',
