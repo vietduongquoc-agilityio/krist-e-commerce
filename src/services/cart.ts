@@ -52,14 +52,14 @@ export const getCartItemsByUserId = async (
   return data.data.map(keysToCamel);
 };
 
-export const updateCartItemQuantity = async (
+export const updateCartItemById = async (
   cartItemDocumentId: string,
-  newQuantity: number,
+  payload: Partial<CartPayload>,
 ): Promise<CartModel> => {
   const { data, error } = await apiClient.put<CartModel>(
     `${API_ENDPOINTS.CARTS}/${cartItemDocumentId}`,
     {
-      body: { data: keysToSnake({ quantity: newQuantity }) },
+      body: { data: keysToSnake(payload) },
     },
   );
 

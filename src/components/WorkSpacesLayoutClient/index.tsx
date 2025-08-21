@@ -1,22 +1,15 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-
-// Components
 import { Header, Footer } from '@/components';
-
-// Models
-import { CartModel } from '@/models';
-
-// Services
-import { getCartItemsByUserId } from '@/services';
+import { useGetCartItems } from '@/hooks';
+import type { CartModel } from '@/models';
 
 interface Props {
   children: React.ReactNode;
   username?: string;
-  userId?: string;
+  userId: string;
   avatar?: string;
-  isAuthenticated?: boolean;
+  isAuthenticated: boolean;
   cartItems?: CartModel[];
 }
 
@@ -28,46 +21,11 @@ export const WorkspacesLayoutClient = ({
   isAuthenticated,
   cartItems: initialCartItems = [],
 }: Props) => {
-  const [cartItems, setCartItems] = useState<CartModel[]>(initialCartItems);
-
-  const fetchCart = useCallback(async () => {
-    if (!isAuthenticated || !userId) {
-      setCartItems([]);
-      return;
-    }
-    try {
-      const data = await getCartItemsByUserId(userId);
-
-      setCartItems(Array.isArray(data) ? [...data] : []);
-    } catch (err) {
-      console.error('Failed to fetch cart on layout mount', err);
-      setCartItems([]);
-    }
-  }, [isAuthenticated, userId]);
-
-  useEffect(() => {
-    fetchCart();
-  }, [fetchCart]);
-
-  useEffect(() => {
-    const onCartUpdated = (
-      e: CustomEvent<{
-        type: 'add' | 'remove' | 'update' | 'checkout';
-        item?: CartModel;
-        documentId?: string;
-      }>,
-    ) => {
-      if (['add', 'remove', 'update'].includes(e.detail.type)) {
-        fetchCart();
-      } else if (e.detail.type === 'checkout') {
-        setCartItems([]);
-      }
-    };
-
-    window.addEventListener('cartUpdated', onCartUpdated as EventListener);
-    return () =>
-      window.removeEventListener('cartUpdated', onCartUpdated as EventListener);
-  }, [fetchCart]);
+  const { data: cartItems = [] } = useGetCartItems({
+    userId: userId || '',
+    isAuthenticated,
+    initialData: initialCartItems,
+  });
 
   return (
     <>
@@ -76,6 +34,7 @@ export const WorkspacesLayoutClient = ({
         avatar={avatar}
         isAuthenticated={isAuthenticated}
         cartItems={cartItems}
+        userId={userId}
       />
       {children}
       <Footer />
