@@ -1,14 +1,18 @@
 'use client';
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 
 // services
-import { addCartItemByAccountId, updateCartItemById } from '@/services';
+import {
+  addCartItemByAccountId,
+  updateCartItemById,
+  getCartItemsByUserId,
+} from '@/services';
 
 // models
 import { CartModel } from '@/models';
 
-// Constants
+// constants
 import { cartQueryKeys } from '@/constants';
 
 type UpsertCartArgs = {
@@ -19,6 +23,24 @@ type UpsertCartArgs = {
   quantity: number;
   mode?: 'increment' | 'set';
 };
+
+export function useGetCartItems({
+  userId,
+  isAuthenticated,
+  initialData,
+}: {
+  userId: string;
+  isAuthenticated: boolean;
+  initialData?: CartModel[];
+}) {
+  return useQuery<CartModel[]>({
+    queryKey: cartQueryKeys.list(userId),
+    queryFn: () => getCartItemsByUserId(userId),
+    enabled: isAuthenticated && !!userId,
+    initialData,
+    staleTime: 1000 * 60 * 5,
+  });
+}
 
 export function useUpsertCart() {
   const queryClient = useQueryClient();
