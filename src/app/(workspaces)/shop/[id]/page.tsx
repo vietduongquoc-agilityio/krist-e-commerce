@@ -3,11 +3,14 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 // Components
-import { AboutSection, LoadingIndicator } from '@/components';
+import { AboutSection } from '@/components';
 import { ProductDetailCard } from '@/components/Card';
 
 // Services
 import { getProductDetail } from '@/services';
+
+// Components
+import { ProductDetailCardSkeleton } from '@/components/Skeletons';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -70,7 +73,7 @@ export default async function ProductDetailPage({
   return (
     <div>
       {/* Product Detail Card */}
-      <Suspense fallback={<LoadingIndicator />}>
+      <Suspense fallback={<ProductDetailCardSkeleton />}>
         <ProductDetailCard product={productData} />
       </Suspense>
 

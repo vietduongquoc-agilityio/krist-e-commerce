@@ -1,8 +1,15 @@
 'use client';
 
+// Components
 import { Header, Footer } from '@/components';
+
+// Constant
 import { SUCCESS_MESSAGES } from '@/constants';
+
+// Hooks
 import { useGetCartItems, useSessionToast } from '@/hooks';
+
+// Models
 import type { CartModel } from '@/models';
 
 interface Props {

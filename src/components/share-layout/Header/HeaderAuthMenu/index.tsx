@@ -53,7 +53,7 @@ export const HeaderAuthMenu = ({
     'py-1 text-sm text-center bg-white text-black hover:bg-gray transition';
 
   return (
-    <>
+    <div className="py-[9px] flex gap-5 items-center">
       <IconSearch className="cursor-not-allowed" />
 
       {/* Avatar + Dropdown */}
@@ -100,6 +100,6 @@ export const HeaderAuthMenu = ({
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };

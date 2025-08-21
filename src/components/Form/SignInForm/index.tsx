@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 // Components
@@ -26,7 +26,6 @@ import {
   ERROR_MESSAGES,
   BASE_URL,
   ROUTER,
-  SUCCESS_MESSAGES,
   TEXT_SIZE,
   TEXT_VARIANT,
 } from '@/constants';
@@ -41,6 +40,7 @@ export const SignInForm = () => {
   const router = useRouter();
   const param = useSearchParams();
   const callbackUrl = param.get('callbackUrl');
+  const [isPending, startTransition] = useTransition();
 
   const {
     control,
@@ -70,7 +70,10 @@ export const SignInForm = () => {
       sessionStorage.setItem('loginSuccess', 'true');
 
       const targetUrl = callbackUrl?.replace(BASE_URL!, '') || ROUTER.HOME;
-      router.push(targetUrl);
+
+      startTransition(() => {
+        router.replace(targetUrl);
+      });
     } catch (error) {
       setErrorMessage(ERROR_MESSAGES.ACCOUNT_AND_PASSWORD_INVALID);
 
@@ -80,6 +83,8 @@ export const SignInForm = () => {
       );
     }
   };
+
+  const isLoading = isSubmitting || isPending;
 
   return (
     <form
@@ -154,7 +159,7 @@ export const SignInForm = () => {
         )}
       />
 
-      {/* Custom error (e.g. backend invalid account) */}
+      {/* Custom error */}
       {errorMessage && (
         <Text size={TEXT_SIZE.BASE} variant={TEXT_VARIANT.ERROR}>
           {errorMessage}
@@ -167,7 +172,7 @@ export const SignInForm = () => {
           variant="solid"
           type="submit"
           isDisabled={!isDirty || !isValid}
-          isLoading={isSubmitting}
+          isLoading={isLoading}
         >
           Sign In
         </Button>
