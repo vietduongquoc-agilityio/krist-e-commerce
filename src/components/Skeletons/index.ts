@@ -4,3 +4,4 @@ export * from './ListProductItemSkeleton';
 export * from './ProductItemSkeleton';
 export * from './ListProductCardSkeleton';
 export * from './ProductCardSkeleton';
+export * from './ProductDetailCardSkeleton';

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Card, Checkbox } from '@heroui/react';
+import { usePathname } from 'next/navigation';
 
 // Components
 import { Button } from '@/components/commons/Button';
@@ -21,6 +22,7 @@ export const PaymentCard = ({
   isCheckingOut = false,
 }: PaymentCardProps) => {
   const [wrapGift, setWrapGift] = useState(false);
+  const pathname = usePathname();
 
   const total = wrapGift ? subtotal + 10 : subtotal;
 
@@ -60,7 +62,7 @@ export const PaymentCard = ({
         onClick={onCheckout}
         variant="solid"
         isDisabled={subtotal === 0 || disabled || isCheckingOut}
-        className={`shadow-lg py-6 transition ${
+        className={`shadow-lg py-6 text-[21px] font-bold transition ${
           isCheckingOut
             ? 'bg-strawberry text-white cursor-not-allowed'
             : 'text-gray hover:text-black'
@@ -69,12 +71,14 @@ export const PaymentCard = ({
         {isCheckingOut ? 'Processing…' : 'Checkout'}
       </Button>
 
-      <Link
-        href="/cart"
-        className="underline text-[22px] font-secondary text-black text-center mt-5 hover:text-gray transition"
-      >
-        View Cart
-      </Link>
+      {pathname !== '/cart' && (
+        <Link
+          href="/cart"
+          className="underline text-[22px] font-secondary text-black text-center mt-5 hover:text-gray transition"
+        >
+          View Cart
+        </Link>
+      )}
     </Card>
   );
 };
