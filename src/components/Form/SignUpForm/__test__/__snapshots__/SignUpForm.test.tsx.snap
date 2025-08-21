@@ -267,7 +267,7 @@ exports[`SignUpForm should render SignUpForm correctly and match snapshot 1`] = 
       >
         Already have an account?
         <a
-          class="text-skyBlue hover:underline ml-1"
+          class="text-skyBlue hover:underline ml-2"
           href="/signin"
         >
           SignIn

@@ -65,5 +65,6 @@ exports[`Header renders correctly when user is not authenticated (snapshot) 1`] 
       </header>
     </nav>
   </header>
+  ,
 </div>
 `;

@@ -25,10 +25,9 @@ export default async function WorkspacesLayout({
 
   const isAuthenticated = !!session;
 
-  const userId = session?.user?.id;
-
-  const username = session?.user?.username;
-  const avatar = session?.user?.avatar;
+  const userId = session?.user.id || '';
+  const username = session?.user.username;
+  const avatar = session?.user.avatar;
 
   const cartItems =
     isAuthenticated && userId ? await getCartItemsByUserId(userId) : [];
