@@ -69,7 +69,7 @@ describe('Product Service', () => {
       const result = await getProducts({ searchParams });
 
       expect(apiClient.get).toHaveBeenCalledWith(API_ENDPOINTS.PRODUCTS, {
-        next: { revalidate: 3600 },
+        next: { revalidate: 300 },
       });
       expect(filterBySize).toHaveBeenCalledWith(mockProducts, 'M');
       expect(filterByColor).toHaveBeenCalledWith(mockProducts, 'red');
@@ -118,7 +118,7 @@ describe('Product Service', () => {
 
       expect(apiClient.get).toHaveBeenCalledWith(
         `${API_ENDPOINTS.PRODUCTS}/p1?populate=*`,
-        { next: { revalidate: 3600 } },
+        { next: { revalidate: 300 } },
       );
       expect(result.productData).toEqual(mockProduct);
       expect(result.error).toBeNull();

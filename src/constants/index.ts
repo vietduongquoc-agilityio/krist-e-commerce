@@ -10,4 +10,3 @@ export * from './endpoints';
 export * from './querykey';
 export * from './color';
 export * from './image';
-export * from './cartQueryKeys';

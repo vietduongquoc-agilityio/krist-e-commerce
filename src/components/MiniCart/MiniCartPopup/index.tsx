@@ -8,9 +8,19 @@ import { useUpsertCart, useCheckoutCart } from '@/hooks';
 
 // Components
 import { ItemMiniCart } from '@/components';
-import { toastManager } from '@/utils';
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants';
 import { PaymentCard } from '@/components/Card';
+
+// Utils
+import { toastManager } from '@/utils';
+
+// Constants
+import {
+  ERROR_MESSAGES,
+  FREE_SHIPPING_AMOUNT,
+  SUCCESS_MESSAGES,
+} from '@/constants';
+
+// Models
 import { CartModel } from '@/models';
 
 interface MiniCartPopupProps {
@@ -37,6 +47,8 @@ export const MiniCartPopup = ({
       0,
     );
   }, [cartItems]);
+
+  const remaining = Math.max(FREE_SHIPPING_AMOUNT - subtotal, 0);
 
   const handleQuantityChange = (
     cartItemDocumentId: string,
@@ -130,6 +142,21 @@ export const MiniCartPopup = ({
             ×
           </Button>
         </div>
+
+        {cartItems.length > 0 && (
+          <div className="mb-10">
+            {remaining > 0 ? (
+              <p className="text-gray text-[26px]">
+                Buy <strong className="text-black">${remaining}</strong> More
+                And Get <strong className="text-black">Free Shipping</strong>
+              </p>
+            ) : (
+              <strong className="text-red text-[18px]">
+                You’re eligible for Free Shipping!
+              </strong>
+            )}
+          </div>
+        )}
 
         <div className="space-y-8">{renderCartItems}</div>
 

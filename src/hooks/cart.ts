@@ -7,6 +7,7 @@ import {
   addCartItemByAccountId,
   updateCartItemById,
   getCartItemsByUserId,
+  removeCartItem,
 } from '@/services';
 
 // models
@@ -148,6 +149,49 @@ export function useUpsertCart() {
           queryKey: cartQueryKeys.list(args.userId),
         });
       }
+    },
+  });
+}
+
+export function useRemoveCartItem() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({
+      userId,
+      cartItemDocumentId,
+    }: {
+      userId: string;
+      cartItemDocumentId: string;
+    }) => removeCartItem(cartItemDocumentId),
+
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: cartQueryKeys.list(variables.userId),
+      });
+    },
+  });
+}
+
+export function useCheckoutCart() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({
+      userId,
+      cartItems,
+    }: {
+      userId: string;
+      cartItems: CartModel[];
+    }) => {
+      if (!cartItems.length) return;
+      await Promise.all(
+        cartItems.map((item) => removeCartItem(item.documentId)),
+      );
+    },
+
+    onSuccess: (_data, { userId }) => {
+      queryClient.setQueryData(cartQueryKeys.list(userId), []);
     },
   });
 }
