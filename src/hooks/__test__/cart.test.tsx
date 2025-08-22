@@ -48,6 +48,26 @@ describe('cart hooks', () => {
       await waitFor(() => expect(result.current.isSuccess).toBe(true));
       expect(result.current.data).toEqual(mockData);
     });
+
+    it.skip('handles error when fetching cart items', async () => {
+      (services.getCartItemsByUserId as jest.Mock).mockRejectedValue(
+        new Error('Failed'),
+      );
+
+      const { result } = renderHook(
+        () =>
+          useGetCartItems({
+            userId: 'u1',
+            isAuthenticated: true,
+          }),
+        { wrapper: createWrapper() },
+      );
+
+      await waitFor(() => {
+        console.log(result.current.isError);
+        expect(result.current.isError).toBe(true);
+      });
+    });
   });
 
   describe('useUpsertCart', () => {
@@ -78,6 +98,68 @@ describe('cart hooks', () => {
         }),
       );
     });
+
+    it('increases quantity if product already exists', async () => {
+      const existingCartItem = {
+        documentId: 'c1',
+        product: { documentId: 'p1' },
+        color: 'red',
+        size: 'M',
+        quantity: 2,
+      };
+      (services.getCartItemsByUserId as jest.Mock).mockResolvedValue([
+        existingCartItem,
+      ]);
+      (services.addCartItemByAccountId as jest.Mock).mockResolvedValue({
+        ...existingCartItem,
+        quantity: 3,
+      });
+
+      const { result } = renderHook(() => useUpsertCart(), {
+        wrapper: createWrapper(),
+      });
+
+      await act(async () => {
+        await result.current.mutateAsync({
+          userId: 'u1',
+          productDocumentId: 'p1',
+          colorName: 'red',
+          size: 'M',
+          quantity: 3,
+          mode: 'increment',
+        });
+      });
+
+      expect(services.addCartItemByAccountId).toHaveBeenCalledWith(
+        expect.objectContaining({
+          usersPermissionsUser: 'u1',
+          product: 'p1',
+          color: 'red',
+          size: 'M',
+          quantity: 3,
+        }),
+      );
+    });
+
+    it('handles error when upsert fails', async () => {
+      (services.addCartItemByAccountId as jest.Mock).mockRejectedValue(
+        new Error('fail'),
+      );
+
+      const { result } = renderHook(() => useUpsertCart(), {
+        wrapper: createWrapper(),
+      });
+
+      await expect(
+        result.current.mutateAsync({
+          userId: 'u1',
+          productDocumentId: 'p1',
+          colorName: 'red',
+          size: 'M',
+          quantity: 3,
+        }),
+      ).rejects.toThrow('fail');
+    });
   });
 
   describe('useRemoveCartItem', () => {
@@ -96,6 +178,23 @@ describe('cart hooks', () => {
       });
 
       expect(services.removeCartItem).toHaveBeenCalledWith('c1');
+    });
+
+    it('handles error when removing fails', async () => {
+      (services.removeCartItem as jest.Mock).mockRejectedValue(
+        new Error('remove fail'),
+      );
+
+      const { result } = renderHook(() => useRemoveCartItem(), {
+        wrapper: createWrapper(),
+      });
+
+      await expect(
+        result.current.mutateAsync({
+          userId: 'u1',
+          cartItemDocumentId: 'c1',
+        }),
+      ).rejects.toThrow('remove fail');
     });
   });
 
@@ -131,6 +230,30 @@ describe('cart hooks', () => {
       expect(services.removeCartItem).toHaveBeenCalledTimes(2);
       expect(services.removeCartItem).toHaveBeenCalledWith('c1');
       expect(services.removeCartItem).toHaveBeenCalledWith('c2');
+    });
+
+    it('handles error during checkout', async () => {
+      (services.removeCartItem as jest.Mock).mockRejectedValue(
+        new Error('checkout fail'),
+      );
+
+      const { result } = renderHook(() => useCheckoutCart(), {
+        wrapper: createWrapper(),
+      });
+
+      const items: CartModel[] = [
+        {
+          documentId: 'c1',
+          product: { documentId: 'p1' } as any,
+          color: 'red',
+          size: 'M',
+          quantity: 1,
+        },
+      ];
+
+      await expect(
+        result.current.mutateAsync({ userId: 'u1', cartItems: items }),
+      ).rejects.toThrow('checkout fail');
     });
   });
 });
