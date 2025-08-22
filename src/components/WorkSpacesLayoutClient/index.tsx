@@ -1,7 +1,15 @@
 'use client';
 
+// Components
 import { Header, Footer } from '@/components';
-import { useGetCartItems } from '@/hooks';
+
+// Constant
+import { SUCCESS_MESSAGES } from '@/constants';
+
+// Hooks
+import { useGetCartItems, useSessionToast } from '@/hooks';
+
+// Models
 import type { CartModel } from '@/models';
 
 interface Props {
@@ -26,6 +34,8 @@ export const WorkspacesLayoutClient = ({
     isAuthenticated,
     initialData: initialCartItems,
   });
+
+  useSessionToast('loginSuccess', SUCCESS_MESSAGES.LOGIN);
 
   return (
     <>

@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 
 // Components
 import { Button } from '@/components/commons/Button';
@@ -26,14 +27,12 @@ import {
   ERROR_MESSAGES,
   BASE_URL,
   ROUTER,
-  SUCCESS_MESSAGES,
   TEXT_SIZE,
   TEXT_VARIANT,
 } from '@/constants';
 
 // Utils
 import { toastManager } from '@/utils';
-import { signIn } from 'next-auth/react';
 
 export const SignInForm = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -41,11 +40,12 @@ export const SignInForm = () => {
   const router = useRouter();
   const param = useSearchParams();
   const callbackUrl = param.get('callbackUrl');
+  const [isPending, startTransition] = useTransition();
 
   const {
     control,
     handleSubmit,
-    formState: { isDirty, isValid, isSubmitting },
+    formState: { isDirty, isValid },
   } = useForm<ISignInFormData>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -65,16 +65,19 @@ export const SignInForm = () => {
 
   const onSubmit = async (data: ISignInFormData) => {
     try {
-      await authenticateUser(data);
+      startTransition(async () => {
+        await authenticateUser(data);
 
-      toastManager.showToast(SUCCESS_MESSAGES.LOGIN, 'success');
+        sessionStorage.setItem('loginSuccess', 'true');
 
-      if (callbackUrl) {
-        return router.push(callbackUrl.replace(BASE_URL!, ''));
-      }
+        const targetUrl = callbackUrl?.replace(BASE_URL!, '') || ROUTER.HOME;
 
-      router.push(ROUTER.HOME);
+        startTransition(() => {
+          router.replace(targetUrl);
+        });
+      });
     } catch (error) {
+      console.log(error);
       setErrorMessage(ERROR_MESSAGES.ACCOUNT_AND_PASSWORD_INVALID);
       toastManager.showToast(
         ERROR_MESSAGES.ACCOUNT_AND_PASSWORD_INVALID,
@@ -156,7 +159,7 @@ export const SignInForm = () => {
         )}
       />
 
-      {/* Custom error (e.g. backend invalid account) */}
+      {/* Custom error */}
       {errorMessage && (
         <Text size={TEXT_SIZE.BASE} variant={TEXT_VARIANT.ERROR}>
           {errorMessage}
@@ -169,7 +172,7 @@ export const SignInForm = () => {
           variant="solid"
           type="submit"
           isDisabled={!isDirty || !isValid}
-          isLoading={isSubmitting}
+          isLoading={isPending}
         >
           Sign In
         </Button>
