@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
+import { Metadata } from 'next';
 
 // Components
 import {
@@ -11,6 +12,12 @@ import {
 import { ListProductCardSkeleton } from '@/components/Skeletons';
 import { ListProductCardContainer } from '@/components/Card';
 import { Button } from '@/components/commons/Button';
+
+export const metadata: Metadata = {
+  title: 'FASCO - Shopping online',
+  description:
+    'Discover the latest trends in fashion and shop your favorite styles at FASCO.',
+};
 
 export default async function LandingPage() {
   return (

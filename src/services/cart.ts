@@ -39,6 +39,7 @@ export const getCartItemsByUserId = async (
 
   params.set('pagination[page]', page);
   params.set('pagination[pageSize]', pageSize);
+  params.set('sort', 'createdAt:desc');
 
   const url = `${API_ENDPOINTS.CARTS}?filters[users_permissions_user][id][$eq]=${userId}&populate=*&${params.toString()}`;
 
