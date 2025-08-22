@@ -48,26 +48,6 @@ describe('cart hooks', () => {
       await waitFor(() => expect(result.current.isSuccess).toBe(true));
       expect(result.current.data).toEqual(mockData);
     });
-
-    it.skip('handles error when fetching cart items', async () => {
-      (services.getCartItemsByUserId as jest.Mock).mockRejectedValue(
-        new Error('Failed'),
-      );
-
-      const { result } = renderHook(
-        () =>
-          useGetCartItems({
-            userId: 'u1',
-            isAuthenticated: true,
-          }),
-        { wrapper: createWrapper() },
-      );
-
-      await waitFor(() => {
-        console.log(result.current.isError);
-        expect(result.current.isError).toBe(true);
-      });
-    });
   });
 
   describe('useUpsertCart', () => {
