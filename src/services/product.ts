@@ -35,7 +35,7 @@ export const getProducts = async ({ searchParams }: IParams) => {
   const { data, error } = await apiClient.get<{
     data: ProductModel[];
   }>(API_ENDPOINTS.PRODUCTS, {
-    next: { revalidate: 3600 },
+    next: { revalidate: 300 },
   });
 
   let products = data?.data ?? [];
@@ -73,7 +73,7 @@ export const getProductDetail = async (id: string) => {
   const url = `${API_ENDPOINTS.PRODUCTS}/${id}?populate=*`;
 
   const { data, error } = await apiClient.get<{ data: ProductModel }>(url, {
-    next: { revalidate: 3600 },
+    next: { revalidate: 300 },
   });
 
   return {

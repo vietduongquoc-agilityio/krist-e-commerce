@@ -75,6 +75,7 @@ export const SignUpForm = () => {
         router.push(ROUTER.SIGNIN);
       }
     } catch (error) {
+      console.error(error);
       toastManager.showToast(`${ERROR_MESSAGES.ERROR_SIGN_UP_FORM}`, 'error');
     }
   };
