@@ -79,6 +79,7 @@ export const SignInForm = () => {
     } catch (error) {
       console.log(error);
       setErrorMessage(ERROR_MESSAGES.ACCOUNT_AND_PASSWORD_INVALID);
+
       toastManager.showToast(
         ERROR_MESSAGES.ACCOUNT_AND_PASSWORD_INVALID,
         'error',
