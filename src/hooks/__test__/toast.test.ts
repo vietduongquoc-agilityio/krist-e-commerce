@@ -28,13 +28,13 @@ describe('useSessionToast', () => {
     expect(sessionStorage.getItem('cart-success')).toBeNull();
   });
 
-  it('should NOT call toastManager.showToast if flag is missing', () => {
+  it('should not call toastManager.showToast if flag is missing', () => {
     renderHook(() => useSessionToast('cart-success', 'Added to cart'));
 
     expect(toastManager.showToast).not.toHaveBeenCalled();
   });
 
-  it('should NOT call toastManager.showToast if flag is not "true"', () => {
+  it('should not call toastManager.showToast if flag is not "true"', () => {
     sessionStorage.setItem('cart-success', 'false');
 
     renderHook(() => useSessionToast('cart-success', 'Added to cart'));
