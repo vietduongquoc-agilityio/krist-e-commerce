@@ -39,7 +39,7 @@ export function useGetCartItems({
     queryFn: () => getCartItemsByUserId(userId),
     enabled: isAuthenticated && !!userId,
     initialData,
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 5, // 5 minutes
   });
 }
 
