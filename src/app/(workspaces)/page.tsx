@@ -19,6 +19,8 @@ export const metadata: Metadata = {
     'Discover the latest trends in fashion and shop your favorite styles at FASCO.',
 };
 
+export const revalidate = 7200; // 2 hours
+
 export default async function LandingPage() {
   return (
     <div>
